@@ -1,0 +1,81 @@
+\documentclass[11pt,letterpaper,oneside,openright]{book}
+
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+
+\usepackage{textcomp}
+\usepackage[pdftex]{hyperref}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{tikz}
+
+\usepackage{svg}
+\usepackage{amsmath}
+\usepackage{listings}
+% \usepackage{bordermatrix}
+% \usepackage{microtype}
+% \usepackage{shortvrb}
+% \usepackage{tabularx}
+%%%%%%%%%%%%%%%%%
+% PARA HACER LA PRUEBA
+%%%%%%%%%%%%%%%%%
+% \usepackage{nicefrac}
+% \usepackage[pdftex]{hyperref}
+% \usepackage{anysize}
+% \usepackage{fancyhdr}
+% \usepackage{subfigure}
+% \usepackage{pstricks}
+% \usepackage{tabulary}
+% \usepackage{type1cm}
+% \usepackage{url}
+% \usepackage{multirow}
+% \usepackage{booktabs}
+% \usepackage{subfigure}
+% \usepackage{graphicx}
+% \usepackage{bm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \usepackage[bookmarks]{}
+% \usepackage[bookmarks,colorlinks]{hyperref}
+\graphicspath{{images/}}
+\setsvg{
+    svgpath = images/,
+    inkscape = inkscape -z -D % conversion options for svg package, export drawing instead of page
+}
+% \renewcommand{\arraystretch}{1.5}
+% \usepackage{hyperref}
+\hypersetup{colorlinks,%
+            citecolor=black,%
+            filecolor=black,%
+            linkcolor=black,%
+            urlcolor=black}
+
+% \usepackage[charter]{mathdesign}
+
+\title{Desarrollo de una aplicaci\'on móvil para visitas dentro el campus de la UMSS usando Geolocalización}
+\author{Edmundo Figueroa Herbas}
+\date{\today \ }
+
+\begin{document}
+% \include{title-page}
+\frontmatter
+  \maketitle
+  \tableofcontents
+
+\mainmatter{}
+  \include{introduccion}
+  \include{marco_referencial}
+  % \include{ror_patrones}
+  %\include{geolocalizacion}
+  % \include{ruta_corta}
+  %\include{implementacion}
+  % \include{pruebas}
+
+\backmatter{}
+  \include{biblio}
+  % \listoffigures
+  % \listoftables
+% \newpage
+\end{document}

@@ -1,0 +1,78 @@
+%% Creator: Inkscape inkscape 0.91, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'image.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{517.940775bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,1.10127186)%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{image.pdf}}%
+    \put(0.53287946,0.39386743){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Dificultad de Desplazamiento y Ubicacion al interior del Campus Universitario}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{image.pdf}}%
+    \put(0.22396383,0.64872282){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Retrasos en Trámites}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{image.pdf}}%
+    \put(0.25485539,0.80935895){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Visitantes / Estudiantes Molestos}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{image.pdf}}%
+    \put(0.58693969,0.60238548){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{[Not supported by viewer]}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{image.pdf}}%
+    \put(0.11584336,0.1699036){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{[Not supported by viewer]}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{image.pdf}}%
+    \put(0.53287946,0.1699036){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Recursos Insuficientes para Señalización}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{image.pdf}}%
+    \put(0.85724087,0.1699036){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{[Not supported by viewer]}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{image.pdf}}%
+    \put(0.32127225,0.03089156){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Constante Reestructuración de la Universidad}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{image.pdf}}%
+    \put(0.85724087,0.80163606){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Datos de Lugares Desactualizados}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{image.pdf}}%
+    \put(0.50044332,0.95763845){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Deficiente acceso a la informacion<span style="line-height: 1.2">&nbsp;Universitaria</span>}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=11]{image.pdf}}%
+    \put(0.58693969,0.7352192){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Bajo Rendimiento Académico por Llegar Tarde&nbsp;}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=12]{image.pdf}}%
+    \put(0.48808669,1.08429386){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{<font style="font-size: 19px"><b>Árbol de Problemas</b></font>}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=13]{image.pdf}}%
+  \end{picture}%
+\endgroup%
