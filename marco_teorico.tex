@@ -1,0 +1,383 @@
+\chapter{Marco Teorico} % (fold)
+\label{cha:marco_teorico}
+
+La aplicación a desarrollar estará enfocado a su uso en un celular inteligente (smartphone) por lo que hay que determinar el enfoque de desarrollo que se usará y las herramientas necesarias para construir esta aplicación.
+
+
+  \section{Aplicaciones Móviles}
+  \label{sec:aplicaciones_moviles}
+
+    El desarrollo de aplicaciones web se divide en 3 grupos de enfoques de desarrollo.\\
+
+    \subsection{Aplicaciones Nativas}
+    \label{sub:aplicaciones_nativas}
+
+    Las aplicaciones nativas se caracterizan de poder acceder directamente al sistema operativo móvil sin ningún intermediario ni contenedor.\\
+
+    La aplicación nativa puede acceder libremente a todas las APIs\footnote{\textbf{API:} Acrónimo de \emph{Application Program Interface} es un conjunto de herramientas, protocolos y rutinas que son usados para desarrollar aplicaciones, un API específica como tienen que interactuar los componentes de un sistema.} que el proveedor del SO\footnote{Sistema Operativo} ponga a disposición y, en muchos casos, tiene características y funciones únicas que son típicas del SO móvil en particular.\\
+
+    Este tipo de aplicaciones se adapta al 100\% con las funcionalidades y características del dispositivo obteniendo así una mejor experiencia de uso.\\
+
+    % end aplicaciones_nativas
+
+    \subsection{Aplicaciones Web}
+    \label{sub:aplicaciones_web}
+
+    Los dispositivos móviles modernos pueden ejecutar navegadores con capacidad de ejecutar HTML5\footnote{\textbf{HTML} es el acrónimo de \emph{Hiper Text Markup Language} el cual es el lenguaje para escribir paginas Web}\footnote{\textbf{HTML5} es la Versión de HTML publicado en Octubre 2014, es la mas moderna y en la que es escriben todas las aplicaciones web actuales} + JavaScript. Algunos ejemplos del potencial de HTML5 son: componentes IU avanzados, acceso a múltiples tipos de medios, servicios de geoposicionamiento y disponibilidad offline. Al emplear estas características se puede crear aplicaciones avanzadas usando únicamente tecnologías basadas en la Web.\\
+
+    Se debe distinguir entre las aplicaciones Web, las aplicaciones Web diseñadas para dispositivos móviles ya que estas últimas reconocen cuando se accede a través de un smartphone y despliegan una página HTML que fue diseñada para brindar una experiencia táctil y cómoda en una pantalla pequeña, a este diseño de aplicación se le conoce como aplicación web responsive, esto mejora la experiencia del usuario creando un sitio Web móvil que se parezca a una aplicación nativa.\\
+
+    % end aplicaciones_web
+
+    \subsection{Aplicaciones Híbridas}
+    \label{sub:aplicaciones_hibridas}
+
+      El enfoque híbrido combina desarrollo nativo con tecnología Web. Usando este enfoque, se escribe gran parte de la aplicación usando tecnologías Web y se mantienen el acceso directo a APIs nativas cuando se necesita. La porción nativa de la aplicación emplea APIs del sistemas operativo para crear un motor de búsqueda HTML incorporado que funciona como un puente entre el navegador y las APIs del dispositivo\cite{IBM_Mobile}.\\
+
+      Esto permite que la aplicación híbrida aproveche todas las características que ofrecen los smartphones modernos. Para lograr esto existen bibliotecas tal como Apache Cordova\footnote{Antiguamente conocido como \textbf{PhoneGap}, es una de las herramientas más populares para crear aplicaciones híbridas.} que provee una interfaz JavaScript con funcionalidad para conectarse con los dispositivos seleccionados y lograr manejar el API propio del smarthphone.\\
+
+      La porción Web de la aplicación puede ser una página Web que resida en un servidor o bien un conjunto de archivos HTML, JavaScript, CSS y contenido multimedia, incorporados en el código de la aplicación y almacenados localmente en el dispositivo\cite{IBM_Mobile}.\\
+
+    % Una mayor fragmentación de dispositivos móviles y tecnologías, lo que, a su vez, va a seguir aumentando los costos generales y las complejidades que conlleva el desarrollo, la integración y la gestión de las aplicaciones móviles
+
+    % end aplicaciones_hibridas
+
+  % End aplicaciones_moviles
+
+  Para la aplicación se escogió un desarrollo enfocado a tecnología Web diseñado para su uso en smartphones, o una aplicación web responsive. Para lograr este objetivo se usará, tecnologías aplicadas ampliamente en el desarrollo de aplicaciones web.
+  Para implementar el backend de la aplicación se usará \emph{NodeJS}\footnote{https://nodejs.org/en/} con \emph{ExpressJS}\footnote{https://expressjs.com/}, la base de datos se construirá sobre \emph{PostgreSQL}\footnote{https://www.postgresql.org/} y \emph{PostGIS}\footnote{http://postgis.net/} más \emph{pgRouting}\footnote{http://pgrouting.org/}, estos complementos de PostgreSQL nos ayudaran a manejar los datos geoespaciales, para el desarrollo del frontend se usará \emph{EmberJS}\footnote{http://emberjs.com/} y para manejar las imágenes en la web \emph{Cloudinary}\footnote{http://cloudinary.com/}.\\
+
+  A continuación se detallara las características y beneficios de cada una de estas herramientas:
+
+  \section{Node JS}
+  \label{sec:node_js}
+    Node.js aparecio en 2009 y esta construido sobre el Motor de JavaScript de Google ``V8'' que fue sacado del browser y aplicado en el servidor.
+
+    Para desarrollar en el lado del browser (cliente) el programador solo tiene disponible JavaScript como lenguaje de desarrollo pero en el lado del servidor existen muchas alternativas (Ruby, C\#, Phtyon, Java, etc.), JavaScript no estaba disponible.\\
+
+    Node se beneficia del Motor de JavaScript ``V8'' ya que \'este es r\'apido y tiene integrado un sistema para manejar las instrucciones de forma asyncr\'onica, pero el mayor beneficio y el porqu\'e Node adquiri\'o una gran popularidad es la facilidad de compartir c\'odigo entre el cliente (browser) y el servidor.\\
+
+    Node.js provee caracter\'isticas pero estas pueden parecer complicadas o que necesitan mas instrucciones de las necesarias para llevar a cabo acciones que ya son comunes en la creacion de aplicacion en lado del servidor, por ejemplo a la hora de crear un servidor web, Node se popularizo en gran medida por poder crear servidores web personalizables pero como ya dijimos esto tiene su grado de complejidad, aca es donde entra en accion Express.js.
+
+  % end section node js
+  \section{Express JS}
+  \label{sec:express_js}
+    Express.js es un framework que esta construido sobre la funcionalidad de servidor web de Node.js, Express.js ayuda a simplificar el API de Node y a\~nadir nuevas caracter\'isticas, dise\~nadas para mejorar y facilitar la organizaci\'on de una aplicaci\'on \emph{Express}.\\
+
+    El Cliente (navegador web, aplicacion movil, etc) envia una peticion web y el servidor web de Node.js maneja los protocolos web, leyendolos y enviandolos a una aplicacion \emph{Express} que se encarga de a\~nadir caracteristicas a la peticion y espera la respuesta del ``Middleware Stack'', la funcion responde a la llamada y el servidor HTTP de Node envia la respuesta mediante los protocolos web al Cliente.\\
+
+    Para escribir un servidor web con Express no es necesario una gran funcion para manejar un request, Express contiene utilidades que permite escribir funciones mas peque\~nas para facilitar el manejo de las peticiones web, asiendo uso de ``middleware'' y ``routing''.
+
+    \subsection{Middleware}
+    \label{sub:middleware}
+      Node.js maneja una funci\'on para trabajar con una peticion web, encambio \emph{Express} maneja la llamada con varias funciones, cada funcion se encarga de una peque\~na parte del trabajo. Estas peque\~nas funciones que manejan la peticion web se denomina \emph{Middleware functions} o Middleware.
+
+    %  end sub section middleware
+
+    \subsection{Routing}
+    \label{sub:routing}
+      Muy parecido al Middleware, el Routing se encarga de partir una funcion de peticion web monolitica en peque\~nas piezas, pero a diferencia del Middleware, estos menajadores peticiones se ejecutan condicionalmente dependidiendo del URL y el metodo HTTP (GET, POST, DELETE) que el cliente envia.\\
+
+    %  end sub section routing
+
+    Express.js es bastante extensible y cuenta con gran popularidad en la comunidad de desarrollo, la cual provee herramientas para renderizar dinamicamente HTML o interfaces para comunicarse con Bases de Datos, por ejemplo para manejar la coneccion y llamadas a la base de datos PostgreSQL se uso la libreria \emph{knex} .
+
+    \begin{verbatim}
+      database.any("SELECT * FROM users WHERE id = $1", [userId])
+        .then(function (data) {
+            response.send(data.name);
+        });
+    \end{verbatim}
+
+  % section Express JS (end)
+
+  \section{Ember JS}
+  \label{sec:ember_js}
+
+    % Ember is an evolving JavaScript framework for creating “ambitious web applications”, it tries to maximize developers’ productivity using a set of conventions in a way that they don’t need to think about common idioms when building web applications.
+    % \vspace*{\fill}
+    \begin{quote}
+    \centering
+    A Framework for creating ambitious web applications
+    \end{quote}
+    % \vspace*{\fill}
+
+
+Un framework\footnote{Se define a un \textbf{framework} (marco de trabajo) como la abstracción en el cual el software provee funcionalidad la cual puede ser modificada por el usuario final.} para crear aplicaciones web ambiciosas, es el eslogan de EmberJS,con el que trata de decirnos que usando este framework se puede lograr implmentar una buena e interesante aplicaciones web.\\
+
+Para explicar lo que es EmberJS hay que decir que centró su desarrollo en 3 objetivos:
+
+Enfocarse en aplicaciones web ambiciosas. %//Focus on ambitious web applications
+Previsión de Futuros estándares web. %//Future web standards foresight
+Estabilidad sin estancamiento.\cite{ember_antidote} %//Stability without stagnation []
+
+
+Ember provee una solución completa a los ``problemas'' más comunes en el desarrollo de aplicaciones web, pero esto significa mucho ``más trabajo'' y una curva de aprendizaje más empinada. Pero con una consiguiente ayuda para el desarrollador ya que los ``problemas'' más comunes están resueltos y el desarrollador tiene que enfrentarse a los problemas propios o del modelo de negocio propio de la aplicación a desarrollar.\\
+
+Ember cuenta con su capa de persistencia o la capa del \textbf{Modelo} en el patrón MVC\footnote{\textbf{Modelo-Vista-Controlador} o MVC es un patrón de arquitectura de software que separa los datos de una aplicación (Modelo), la interfaz de usuario (Vista), y la lógica de control de la aplicaci\'on (Controlador) en tres componentes distintos\cite{mvc}.}, \emph{Ember-Data}, el cual maneja los datos mientras están en memoria y se asegura de sincronizar con el servidor cuando se requiere y modifica la base de datos. El formato por defecto para manejar la información es JSON\footnote{\textbf{JSON} acr\'onimo de \emph{JavaScript Object Notation}, es un formato de texto ligero para el intercambio de datos}.\\
+
+Para facilitar el trabajo de desarrollo en la capa de la \textbf{Vista}, Ember implementa \emph{HTMLHandleBars}\footnote{\textbf{HTMLHandleBars} Es motor de plantillas se usa para separar el diseño HTML de Javascript, para así escribir código mucho más limpio.)}\footnote{http://handlebarsjs.com/} que permite embeber código enlazando o sincronizado con el Controlador. Esto significa que si actualizamos código en la Vista, este es actualizado en el Controlador y viceversa.\\
+
+% <Screenshot de uso de HTML HandleBars>
+
+En Ember La capa del \textbf{controlador} es  la encargada de recibir los datos de la Vista y de acuerdo a la interacción del usuario con la aplicación, dispara o activa diferentes acciones que en general modifican los datos ingresados y ya sea para mostrar en UI o guardarlo en la base de datos.\\
+
+% // está siendo deprecada en favor de “Componentes”, esto en favor de la nueva convención “Data down, Actions up”, este cambio es para poder
+
+Ember provee de una herramienta de línea de comandos (\emph{Ember-CLI}\footnote{\textbf{Ember-CLI} es el acrónimo de \emph{Ember Command Line Interface}}) que ofrece para agilizar el desarrollo, usado para automatizar procesos repetitivos, por ejemplo, estableciendo la estructura de directorios del proyecto esto basado en la experiencia de numerosos proyectos, realiza la concatenación, compilación, compresión, y demás manejos de archivos. Como también provee un ecosistema de addons\footnote{Addon o Complemento, es un componente de software que añade una característica a un programa ya existente}.\\
+
+Para el desarrollo de este proyecto se hará uso de distintos addons, por ejemplo:
+
+\begin{description}
+  \item[ember-paper:] Este addons es el encargado de adaptar la Vista de la aplicación web en la pantalla de un smartphone, necesario ya que por ejemplo el smartphone no tiene un mouse para hacer click, por el contrario es necesario hacer “tap” con un dedo para ejecutar la misma acción que el mouse, también está el hecho que el tamaño de la pantalla del smartphone es muy inferior a la de un monitor estándar pero la experiencia del usuario tiene que estar diseñada para interactuar con las características que nos ofrece un smartphone.
+  % <screenshot de la aplicación >
+
+  \item[ember-leaflet:] Este addon está diseñado para ayudar a desplegar un mapa, en este caso de estudio se está usando los mapas de OpenStreetMaps™, y optimizado para no usar demasiados recursos, ya que muchas veces los smartphones aún teniendo buenas características no se comparan a una computadora de escritorio.
+  	% <screenshot de un mapa>
+
+  \item[CloudinaryJS:] Addon diseñado para poder manejar las imágenes en la nube, provee varias características como adaptación de la imagen al celular sin hacer uso de nuestro backend o servidor, es de uso libre pero con limitaciones uso en cuanto a las transacciones que se pueden realizar o la cantidad de imágenes que se pueden almacenar.
+  % <screenshot de imagen>
+
+\end{description}
+
+
+
+  % end ember_js
+
+  \section{Base de Datos} % (fold)
+  \label{sec:base_de_datos}
+
+  En una aplicación web es necesario alguna forma de persistencia de datos, en especial si se están usando datos complejos como la informacion geoespacial, para realizar está tarea, la base de datos es un factor primordial.  Para este proyecto de grado se hara uso de \emph{PostgreSQL} como base de datos relacional y su extension \emph{Postgis} para manejar los datos geoespaciales.\\
+
+    \subsection{PostgreSQL} % (fold)
+    \label{sec:postgres}
+
+      PostgreSQL es un sistema de gestión de bases de datos objeto-relacional, Open Source y distribuido bajo licencia BSD.
+      PostgreSQL utiliza un modelo cliente/servidor y usa multiprocesos en vez de multihilos para garantizar la estabilidad del sistema. Un fallo en uno de los procesos no afectará el resto y el sistema continuará funcionando.
+      La última versi\'on estable de PostgreSQL es la 9.5, su desarrollo comenz\'o hace más de 16 años, y cuenta con una gran comunidad que aporta con el desarrollo y el testeo de nuevas versiones.
+      PostgreSQL  está considerada como uno de los mejores \emph{Sistemas de gesti\'on de bases de datos}, es muy completo y está muy bien documentado\footnote{ http://www.postgresql.org/docs/9.5/static/}.
+      Entre sus características se pueden nombrar las siguientes.
+      \begin{itemize}
+        \item Es una base de datos 100\% ACID\footnote{  ACID es un acrónimo de Atomicity, Consistency, Isolation and Durability}
+        \item Integridad referencial
+        \item Replicación asincrónica/sincrónica
+        \item Múltiples métodos de autentificación
+        \item Disponible para Linux y UNIX en todas sus variantes
+        \item Funciones/procedimientos almacenados
+        \item Soporte a la especificaci\'on SQL
+      \end{itemize}
+
+      Personalmente se escogió trabajar con  PostgreSQL como DBMS cuenta con una extensa documentación,  y gracias a su caracter ``Open Source'', y su gran flexibilidad en poder definir nuevos tipos de datos, esto se hace posible que empresas como \textbf{Refractions Research}\footnote{http://refractions.net/} puedan crear recursos como \emph{PostGIS}, necesario para trabajar con datos geográficos \'o espaciales.
+
+      % Entre sus principales  características se puede nombrar que es
+      % \footnote{ DBMS, DataBase Management System}
+      % y durante este tiempo, estabilidad, potencia, robustez, facilidad de administración e implementación de estándares han sido las características que más se han tenido en cuenta durante su desarrollo. PostgreSQL funciona muy bien con grandes cantidades de datos y una alta concurrencia de usuarios accediendo a la vez a el sistema.
+
+    % section postgres (end)
+
+    \subsection{PostGIS} % (fold)
+    \label{sec:postgis}
+
+      PostGIS es un módulo  que a\~nade soporte de objetos geográficos al DBMS PostgreSQL, convirtiéndola en una base de datos espacial para su utilización en un Sistema de Informaci\'on Geografica (SIG\footnote{ Es bastante común utilizar el acrónimo en Inglés, Geographic Information System (GIS), de hay viene el término de PostGIS = Postgres + GIS}).
+
+      El desarrollo de PostGIS está a cargo de Refractions Research, está liberada con la \emph{Licencia pública general de GNU}, declarandola como software libre que lo protege de cualquier intento de apropiaci\'on.\\
+
+      PostGIS implementa la especificaci\'on ``SFSQL'' (Simple Features for SQL, define los tipos y funciones que necesita implementar cualquier base de datos espacial) de la OGC (Open Geospatial Consortium, es un consorcio internacional, formado por un conjunto de empresas, agencias gubernamentales y universidades, dedicado a desarrollar especificaciones de interfaces para promover y facilitar el uso global de la información espacial).\\
+
+      PostGIS al igual que PostgreSQL cuenta con una documentaci\'on bastante extensa y equipo de desarrollo que continuamente va sacando nuevas versiones, actualmente se encuentra la versi\'on 2.2.2, pero para el desarrollo de la aplicaci\'on se hizo uso de la versi\'on 2.1.0.
+
+      PostGIS es gratis, pero no por ello es una herramienta de baja calidad, al contrario se la considera una herramienta de nivel empresarial, y muchas instituciones la est\'an usando de manera exitosa\footnote{ http://www.postgis.org/documentation/casestudies/}, aparte de numerosas aplicaciones.\\
+
+      Manejar los datos geográficos con PostGIS es sencillo y eficiente, por está raz\'on se utilizó está herramienta, pero para conseguir la ruta óptima entre 2 puntos se necesitaba el uso del algoritmo de Dijkstra y para PostGIS existe el módulo \textbf{PgRouting}, que tiene implementado este algoritmo.
+
+      \subsubsection{pgRouting} % (fold)
+      \label{sec:pgrouting}
+        pgRouting es una extensi\'on  de  PostGIS para proveer funcionalidades de ruteo espacial. pgRouting es un desarrollo posterior de pgDijkstra y actualmente está siendo mantenido por Georepublic, la última versi\'on estable es la 2.1, y es la que fue usada para desarrollar el sistema.\\
+
+        Las ventajas del ruteo en la base de datos son:
+        \begin{itemize}
+          \item Los datos y atributos pueden ser modificados desde varios clientes, como Quantum GIS y uDig a través de JDBC, ODBC, o directamente usando Pl/pgSQL. Los clientes pueden ser PCs o dispositivos móviles.
+          \item Los cambios pueden ser reflejados instantáneamente a través del motor de ruteo. No hay necesidad de hacer cálculos previos.
+          \item El parámetro de ``costo'' puede ser calculado dinámicamente a través de SQL y su valor puede provenir de múltiples campos y tablas.
+        \end{itemize}
+
+        pgRouting provee funciones para:
+        \begin{itemize}
+          \item Camino mínimo (Dijkstra): algoritmo de ruteo sin heurística
+          \item Camino mínimo (A-Star): routeo para conjunto de datos grandes (con heurística)
+          \item Camino mínimo (Shooting-Star): ruteo con restricciones de giro (con heurística)
+          \item El problema del viajante (TSP: Traveling Salesperon Problem)
+          \item Cálculo de ruta (Isolíneas)
+        \end{itemize}
+
+        % Uses PostGIS for its geographic data format, which in turn uses OGC’s data format Well Konwn Text (WKT) and Well Known Binary (WKB)
+      % section pgrouting (end)
+    % section postgis (end)
+  % section base_de_datos (end)
+
+  \section{Metodologia de Desarrollo}
+  \label{sec:metodologia_de_desarrollo}
+    La metodologia para el desarrollo de software nos permite gestionar y administrar un proyecto de desarrollo de software para llevarlo a termino de una forma mas eficiente y con altas probabilidades de exito.\\
+    Seguir una metodología es importante ya que nos ayudara a organizarnos y a seguir un ritmo de trabajo.\\
+    Para este proyecto de grado se hará uso de una metodología Ágil. Para lo cual se definirá en que se basan las metodologías ágiles.\\
+
+    Para este proyecto de grado se va a ser uso de \emph{XP} como metodologia agil.\\
+
+    \subsection{Metodologías \'Agiles}
+    \label{sub:metodologias_agiles}
+
+    Este término nace en una reunión celebrada en febrero de 2001 en Utah - USA por expertos en la industria del software ya que pretendían encontrar una forma alternativa de desarrollo de software a las que estaban vigentes hasta esa fecha por ejemplo la metodología en cascada que es rígido y obliga una planeación extensiva antes siquiera de tocar una línea de código, esta demostrado que este tipo de metodologías son muy rígidas y les falta flexibilidad a la hora de hacer frente a los cambios que invariablemente sufre un proyecto de desarrollo de software.\\
+
+    % //·        In reality it is very difficult for projects to follow the sequential flow of the model
+    % //·        It is difficult to identify all requirements and goals at the beginning of projects as requirements tend to change all the way
+    % //·        A working version can only be obtained late in the process
+
+
+    Para contravenir estas dificultades es que se definieron los principios de manifiesto ágil:
+
+    \begin{quote}
+      \begin{description}
+        \item[Individuos e interacciones] sobre procesos y herramientas
+        \item[Software funcionando] sobre documentación extensiva
+        \item[Colaboración con el cliente] sobre negociación contractual
+        \item[Respuesta ante el cambio] sobre seguir un plan
+      \end{description}
+    \end{quote}
+
+    % The main concern of agile methodologies is the ability to embrace changes which are very likely to happen in environments which lack predictability [6]
+
+    El principal objectivo de las metodologías ágiles es la habilidad de soportar los cambios, los cuales generalmente por no decir casi siempre aparecen en un ambiente que sufre muchos cambios y rápidamente, los cuales son difíciles de predecir.\cite{6}\\
+
+    % //To achieve the objective, agile methodologies use three key principles [8]: (1) a focus on adaptive methodologies, (2) a focus on people, and (3) a focus on self-adaptive processes.
+
+    Para alcanzar este objetivo es que las metodologías ágiles se basan en tres principios\cite{8}:
+
+\begin{itemize}
+  \item Enfoque en metodologías que se adapten al cambio
+  \item Enfocarse en las personas
+  \item Enfocarse en procesos que se auto-adapten al cambio
+\end{itemize}
+
+    Las metodologías ágiles no se refieren a un único y específico metodo o tecnica de desarrollo, en cambio son un grupo de metodologías que implementan los principios ágiles. Entre los cuales se pueden apreciar las siguiente metodologías:\\
+
+    \begin{itemize}
+      \item Scrum
+      \item Dynamic Systems Development Method (DSDM)
+      \item Crystal Methods
+      \item Feature Driven Development
+      \item Lean Development
+      \item Extreme Programming (XP)
+      \item Adaptive Software Development
+    \end{itemize}
+
+
+    Por las siguientes caracteristicas de la Metodologia \emph{Programaci\'on extrema}\footnote{Programaci\'on Extrema viene del ingles \emph{eXtreme Programing} por lo cual generalmente nos referiremos a esta como \textbf{XP}} es que es la escogio para implementar este proyecto de grado.
+
+
+    % End metodologias_agiles
+
+
+    \subsection{Programaci\'on Extrema}
+    \label{sub:xp}
+
+      Programaci\'on extrema o \emph{XP} es una metodología de trabajo creada a mediados de 1990 por Kent Beck cuando estaba trabajando en un proyecto de desarrollo de software en Chrysler Comprehensive Compensation (C3)\cite{KhenBeck} en un intento de mejorar el proceso de desarrollo de software y posteriormente con una segunta implementación de un proyecto usando la metodologia XP en \emph{Vehicle Cost and Profitability System (VCAPS)} en \textbf{Ford Motor Co}\cite{KhenBeck} se demostró que esta metodología de desarrollo es un método apropidado para llevar a buen termino el proyecto de desarrollo.\\
+
+      \emph{XP} se enfoca en la adaptabilidad ya que el desarrollo de software debería ser un proceso fluido donde los requerimientos no pueden ser totalmente predichos desde el principio del desarrollo ya que estos siempre o casi siempre tienden a cambiar a medida que el software se va desarrollando ya sea por cambios en el mercado o a medida que el cliente va aprendiendo y modificando sus requerimientos en el transcurso del ciclo de desarrollo del producto.\\
+
+      Kent Beck encontró que cuatro enunciados las cuales son la base de la filosofía de XP\cite{KhenBeck}:\\
+
+      \begin{itemize}
+        \item Es necesario mejorar la comunicación
+        \item Es necesario encontrar simplicidad
+        \item Es necesario obtener feedback o retroalimentación de parte del cliente
+        \item Es necesario proceder con coraje.
+      \end{itemize}
+
+      Combinando estos principios, la programación extrema se trata acerca de mejorar el trabajo en equipo cohesionadolo y con la ayuda de la retroalimentación propia del equipo se puede apreciar donde se encuentra y mejorarlo, siempre tomando en cuenta que cada equipo es único, ya sea por el tipo de software que se está desarrollando y por las personas que conforman el equipo.\\
+
+      Las prácticas usadas en XP son de hecho prácticas comúnmente usadas en las metodologías ágiles pero en XP estas prácticas son llevadas al extremo de ahí el nombre de programacion extrema.\\
+
+      La programación extrema se caracteriza por las siguiente practicas:
+
+      \begin{description}
+        \item[Code reviews:] O revisión de código, en programación extrema esto se llama programación en pareja (pair programing), esto significa que dos programadores escriben código usando o compartiendo una máquina, esto se traduce en que el código es constantemente revisado y por lo tanto es menos proclive de producir errores.
+
+        \item[Testeo:] en XP significa hacer unit testing o pruebas unitarias durante todo el proceso de desarrollo de software, una vez el producto es entregado al cliente este se encarga de probar la funcionalidad del sistema.
+
+        \item[Diseño:] en XP se necesita que todos los involucrados en el proyecto estén siempre y constantemente refactorizando y mejorando el producto.
+        Simplicidad: Siempre dejar el sistema con el diseño más simple posible para que soporte la funcionalidad deseada o lo más simple que funciona. Se basa en la filosofía de que el mayor valor de negocio es entregado por el programa más sencillo que cumpla los requerimientos.
+
+        \item[Arquitectura:] Todos trabajando definiendo y redefiniendo constantemente la arquitectura del sistema.
+        Testeo de integración: Unir o integrar y probar las diferentes características del software que se están trabajando, constantemente o por lo menos una vez al dia.
+
+        \item[Iteraciones cortas:]
+        Trabajar en ciclos realmente cortos, puede ser de horas o días pero no semanas o meses, permitiendo que el programa, el verdadero valor del negocio, pueda ser evaluado.
+
+        \item[Propiedad colectiva del código:]
+        un código con propiedad compartida. Nadie es el propietario de nada, todos son el propietario de todo. Este método difiere en mucho a los métodos tradicionales en los que un simple programador posee un conjunto de código.
+
+
+        \item[Estándar de codificación:] define la propiedad del código compartido así como las reglas para escribir y documentar el código y la comunicación entre diferentes piezas de código desarrolladas por diferentes equipos
+
+        \item[Bienestar del programador:] La semana de 40 horas, la programación extrema sostiene que los programadores cansados escriben código de menor cualidad. Minimizar las horas extras y mantener los programadores frescos, generará código de mayor calidad.
+
+      \end{description}
+
+
+      \subsubsection{Las historias de usuario}
+      \label{subs:user_story}
+
+
+      Es la técnica que utiliza XP para especificar los requisitos del software. Se trata de tarjetas en las cuales el cliente escribe las características que el sistema debe poseer, sean requisitos funcionales o no funcionales. El proceso de manejar las historias de usuario es muy dinámico ya que se pueden añadir, eliminar o modificarse de acuerdo a la exigencia que puede aparecer a cualquier momento, las historias deben ser lo bastante simples como para que los programadores las implementen en unas semanas.\cite{xpesp}
+      % end user_story
+
+      \subsubsection{Proceso de desarrollo}
+      \label{subs:proceso_desarollo}
+
+      La programación extrema identifica las siguientes fases en el proceso de desarrollo de software
+
+      \begin{description}
+        \item[Interacción con el cliente.]
+        El cliente es una parte importante en el equipo de desarrollo, tiene gran importancia en el equipo ya que expresa su opinión sobre el producto después de cada cambio o iteración, mostrando las prioridades y expresando su opinión sobre los problemas que se podrían identificar.
+
+        \item[Planificación del proyecto.]
+        En este punto se se elabora la planificación por etapas o iteraciones. Para hacerlo será necesaria la existencia de reglas que han de seguir las partes implicadas en el proyecto.
+
+        \item[Diseño, desarrollo y pruebas.]
+        El desarrollo es la parte más importante en el proceso de la programación extrema. Todos los trabajos tienen como objetivo que se programen lo más rápidamente posible, sin interrupciones y en la dirección correcta.\cite{xpesp}
+
+      \end{description}
+
+
+      %end proceso_desarollo
+
+
+      \subsubsection{Roles de la programación extrema}
+      \label{subs:roles_xp}
+
+      \begin{description}
+        \item[Programador:] Escribe las pruebas unitarias y produce el código del sistema.
+        \item[Cliente:] Escribe las historias de usuario y las pruebas funcionales para validar su implementación. Asigna la prioridad a las historias de usuario y decide cuáles se implementan en cada iteración centrándose en aportar el mayor valor de negocio.
+        \item[Tester:] Ayuda al cliente a escribir las pruebas funcionales. Ejecuta pruebas regularmente, difunde los resultados en el equipo y es responsable de las herramientas de soporte para pruebas.
+        \item[Tracker:] Es el encargado de seguimiento. Proporciona realimentación al equipo. Debe verificar el grado de acierto entre las estimaciones realizadas y el tiempo real dedicado, comunicando los resultados para mejorar futuras estimaciones.
+        \item[Entrenador (coach):] Responsable del proceso global. Guía a los miembros del equipo para seguir el proceso correctamente.
+        \item[Consultor:] Es un miembro externo del equipo con un conocimiento específico en algún tema necesario para el proyecto. Ayuda al equipo a resolver un problema específico.
+        \item[Gestor (Big boss):] Es el dueño de la tienda y el vínculo entre clientes y programadores. Su labor esencial es la coordinación.\cite{xpcyta}
+      \end{description}
+
+
+      % end roles_xp
+
+    % end xp
+
+
+  %
+  %
+  % Para el presente proyecto de grado se implementará los siguientes roles:
+  % Programador, Cliente, Tester, roles que serán representados por mi persona.
+  % Tracker y entrenador será representado por el Tutor.
+  % Consultor será representado por la docente de proyecto final
+
+
+  % end metodologia_de_desarrollo
+% chapter marco_teorico (end)

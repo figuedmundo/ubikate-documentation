@@ -1,0 +1,59 @@
+\chapter{Iteración 1}
+\label{chap:iteracion_1}
+
+Para la primera iteración se implementaran las historias de usuario que tengan más relevancia dentro de la lógica de negocios para el cliente, generalmente son las que tienen mayor impacto en el sistema a desarrollar.
+
+
+\section{Iteration Planning Meeting}
+\label{sec:Iteration Planning Meeting}
+
+
+Tomando en cuenta que el equipo de desarrollo está compuesto solo por mi persona, para el desarrollo del presente proyecto de grado la fase de Exploración y Planeación se procedió a realizarlas en la misma fase.
+
+  \subsection{Exploración y Planeación}
+  \label{sub:Exploración y Planeación}
+
+para la primera iteración se llevó a cabo una reunión para determinar las historias de usuario que se implementaran, y de acuerdo del impacto en el producto se determinó que las historias de usuario 2 y 3 serán las primeras en implementarse. \\
+
+Posteriormente como tarea del desarrollador se procede a dividir las historias de usuario en Tareas de Ingeniería, en la tabla se determinaron las Tareas pertenecientes a la historia de usuario 2, dentro lo que es la planeación se debe repartir las tareas entre los desarrolladores, pero ya que el equipo de desarrollo se traduce a mi persona, todas las tareas recaen sobre mi responsabilidad, como parte de la planeación es necesario estimar las tareas, para lo cual se presenta la tabla \ref{tab:us02_tasks}. \\
+
+
+  \subsection{Tareas del US02}
+  \label{sub:us02_tasks}
+
+    \input{iteration1/us02_tasks_table}
+
+  \subsection{Tareas del US03}
+  \label{sub:us03_tasks}
+
+    \input{iteration1/us03_tasks_table}
+
+
+  \subsection{Calendario de Entregas}
+  \label{subs:schedule_1}
+
+    \input{iteration1/gant}
+
+
+  \section{Implementación}
+  \label{sec:implementacion_iteracion_1}
+
+  A continuación se detalla los resultados de la implementación de cada tarea asignada.
+
+\subsection{RF001}
+\label{sub:RF001}
+
+
+Para la presente Tarea se procedió a recolectar la información geográfica de los principales lugares del campus de la Universidad Mayor de San Simón, para tal efecto se hizo uso
+de un GPS Garmin Nuvi 1300, el mismo que fue usado  para obtener el mapa de rutas.
+
+Con la ayuda de QGIS fue que se exporto el archivo gpx generado por el GPS a un archivo Shapefile, el cual se usará para popular información dentro de la base de datos.
+
+\begin{figure}[H]
+  \begin{center}
+    \caption{Shapefile de Lugares desplegados en QGIS}
+    \label{fig:qgis_places}
+    \includegraphics[width=1\textwidth]{qgis_places}
+    \caption*{Fuente: Elaboración propia}
+  \end{center}
+\end{figure}

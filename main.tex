@@ -4,17 +4,34 @@
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
 \usepackage[T1]{fontenc}
+\usepackage[dvipsnames]{xcolor}
 
 \usepackage{textcomp}
 \usepackage[pdftex]{hyperref}
 \usepackage{multirow}
 \usepackage{booktabs}
+
 \usepackage{graphicx}
 \usepackage{tikz}
+\usepackage{pgfgantt}
+\usepackage{pgfkeys}
+\usepackage{float}
 
 \usepackage{svg}
 \usepackage{amsmath}
 \usepackage{listings}
+
+\usepackage{tabularx}
+\usepackage{array}
+\renewcommand{\tabularxcolumn}[1]{>{\small}m{#1}}
+
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+% \newcolumntype{X}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+% \usepackage{xcolor}
 % \usepackage{bordermatrix}
 % \usepackage{microtype}
 % \usepackage{shortvrb}
@@ -54,7 +71,7 @@
 
 % \usepackage[charter]{mathdesign}
 
-\title{Desarrollo de una aplicaci\'on móvil para visitas dentro el campus de la UMSS usando Geolocalización}
+\title{Desarrollo de una aplicaci\'on web móvil para visitas dentro el campus de la UMSS usando Geolocalización}
 \author{Edmundo Figueroa Herbas}
 \date{\today \ }
 
@@ -65,16 +82,21 @@
   \tableofcontents
 
 \mainmatter{}
-  \include{introduccion}
-  \include{marco_referencial}
-  % \include{ror_patrones}
-  %\include{geolocalizacion}
+  % \include{introduccion}
+  % \include{marco_teorico}
+  % \include{geolocalizacion}
   % \include{ruta_corta}
-  %\include{implementacion}
+  % \include{desarrollo}
+  \include{iteracion_1}
+
+
+  % \include{implementacion}
   % \include{pruebas}
 
+  % \include{ror_patrones}
+
 \backmatter{}
-  \include{biblio}
+  \include{bibliography}
   % \listoffigures
   % \listoftables
 % \newpage

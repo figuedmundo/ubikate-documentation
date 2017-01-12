@@ -1,18 +1,12 @@
 \chapter{Introducci\'on} % (fold)
 \label{cha:introduccion}
 
-El presente proyecto consiste en el desarrollo de una aplicación móvil que
-permita ubicar y encontrar una locación dentro del campus de la UMSS,
-la aplicación deberá localizar la ubicación actual del usuario y permitir
-especificar un punto de destino, mostrando a continuación el camino más corto
-para llegar a destino.\\
-
+El presente proyecto consiste en el desarrollo de una aplicación móvil que permita ubicar y encontrar una locación dentro del campus de la Universidad Mayor de San Simon, la aplicación deberá localizar la ubicación actual del usuario y permitir especificar un punto de destino, mostrando a continuación el camino más corto para llegar a destino.\\
 
 El campus universitario abarca más de 214.000 m2 y encierra varias facultades y
 oficinas administrativas, para estudiantes nuevos y antiguos o personas que
 necesitan hacer trámites administrativos, incluso si solo se quiere conocer el
 campus, es necesario contar con un mapa donde ubicarse.\\
-
 
 Las aplicaciones móviles tienen una gran demanda por parte de la población ya
 que la gran mayoría posee un smartphone o teléfono inteligente con capacidad de
@@ -27,14 +21,14 @@ de fácil acceso para poder desplazarse por el campus.\\
 
   \section{Antecedentes} % (fold)
   \label{sec:antecedentes}
-  Actualmente Google Maps ofrece una solución a este problema pero lo ofrecen
-  para las ciudades pero dentro del campus de la UMSS, google no cuenta
-  información interna de la UMSS.\\
+  Actualmente Google Maps ofrece una solución al problema de encontrar una ruta entre 2 puntos geolocalizados, de diferentes formas, por ejemplo si usamos movilidad, bicicleta, a pie, para lograr esto se toman en cuenta los distintos tipos de calles que existen y la dirección en el caso de movilidades, Google Maps toma en cuenta la descripción de una locación o la referencia cartográfica en latitud y longitud de los puntos, y el cómo nos vamos a desplazar entre los 2 puntos para dibujar con una línea roja la ruta a seguir.\\
 
 
-  Existen blogs o aplicaciones con Información acerca de lugares turísticos o
-  de interés para visitar en nuestra ciudad como ser TripAdvisor, pero estas
-  aplicaciones tampoco cuentan con información interna de la UMSS.\\
+  Así como también existen Blogs o Aplicaciones con información de los lugares turísticos o de interés para visitar en la ciudad, como ser TripAdvisor, la información que provee esta aplicación generalmente incluye la locación del lugar referenciada sobre un mapa estático, este tipo de aplicaciones usa el API de Google Maps para lograr encontrar una ruta hacia el lugar de interés.\\
+
+
+  En el caso del campus de la Universidad Mayor de San Simón, Google Maps no cuenta con la información para lograr este objetivo, de encontrar una ruta entre 2 puntos geo-referenciados, ya que se necesita de un mapa de los caminos internos del campus Universitario e información de las aulas, kioscos, fotocopiadoras, oficinas, etc. Esta información es inexistente o de difícil acceso lo cual genera malestar cuando se está buscando una locación dentro del campus Universitario. 
+
 
 
   \section{Descripción del problema} % (fold)
@@ -54,7 +48,7 @@ de fácil acceso para poder desplazarse por el campus.\\
   % \end{figure}
 
 
-  \begin{figure}[!hbp]
+  \begin{figure}[H]
     \begin{center}
       \includegraphics[width=1\textwidth]{arbolProblemas}
     \end{center}
@@ -65,7 +59,7 @@ de fácil acceso para poder desplazarse por el campus.\\
   \section{Objetivo general} % (fold)
   \label{sec:objetivo_general}
     \begin{quote}
-      Desarrollar una aplicación web móvil responsive para optimizar la ubicación de lugares y el  Desplazamiento al interior del Campus Universitario de la Universidad Mayor de San Simon.
+      Desarrollar una aplicación web móvil responsive para optimizar la ubicación de lugares y el  desplazamiento al interior del Campus Universitario de la UMSS.
     \end{quote}
   % section objetivo_general (end)
 
@@ -73,29 +67,54 @@ de fácil acceso para poder desplazarse por el campus.\\
   \section{Objetivos Específicos} % (fold)
   \label{sec:obj_especificos}
     \begin{itemize}
+      \item Generar un mapa con información geográfica de las rutas dentro del campus Universitario.
       \item Gestionar lugares geolocalizados dentro del campus Universitario.
-      \item Permitir encontrar lugares dentro el campus.
-      \item Priorizar lugares visitados.
-      \item Generar mapa geolocalizado.
-      \item Gestionar usuarios.
+      \item Mostrar en la aplicación los lugares geolocalizados desplegando la ruta óptima desde mi posición hasta el punto destino.
+      \item Administrar usuarios en el sistema.
+      \item Registrar las búsquedas sobre rutas realizadas por los usuarios en el sistema.
     \end{itemize}
   % section obj_especificos (end)
 
 
   \section{Justificación:} % (fold)
   \label{sec:justificacion}
-  El Campus Universitario es bastante extenso y está en constante reestructuración, cada vez hay más aulas, las oficinas se mueven de lugar, etc. gracias a esto es que los mapas, que son escasos y están impresos sobre banners estáticos, son difíciles de actualizar. Este hecho genera malestar en estudiantes que llegan tarde a sus clases o personas que necesitan hacer trámites administrativos y no encuentran con facilidad las oficinas a las que necesitan llegar.\\
+  El Campus Universitario es bastante extenso y está en constante reestructuración, cada vez hay más aulas, las oficinas se mueven de lugar, etc. gracias a esto es que los mapas, que son escasos y están impresos sobre banners estáticos, son difíciles de actualizar. Este hecho genera malestar en estudiantes que llegan tarde a sus clases o necesitan llegar a algun Auditorio o personas/visitantes en proceso de trámites administrativos no encuentran con facilidad las oficinas a las que necesitan llegar.\\
 
 
   Una aplicación que permita ubicar y encontrar locaciones además de proveer la ruta óptima dentro del campus de la Universidad Mayor de San Simón es de gran importancia para mejorar nuestra presentación a cualquier persona que necesite desplazarse por el campus Universitario.\\
 
 
   Las Aplicaciones móviles y/o web demostraron ser el futuro del desarrollo de software y la gran mayoría de los países en el mundo consumen estas soluciones y nosotros necesitamos apuntar a esta tendencia.\\
+
+
   % section justificacion (end)
 % chapter introduccion (end)
 
+  \section{Alcance}
+  \label{sec:Alcance}
+
+    \subsection{Alcance Práctico}
+    \label{sub:alcance_practico}
+    Una aplicación web móvil puede llegar a ser muy compleja, por ejemplo la seguridad de los datos de los usuario, ya que el API está expuesto en un servidor de acceso público y es susceptible de ataques maliciosos y malintencionados para lograr acceder y robar información privada que los usuarios podrían tener almacenados en la aplicación, en el caso de la presente aplicación, el sistema no manejará información sensible, como ser tarjetas de crédito pero la aplicación manejará información relacionada con la locación del usuario y esto podría ser usado para fines delictivos. Para una aplicación web la seguridad es muy importante, el presente proyecto implementara medidas de seguridad para asegurar la identidad del usuario que se está solicitando el ingreso (logeado) al sistema pero no incluirá protección a ataques Phishing, DoS ya que los objetivos específicos no los contempla.\\
 
 
+    El look and feel de una aplicación web es un tema muy importante para cualquier aplicación a desarrollar, para lograr que la aplicación se muestre de manera consistente en la pantalla de un smartphone se usarán herramientas de terceros pero no se extenderá el uso de la misma para la pantalla de un ordenador de escritorio que posee una resolución de pantalla muy superior al de un celular.\\
+
+
+
+    % end alcance_practico
+
+    \subsection{Alcance Metodológico}
+    \label{sub:alcance_metodologico}
+    Para la conclusión exitosa del presente proyecto se implementará la metodología  Programación Extrema (XP) y cada iteración del proceso tiene como meta el desarrollo conjunto de diferentes módulos, historias de usuario y la documentación relacionada.
+    % end alcance_metodologico
+
+    \subsection{Alcance Teórico}
+    \label{sub:alcance_teorico}
+    La investigación se limita a las estructuras, herramientas y estándares actuales sugeridos en la documentación y bibliografía consultada para la construcci'on de una aplicaci'on web movil.
+    % end alcance_teorico
+
+  % end Alcance
 
 
 
