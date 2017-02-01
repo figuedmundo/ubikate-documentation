@@ -83,10 +83,12 @@
 
         \begin{figure}[H]
           \begin{center}
+            \caption[Sistema de coordenadas Geográficos]{Sistema de coordenadas Geográficos, Es el sistema que maneja los mas amplimanete conocidos ``latitud y longitud''}
+            \label{fig:coord_geographic}
             \includegraphics[width=0.7\textwidth]{coord_geographic}
+            \caption*{Fuente: xxxxxxxxxxxx}
           \end{center}
-          \caption[Sistema de coordenadas Geográficos]{Sistema de coordenadas Geográficos, Es el sistema que maneja los mas amplimanete conocidos ``latitud y longitud''}
-          \label{fig:coord_geographic}
+
         \end{figure}
 
       % subsection coordenadas_geograficas (end)
@@ -163,10 +165,10 @@
     %                               FROM public.ways', targetId, sourceId, false, false);";
 
 
-     Este atributo es de tipo \emph{punto} \'o \emph{point} el cual tiene un SRID\footnote{ Spatial Reference System Identifier, El SRID corresponde a un sistema de referencia espacial basado en el elipsoide concreto usado para la creación de mapas de tierra plana o de tierra redonda.\cite{msdn_srid} } 3857\footnote{La proyeccion Mercator usa el EPSG 3857}, el SRID  es la llave primaria de la tabla \emph{spatial\_ref\_sys} que se crea cuando se inicializa una base de datos que soporte informacion geoespacial (PostGis), esta tabla provee la informaci\'on necesaria para interpretar y convertir correctamente todas las coordenadas existentes, el SRID 3857 esta definida en la tabla \emph{spatial\_ref\_sys} como ``Popular Visualisation CRS / Mercator''.\\
+     Este atributo es de tipo \emph{punto} \'o \emph{point} el cual tiene un \emph{SRID}\footnote{ Spatial Reference System Identifier, El \emph{SRID} corresponde a un sistema de referencia espacial basado en el elipsoide concreto usado para la creación de mapas de tierra plana o de tierra redonda.\cite{msdn_srid} } \emph{3857}\footnote{La proyeccion Mercator usa el EPSG 3857}, el SRID  es la llave primaria de la tabla \emph{spatial\_ref\_sys} que se crea cuando se inicializa una base de datos que soporte informacion geoespacial (PostGis), esta tabla provee la informaci\'on necesaria para interpretar y convertir correctamente todas las coordenadas existentes, el \emph{SRID 3857} esta definida en la tabla \emph{spatial\_ref\_sys} como ``Popular Visualisation CRS / Mercator''.\\
 
 
-    Obtener la coordenada es el primer paso, seguidamente se debe mostrarlo sobre un mapa, en este caso \emph{Open Street Maps}\ref{fig:ember-leaflet}, esta interfaz esta implementada usando \textbf{ember-leaflet}, el cual esta principalmente dise\~nada para ofrecer una mejor experiencia de usario en celulares smartphones.\\
+    Obtener la coordenada es el primer paso, seguidamente se debe mostrarlo sobre un mapa, en este caso \emph{Open Street Maps}, como se puede apreciar en la figura \ref{fig:ember_leaflet}, esta interfaz esta implementada usando \emph{ember-leaflet}, el cual esta principalmente dise\~nada para ofrecer una mejor experiencia de usario en celulares smartphones.\\
 
     % \begin{center}
     %   \begin{verbatim}
@@ -190,11 +192,12 @@
     \end{verbatim}
 
     \begin{figure}[H]
-    \label{fig:ember_leaflet}
           \begin{center}
-            \includegraphics[width=0.9\textwidth]{ember_leaflet}
+            \caption{\emph{ember-leaflet} nos ayuda a despleyar un mapa y mostrar un \emph{punto} o \emph{lugar} con un \emph{marcador} y dibuja una línea de color rojo sobre el mapa.}
+            \label{fig:ember_leaflet}
+            \includegraphics[width=0.5\textwidth]{ember_leaflet}
           \end{center}
-          \caption[Open Street Maps]{ember-leaflet nos ayuda a despleyar un mapa y mostrar un \emph{punto} o \emph{lugar} con un \emph{marcador}} y dibuja una línea de color rojo sobre el mapa.
+          \caption*{Fuente: Elaboración propia.}
     \end{figure}
 
 
