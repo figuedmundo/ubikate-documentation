@@ -1,17 +1,17 @@
-\chapter{Iteración 1}
-\label{chap:iteracion_1}
+\section{Iteración 1}
+\label{sec:iteracion_1}
 
 Para la primera iteración se implementaran las historias de usuario que tengan más relevancia dentro de la lógica de negocios para el cliente, generalmente son las que tienen mayor impacto en el sistema a desarrollar.
 
 
-\section{Iteration Planning Meeting}
-\label{sec:Iteration Planning Meeting}
+\subsection{Iteration Planning Meeting}
+\label{sub:Iteration Planning Meeting}
 
 
 Tomando en cuenta que el equipo de desarrollo está compuesto solo por mi persona, para el desarrollo del presente proyecto de grado la fase de Exploración y Planeación se procedió a realizarlas en la misma fase.
 
-  \subsection{Exploración y Planeación}
-  \label{sub:Exploración y Planeación}
+  \subsubsection{Exploración y Planeación}
+  \label{subs:Exploración y Planeación}
 
 Para la primera iteración se llevó a cabo una reunión para determinar las historias de usuario que se implementaran, y de acuerdo del impacto en el producto se determinó que las historias de usuario 2 y 3 serán las primeras en implementarse. \\
 
@@ -35,13 +35,13 @@ Posteriormente como tarea del desarrollador se procede a dividir las historias d
     \input{iteration1/gant}
 
 
-\section{Implementación}
-\label{sec:implementacion_iteracion_1}
+\subsection{Implementación}
+\label{sub:implementacion_iteracion_1}
 
   A continuación se detalla los resultados de la implementación de cada tarea asignada.
 
-\subsection{RF001}
-\label{sub:RF001}
+\subsubsection{RF001}
+\label{subs:RF001}
 
 
 Para la presente Tarea se procedió a recolectar la información geográfica de los principales lugares del campus de la Universidad Mayor de San Simón, para tal efecto se hizo uso
@@ -58,15 +58,15 @@ Con la ayuda de QGIS fue que se exporto el archivo gpx generado por el GPS a un 
   \end{center}
 \end{figure}
 
-\subsection{RF002}
-\label{sub:RF002}
+\subsubsection{RF002}
+\label{subs:RF002}
 
 Para poder determinar una base de datos se investigó las diferentes opciones disponibles que tenga la capacidad de manejar información geoespacial y tras la investigación que se puede apreciar en \ref{sec:base_de_datos}, se instaló PostgreSQL 9.4.8 sobre Linux Ubuntu 15.10, y para manejar datos geoespaciales se necesitó instalar PostGIS 2.1.8, para poder acceder a las librerías necesarias para almacenar datos geo-referenciados.\\
 
 El resultado de esta tarea se puede apreciar en el manual de instalación.\\
 
-\subsection{RF003}
-\label{sub:RF003}
+\subsubsection{RF003}
+\label{subs:RF003}
 
 Para esta tarea se hizo uso de una herramienta disponible para postgres, \emph{shp2pgsql}, que permite la conversion de un archivo shapefile a un archivo sql.
 
@@ -93,8 +93,8 @@ El archivo sql resultante es cargado a la base de datos con el siguiente comando
 
 En la figura \ref{fig:postgres_places} se puede observar que la columna \emph{Elevation} contiene datos que el GPS Garmin Nuvi 1300 genera al momento de guardar un punto, en el presente caso es irrelevante.\\
 
-\subsection{RF004}
-\label{sub:RF004}
+\subsubsection{RF004}
+\label{subs:RF004}
 
 Para completar esta tarea se procedió a instalar y configurar el framework de desarrollo Ember JS, que nos ayudará en la implementación del frontend de la aplicación o la capa que interactúa con el usuaria, y Express JS, el cual manejara el backend de la aplicación, básicamente se encarga de la lógica del sistema y la comunicación con la base de datos.\\
 
@@ -107,8 +107,8 @@ Para completar esta tarea se procedió a instalar y configurar el framework de d
   \end{center}
 \end{figure}
 
-\subsection{RF005}
-\label{sub:RF005}
+\subsubsection{RF005}
+\label{subs:RF005}
 
 \begin{figure}[H]
   \begin{center}
@@ -120,8 +120,8 @@ Para completar esta tarea se procedió a instalar y configurar el framework de d
 \end{figure}
 
 
-\subsection{RF006}
-\label{sub:RF006}
+\subsubsection{RF006}
+\label{subs:RF006}
 
 Para implementar esta funcionalidad del sistema fue necesario utilizar las funcionalidad de Ember JS.
 
@@ -133,8 +133,8 @@ Para implementar esta funcionalidad del sistema fue necesario utilizar las funci
   {{/paper-item}}
 \end{verbatim}
 
-\subsection{RF007}
-\label{sub:RF007}
+\subsubsection{RF007}
+\label{subs:RF007}
 
 
 
@@ -148,33 +148,33 @@ Para implementar esta funcionalidad del sistema fue necesario utilizar las funci
 \end{figure}
 
 
-\subsection{RF008}
-\label{sub:RF008}
+\subsubsection{RF008}
+\label{subs:RF008}
 % RF008: El usuario puede ver el teléfono del lugar
 
-\subsection{RF009}
-\label{sub:RF009}
+\subsubsection{RF009}
+\label{subs:RF009}
 % RF009: El usuario puede ver en qué piso se encuentra el lugar
 
-\subsection{RF010}
-\label{sub:RF010}
+\subsubsection{RF010}
+\label{subs:RF010}
  % RF010: El usuario puede ver una imagen del lugar
  El hecho de visualizar las imagenes dentro de la aplicacion se tiene q pensar en donde se van a guardar las imagenes
  Para realizar esta tarea se hizo uso de Cloudinary
 
-\subsection{TS001}
-\label{sub:TS001}
+\subsubsection{TS001}
+\label{subs:TS001}
 
 Pruebas funcionales
 
 
-\subsection{TS002}
-\label{sub:TS002}
+\subsubsection{TS002}
+\label{subs:TS002}
 
 Pruebas funcionales
 
-\section{Registrar el Avance}
-\label{sec:iteracion1_avance}
+\subsection{Registrar el Avance}
+\label{sub:iteracion1_avance}
 
-\section{Verificación}
-\label{sec:iteracion1_verificacion}
+\subsection{Verificación}
+\label{sub:iteracion1_verificacion}

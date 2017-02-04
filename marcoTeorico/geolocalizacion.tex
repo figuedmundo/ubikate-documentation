@@ -1,5 +1,5 @@
-\chapter{Geolocalizaci\'on} % (fold)
-\label{cha:geolocalizacion}
+\section{Geolocalizaci\'on} % (fold)
+\label{sec:geolocalizacion}
   La Geolocalizaci\'on o Georreferenciación es un termino bastante nuevo, de hecho no aparece en el diccionario de la Real Academia Espa\~nola\footnote{http://dle.rae.es/}, no obstante se lo puede definir como:
 
   \begin{quote}
@@ -16,8 +16,8 @@
   Y las posibilidades son diversas, por ejemplo, se se quisiera planificar la construcci\'on de un colegio se podria integrar los datos del censo con un mapa, identificando los sectores con mayor porcentaje de ni\~nos y localizando los sectores mas propicios para realizar la construcción del inmueble. En el caso de una catástrofe natural, el tener las rutas de evacuaci\'on geolocalizadas y disponibles en un mapa de manera eficiente,  ayudaria en la evaciaci\'on de las personas del lugar.\\
 
 
-  \section{Definiciones} % (fold)
-  \label{sec:definiciones}
+  \subsection{Definiciones} % (fold)
+  \label{sub:definiciones}
 
     En la aplicaci\'on desarrollada se requerira trabajar con datos espaciales, y para ello es necesario entender algunos conceptos envueltos en el manejo de la informaci\'on geografica.
 
@@ -51,8 +51,8 @@
     Estas definiciones estan desarrolladas en la especificaci\'on \textbf{Simple Feature Access}\footnote{\url{http://www.opengeospatial.org/standards/sfa}}, la cual es mantenida por la OGC (Open Geospatial Consortium\footnote{\url{http://www.opengeospatial.org/}}). Esta especificaci\'on define el conjunto de tipos de datos (puntos, l\'inea, poligono, etc) y las operaciones o metodos necesarios para manejar estos datos.
 
   % section definiciones (end)
-  \section{Sistema de Coordenadas para datos Geográficos} % (fold)
-  \label{sec:sistema_de_coordenadas_para_datos_geograficos}
+  \subsection{Sistema de Coordenadas para datos Geográficos} % (fold)
+  \label{sub:sistema_de_coordenadas_para_datos_geograficos}
     Se podria pensar en un sistema de coordenadas como la forma de dar sentido a un \emph{par de coordenadas}, por ejemplo cuando se ve una locaci\'on ``\verb|POINT(-66.1457475 -17.3937285)|'', como se interpretan estos n\'umeros?.
     Podria ser la latitud y longitud del campus de la UMSS, o podria ser un sistema de a\~nos luz desde alguna estrella en el Universo.
     El sistema de coordenadas es lo que diferencia estos casos.\\
@@ -60,8 +60,8 @@
 
     Una aplicaci\'on que maneja datos geograficos, generalmente trabaja con sistemas de coordenadas relacionadas con la superficie terrestre, conocidas como coordenadas espaciales (coordenadas globales), que permiten representar la tierra en \emph{3-Dimensiones} (3D), ya que esta es una Esfera (elipsoide oblato), o en una representacion de la superficie terrestre en \emph{2-Dimensiones} (2D), se pueden nombrar los siguientes:
 
-    \subsection{Coordenadas geocéntricas (X,Y,Z)} % (fold)
-      \label{sub:coordenadas_geocentricas}
+    \subsubsection{Coordenadas geocéntricas (X,Y,Z)} % (fold)
+      \label{subs:coordenadas_geocentricas}
         También conocido como \emph{Coordenadas Cartesianas 3D}, Este sistema tiene como origen el centro de la Tierra, con el \emph{eje X} y el \emph{eje Y} en el plano del ecuador. El \emph{eje X} pasa a través del meridiano de Greenwich, y el \emph{eje Z}  coincide con el eje de rotación de la Tierra.
 
         \begin{figure}[H]
@@ -75,8 +75,8 @@
         Este Sistema de coordenadas no es muy usado en la representacion de datos, pero aveces se lo requiere para analisis de algoritmos y geometria computacional.
       % subsection coordenadas_geocentricas (end)
 
-      \subsection{Coordenadas Geograficas} % (fold)
-      \label{sub:coordenadas_geograficas}
+      \subsubsection{Coordenadas Geograficas} % (fold)
+      \label{subs:coordenadas_geograficas}
         Sistema de coordenadas Geográfico, utiliza las coordenadas angulares latitud  (\emph{phi} o ${\phi}$) y longitud (\emph{lambda} o ${\lambda}$). Este sistema de coordenadas se expresa en grados, se lo puede representar con la forma \emph{grados:minutos:segundos }\verb|(17° 23' 37.4226" S, 66° 8' 44.691" W)|, o de la forma mas comun \emph{grados decimales} \verb|(-66.1457475 S, -17.3937285 W)|.\\
 
         El sistema de coordenadas  mas amplimente usado, el que usan por defecto los sistemas \emph{GPS}, es conocido como ``WGS 84'', y la mayoria de las aplicaciones que manejan mapas usan este sistema de coordenadas.\\
@@ -93,8 +93,8 @@
 
       % subsection coordenadas_geograficas (end)
 
-      \subsection{Coordenadas Proyectadas} % (fold)
-      \label{sub:coordenadas_proyectadas}
+      \subsubsection{Coordenadas Proyectadas} % (fold)
+      \label{subs:coordenadas_proyectadas}
         Un sistema de coordenadas proyectadas es una representación plana y bidimensional de la  tierra. Se basa en un sistema de coordenadas \emph{geográficas esf\'ericas}, pero utiliza unidades de \emph{medida lineales} para las coordenadas, de forma que los cálculos de distancia y área se pueden realizar en términos de esas mismas unidades.\cite{projected} \\
 
         Un sistema de coordenadas proyectadas requiere tomar la superficie esferica de la tierra y ``aplanarla'', este procedimiento se lo realiza con la finalidad de tener un mapa representable en una hoja de papel asi como en la pantalla de la computadora. Sin embargo este procedimiento introduce diversos tipos de distorci\'on por lo que existen diferentes clases de proyeciones que varian segun la region que se quiere representar de la Tierra.\\
@@ -112,8 +112,10 @@
         Tal como se puede apreciar en la figura \ref{fig:mercator_proyection}, la distorcion de esta proyecci\'on se hace evidente si se observa la zona de Groenlandia ya que pareceria tan grande como Africa o America del Sur, cosa que no es cierta, ya que Groenlandia es casi 14 veces mas peque\~no que Africa. A pesar de esta distorci\'on tan marcada, la \textbf{Proyección de Mercator} es una de las mas usadas.
          % de hecho Google Maps usa esta proyecci\'on.
       % subsection coordenadas_proyectadas (end)
+
+
       \subsection{Que se us\'o en la Aplicaci\'on} % (fold)
-      \label{sec:que_se_uso_en_la_aplicacion}
+      \label{sub:que_se_uso_en_la_aplicacion}
         Es importante entender las diferencias entre los distintos tipos de sistemas de coordenadas porque computacionalmente realizar operaciones sobre los sistemas de coordenadas tiene un costo.
         Si se usara el sistema de coordenadas geográfico (WSG84) este es el más apropiado si se necesitaria usar grandes extensiones de la superficie terrestre, que al ser una estructura elipsoidal el costo computacional para realizar las operaciones matemáticas de calcular distancias, intersecciones, etc. es más elevado. En cambio el uso de un sistema de coordenadas proyectado (Mercator Projection) tiene un costo computacional más bajo, ya que se estaría trabajando con un sistema geométrico.\\
 
@@ -131,8 +133,8 @@
   %
   % section tipo_de_archivos (end)
 
-  \section{Implementaci\'on} % (fold)
-  \label{sec:Implementacion}
+  \subsection{Implementaci\'on} % (fold)
+  \label{sub:Implementacion}
     Para menenjar datos georreferenciados con tecnologia JavaScript, ya que se implemento el Backend con NodeJS, se hizo uso del la libreria \textbf{KnexJS} para manejar la conecion a la base de datos PostgreSQL, y BookshelfJS para las consultas SQL pero para las conultas con datos geospaciales se realizo a traves de esta herramienta pero usando la forma \emph{Raw SQL}\footnote{Raw SQL se refiere a consultas en ``SQL puro'' ya que el fuerte de BookshelfJS es el manejo de las consultas en forma de objetos (ORM), lamentablemente actualmente no existe mucho soporte para manejar datos geospaciales}.
 
     \begin{center}
@@ -214,15 +216,28 @@
   % % section los_datos (end)
 
 
-  \section{Conclusi\'on} % (fold)
-  \label{sec:geo_conclusion}
-    Los Mapas son herramientas muy útiles a la hora de desplegar información pero realizar el mapa, crear las fórmulas matemáticas con las cuales se trabajará, determinar cómo se usarán estas fórmulas para una representación adecuada de la superficie terrestre, es una tarea muy compleja. Como programador la tarea más complicada fue determinar el tipo de mapa y el sistema de coordenadas más adecuado para el tipo proyecto que se necesita desarrollar.\\
+  % -------------------------------------------------------------------
+  % -------------------------------------------------------------------
+% -------------------------------------------------------------------
 
-    Los términos de longitud y latitud son en un inicio, más fácilmente comprendidos que un sistema proyectado, pero no se puede tomar a la ligera una correcta comprensión del uso de los \emph{sistemas de coordenadas} en una base de datos espacial, un mal uso de estos conceptos puede generar errores a la hora de manejar datos  espaciales o en el resultado de las operaciones sobre estos  datos, llegando a resultados no deseados y que pueden costar mas tiempo y dinero en una posterior correci\'on.\\
+  % \section{Conclusi\'on} % (fold)
+  % \label{sec:geo_conclusion}
+  %   Los Mapas son herramientas muy útiles a la hora de desplegar información pero realizar el mapa, crear las fórmulas matemáticas con las cuales se trabajará, determinar cómo se usarán estas fórmulas para una representación adecuada de la superficie terrestre, es una tarea muy compleja. Como programador la tarea más complicada fue determinar el tipo de mapa y el sistema de coordenadas más adecuado para el tipo proyecto que se necesita desarrollar.\\
+  %
+  %   Los términos de longitud y latitud son en un inicio, más fácilmente comprendidos que un sistema proyectado, pero no se puede tomar a la ligera una correcta comprensión del uso de los \emph{sistemas de coordenadas} en una base de datos espacial, un mal uso de estos conceptos puede generar errores a la hora de manejar datos  espaciales o en el resultado de las operaciones sobre estos  datos, llegando a resultados no deseados y que pueden costar mas tiempo y dinero en una posterior correci\'on.\\
+  %
+  %   La geolocalizaci\'on es actualmente una tecnolog\'ia y una herramienta usada en gran medida por una gran cantidad de aplicaciones web, a\~nadiendo b\'usquedas y resultados personalizados a nivel pa\'is, ciudad, barrio y calle, resultando en una gran variedad de servicios y que actualmente es de gran ayuda en diferentes escenarios. La geolocalizaci\'on nos ayuda a movernos por una ciudad, encontrar restaurantes, cines, transporte, etc. actualmente es una de las herramientas m\'as usadas y desarrolladas a nivel de industria, comercio, turismo, etc. y vale la pena estudiarla y entenderla.\\
 
-    La geolocalizaci\'on es actualmente una tecnolog\'ia y una herramienta usada en gran medida por una gran cantidad de aplicaciones web, a\~nadiendo b\'usquedas y resultados personalizados a nivel pa\'is, ciudad, barrio y calle, resultando en una gran variedad de servicios y que actualmente es de gran ayuda en diferentes escenarios. La geolocalizaci\'on nos ayuda a movernos por una ciudad, encontrar restaurantes, cines, transporte, etc. actualmente es una de las herramientas m\'as usadas y desarrolladas a nivel de industria, comercio, turismo, etc. y vale la pena estudiarla y entenderla.\\
 
 
+
+
+
+
+
+
+
+% ************************************************************
     % Maps are deceivingly simple tools, and cartography a surprisingly complex discipline. While the most trouble many of us will have with a map is figuring out how to fold it, this simplicity belies great sophistication that has been developed over the years.
   % section geo_conclusion (end)
 

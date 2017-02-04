@@ -1,0 +1,300 @@
+
+  \section{Metodologia de Desarrollo}
+  \label{sec:metodologia_de_desarrollo}
+    La metodologia para el desarrollo de software nos permite gestionar y administrar un proyecto de desarrollo de software para llevarlo a termino de una forma mas eficiente y con altas probabilidades de exito.\\
+    Seguir una metodología es importante ya que nos ayudara a organizarnos y a seguir un ritmo de trabajo.\\
+    Para este proyecto de grado se hará uso de una metodología Ágil. Para lo cual se definirá en que se basan las metodologías ágiles.\\
+
+    Para este proyecto de grado se va a ser uso de \emph{XP} como metodologia agil.\\
+
+    \subsection{Metodologías \'Agiles}
+    \label{sub:metodologias_agiles}
+
+    Este término nace en una reunión celebrada en febrero de 2001 en Utah - USA por expertos en la industria del software ya que pretendían encontrar una forma alternativa de desarrollo de software a las que estaban vigentes hasta esa fecha por ejemplo la metodología en cascada que es rígido y obliga una planeación extensiva antes siquiera de tocar una línea de código, esta demostrado que este tipo de metodologías son muy rígidas y les falta flexibilidad a la hora de hacer frente a los cambios que invariablemente sufre un proyecto de desarrollo de software.\\
+
+    % //·        In reality it is very difficult for projects to follow the sequential flow of the model
+    % //·        It is difficult to identify all requirements and goals at the beginning of projects as requirements tend to change all the way
+    % //·        A working version can only be obtained late in the process
+
+
+    Para contravenir estas dificultades es que se definieron los principios de manifiesto ágil:
+
+    \begin{quote}
+      \begin{description}
+        \item[Individuos e interacciones] sobre procesos y herramientas
+        \item[Software funcionando] sobre documentación extensiva
+        \item[Colaboración con el cliente] sobre negociación contractual
+        \item[Respuesta ante el cambio] sobre seguir un plan
+      \end{description}
+    \end{quote}
+
+    % The main concern of agile methodologies is the ability to embrace changes which are very likely to happen in environments which lack predictability [6]
+
+    El principal objectivo de las metodologías ágiles es la habilidad de soportar los cambios, los cuales generalmente por no decir casi siempre aparecen en un ambiente que sufre muchos cambios y rápidamente, los cuales son difíciles de predecir.\cite{6}\\
+
+    % //To achieve the objective, agile methodologies use three key principles [8]: (1) a focus on adaptive methodologies, (2) a focus on people, and (3) a focus on self-adaptive processes.
+
+    Para alcanzar este objetivo es que las metodologías ágiles se basan en tres principios\cite{8}:
+
+\begin{itemize}
+  \item Enfoque en metodologías que se adapten al cambio
+  \item Enfocarse en las personas
+  \item Enfocarse en procesos que se auto-adapten al cambio
+\end{itemize}
+
+    Las metodologías ágiles no se refieren a un único y específico metodo o tecnica de desarrollo, en cambio son un grupo de metodologías que implementan los principios ágiles. Entre los cuales se pueden apreciar las siguiente metodologías:\\
+
+    \begin{itemize}
+      \item Scrum
+      \item Dynamic Systems Development Method (DSDM)
+      \item Crystal Methods
+      \item Feature Driven Development
+      \item Lean Development
+      \item Extreme Programming (XP)
+      \item Adaptive Software Development
+    \end{itemize}
+
+
+    Por las siguientes caracteristicas de la Metodologia \emph{Programaci\'on extrema}\footnote{Programaci\'on Extrema viene del ingles \emph{eXtreme Programing} por lo cual generalmente nos referiremos a esta como \textbf{XP}} es que es la escogio para implementar este proyecto de grado.
+
+
+    % End metodologias_agiles
+
+
+    \subsection{Programaci\'on Extrema}
+    \label{sub:xp}
+
+      Programaci\'on extrema o \emph{XP} es una metodología de trabajo creada a mediados de 1990 por Kent Beck cuando estaba trabajando en un proyecto de desarrollo de software en Chrysler Comprehensive Compensation (C3)\cite{KhenBeck} en un intento de mejorar el proceso de desarrollo de software y posteriormente con una segunta implementación de un proyecto usando la metodologia XP en \emph{Vehicle Cost and Profitability System (VCAPS)} en \textbf{Ford Motor Co}\cite{KhenBeck} se demostró que esta metodología de desarrollo es un método apropidado para llevar a buen termino el proyecto de desarrollo.\\
+
+      \emph{XP} se enfoca en la adaptabilidad ya que el desarrollo de software debería ser un proceso fluido donde los requerimientos no pueden ser totalmente predichos desde el principio del desarrollo ya que estos siempre o casi siempre tienden a cambiar a medida que el software se va desarrollando ya sea por cambios en el mercado o a medida que el cliente va aprendiendo y modificando sus requerimientos en el transcurso del ciclo de desarrollo del producto.\\
+
+      Kent Beck encontró que cuatro enunciados las cuales son la base de la filosofía de XP\cite{KhenBeck}:\\
+
+      \begin{itemize}
+        \item Es necesario mejorar la comunicación
+        \item Es necesario encontrar simplicidad
+        \item Es necesario obtener feedback o retroalimentación de parte del cliente
+        \item Es necesario proceder con coraje.
+      \end{itemize}
+
+      Combinando estos principios, la programación extrema se trata acerca de mejorar el trabajo en equipo cohesionadolo y con la ayuda de la retroalimentación propia del equipo se puede apreciar donde se encuentra y mejorarlo, siempre tomando en cuenta que cada equipo es único, ya sea por el tipo de software que se está desarrollando y por las personas que conforman el equipo.\\
+
+      Las prácticas usadas en XP son de hecho prácticas comúnmente usadas en las metodologías ágiles pero en XP estas prácticas son llevadas al extremo de ahí el nombre de programacion extrema.\\
+
+      La programación extrema se caracteriza por las siguiente practicas:
+
+      \begin{description}
+        \item[Code reviews:] O revisión de código, en programación extrema esto se llama programación en pareja (pair programing), esto significa que dos programadores escriben código usando o compartiendo una máquina, esto se traduce en que el código es constantemente revisado y por lo tanto es menos proclive de producir errores.
+
+        \item[Testeo:] en XP significa hacer unit testing o pruebas unitarias durante todo el proceso de desarrollo de software, una vez el producto es entregado al cliente este se encarga de probar la funcionalidad del sistema.
+
+        \item[Diseño:] en XP se necesita que todos los involucrados en el proyecto estén siempre y constantemente refactorizando y mejorando el producto.
+        Simplicidad: Siempre dejar el sistema con el diseño más simple posible para que soporte la funcionalidad deseada o lo más simple que funciona. Se basa en la filosofía de que el mayor valor de negocio es entregado por el programa más sencillo que cumpla los requerimientos.
+
+        \item[Arquitectura:] Todos trabajando definiendo y redefiniendo constantemente la arquitectura del sistema.
+        Testeo de integración: Unir o integrar y probar las diferentes características del software que se están trabajando, constantemente o por lo menos una vez al dia.
+
+        \item[Iteraciones cortas:]
+        Trabajar en ciclos realmente cortos, puede ser de horas o días pero no semanas o meses, permitiendo que el programa, el verdadero valor del negocio, pueda ser evaluado.
+
+        \item[Propiedad colectiva del código:]
+        un código con propiedad compartida. Nadie es el propietario de nada, todos son el propietario de todo. Este método difiere en mucho a los métodos tradicionales en los que un simple programador posee un conjunto de código.
+
+
+        \item[Estándar de codificación:] define la propiedad del código compartido así como las reglas para escribir y documentar el código y la comunicación entre diferentes piezas de código desarrolladas por diferentes equipos
+
+        \item[Bienestar del programador:] La semana de 40 horas, la programación extrema sostiene que los programadores cansados escriben código de menor cualidad. Minimizar las horas extras y mantener los programadores frescos, generará código de mayor calidad.
+
+      \end{description}
+
+
+      \subsubsection{Las historias de usuario}
+      \label{subs:user_story}
+
+
+      Es la técnica que utiliza XP para especificar los requisitos del software. Se trata de tarjetas en las cuales el cliente escribe las características que el sistema debe poseer, sean requisitos funcionales o no funcionales. El proceso de manejar las historias de usuario es muy dinámico ya que se pueden añadir, eliminar o modificarse de acuerdo a la exigencia que puede aparecer a cualquier momento, las historias deben ser lo bastante simples como para que los programadores las implementen en unas semanas.\cite{xpesp}
+      % end user_story
+
+      \subsubsection{Proceso de desarrollo}
+      \label{subs:proceso_desarollo}
+
+      La programación extrema identifica las siguientes fases en el proceso de desarrollo de software
+
+      \begin{description}
+        \item[Interacción con el cliente.]
+        El cliente es una parte importante en el equipo de desarrollo, tiene gran importancia en el equipo ya que expresa su opinión sobre el producto después de cada cambio o iteración, mostrando las prioridades y expresando su opinión sobre los problemas que se podrían identificar.
+
+        \item[Planificación del proyecto.]
+        En este punto se se elabora la planificación por etapas o iteraciones. Para hacerlo será necesaria la existencia de reglas que han de seguir las partes implicadas en el proyecto.
+
+        \item[Diseño, desarrollo y pruebas.]
+        El desarrollo es la parte más importante en el proceso de la programación extrema. Todos los trabajos tienen como objetivo que se programen lo más rápidamente posible, sin interrupciones y en la dirección correcta.\cite{xpesp}
+
+      \end{description}
+
+
+      %end proceso_desarollo
+
+
+      \subsubsection{Roles de la programación extrema}
+      \label{subs:roles_xp}
+
+      \begin{description}
+        \item[Programador:] Escribe las pruebas unitarias y produce el código del sistema.
+        \item[Cliente:] Escribe las historias de usuario y las pruebas funcionales para validar su implementación. Asigna la prioridad a las historias de usuario y decide cuáles se implementan en cada iteración centrándose en aportar el mayor valor de negocio.
+        \item[Tester:] Ayuda al cliente a escribir las pruebas funcionales. Ejecuta pruebas regularmente, difunde los resultados en el equipo y es responsable de las herramientas de soporte para pruebas.
+        \item[Tracker:] Es el encargado de seguimiento. Proporciona realimentación al equipo. Debe verificar el grado de acierto entre las estimaciones realizadas y el tiempo real dedicado, comunicando los resultados para mejorar futuras estimaciones.
+        \item[Entrenador (coach):] Responsable del proceso global. Guía a los miembros del equipo para seguir el proceso correctamente.
+        \item[Consultor:] Es un miembro externo del equipo con un conocimiento específico en algún tema necesario para el proyecto. Ayuda al equipo a resolver un problema específico.
+        \item[Gestor (Big boss):] Es el dueño de la tienda y el vínculo entre clientes y programadores. Su labor esencial es la coordinación.\cite{xpcyta}
+      \end{description}
+
+
+      % end roles_xp
+
+      \section{Desarrollo del Proyecto usando XP} % (fold)
+      \label{sec:desarrollo}
+
+      Ya que para el desarrollo del proyecto se usará programación extrema,
+      se va a definir el proceso de desarrollo general que se usará en este proyecto de grado.\\
+
+        % \section{Proceso de Desarrollo}
+        % \label{sec:proceso_de_desarrollo}
+
+        XP propone un proceso iterativo e incremental, El proyecto es dividido en pequeños “mini-proyectos”, los cuales terminan con un release\footnote{\emph{Release} es una versión del producto que se libera al final de un ciclo de desarrollo de software, un release contiene requerimientos implementados, tal vez no acabados en un  100\% pero funcional de tal forma el cliente es capaz de ofrecer feedback del producto.} o lanzamiento.\\
+
+      En un proyecto que sigue la metodología XP los releases son frecuentes, esto para recibir feedback más seguido. Los releases son negociados en un Planning Game, donde los clientes definen qué se va a implementar en el release y los desarrolladores especifican el tiempo que necesitan para desarrollar las características deseadas.\\
+
+      \begin{figure}[H]
+        \caption{Diagrama del proceso XP}
+        \label{fig:xp_diagram}
+        \begin{center}
+          \includegraphics[width=1\textwidth]{xp_diagram}
+        \end{center}
+        \caption*{Fuente: Elaboración propia}
+      \end{figure}
+
+      En la figura \ref{fig:xp_diagram} se puede apreciar el proceso de desarrollo de la metodología XP, la cual se explicará a continuación.\\
+
+        \subsection{Planning Game}
+        \label{sub:planning_game}
+
+        La fase del planning game consiste de 3 etapas: exploración, planeaci\'on y direcci\'on.\\
+
+        Durante la fase de la \textbf{exploración} los clientes definen lo que desean que tenga el sistema y los desarrolladores estiman el tiempo necesario que necesitan para realizar esas tareas.\\
+
+        Durante la \textbf{planeación} se negocia y se decide cuales de todas las características que los clientes quieren pueden llegar a realizarse en el tiempo dise~ado para una iteración.\\
+
+        Después de la planeación sigue la fase de \textbf{dirección}, durante la cual se desarrolla y actualiza (cuando sea necesario) la planeación ya negociada según lo que se vaya aprendiendo a medida que avanza el desarrollo del proyecto.\\
+
+          \subsubsection{Exploración}
+          \label{subs:exploracion}
+            Durante esta etapa el cliente escribe las tarjetas de historias de usuario, estas historias definen lo que el cliente quiere que el sistema haga, en otras palabras representan las características que el sistema debería tener implementado.\\
+
+            Una vez que estas tarjetas están escritas, el equipo de desarrollo debe asignarles una estimación en términos del tiempo necesitado para el desarrollo y el riesgo para el producto que pueden llegar a tener las características detalladas en las historias del usuario.\\
+
+            Las historias del usuario se las crea para propósitos de planeación y estimación de tiempo y esfuerzo que cada característica va a necesitar, los detalles se crean y dividen posteriormente cuando las historias están por ser implementadas en las “tareas de ingeniería”.\\
+          % end exploracion
+
+          \subsubsection{Planeación}
+          \label{subs:planeacion}
+
+            Cuando se tienen las historias del usuario junto con las estimaciones de los desarrolladores, se está listo para una “negociación de aceptación” donde un “calendario de entregas”  es negociado y donde se aceptan qué historias se van a desarrollar primero en cuanto tiempo se van a entregar resultados.\\
+
+          % end planeacion
+
+          \subsubsection{Dirección o Steering}
+          \label{subs:steering}
+
+          Esta fase es básicamente comprende el resto del desarrollo del producto hasta que es liberado al mercado o el proyecto es cancelado.\\
+
+          Esta fase consiste en 4 ``movimientos'':
+
+          \begin{description}
+            \item[Iteración:] Es durante la iteración cuando se desarrolla el producto, el tiempo que se utiliza para esta fase es de generalmente de una o 2 semanas, dependiendo de la naturaleza del proyecto.
+
+            \item[Recuperación:] Si durante el desarrollo no se completan las características a desarrollar en el tiempo establecido, es durante la recuperación que se re-negocia con el cliente si quiere cambiar la fecha de entrega del release o modificar el alcance del desarrollo (menos historias de usuario).
+
+            \item[Nuevas Historias:] El cliente tiene el derecho de aumentar historias de usuario, las cuales se tienen que estimar y negociar si serán parte del actual desarrollo, en tal caso se tiene que renegociar las fechas de entrega.
+
+            \item[Re-estimación:] Si durante el desarrollo el equipo considera que el plan ya no es correcto, todas las historias que faltan hacer se tienen que re-estimar y el plan se tiene que re-negociar con el cliente.
+          \end{description}
+
+        % end planning_game
+
+          \subsection{Iteration Planning Game}
+          \label{sub:iteracion}
+
+            % \subsubsection{Iteración}
+            % \label{subs:iteracion}
+
+            La fase de Iteración en XP se lo denomina como Iteration Planning Game, esta al igual que  el release planning game consiste en las fases de: Exploración, Planning e Implementaci\'on. Steering.\\
+
+            Hay que tomar en cuenta que la planeación de una iteración en particular es desarrollada al inicio de cada interacción, no se planifican iteraciones por adelantado.\\
+
+            Generalmente cada 3 iteraciones se actualiza el Calendario de Entregas “committed schedule” para reflejar los logros alcanzados por el equipo de desarrollo y el estado del proyecto, también sirve para identificar posibles riesgos.\\
+
+            \subsubsection{Exploración}
+            \label{subs:exploracion}
+
+            Durante esta fase el cliente escoge las historias de usuario que serán implementadas en la presente iteración, generalmente se escogen las que aportan más valor al producto o tienen más relevancia en la lógica de negocio del cliente, asi como tambien cualquier historia que no se acabó en una iteración anterior.\\
+
+            Los desarrolladores dividen las historias en Tareas de Ingeniería, las cuales son más pequeñas que las historias, si se encuentra que una Tarea es casi tan grande como una historia es porque es una historia y debería ser dividida en Tareas. Una tarea puede estar relacionada a 2 o mas historias o no estar relacionada con ninguna historia. Dentro de la metodología XP es una buena práctica el escribir las tareas en las  “Index Cards”, similares a las historias, esto debido a que estas tarjetas son fáciles de manipular durante la fase de planeación.\\
+
+            % end exploracion
+
+            \subsubsection{Planeación}
+            \label{subs:planeacion}
+
+            Durante esta fase un desarrollador acepta la responsabilidad de implementar una Tarea de acuerdo de su experiencia personal en el área y tecnologías que se usarán en el desarrollo. El desarrollador debe estimar el tiempo necesitado para completar la tarea en un \emph{Ideal Engineering Time} Tiempo de Ingenieria Ideal, siempre hay que considerar que la tarea se deriva de la Historia de usuario que es escogido para la iteración actual, una regla de XP consiste en que no se debe realizar trabajo el cual no se va necesitar ahora, \textbf{YAGNI}\footnote{You aren't gonna need it. En espa\~nol, Tu no lo vas a necesitar \'o No vas a necesitarlo.}.\\
+
+            La Tarea combinada con el nombre del desarrollador responsable, la estimación asignada son parte del \emph{Iteration Schedule} \'o \emph{Plan de la Iteración}, con el cual el equipo de desarrollo es capaz de determinar si la iteración está \emph{floja} o \emph{cargada}, si está \emph{floja} se pueden añadir otras historias a la iteración o si está \emph{cargada} es necesario dividir historias.\\
+            Finalmente cuando la carga de trabajo de la iteración está balanceada se procede con la siguiente fase, la \emph{Implementación} de las tareas.
+
+
+            % end planeacion
+
+            \subsubsection{Implementación}
+            \label{subs:implementacion}
+
+            % dentro de la Implementación una Tarea de desarrollar.
+            Dentro de lo que es el ciclo de desarrollo de software, \textbf{XP} define el siguiente procedimiento:
+
+            \begin{itemize}
+              \item Analizar lo que hay que hacer, esto envuelve lo que es analizar las Tarjetas de Ingeniería y/o las historias de usuario. %, de ser necesario se realiza una sesión CRC.
+              \item Escribir Pruebas Unitarias, son bastante útiles para determinar cuando la tarea está completada.
+              \item Implementar el código suficiente para lograr que las pruebas unitarias pasen exitosamente.
+              \item Simplificar el código si es necesario (Refactor Mercilessly).
+              \item Integrar los cambios continuamente (Continuous Integration).
+            \end{itemize}
+            % end implementacion
+
+            \subsubsection{Registrar el Avance}
+            \label{subs:registrar_avance}
+            XP define un rol en específico que se encarga de medir el progreso, el Tracker.
+
+            \subsubsection{Verificación}
+            \label{subs:verificacion}
+            Cada historia lleva asociado test funcionales, que están diseñados para verificar que los criterios de aceptación de cada historia están implementados. \\
+            Si durante esta fase las pruebas fallan, la historia de usuario relacionada se marca para volver a trabajar en ella en la siguiente iteración.\\
+
+
+            % end iteracion
+
+          % end steering
+
+
+
+        % end proceso_de_desarrollo
+    % end xp
+
+
+  %
+  %
+  % Para el presente proyecto de grado se implementará los siguientes roles:
+  % Programador, Cliente, Tester, roles que serán representados por mi persona.
+  % Tracker y entrenador será representado por el Tutor.
+  % Consultor será representado por la docente de proyecto final
+
+
+  % end metodologia_de_desarrollo

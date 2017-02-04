@@ -1,0 +1,52 @@
+\section{Ember JS}
+\label{sec:ember_js}
+
+  % Ember is an evolving JavaScript framework for creating “ambitious web applications”, it tries to maximize developers’ productivity using a set of conventions in a way that they don’t need to think about common idioms when building web applications.
+  % \vspace*{\fill}
+  \begin{quote}
+  \centering
+  A Framework for creating ambitious web applications
+  \end{quote}
+  % \vspace*{\fill}
+
+
+Un framework\footnote{Se define a un \textbf{framework} (marco de trabajo) como la abstracción en el cual el software provee funcionalidad la cual puede ser modificada por el usuario final.} para crear aplicaciones web ambiciosas, es el eslogan de EmberJS,con el que trata de decirnos que usando este framework se puede lograr implmentar una buena e interesante aplicaciones web.\\
+
+Para explicar lo que es EmberJS hay que decir que centró su desarrollo en 3 objetivos:
+
+Enfocarse en aplicaciones web ambiciosas. %//Focus on ambitious web applications
+Previsión de Futuros estándares web. %//Future web standards foresight
+Estabilidad sin estancamiento.\cite{ember_antidote} %//Stability without stagnation []
+
+
+Ember provee una solución completa a los ``problemas'' más comunes en el desarrollo de aplicaciones web, pero esto significa mucho ``más trabajo'' y una curva de aprendizaje más empinada. Pero con una consiguiente ayuda para el desarrollador ya que los ``problemas'' más comunes están resueltos y el desarrollador tiene que enfrentarse a los problemas propios o del modelo de negocio propio de la aplicación a desarrollar.\\
+
+Ember cuenta con su capa de persistencia o la capa del \textbf{Modelo} en el patrón MVC\footnote{\textbf{Modelo-Vista-Controlador} o MVC es un patrón de arquitectura de software que separa los datos de una aplicación (Modelo), la interfaz de usuario (Vista), y la lógica de control de la aplicaci\'on (Controlador) en tres componentes distintos\cite{mvc}.}, \emph{Ember-Data}, el cual maneja los datos mientras están en memoria y se asegura de sincronizar con el servidor cuando se requiere y modifica la base de datos. El formato por defecto para manejar la información es JSON\footnote{\textbf{JSON} acr\'onimo de \emph{JavaScript Object Notation}, es un formato de texto ligero para el intercambio de datos}.\\
+
+Para facilitar el trabajo de desarrollo en la capa de la \textbf{Vista}, Ember implementa \emph{HTMLHandleBars}\footnote{\textbf{HTMLHandleBars} Es motor de plantillas se usa para separar el diseño HTML de Javascript, para así escribir código mucho más limpio.)}\footnote{http://handlebarsjs.com/} que permite embeber código enlazando o sincronizado con el Controlador. Esto significa que si actualizamos código en la Vista, este es actualizado en el Controlador y viceversa.\\
+
+% <Screenshot de uso de HTML HandleBars>
+
+En Ember La capa del \textbf{controlador} es  la encargada de recibir los datos de la Vista y de acuerdo a la interacción del usuario con la aplicación, dispara o activa diferentes acciones que en general modifican los datos ingresados y ya sea para mostrar en UI o guardarlo en la base de datos.\\
+
+% // está siendo deprecada en favor de “Componentes”, esto en favor de la nueva convención “Data down, Actions up”, este cambio es para poder
+
+Ember provee de una herramienta de línea de comandos (\emph{Ember-CLI}\footnote{\textbf{Ember-CLI} es el acrónimo de \emph{Ember Command Line Interface}}) que ofrece para agilizar el desarrollo, usado para automatizar procesos repetitivos, por ejemplo, estableciendo la estructura de directorios del proyecto esto basado en la experiencia de numerosos proyectos, realiza la concatenación, compilación, compresión, y demás manejos de archivos. Como también provee un ecosistema de addons\footnote{Addon o Complemento, es un componente de software que añade una característica a un programa ya existente}.\\
+
+Para el desarrollo de este proyecto se hará uso de distintos addons, por ejemplo:
+
+\begin{description}
+\item[ember-paper:] Este addons es el encargado de adaptar la Vista de la aplicación web en la pantalla de un smartphone, necesario ya que por ejemplo el smartphone no tiene un mouse para hacer click, por el contrario es necesario hacer “tap” con un dedo para ejecutar la misma acción que el mouse, también está el hecho que el tamaño de la pantalla del smartphone es muy inferior a la de un monitor estándar pero la experiencia del usuario tiene que estar diseñada para interactuar con las características que nos ofrece un smartphone.
+% <screenshot de la aplicación >
+
+\item[ember-leaflet:] Este addon está diseñado para ayudar a desplegar un mapa, en este caso de estudio se está usando los mapas de OpenStreetMaps™, y optimizado para no usar demasiados recursos, ya que muchas veces los smartphones aún teniendo buenas características no se comparan a una computadora de escritorio.
+  % <screenshot de un mapa>
+
+\item[CloudinaryJS:] Addon diseñado para poder manejar las imágenes en la nube, provee varias características como adaptación de la imagen al celular sin hacer uso de nuestro backend o servidor, es de uso libre pero con limitaciones uso en cuanto a las transacciones que se pueden realizar o la cantidad de imágenes que se pueden almacenar.
+% <screenshot de imagen>
+
+\end{description}
+
+
+
+% end ember_js

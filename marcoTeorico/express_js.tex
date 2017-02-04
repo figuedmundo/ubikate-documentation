@@ -1,0 +1,30 @@
+\section{Express JS}
+\label{sec:express_js}
+  Express.js es un framework que esta construido sobre la funcionalidad de servidor web de Node.js, Express.js ayuda a simplificar el API de Node y a\~nadir nuevas caracter\'isticas, dise\~nadas para mejorar y facilitar la organizaci\'on de una aplicaci\'on \emph{Express}.\\
+
+  El Cliente (navegador web, aplicacion movil, etc) envia una peticion web y el servidor web de Node.js maneja los protocolos web, leyendolos y enviandolos a una aplicacion \emph{Express} que se encarga de a\~nadir caracteristicas a la peticion y espera la respuesta del ``Middleware Stack'', la funcion responde a la llamada y el servidor HTTP de Node envia la respuesta mediante los protocolos web al Cliente.\\
+
+  Para escribir un servidor web con Express no es necesario una gran funcion para manejar un request, Express contiene utilidades que permite escribir funciones mas peque\~nas para facilitar el manejo de las peticiones web, asiendo uso de ``middleware'' y ``routing''.
+
+  \subsection{Middleware}
+  \label{sub:middleware}
+    Node.js maneja una funci\'on para trabajar con una peticion web, encambio \emph{Express} maneja la llamada con varias funciones, cada funcion se encarga de una peque\~na parte del trabajo. Estas peque\~nas funciones que manejan la peticion web se denomina \emph{Middleware functions} o Middleware.
+
+  %  end sub section middleware
+
+  \subsection{Routing}
+  \label{sub:routing}
+    Muy parecido al Middleware, el Routing se encarga de partir una funcion de peticion web monolitica en peque\~nas piezas, pero a diferencia del Middleware, estos menajadores peticiones se ejecutan condicionalmente dependidiendo del URL y el metodo HTTP (GET, POST, DELETE) que el cliente envia.\\
+
+  %  end sub section routing
+
+  Express.js es bastante extensible y cuenta con gran popularidad en la comunidad de desarrollo, la cual provee herramientas para renderizar dinamicamente HTML o interfaces para comunicarse con Bases de Datos, por ejemplo para manejar la coneccion y llamadas a la base de datos PostgreSQL se uso la libreria \emph{knex} .
+
+  \begin{verbatim}
+    database.any("SELECT * FROM users WHERE id = $1", [userId])
+      .then(function (data) {
+          response.send(data.name);
+      });
+  \end{verbatim}
+
+% section Express JS (end)

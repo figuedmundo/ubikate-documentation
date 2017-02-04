@@ -1,17 +1,17 @@
-\chapter{Iteración 2}
-\label{chap:iteracion_2}
+\section{Iteración 2}
+\label{sec:iteracion_2}
 
 Después de que finalizó la primera iteración y ya que todas las pruebas pasaron exitosamente, se continúa con la segunda iteración.
 
 
-\section{Iteration Planning Meeting}
-\label{sec:iteration2_planning_meeting}
+\subsection{Iteration Planning Meeting}
+\label{sub:iteration2_planning_meeting}
 
 
 Al igual que la primera iteración, las fases de exploración y planeación se realizan al mismo tiempo, en el sentido que no es necesario repartir las tareas resultantes de la exploración, por lo tanto al mismo tiempo en que se determinan las tareas se puede realizar la estimación de las mismas.
 
-  \subsection{Exploración y Planeación}
-  \label{sub:iteration2_exploracion_planeacion}
+  \subsubsection{Exploración y Planeación}
+  \label{subs:iteration2_exploracion_planeacion}
 
   Para la segunda iteración se toman en cuenta todas las historias de usuario restantes, y de acuerdo al criterio de escoger las siguientes historias más relevantes y de mayor valor para el producto, se escogió la historia de usuario #4.\\
 
@@ -30,20 +30,20 @@ Al igual que la primera iteración, las fases de exploración y planeación se r
     \input{iteration2/gant}
 
 
-\section{Implementación}
-\label{sec:implementacion_iteracion_1}
+\subsection{Implementación}
+\label{sub:implementacion_iteracion_1}
 
 Durante esta fase es donde se implementaran las tareas especificadas en la tabla \ref{tab:us04_tasks}.
 
-\subsection{RF011}
-\label{sub:RF011}
+\subsubsection{RF011}
+\label{subs:RF011}
 
 % Crear un archivo shapefile con la información geográfica de las rutas internas del campus de la UMSS
 
 Como ya se explico en \ref{sec:ruta_corta_umss}, esta tarea se llevo a cabo recabando la informacion geoespacial con un dispositivo GPS y exportando los datos resultantes a un archivo shapefile, el cual se puede apreciar en \ref{fig:shapefile_umss_v1}.
 
-\subsection{RF012}
-\label{sub:RF012}
+\subsubsection{RF012}
+\label{subs:RF012}
 
 % Preparar la base de datos para manejar información geográfica de rutas
 
@@ -85,8 +85,8 @@ Para entender los datos generados hay leer la informacion de las 2 tablas, por e
 
 Todo el conjunto de vertices y lineas de estas tablas se podria representar con una Matriz de adyacencias, explicada en \ref{sub:representacion_de_un_grafo}, y usada en la resolucion de la ruta mas corta, mas especificamente con el algoritmo de Dijkstra.
 
-\subsection{RF013}
-\label{sub:RF013}
+\subsubsection{RF013}
+\label{subs:RF013}
 
 % Investigar e instalar una herramienta que permita usar un servicio de mapas
 Durante la investigacion de esta tarea se encontro \emph{ember-leaflet}, una libreria o plugin que contiene las herramientas para poder cargar y usar un servicio de mapas.\\
@@ -99,8 +99,8 @@ Para instalar esta libreria solo se necesita ejecutar el siguiente comando y pos
 
 El resultado de la investigacion puede apreciar en el marco teórico, en la sección que describe la librería, \emph{ember-leaflet}. \ref{sec:ember_js}
 
-\subsection{RF014}
-\label{sub:RF014}
+\subsubsection{RF014}
+\label{subs:RF014}
 
 % El usuario puede ver un mapa usando un servicio del campus de la UMSS
 
@@ -120,8 +120,8 @@ Con la anterior instrucción se accede al servicio de \emph{Open Street Maps}, d
 %
 % Como resultado de esta tarea se puede apreciar la siguiente figura,
 
-\subsection{RF015}
-\label{sub:RF015}
+\subsubsection{RF015}
+\label{subs:RF015}
 % El usuario puede ver un marcador sobre el lugar
 
 Para completar esta tarea se continuó usando la librería \emph{ember-leaflet}, la cual permite que con la siguiente instrucción se despliegue un marcador sobre el mapa renderizado del API de \emph{Open Street Maps}.
@@ -132,8 +132,8 @@ Para completar esta tarea se continuó usando la librería \emph{ember-leaflet},
 
 El resultado de la tarea se puede observar en la figura \ref{fig:baquita_place}.
 
-\subsection{RF016}
-\label{sub:RF016}
+\subsubsection{RF016}
+\label{subs:RF016}
 % marcador se  tiene información básica del lugar, nombre, piso
 
 Para poder mostrar la informacion del lugar sobre el marcador creado en RF015 se hizo uso de la librería \emph{ember-leaflet}, al igual que dicha tarea, solo se necesito de una instruccion para poder desplegar la informacion necesaria.
@@ -159,8 +159,8 @@ En la figura \ref{fig:baquita_place} se puede apreciar el marcador con la inform
 \end{figure}
 
 
-\subsection{RF017}
-\label{sub:RF017}
+\subsubsection{RF017}
+\label{subs:RF017}
 % El usuario puede ver un marcador mostrando el lugar actual donde se encuentra (el usuario)
 
 Para encontrar la locación del usuario se uso el API de geolocalización propio de HTML5, que en un smarthphone puede acceder y usar los recursos nativos de un smartphone, es necesaria la aceptacion del usuario mediante un mensaje que el navegador desplega, la locacion es encontrada mediante la triangulacion de Coordenadas por GPS (el mas exacto a la hora de encontrar la locacion del dispositvo), Wi-Fi, GSM o CDMA. Solo es necesaria la ejecucion de la siguente linea para ponder obetener la posición actual del usuario usando el API de geolocalización de HTML5.
@@ -182,8 +182,8 @@ La \emph{latitud} y \emph{longitud} obtenidas es fácilmente trasladado al mapa 
   \end{center}
 \end{figure}
 
-\subsection{RF018}
-\label{sub:RF018}
+\subsubsection{RF018}
+\label{subs:RF018}
 % Desarrollar un módulo que encuentra la ruta más corta usando la base de datos con información geográfica ruteable de RF012
 
 Durante esta tarea se investigó la mejor forma de encontrar la ruta más corta y se llegó a la conclusión de usar la combinación de \emph{Postgres + Postgis + pgRouting}, esta investigación se puede apreciar en el marco teórico.\\
@@ -202,8 +202,8 @@ Tomando en cuenta los conceptos aprendidos y las herramientas investigadas es qu
 %             "FROM pgr_dijkstra('SELECT gid AS id, source::integer, target::integer, st_length(geom) AS cost " +
 %             "                   FROM public.ways', " + targetId + ", " + sourceId + ", false, false);";
 
-\subsection{RF019}
-\label{sub:RF019}
+\subsubsection{RF019}
+\label{subs:RF019}
 % El usuario puede ver una línea roja que une el marcador de la posición del usuario con el marcador del lugar
 Como resultado de la tarea RF018 se tiene un conjunto de datos en formato de latitud y longitud que conforman líneas, las cuales representan la ruta más corta, pero al final es solo un montón de números, útiles pero para el usuario esta información es difícil de procesar, el usuario necesita información que sea fácil de entender y no existe mejor herramienta disponible para esta tarea que mostrar la \emph{ruta} de forma visual, esto quiere decir que se necesita mostrar la ruta sobre un \emph{mapa}, en la aplicación se usará \emph{ember-leaflet} para desplegar el mapa ofrecido por los servicios de OpenStreetMaps y también para mostrar ruta más corta mediante una línea de color rojo.\\
 
@@ -256,13 +256,13 @@ Y se puede observar en el mapa una línea roja que representa la ruta más corta
   \end{center}
 \end{figure}
 
-\subsection{TS004}
-\label{sub:TS004}
+\subsubsection{TS004}
+\label{subs:TS004}
 
 Pruebas funcionales
 
-\section{Registrar el Avance}
-\label{sec:iteracion2_avance}
+\subsection{Registrar el Avance}
+\label{sub:iteracion2_avance}
 
-\section{Verificación}
-\label{sec:iteracion2_verificacion}
+\subsection{Verificación}
+\label{sub:iteracion2_verificacion}

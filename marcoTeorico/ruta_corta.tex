@@ -1,5 +1,5 @@
-\chapter{Ruta Óptima dentro el campus Universitario} % (fold)
-\label{cha:ruta_optima}
+\section{Ruta Óptima dentro el campus Universitario} % (fold)
+\label{sec:ruta_optima}
 
 
 Si se quiere ir de un punto a otro el mejor camino o el más óptimo siempre es aquel con la menor distancia entre los 2 puntos, pero como se puede definir que un camino es óptimo?, si se va en coche hay que tomar en cuenta la dirección de las calles, los cruces, etc. si se va a pie hay que ver las características del terreno, caminos cortados, distancias, etc.\\
@@ -11,8 +11,8 @@ Si se analiza el terreno que se va a cubrir con la aplicación (el campus de la 
 La resolución de este problema es la se analizará en este capítulo.
 
 
-  \section{Grafos} % (fold)
-  \label{sec:teoria_grafos}
+  \subsection{Grafos} % (fold)
+  \label{sub:teoria_grafos}
 
     El problema se lo podria definir como; Encontrar la ruta más corta de un punto a otro punto, en donde los puntos están interconectados por una red de caminos. El problema descrito se lo puede resolver/describir como un caso espec\'ifico de la teoría de grafos.
 
@@ -45,8 +45,9 @@ La resolución de este problema es la se analizará en este capítulo.
     \subsection{Representacion de un Grafo} % (fold)
     \label{sub:representacion_de_un_grafo}
       Existen diversas formas de representar un grafo sea dirigido o no-dirigido, pero entre las mas usadas están la matriz de adyacencias y la lista de adyacencias.
-      \subsubsection{Matriz de adyacencias de un Grafo} % (fold)
-      \label{ssub:matriz_de_adyacencias_de_un_grafo}
+
+      \subsection{Matriz de adyacencias de un Grafo} % (fold)
+      \label{sub:matriz_de_adyacencias_de_un_grafo}
         Sea $G = (V,A)$ un grafo de \emph{n} vértices. La matriz de adyacencias $M$  para $G$ es una matriz $M_{nxn}$ de valores booleanos, donde $M(i,j)$ es verdad si y sólo si existe un arco desde el nodo \emph{i} al nodo \emph{j}.
 
         \begin{displaymath}
@@ -117,7 +118,7 @@ La resolución de este problema es la se analizará en este capítulo.
       % subsubsection matriz_de_adyacencias_de_un_grafo (end)
 
     % subsection representacion_de_un_grafo (end)
-    \subsection{Ruta mas corta} % (fold)
+    \subsection{El Problema de la ruta mas corta} % (fold)
     \label{sub:ruta_mas_corta}
       Dados los vértices $v_{i}$ y $v_{j}$ de un grafo $G = (V,A)$ se llama trayectoria mínima o camino minimo  de \(v_i\) a \(v_j\) al numero de aristas del camino de longitud mínima que va desde $v_i$ a $v_j$ y se representa por $d(v_i, v_j)$.
 
@@ -128,7 +129,7 @@ La resolución de este problema es la se analizará en este capítulo.
 
 
       \subsubsection{Algoritmo de Dijkstra} % (fold)
-      \label{sub:algoritmo_de_dijkstra}
+      \label{subs:algoritmo_de_dijkstra}
       El algoritmo de  Dijkstra fue descrito en 1959 por \emph{Edsger Dijkstra}, y permite encontrar la trayectoria más corta entre dos nodos específicos, cuando los valores de los arcos son todos positivos\\
 
       El algoritmo asigna un etiqueta a cada nodo en el grafo. Esta etiqueta es la distancia que hay desde el nodo \emph{s} escogido como origen a lo largo de la trayectoria más corta encontrada, hasta el nodo que se está etiquetando.\\
@@ -263,20 +264,25 @@ El grafo correspondiente a la facultad de Arquitectura cuenta con XX aristas y X
   \end{center}
 \end{figure}
 
+% ********************************************************************
+% ********************************************************************
+% ********************************************************************
 
-  \section{Conclusi\'on} % (fold)
-  \label{sec:ruta_conclusion}
+  % \section{Conclusi\'on} % (fold)
+  % \label{sec:ruta_conclusion}
+  %
+  %   Existen numerosas soluciones para encontrar la ruta óptima, donde se toman en cuenta diferentes variables y heurísticas, en el que  cada algoritmo presenta ventajas respecto a las demás.
+  %   La teoría de grafos  es un tema extenso y para fines prácticos
+  %   solo se explicó el algoritmo de Dijkstra por ser el que se esta usando en la aplicación desarrollada.\\
+  %
+  %   El algoritmo de Dijkstra puede ser una de las soluciones más sencillas y que requiere muchos más cálculos que las demás pero el grafo implementado al no ser extenso, por extenso se podria entender un grafo con millones de aristas y vertices como se puede dar en el caso de una Ciudad o un Pais, pero en el presente caso al ser los predios de campus Universitario no existe una razón de gran peso para implementar otra solución más eficiente en el manejo de recursos.\\
+  %
+  %   El problema de la ruta más corta es ampliamente usado por las empresas de transporte, correos, etc., que necesitan mejorar la eficiencia del trayecto y a la vez reducir el consumo de combustible, dentro del campus universitario, reducir el tiempo en el cual encontramos un aula o una oficina mejoraría en gran medida la presentación de la Universidad hacia gente externa que necesitan hacer uso o encontrar algún lugar en especifico ya que lamentablemente esta información actualmente sólo te la pueden ofrecer las personas que conocen el lugar de antemano y aun en esos casos existe la posibilidad de no encontrar el lugar que se está buscando.\\
 
-    Existen numerosas soluciones para encontrar la ruta óptima, donde se toman en cuenta diferentes variables y heurísticas, en el que  cada algoritmo presenta ventajas respecto a las demás.
-    La teoría de grafos  es un tema extenso y para fines prácticos
-    solo se explicó el algoritmo de Dijkstra por ser el que se esta usando en la aplicación desarrollada.\\
 
-    El algoritmo de Dijkstra puede ser una de las soluciones más sencillas y que requiere muchos más cálculos que las demás pero el grafo implementado al no ser extenso, por extenso se podria entender un grafo con millones de aristas y vertices como se puede dar en el caso de una Ciudad o un Pais, pero en el presente caso al ser los predios de campus Universitario no existe una razón de gran peso para implementar otra solución más eficiente en el manejo de recursos.\\
-
-    El problema de la ruta más corta es ampliamente usado por las empresas de transporte, correos, etc., que necesitan mejorar la eficiencia del trayecto y a la vez reducir el consumo de combustible, dentro del campus universitario, reducir el tiempo en el cual encontramos un aula o una oficina mejoraría en gran medida la presentación de la Universidad hacia gente externa que necesitan hacer uso o encontrar algún lugar en especifico ya que lamentablemente esta información actualmente sólo te la pueden ofrecer las personas que conocen el lugar de antemano y aun en esos casos existe la posibilidad de no encontrar el lugar que se está buscando.\\
-
-
-
+    % ********************************************************************
+    % ********************************************************************
+% ********************************************************************
 
   % section ruta_conclusion (end)
 % chapter ruta_optima (end)
