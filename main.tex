@@ -1,5 +1,11 @@
 \documentclass[11pt,letterpaper,oneside,openright]{book}
 
+
+% tipo de letra Helvetica, algo parecida a Arial
+% \usepackage{helvet}
+% \renewcommand{\familydefault}{\sfdefault}
+
+
 \usepackage[spanish]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
@@ -11,15 +17,38 @@
 \usepackage{multirow}
 \usepackage{booktabs}
 
+% \usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{microtype}
+
+
 \usepackage{graphicx}
 \usepackage{tikz}
 \usepackage{pgfgantt}
 \usepackage{pgfkeys}
 \usepackage{float}
+% \usepackage{minted}
 
 \usepackage{svg}
 \usepackage{amsmath}
+% \usepackage{listings}
+
+%para codigo fuente
+\usepackage{color}
+\usepackage{xcolor}
 \usepackage{listings}
+
+%Bibliografia en el indice
+%\usepackage[nottoc,numbib]{tocbibind}
+\usepackage[nottoc,notlot,notlof]{tocbibind}
+%para bookmarks
+
+%para numerar subsubsections
+\setcounter{secnumdepth}{3}
+%\setcounter{tocdepth}{3}
+%menos profundidad en el indice
+\setcounter{tocdepth}{1}
+
 
 \usepackage{tabularx}
 \usepackage{array}
@@ -71,9 +100,68 @@
 
 % \usepackage[charter]{mathdesign}
 
-\title{Desarrollo de una aplicaci\'on web móvil para visitas dentro el campus de la UMSS usando Geolocalización}
-\author{Edmundo Figueroa Herbas}
-\date{\today \ }
+
+\renewcommand{\lstlistingname}{Code}
+
+\lstset{
+    basicstyle=\footnotesize\ttfamily,
+    language=C++
+}
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+
+
+%margenes
+
+%segun guia
+% \usepackage[top=2cm, bottom=2cm, inner=3cm, outer=2cm]{geometry}
+
+%segun CD de carrera
+\usepackage[top=2.5cm, bottom=2.5cm, inner=3.5cm, outer=2.5cm]{geometry}
+
+% quita la sangria a los parrafos (sin sangria se ve feo :-)
+%\setlength{\parindent}{0cm}
+
+% Para tener cabecera y pie de pagina con un estilo personalizado
+\usepackage{fancyhdr}
+% \usepackage{floatpag}
+
+\pagestyle{fancy}
+\fancyhf{}% Clear page header/footer
+\renewcommand{\headrulewidth}{0pt}% No header rule
+\fancyfoot[C]{\thepage}
+
+\floatpagestyle{fancy}% Page style for float-page only
+
+%------------
+
+% Espacio parrafos
+\setlength{\parskip}{6pt}
+
+\usepackage[pdftex]{graphicx}
+\pdfcompresslevel=9
+
+\usepackage{adjustbox}
+
+%-------------------------------
+
+%
+% caratula
+%
+%para poner bookmark del CD de requisitos
+\bookmark[page=1,level=-2]{INICIO}
+
+\pagenumbering{Roman} % para comenzar la numeracion de paginas en numeros romanos
+
+
+% \title{Desarrollo de una aplicaci\'on web móvil para visitas dentro el campus de la UMSS usando Geolocalización}
+% \author{Edmundo Figueroa Herbas}
+% \date{\today \ }
+\include{caratula}
+
+
 
 \begin{document}
 % \include{title-page}

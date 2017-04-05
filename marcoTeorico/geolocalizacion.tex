@@ -66,10 +66,11 @@
 
         \begin{figure}[H]
           \begin{center}
+            \caption[Sistema de coordenadas Geocentricas ]{Sistema de coordenadas Geocentricas, en la figura se muestra la posici\'on del punto P}
+            \label{fig:coord_geocentric}
             \includegraphics[width=0.7\textwidth]{coord_geocentric}
+            \caption*{Fuente: Web}
           \end{center}
-          \caption[Sistema de coordenadas Geocentricas ]{Sistema de coordenadas Geocentricas, en la figura se muestra la posici\'on del punto P}
-          \label{fig:coord_geocentric}
         \end{figure}
 
         Este Sistema de coordenadas no es muy usado en la representacion de datos, pero aveces se lo requiere para analisis de algoritmos y geometria computacional.
@@ -113,96 +114,96 @@
          % de hecho Google Maps usa esta proyecci\'on.
       % subsection coordenadas_proyectadas (end)
 
-
-      \subsection{Que se us\'o en la Aplicaci\'on} % (fold)
-      \label{sub:que_se_uso_en_la_aplicacion}
-        Es importante entender las diferencias entre los distintos tipos de sistemas de coordenadas porque computacionalmente realizar operaciones sobre los sistemas de coordenadas tiene un costo.
-        Si se usara el sistema de coordenadas geográfico (WSG84) este es el más apropiado si se necesitaria usar grandes extensiones de la superficie terrestre, que al ser una estructura elipsoidal el costo computacional para realizar las operaciones matemáticas de calcular distancias, intersecciones, etc. es más elevado. En cambio el uso de un sistema de coordenadas proyectado (Mercator Projection) tiene un costo computacional más bajo, ya que se estaría trabajando con un sistema geométrico.\\
-
-        % Por otro lado,
-        También hay tomar en cuenta la base de datos, ya que será esta la que se encargara de manejar los datos espaciales. Al estar usando PostGIS, se puede ver que en su documentacion\footnote{ http://postgis.org/documentation/manual-1.5/ch04.html} que claramente exorta el uso de un sistema geometrico sobre el uso de un sistema geografico si  se va trabajar con datos que cubran una peque\~na area geografica. Tomando en cuenta esta recomendaci\'on y el tama\~no del área de estudio (el campus de la UMSS), se procedió a implementar en la base de datos el uso de la proyecci\'on Mercator. Se va usar Mercator sobre las otras proyecciones porque aparte de las ventajas que se mencionaron con anterioridad, Google Maps usa esta proyecci\'on y ya que se usara este mapa lo más correcto es trabajar con la misma proyecci\'on.
-
-
-        % Comoprojected
-        % PostGIS maneja dos tipos de datos, geograficos y geometricos
-
-      % section que_se_uso_en_la_aplicacion (end)
-  % section sistema_de_coordenadas_para_datos_geograficos (end)
-  % \section{Tipo de archivos} % (fold)
-  % \label{sec:tipo_de_archivos}
   %
-  % section tipo_de_archivos (end)
-
-  \subsection{Implementaci\'on} % (fold)
-  \label{sub:Implementacion}
-    Para menenjar datos georreferenciados con tecnologia JavaScript, ya que se implemento el Backend con NodeJS, se hizo uso del la libreria \textbf{KnexJS} para manejar la conecion a la base de datos PostgreSQL, y BookshelfJS para las consultas SQL pero para las conultas con datos geospaciales se realizo a traves de esta herramienta pero usando la forma \emph{Raw SQL}\footnote{Raw SQL se refiere a consultas en ``SQL puro'' ya que el fuerte de BookshelfJS es el manejo de las consultas en forma de objetos (ORM), lamentablemente actualmente no existe mucho soporte para manejar datos geospaciales}.
-
-    \begin{center}
-      \begin{verbatim}
-        var raw = "SELECT " +
-                    " ST_AsGeoJSON(geom)::json As geometry," +
-                    " name," +
-                    " description," +
-                    " phone," +
-                    " level," +
-                    " gid As id " +
-                  " FROM place WHERE LOWER(name)
-                         like LOWER('%" + name + "%')";
-      \end{verbatim}
-    \end{center}
-
-    De esta forma es que se recupera de la base de datos un lugar georreferenciado, donde este tiene un nombre, una descripcion, un telefono, el nivel o piso donde se encuentra pero lo importante de esta consulta es la obtencion del ``punto'' geoespacial del lugar.
-
-    \begin{center}
-      \begin{verbatim}
-        "POINT (-66.14857015827988 -17.394421906929086)"
-      \end{verbatim}
-    \end{center}
-
-    % var raw = "SELECT seq, id1 AS node, id2 AS edge, cost
-    %            FROM pgr_dijkstra('SELECT gid AS id,
-    %                                     source::integer,
-    %                                     target::integer,
-    %                                     st_length(geom) AS cost
-    %                               FROM public.ways', targetId, sourceId, false, false);";
-
-
-     Este atributo es de tipo \emph{punto} \'o \emph{point} el cual tiene un \emph{SRID}\footnote{ Spatial Reference System Identifier, El \emph{SRID} corresponde a un sistema de referencia espacial basado en el elipsoide concreto usado para la creación de mapas de tierra plana o de tierra redonda.\cite{msdn_srid} } \emph{3857}\footnote{La proyeccion Mercator usa el EPSG 3857}, el SRID  es la llave primaria de la tabla \emph{spatial\_ref\_sys} que se crea cuando se inicializa una base de datos que soporte informacion geoespacial (PostGis), esta tabla provee la informaci\'on necesaria para interpretar y convertir correctamente todas las coordenadas existentes, el \emph{SRID 3857} esta definida en la tabla \emph{spatial\_ref\_sys} como ``Popular Visualisation CRS / Mercator''.\\
-
-
-    Obtener la coordenada es el primer paso, seguidamente se debe mostrarlo sobre un mapa, en este caso \emph{Open Street Maps}, como se puede apreciar en la figura \ref{fig:ember_leaflet}, esta interfaz esta implementada usando \emph{ember-leaflet}, el cual esta principalmente dise\~nada para ofrecer una mejor experiencia de usario en celulares smartphones.\\
-
-    % \begin{center}
-    %   \begin{verbatim}
-    %     var maker = new google.maps.Marker({
-    %       position: new google.maps.LatLng( lat, lng  )
-    %       map: UMSS.map
-    %     });
-    %   \end{verbatim}
-    % \end{center}
-
-    \begin{verbatim}
-      {{#leaflet-map lat=lat lng=lng zoom=zoom}}
-        {{tile-layer url="http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png" }}
-          {{#marker-layer location=location}}
-            <h3>{{model.name}}</h3>
-            {{model.description}} <br>
-            <strong>telf:</strong> {{model.phone}} <br>
-            <strong>piso </strong>#{{model.level}}
-        {{/marker-layer}}
-      {{/leaflet-map}}
-    \end{verbatim}
-
-    \begin{figure}[H]
-          \begin{center}
-            \caption{\emph{ember-leaflet} nos ayuda a despleyar un mapa y mostrar un \emph{punto} o \emph{lugar} con un \emph{marcador} y dibuja una línea de color rojo sobre el mapa.}
-            \label{fig:ember_leaflet}
-            \includegraphics[width=0.5\textwidth]{ember_leaflet}
-          \end{center}
-          \caption*{Fuente: Elaboración propia.}
-    \end{figure}
-
-
+  %     \subsection{Que se us\'o en la Aplicaci\'on} % (fold)
+  %     \label{sub:que_se_uso_en_la_aplicacion}
+  %       Es importante entender las diferencias entre los distintos tipos de sistemas de coordenadas porque computacionalmente realizar operaciones sobre los sistemas de coordenadas tiene un costo.
+  %       Si se usara el sistema de coordenadas geográfico (WSG84) este es el más apropiado si se necesitaria usar grandes extensiones de la superficie terrestre, que al ser una estructura elipsoidal el costo computacional para realizar las operaciones matemáticas de calcular distancias, intersecciones, etc. es más elevado. En cambio el uso de un sistema de coordenadas proyectado (Mercator Projection) tiene un costo computacional más bajo, ya que se estaría trabajando con un sistema geométrico.\\
+  %
+  %       % Por otro lado,
+  %       También hay tomar en cuenta la base de datos, ya que será esta la que se encargara de manejar los datos espaciales. Al estar usando PostGIS, se puede ver que en su documentacion\footnote{ http://postgis.org/documentation/manual-1.5/ch04.html} que claramente exorta el uso de un sistema geometrico sobre el uso de un sistema geografico si  se va trabajar con datos que cubran una peque\~na area geografica. Tomando en cuenta esta recomendaci\'on y el tama\~no del área de estudio (el campus de la UMSS), se procedió a implementar en la base de datos el uso de la proyecci\'on Mercator. Se va usar Mercator sobre las otras proyecciones porque aparte de las ventajas que se mencionaron con anterioridad, Google Maps usa esta proyecci\'on y ya que se usara este mapa lo más correcto es trabajar con la misma proyecci\'on.
+  %
+  %
+  %       % Comoprojected
+  %       % PostGIS maneja dos tipos de datos, geograficos y geometricos
+  %
+  %     % section que_se_uso_en_la_aplicacion (end)
+  % % section sistema_de_coordenadas_para_datos_geograficos (end)
+  % % \section{Tipo de archivos} % (fold)
+  % % \label{sec:tipo_de_archivos}
+  % %
+  % % section tipo_de_archivos (end)
+  %
+  % \subsection{Implementaci\'on} % (fold)
+  % \label{sub:Implementacion}
+  %   Para menenjar datos georreferenciados con tecnologia JavaScript, ya que se implemento el Backend con NodeJS, se hizo uso del la libreria \textbf{KnexJS} para manejar la conecion a la base de datos PostgreSQL, y BookshelfJS para las consultas SQL pero para las conultas con datos geospaciales se realizo a traves de esta herramienta pero usando la forma \emph{Raw SQL}\footnote{Raw SQL se refiere a consultas en ``SQL puro'' ya que el fuerte de BookshelfJS es el manejo de las consultas en forma de objetos (ORM), lamentablemente actualmente no existe mucho soporte para manejar datos geospaciales}.
+  %
+  %   \begin{center}
+  %     \begin{verbatim}
+  %       var raw = "SELECT " +
+  %                   " ST_AsGeoJSON(geom)::json As geometry," +
+  %                   " name," +
+  %                   " description," +
+  %                   " phone," +
+  %                   " level," +
+  %                   " gid As id " +
+  %                 " FROM place WHERE LOWER(name)
+  %                        like LOWER('%" + name + "%')";
+  %     \end{verbatim}
+  %   \end{center}
+  %
+  %   De esta forma es que se recupera de la base de datos un lugar georreferenciado, donde este tiene un nombre, una descripcion, un telefono, el nivel o piso donde se encuentra pero lo importante de esta consulta es la obtencion del ``punto'' geoespacial del lugar.
+  %
+  %   \begin{center}
+  %     \begin{verbatim}
+  %       "POINT (-66.14857015827988 -17.394421906929086)"
+  %     \end{verbatim}
+  %   \end{center}
+  %
+  %   % var raw = "SELECT seq, id1 AS node, id2 AS edge, cost
+  %   %            FROM pgr_dijkstra('SELECT gid AS id,
+  %   %                                     source::integer,
+  %   %                                     target::integer,
+  %   %                                     st_length(geom) AS cost
+  %   %                               FROM public.ways', targetId, sourceId, false, false);";
+  %
+  %
+  %    Este atributo es de tipo \emph{punto} \'o \emph{point} el cual tiene un \emph{SRID}\footnote{ Spatial Reference System Identifier, El \emph{SRID} corresponde a un sistema de referencia espacial basado en el elipsoide concreto usado para la creación de mapas de tierra plana o de tierra redonda.\cite{msdn_srid} } \emph{3857}\footnote{La proyeccion Mercator usa el EPSG 3857}, el SRID  es la llave primaria de la tabla \emph{spatial\_ref\_sys} que se crea cuando se inicializa una base de datos que soporte informacion geoespacial (PostGis), esta tabla provee la informaci\'on necesaria para interpretar y convertir correctamente todas las coordenadas existentes, el \emph{SRID 3857} esta definida en la tabla \emph{spatial\_ref\_sys} como ``Popular Visualisation CRS / Mercator''.\\
+  %
+  %
+  %   Obtener la coordenada es el primer paso, seguidamente se debe mostrarlo sobre un mapa, en este caso \emph{Open Street Maps}, como se puede apreciar en la figura \ref{fig:ember_leaflet}, esta interfaz esta implementada usando \emph{ember-leaflet}, el cual esta principalmente dise\~nada para ofrecer una mejor experiencia de usario en celulares smartphones.\\
+  %
+  %   % \begin{center}
+  %   %   \begin{verbatim}
+  %   %     var maker = new google.maps.Marker({
+  %   %       position: new google.maps.LatLng( lat, lng  )
+  %   %       map: UMSS.map
+  %   %     });
+  %   %   \end{verbatim}
+  %   % \end{center}
+  %
+  %   \begin{verbatim}
+  %     {{#leaflet-map lat=lat lng=lng zoom=zoom}}
+  %       {{tile-layer url="http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png" }}
+  %         {{#marker-layer location=location}}
+  %           <h3>{{model.name}}</h3>
+  %           {{model.description}} <br>
+  %           <strong>telf:</strong> {{model.phone}} <br>
+  %           <strong>piso </strong>#{{model.level}}
+  %       {{/marker-layer}}
+  %     {{/leaflet-map}}
+  %   \end{verbatim}
+  %
+  %   \begin{figure}[H]
+  %         \begin{center}
+  %           \caption{\emph{ember-leaflet} nos ayuda a despleyar un mapa y mostrar un \emph{punto} o \emph{lugar} con un \emph{marcador} y dibuja una línea de color rojo sobre el mapa.}
+  %           \label{fig:ember_leaflet}
+  %           \includegraphics[width=0.5\textwidth]{ember_leaflet}
+  %         \end{center}
+  %         \caption*{Fuente: Elaboración propia.}
+  %   \end{figure}
+  %
+  %
 
     % Pero esta coordenada  no seria  facil de entender sin una adecuada representacion sobre un mapa,
 
@@ -222,11 +223,12 @@
 
   % \section{Conclusi\'on} % (fold)
   % \label{sec:geo_conclusion}
-  %   Los Mapas son herramientas muy útiles a la hora de desplegar información pero realizar el mapa, crear las fórmulas matemáticas con las cuales se trabajará, determinar cómo se usarán estas fórmulas para una representación adecuada de la superficie terrestre, es una tarea muy compleja. Como programador la tarea más complicada fue determinar el tipo de mapa y el sistema de coordenadas más adecuado para el tipo proyecto que se necesita desarrollar.\\
   %
-  %   Los términos de longitud y latitud son en un inicio, más fácilmente comprendidos que un sistema proyectado, pero no se puede tomar a la ligera una correcta comprensión del uso de los \emph{sistemas de coordenadas} en una base de datos espacial, un mal uso de estos conceptos puede generar errores a la hora de manejar datos  espaciales o en el resultado de las operaciones sobre estos  datos, llegando a resultados no deseados y que pueden costar mas tiempo y dinero en una posterior correci\'on.\\
-  %
-  %   La geolocalizaci\'on es actualmente una tecnolog\'ia y una herramienta usada en gran medida por una gran cantidad de aplicaciones web, a\~nadiendo b\'usquedas y resultados personalizados a nivel pa\'is, ciudad, barrio y calle, resultando en una gran variedad de servicios y que actualmente es de gran ayuda en diferentes escenarios. La geolocalizaci\'on nos ayuda a movernos por una ciudad, encontrar restaurantes, cines, transporte, etc. actualmente es una de las herramientas m\'as usadas y desarrolladas a nivel de industria, comercio, turismo, etc. y vale la pena estudiarla y entenderla.\\
+    Los Mapas son herramientas muy útiles a la hora de desplegar información pero realizar el mapa, crear las fórmulas matemáticas con las cuales se trabajará, determinar cómo se usarán estas fórmulas para una representación adecuada de la superficie terrestre, es una tarea muy compleja. Como programador la tarea más complicada fue determinar el tipo de mapa y el sistema de coordenadas más adecuado para el tipo proyecto que se necesita desarrollar.\\
+
+    Los términos de longitud y latitud son en un inicio, más fácilmente comprendidos que un sistema proyectado, pero no se puede tomar a la ligera una correcta comprensión del uso de los \emph{sistemas de coordenadas} en una base de datos espacial, un mal uso de estos conceptos puede generar errores a la hora de manejar datos  espaciales o en el resultado de las operaciones sobre estos  datos, llegando a resultados no deseados y que pueden costar mas tiempo y dinero en una posterior correcion.\\
+
+    La geolocalizacion es actualmente una tecnologia y una herramienta usada en gran medida por una gran cantidad de aplicaciones web, anadiendo busquedas y resultados personalizados a nivel pais, ciudad, barrio y calle, resultando en una gran variedad de servicios y que actualmente es de gran ayuda en diferentes escenarios. La geolocalizacion nos ayuda a movernos por una ciudad, encontrar restaurantes, cines, transporte, etc. actualmente es una de las herramientas mas usadas y desarrolladas a nivel de industria, comercio, turismo, etc. y vale la pena estudiarla y entenderla.\\
 
 
 

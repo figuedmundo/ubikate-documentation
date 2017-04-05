@@ -40,64 +40,64 @@ Durante esta fase es donde se implementaran las tareas especificadas en la tabla
 
 % Crear un archivo shapefile con la información geográfica de las rutas internas del campus de la UMSS
 
-Como ya se explico en \ref{sec:ruta_corta_umss}, esta tarea se llevo a cabo recabando la informacion geoespacial con un dispositivo GPS y exportando los datos resultantes a un archivo shapefile, el cual se puede apreciar en \ref{fig:shapefile_umss_v1}.
+% Como ya se explico en \ref{sec:ruta_corta_umss}, esta tarea se llevo a cabo recabando la informacion geoespacial con un dispositivo GPS y exportando los datos resultantes a un archivo shapefile, el cual se puede apreciar en \ref{fig:shapefile_umss_v1}.
 
 \subsubsection{RF012}
 \label{subs:RF012}
 
 % Preparar la base de datos para manejar información geográfica de rutas
 
-Para realizar esta tarea se procedió a instalar pgRouting, el resultado de esta tarea se puede apreciar en el manual de instalación ## \\
-
-Una vez configurada la base de datos se procede a cargar la misma con la informacion obtenida en RF011, para tal efecto es necesario primeramente crear una tabla que contendra los LINESTRING contenidos en el shapefile, esta operacion es similar a la realizada en la tarea - RF003 (\ref{sub:RF003}). Una vez que ya se tiene la tabla a la llamamos \emph{ways}, se necesita ejecutar un query propio de \emph{pgRouting} el cual tiene como objetivo analizar los datos geo-espaciales de la tabla y a\~nadirle una \emph{topologia}.
-
-Dentro lo que es la \emph{topologia geoespacial} existe una aplicacion que se lo conoce como \emph{topología de red}. La \emph{topología de red} representa las relaciones entre segmentos en una red lineal o una colección de segmentos de línea\cite{osgeo_journal_topology}.
-En un \emph{SIG} la topologia ayuda a mejorar el analisis de datos geo-espaciales, para resolver el problema de la ruta corta \emph{pgRouting} genera una \emph{topología de red} usando los datos que existen en la tabla \emph{ways}, es necesario ejecutar una instruccion, la que se muestra a continiacion y \emph{pgRouting} se encarga de llenar los datos que se pueden observar en la figura \ref{fig:postgres_ways}, las columnas \emph{source} y \emph{target} son populadas con el analisis topologico y en la figura \ref{fig:postgres_vertices}, se puede observar que la tabla \emph{ways\_vertices\_pgr} es creada enteramente en la ejecucion de la instruccion.
-
-\begin{verbatim}
-  select pgr_createTopology('ways', 0.00000001, 'geom', 'gid');
-\end{verbatim}
-
-\begin{figure}[H]
-  \begin{center}
-    \caption{Vista de la tabla \emph{ways} en la base de datos PostgreSQL.}
-    \label{fig:postgres_ways}
-    \includegraphics[width=1\textwidth]{iteration2/postgres_ways}
-    \caption*{Fuente: Elaboración propia}
-  \end{center}
-\end{figure}
-
-En la figura \ref{fig:postgres_ways} se puede apreciar que cada fila es una parte de la línea original obtenida por el dispositivo GPS y explisionada por QGIS, hay que notar que las columnas \emph{source} y \emph{target} hacen referencia a los nodos o vertices que la primera linea tiene en sus extremos, la primera linea o fila esta identificada por la columna \emph{gid}.\\
-
-En la siguiente figura \ref{fig:postgres_vertices} se observa la tabla \emph{ways\_vertices\_pgr} que contiene los vertices creados a partir del analisis de los datos en la tabla \emph{ways}.
-
-\begin{figure}[H]
-  \begin{center}
-    \caption{Vista de la tabla \emph{ways\_vertices\_pgr} en la base de datos PostgreSQL.}
-    \label{fig:postgres_vertices}
-    \includegraphics[width=1\textwidth]{iteration2/postgres_vertices}
-    \caption*{Fuente: Elaboración propia}
-  \end{center}
-\end{figure}
-
-Para entender los datos generados hay leer la informacion de las 2 tablas, por ejemplo en la primera  fila (gid 1) de la tabla \emph{ways}, se observa que el contenido de la columna \emph{source} es igual a \textbf{2} y \emph{target} es igual a \textbf{3}, eso quiere decir que los vertices del LINESTRING de la fila 1 son los vertices con \textbf{id} 2 y 3 respectivamente de la tabla \emph{ways\_vertices\_pgr}.\\
-
-
-Todo el conjunto de vertices y lineas de estas tablas se podria representar con una Matriz de adyacencias, explicada en \ref{sub:representacion_de_un_grafo}, y usada en la resolucion de la ruta mas corta, mas especificamente con el algoritmo de Dijkstra.
+% Para realizar esta tarea se procedió a instalar pgRouting, el resultado de esta tarea se puede apreciar en el manual de instalación ## \\
+%
+% Una vez configurada la base de datos se procede a cargar la misma con la informacion obtenida en RF011, para tal efecto es necesario primeramente crear una tabla que contendra los LINESTRING contenidos en el shapefile, esta operacion es similar a la realizada en la tarea - RF003 (\ref{sub:RF003}). Una vez que ya se tiene la tabla a la llamamos \emph{ways}, se necesita ejecutar un query propio de \emph{pgRouting} el cual tiene como objetivo analizar los datos geo-espaciales de la tabla y a\~nadirle una \emph{topologia}.
+%
+% Dentro lo que es la \emph{topologia geoespacial} existe una aplicacion que se lo conoce como \emph{topología de red}. La \emph{topología de red} representa las relaciones entre segmentos en una red lineal o una colección de segmentos de línea\cite{osgeo_journal_topology}.
+% En un \emph{SIG} la topologia ayuda a mejorar el analisis de datos geo-espaciales, para resolver el problema de la ruta corta \emph{pgRouting} genera una \emph{topología de red} usando los datos que existen en la tabla \emph{ways}, es necesario ejecutar una instruccion, la que se muestra a continiacion y \emph{pgRouting} se encarga de llenar los datos que se pueden observar en la figura \ref{fig:postgres_ways}, las columnas \emph{source} y \emph{target} son populadas con el analisis topologico y en la figura \ref{fig:postgres_vertices}, se puede observar que la tabla \emph{ways\_vertices\_pgr} es creada enteramente en la ejecucion de la instruccion.
+%
+% \begin{verbatim}
+%   select pgr_createTopology('ways', 0.00000001, 'geom', 'gid');
+% \end{verbatim}
+%
+% \begin{figure}[H]
+%   \begin{center}
+%     \caption{Vista de la tabla \emph{ways} en la base de datos PostgreSQL.}
+%     \label{fig:postgres_ways}
+%     \includegraphics[width=1\textwidth]{iteration2/postgres_ways}
+%     \caption*{Fuente: Elaboración propia}
+%   \end{center}
+% \end{figure}
+%
+% En la figura \ref{fig:postgres_ways} se puede apreciar que cada fila es una parte de la línea original obtenida por el dispositivo GPS y explisionada por QGIS, hay que notar que las columnas \emph{source} y \emph{target} hacen referencia a los nodos o vertices que la primera linea tiene en sus extremos, la primera linea o fila esta identificada por la columna \emph{gid}.\\
+%
+% En la siguiente figura \ref{fig:postgres_vertices} se observa la tabla \emph{ways\_vertices\_pgr} que contiene los vertices creados a partir del analisis de los datos en la tabla \emph{ways}.
+%
+% \begin{figure}[H]
+%   \begin{center}
+%     \caption{Vista de la tabla \emph{ways\_vertices\_pgr} en la base de datos PostgreSQL.}
+%     \label{fig:postgres_vertices}
+%     \includegraphics[width=1\textwidth]{iteration2/postgres_vertices}
+%     \caption*{Fuente: Elaboración propia}
+%   \end{center}
+% \end{figure}
+%
+% Para entender los datos generados hay leer la informacion de las 2 tablas, por ejemplo en la primera  fila (gid 1) de la tabla \emph{ways}, se observa que el contenido de la columna \emph{source} es igual a \textbf{2} y \emph{target} es igual a \textbf{3}, eso quiere decir que los vertices del LINESTRING de la fila 1 son los vertices con \textbf{id} 2 y 3 respectivamente de la tabla \emph{ways\_vertices\_pgr}.\\
+%
+%
+% Todo el conjunto de vertices y lineas de estas tablas se podria representar con una Matriz de adyacencias, explicada en \ref{sub:representacion_de_un_grafo}, y usada en la resolucion de la ruta mas corta, mas especificamente con el algoritmo de Dijkstra.
 
 \subsubsection{RF013}
 \label{subs:RF013}
 
 % Investigar e instalar una herramienta que permita usar un servicio de mapas
-Durante la investigacion de esta tarea se encontro \emph{ember-leaflet}, una libreria o plugin que contiene las herramientas para poder cargar y usar un servicio de mapas.\\
-
-Para instalar esta libreria solo se necesita ejecutar el siguiente comando y posteriormente ya se puede empezar a utilizarla.\\
-
-\begin{verbatim}
-  $ ember install ember-leaflet
-\end{verbatim}
-
-El resultado de la investigacion puede apreciar en el marco teórico, en la sección que describe la librería, \emph{ember-leaflet}. \ref{sec:ember_js}
+% Durante la investigacion de esta tarea se encontro \emph{ember-leaflet}, una libreria o plugin que contiene las herramientas para poder cargar y usar un servicio de mapas.\\
+%
+% Para instalar esta libreria solo se necesita ejecutar el siguiente comando y posteriormente ya se puede empezar a utilizarla.\\
+%
+% \begin{verbatim}
+%   $ ember install ember-leaflet
+% \end{verbatim}
+%
+% El resultado de la investigacion puede apreciar en el marco teórico, en la sección que describe la librería, \emph{ember-leaflet}. \ref{sec:ember_js}
 
 \subsubsection{RF014}
 \label{subs:RF014}

@@ -44,109 +44,110 @@ Posteriormente como tarea del desarrollador se procede a dividir las historias d
 \label{subs:RF001}
 
 
-Para la presente Tarea se procedió a recolectar la información geográfica de los principales lugares del campus de la Universidad Mayor de San Simón, para tal efecto se hizo uso
-de un GPS Garmin Nuvi 1300, el mismo que fue usado  para obtener el mapa de rutas.\\
-
-Con la ayuda de QGIS fue que se exporto el archivo gpx generado por el GPS a un archivo Shapefile, el cual se usará para popular información dentro de la base de datos.\\
-
-\begin{figure}[H]
-  \begin{center}
-    \caption{Shapefile de Lugares desplegados en QGIS}
-    \label{fig:qgis_places}
-    \includegraphics[width=1\textwidth]{qgis_places}
-    \caption*{Fuente: Elaboración propia}
-  \end{center}
-\end{figure}
+% Para la presente Tarea se procedió a recolectar la información geográfica de los principales lugares del campus de la Universidad Mayor de San Simón, para tal efecto se hizo uso
+% de un GPS Garmin Nuvi 1300, el mismo que fue usado  para obtener el mapa de rutas.\\
+%
+% Con la ayuda de QGIS fue que se exporto el archivo gpx generado por el GPS a un archivo Shapefile, el cual se usará para popular información dentro de la base de datos.\\
+%
+% \begin{figure}[H]
+%   \begin{center}
+%     \caption{Shapefile de Lugares desplegados en QGIS}
+%     \label{fig:qgis_places}
+%     \includegraphics[width=1\textwidth]{qgis_places}
+%     \caption*{Fuente: Elaboración propia}
+%   \end{center}
+% \end{figure}
 
 \subsubsection{RF002}
 \label{subs:RF002}
 
-Para poder determinar una base de datos se investigó las diferentes opciones disponibles que tenga la capacidad de manejar información geoespacial y tras la investigación que se puede apreciar en \ref{sec:base_de_datos}, se instaló PostgreSQL 9.4.8 sobre Linux Ubuntu 15.10, y para manejar datos geoespaciales se necesitó instalar PostGIS 2.1.8, para poder acceder a las librerías necesarias para almacenar datos geo-referenciados.\\
+% Para poder determinar una base de datos se investigó las diferentes opciones disponibles que tenga la capacidad de manejar información geoespacial y tras la investigación que se puede apreciar en \ref{sec:base_de_datos}, se instaló PostgreSQL 9.4.8 sobre Linux Ubuntu 15.10, y para manejar datos geoespaciales se nr datos geo-referenciados.\\
 
-El resultado de esta tarea se puede apreciar en el manual de instalación.\\
+% El resultado de esta tarea se puede apreciar en el manual de instalación.\\
 
 \subsubsection{RF003}
 \label{subs:RF003}
 
-Para esta tarea se hizo uso de una herramienta disponible para postgres, \emph{shp2pgsql}, que permite la conversion de un archivo shapefile a un archivo sql.
-
-\begin{verbatim}
-  $ shp2pgsql -s 4326 -I -S -c -d ~/Documents/places.shp > places.sql
-\end{verbatim}
-
-Con el anterior comando se tiene como resultado un archivo .sql, el cual es ingresado en la base de datos ya configurada, de esta forma nuestra base de datos ya contiene una tabla geoespacial con datos de tipo POINT, los cuales representan los lugares dentro del campus de la UMSS.\\
-
-El archivo sql resultante es cargado a la base de datos con el siguiente comando.\\
-
-\begin{verbatim}
-  $ psql -d db_ubikate -U db_admin -f /Documents/places.sql
-\end{verbatim}
-
-\begin{figure}[H]
-  \begin{center}
-    \caption{Herramienta grafica de PostgreSQL (pgAdmin) con la tabla de Lugares desplegada.}
-    \label{fig:postgres_places}
-    \includegraphics[width=1\textwidth]{iteration1/postgres_places}
-    \caption*{Fuente: Elaboración propia}
-  \end{center}
-\end{figure}
-
-En la figura \ref{fig:postgres_places} se puede observar que la columna \emph{Elevation} contiene datos que el GPS Garmin Nuvi 1300 genera al momento de guardar un punto, en el presente caso es irrelevante.\\
+%
+% Para esta tarea se hizo uso de una herramienta disponible para postgres, \emph{shp2pgsql}, que permite la conversion de un archivo shapefile a un archivo sql.
+%
+% \begin{verbatim}
+%   $ shp2pgsql -s 4326 -I -S -c -d ~/Documents/places.shp > places.sql
+% \end{verbatim}
+%
+% Con el anterior comando se tiene como resultado un archivo .sql, el cual es ingresado en la base de datos ya configurada, de esta forma nuestra base de datos ya contiene una tabla geoespacial con datos de tipo POINT, los cuales representan los lugares dentro del campus de la UMSS.\\
+%
+% El archivo sql resultante es cargado a la base de datos con el siguiente comando.\\
+%
+% \begin{verbatim}
+%   $ psql -d db_ubikate -U db_admin -f /Documents/places.sql
+% \end{verbatim}
+%
+% \begin{figure}[H]
+%   \begin{center}
+%     \caption{Herramienta grafica de PostgreSQL (pgAdmin) con la tabla de Lugares desplegada.}
+%     \label{fig:postgres_places}
+%     \includegraphics[width=1\textwidth]{iteration1/postgres_places}
+%     \caption*{Fuente: Elaboración propia}
+%   \end{center}
+% \end{figure}
+%
+% En la figura \ref{fig:postgres_places} se puede observar que la columna \emph{Elevation} contiene datos que el GPS Garmin Nuvi 1300 genera al momento de guardar un punto, en el presente caso es irrelevante.\\
 
 \subsubsection{RF004}
 \label{subs:RF004}
 
-Para completar esta tarea se procedió a instalar y configurar el framework de desarrollo Ember JS, que nos ayudará en la implementación del frontend de la aplicación o la capa que interactúa con el usuaria, y Express JS, el cual manejara el backend de la aplicación, básicamente se encarga de la lógica del sistema y la comunicación con la base de datos.\\
-
-\begin{figure}[H]
-  \begin{center}
-    \caption{Vista de la lista de Lugares registrados en el sistema.}
-    \label{fig:places_index}
-    \includegraphics[width=0.5\textwidth]{iteration1/places_index}
-    \caption*{Fuente: Elaboración propia}
-  \end{center}
-\end{figure}
-
-\subsubsection{RF005}
-\label{subs:RF005}
-
-\begin{figure}[H]
-  \begin{center}
-    \caption{Vista de la búsqueda de lugares a través de un cajón de búsqueda.}
-    \label{fig:places_search}
-    \includegraphics[width=0.5\textwidth]{iteration1/places_search}
-    \caption*{Fuente: Elaboración propia}
-  \end{center}
-\end{figure}
-
-
-\subsubsection{RF006}
-\label{subs:RF006}
-
-Para implementar esta funcionalidad del sistema fue necesario utilizar las funcionalidad de Ember JS.
-
-\begin{verbatim}
-  {{#paper-item class="md-1-line" onClick=(transition-to 'places.show' place)}}
-      <div class="md-list-item-text">
-          <span>{{place.name}}</span>
-      </div>
-  {{/paper-item}}
-\end{verbatim}
-
-\subsubsection{RF007}
-\label{subs:RF007}
-
-
-
-\begin{figure}[H]
-  \begin{center}
-    \caption{Vista de la Información de un Lugar.}
-    \label{fig:place_show}
-    \includegraphics[width=0.5\textwidth]{iteration1/place_show}
-    \caption*{Fuente: Elaboración propia}
-  \end{center}
-\end{figure}
-
+% Para completar esta tarea se procedió a instalar y configurar el framework de desarrollo Ember JS, que nos ayudará en la implementación del frontend de la aplicación o la capa que interactúa con el usuaria, y Express JS, el cual manejara el backend de la aplicación, básicamente se encarga de la lógica del sistema y la comunicación con la base de datos.\\
+%
+% \begin{figure}[H]
+%   \begin{center}
+%     \caption{Vista de la lista de Lugares registrados en el sistema.}
+%     \label{fig:places_index}
+%     \includegraphics[width=0.5\textwidth]{iteration1/places_index}
+%     \caption*{Fuente: Elaboración propia}
+%   \end{center}
+% \end{figure}
+%
+% \subsubsection{RF005}
+% \label{subs:RF005}
+%
+% \begin{figure}[H]
+%   \begin{center}
+%     \caption{Vista de la búsqueda de lugares a través de un cajón de búsqueda.}
+%     \label{fig:places_search}
+%     \includegraphics[width=0.5\textwidth]{iteration1/places_search}
+%     \caption*{Fuente: Elaboración propia}
+%   \end{center}
+% \end{figure}
+%
+%
+% \subsubsection{RF006}
+% \label{subs:RF006}
+%
+% Para implementar esta funcionalidad del sistema fue necesario utilizar las funcionalidad de Ember JS.
+%
+% \begin{verbatim}
+%   {{#paper-item class="md-1-line" onClick=(transition-to 'places.show' place)}}
+%       <div class="md-list-item-text">
+%           <span>{{place.name}}</span>
+%       </div>
+%   {{/paper-item}}
+% \end{verbatim}
+%
+% \subsubsection{RF007}
+% \label{subs:RF007}
+%
+%
+%
+% \begin{figure}[H]
+%   \begin{center}
+%     \caption{Vista de la Información de un Lugar.}
+%     \label{fig:place_show}
+%     \includegraphics[width=0.5\textwidth]{iteration1/place_show}
+%     \caption*{Fuente: Elaboración propia}
+%   \end{center}
+% \end{figure}
+%
 
 \subsubsection{RF008}
 \label{subs:RF008}
