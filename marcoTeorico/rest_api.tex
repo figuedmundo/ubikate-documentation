@@ -13,21 +13,21 @@ Los Servicios Web o Web Services, segun la W3C ``proveen un medio estandar de in
 Los servicios web se caracterizan por su gran interoperabilidad y extensibilidad, los Servicios Web mas implementados son los basados en RPC, SOA y REST.
 
 \begin{description}
-  \item[RPC] Remote Procedure Calls, en espanol, Llamadas a Procedimientos Remotos. Un tipo de protocolo qye permite a un programa en una computadora ejecutar un procedimiento en un servidor. El Cliente envia un mensaje al Servidor un mensaje con los argumentos necesarios y el servidor responde con un mensaje con los resultados del procediento ejecutado.\\
+  \item[RPC:] Remote Procedure Calls, en espanol, Llamadas a Procedimientos Remotos. Un tipo de protocolo qye permite a un programa en una computadora ejecutar un procedimiento en un servidor. El Cliente envia un mensaje al Servidor un mensaje con los argumentos necesarios y el servidor responde con un mensaje con los resultados del procediento ejecutado.\\
   %
 
   Los Web Services basados en el modelo RPC son de los primeros en ser usados en la web por lo que su uso esta bastante extendido. Suele ser implementado por medio del mapeo de servicios directamente a funciones específicas o llamadas a métodos.
 
   % a type of protocol that allows a program on one computer to execute a program on a server computer. Using RPC, a system developer need not develop specific procedures for the server. The client program sends a message to the server with appropriate argumentsand the server returns a message containing the results of the program executed.
 
-  \item[SOA] Service-oriented Architecture, en espanol, Arquitectura Orientada a Servicios.
+  \item[SOA:] Service-oriented Architecture, en espanol, Arquitectura Orientada a Servicios.
 Es una arquitectura de aplicacion en donde todas las funciones o servicios estan definidas usuando un lenguaje descriptivo, XML es el lenguaje elegido para el intercambio de mensajes. Cada interaccion es independiente de todas las demas interconneciones y los protocolos de comuncacion entre dispocitovos, por lo cual se lo conoce como debilmente desacoplado.
 
 Cuando se usa un servicio web basado en la arquitectura SOA los clientes consumen servicios, enves de ejecutar procedimientos, esto se conoce como servicio orientado a mensajes. por lo cual se mejora notablemente el flujo de la informacion.
 
   % is an application architecture in which all functions, or services, are defined using a description language and have invokable interfaces that are called to perform business processes. Each interaction is independent of each and every other interaction and the interconnect protocols of the communicating devices
 
-  \item[REST] REpresentation State Transfer, Transferencia de Estado Representacional.
+  \item[REST:] REpresentation State Transfer, Transferencia de Estado Representacional.
   Los Servicios Web basados en REST utiliza las operaciones del protocolo HTTP (GET, POST, etc.) para establecer las acciones o operaciones que se ejecutaran sobre los ``recursos'' que maneja el servicio web.
   %  mediante la restricción de establecer la interfaz al conjunto conocido de operaciones estándar .
 
@@ -64,11 +64,11 @@ Cuando se usa un servicio web basado en la arquitectura SOA los clientes consume
 
 
 
-  REST es un término descrito por Roy Fielding en su tesis doctoral ``\emph{Architectural Styles and the design of Network-based Software Architectures}''\cite{web6}, describe estilos arquitectónicos de sistemas interconectados por red.\\
+  REST es un término descrito por Roy Fielding en su tesis doctoral ``\emph{Architectural Styles and the design of Network-based Software Architectures}'', describe estilos arquitectónicos de sistemas interconectados por red. \cite{web6}\\
 
   REST es un estilo arquitectónico que especifica cómo los recursos van a ser definidos y direccionados, especifica la importancia del protocolo \emph{cliente-servidor-sin estado}, ya que cada request o petición tiene toda la información necesaria para entenderla.\\
 
-  REST tiene como modelo a la Web, a las caracteriscas que permitieron que el Internet pueda llegar a tener el tamano y la capacidad que presenta en nuestros dias. En particular, al manejo de direcciones o locacion de recursos, las URIs\footnote{Uniform Resource Identifier}. \cite{uri}
+  REST tiene como modelo a la Web, a las caracteriscas que permitieron que el Internet pueda llegar a tener el tamano y la capacidad que presenta en nuestros dias. En particular, al manejo de direcciones o locacion de recursos, los cuales se pueden identificar mediantes las URIs (\emph{Uniform Resource Identifier}). \cite{uri}
 
 Los principios de desino sobre los que se basa REST son:
 \begin{itemize}
@@ -82,7 +82,7 @@ Los principios de desino sobre los que se basa REST son:
 
 \end{itemize}
 
- Al implementar una aplicacion \emph{RESTful}\footnote{se denomina RESTful a los sistemas que siguen los principios REST} significa que los componentes del sistema por ejemplo los usuarios son modelados como recursos que pueden ser creados, leídos, actualizados y borrados, usando los ``verbos'' HTTP; POST, GET, PUT y DELETE, estas acciones corresponden a las operaciones CRUD (Create, Read, Update, Delete) de las base de datos relacionales.\\
+ Al implementar una aplicacion \emph{RESTful}\footnote{Se denomina RESTful a los sistemas que siguen los principios REST} significa que los componentes del sistema por ejemplo los usuarios son modelados como recursos que pueden ser creados, leídos, actualizados y borrados, usando los ``verbos'' HTTP; POST, GET, PUT y DELETE, estas acciones corresponden a las operaciones CRUD (Create, Read, Update, Delete) de las base de datos relacionales.\\
   %  y a los cuatro operaciones fundamentales POST, GET, PUT, DELETE definidos en el  protocolo HTTP.\\
 
 % El estilo de desarrollo RESTful\footnote{se denomina RESTful a los sistemas que siguen los principios REST} ayuda a determinar acerca de qué controlador y cuál será la acción que se ejecutará, solamente procesando el request HTTP hecho al servidor.\\

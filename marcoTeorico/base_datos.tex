@@ -10,19 +10,21 @@
       PostgreSQL es un sistema de gestión de bases de datos objeto-relacional, Open Source y distribuido bajo licencia BSD.
       PostgreSQL utiliza un modelo cliente/servidor y usa multiprocesos en vez de multihilos para garantizar la estabilidad del sistema. Un fallo en uno de los procesos no afectará el resto y el sistema continuará funcionando.
       La última versi\'on estable de PostgreSQL es la 9.5, su desarrollo comenz\'o hace más de 16 años, y cuenta con una gran comunidad que aporta con el desarrollo y el testeo de nuevas versiones.
-      PostgreSQL  está considerada como uno de los mejores \emph{Sistemas de gesti\'on de bases de datos}, es muy completo y está muy bien documentado\footnote{ http://www.postgresql.org/docs/9.5/static/}.
+      PostgreSQL  está considerada como uno de los mejores \emph{Sistemas de gesti\'on de bases de datos}, es muy completo y está muy bien documentado.
       Entre sus características se pueden nombrar las siguientes.
       \begin{itemize}
-        \item Es una base de datos 100\% ACID\footnote{  ACID es un acrónimo de Atomicity, Consistency, Isolation and Durability}
-        \item Integridad referencial
-        \item Replicación asincrónica/sincrónica
-        \item Múltiples métodos de autentificación
-        \item Disponible para Linux y UNIX en todas sus variantes
-        \item Funciones/procedimientos almacenados
-        \item Soporte a la especificaci\'on SQL
+        \item Es una base de datos 100\% \emph{ACID} (Atomicity, Consistency, Isolation and Durability).
+        \item Integridad referencial.
+        \item Replicación asincrónica/sincrónica.
+        \item Múltiples métodos de autentificación.
+        \item Disponible para Linux y UNIX en todas sus variantes.
+        \item Funciones/procedimientos almacenados.
+        \item Soporte a la especificacion SQL.
       \end{itemize}
 
-      Personalmente se escogió trabajar con  PostgreSQL como DBMS cuenta con una extensa documentación,  y gracias a su caracter ``Open Source'', y su gran flexibilidad en poder definir nuevos tipos de datos, esto se hace posible que empresas como \textbf{Refractions Research}\footnote{http://refractions.net/} puedan crear recursos como \emph{PostGIS}, necesario para trabajar con datos geográficos \'o espaciales.
+      Personalmente se escogió trabajar con  PostgreSQL como DBMS cuenta con una extensa documentación,  y gracias a su caracter ``Open Source'', y su gran flexibilidad en poder definir nuevos tipos de datos, esto se hace posible que empresas como \textbf{Refractions Research} puedan crear recursos como \emph{PostGIS}, necesario para trabajar con datos geográficos \'o espaciales.
+
+% \footnote{http://refractions.net/}
 
       % Entre sus principales  características se puede nombrar que es
       % \footnote{ DBMS, DataBase Management System}
@@ -33,7 +35,7 @@
     \subsection{PostGIS} % (fold)
     \label{sec:postgis}
 
-      PostGIS es un módulo  que a\~nade soporte de objetos geográficos al DBMS PostgreSQL, convirtiéndola en una base de datos espacial para su utilización en un Sistema de Informaci\'on Geografica (SIG\footnote{ Es bastante común utilizar el acrónimo en Inglés, Geographic Information System (GIS), de hay viene el término de PostGIS = Postgres + GIS}).
+      PostGIS es un módulo  que a\~nade soporte de objetos geográficos al DBMS PostgreSQL, convirtiéndola en una base de datos espacial para su utilización en un Sistema de Informaci\'on Geografica o \emph{SIG}, es bastante común utilizar el acrónimo en Inglés, \emph{Geographic Information System} o \emph{GIS} y de hay viene el término de PostGIS, que conbina Postgres y GIS.\\
 
       El desarrollo de PostGIS está a cargo de Refractions Research, está liberada con la \emph{Licencia pública general de GNU}, declarandola como software libre que lo protege de cualquier intento de apropiaci\'on.\\
 
@@ -41,7 +43,8 @@
 
       \emph{PostGIS} al igual que \emph{PostgreSQL} cuenta con una documentaci\'on bastante extensa y equipo de desarrollo que continuamente va sacando nuevas versiones, actualmente se encuentra la versi\'on 2.2.2, pero para el desarrollo de la aplicaci\'on se hizo uso de la versi\'on 2.1.0.
 
-      PostGIS es gratis, pero no por ello es una herramienta de baja calidad, al contrario se la considera una herramienta de nivel empresarial, y muchas instituciones la est\'an usando de manera exitosa\footnote{ http://www.postgis.org/documentation/casestudies/}, aparte de numerosas aplicaciones.\\
+      PostGIS es gratis, pero no por ello es una herramienta de baja calidad, al contrario se la considera una herramienta de nivel empresarial, y muchas instituciones la est\'an usando de manera exitosa, aparte de numerosas aplicaciones.\\
+      % \footnote{ http://www.postgis.org/documentation/casestudies/}
 
       Manejar los datos geográficos con PostGIS es sencillo y eficiente, por está raz\'on se utilizó está herramienta, pero para conseguir la ruta óptima entre 2 puntos se necesitaba el uso del algoritmo de Dijkstra y para PostGIS existe el módulo \textbf{PgRouting}, que tiene implementado este algoritmo.
 

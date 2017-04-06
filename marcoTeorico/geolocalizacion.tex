@@ -1,6 +1,7 @@
 \section{Geolocalizaci\'on} % (fold)
 \label{sec:geolocalizacion}
-  La Geolocalizaci\'on o Georreferenciación es un termino bastante nuevo, de hecho no aparece en el diccionario de la Real Academia Espa\~nola\footnote{http://dle.rae.es/}, no obstante se lo puede definir como:
+  La Geolocalizaci\'on o Georreferenciación es un termino bastante nuevo, de hecho no aparece en el diccionario de la Real Academia Espa\~nola, no obstante se lo puede definir como:
+% \footnote{http://dle.rae.es/}
 
   \begin{quote}
     El posicionamiento en el que se define la localización de un objeto espacial (representado mediante un punto, vector, área, volumen) en un sistema de coordenadas y datum determinado. Este proceso es utilizado frecuentemente en los Sistemas de Información Geográfica.\cite{Georreferenciacion}
@@ -8,10 +9,10 @@
 
   % Para entender esta definición se necesita explicar algunos terminos
 
-  La Georreferenciación antiguamente era bastantemente usada en el ambito científico, y se necesitaba de instrumental y personal cualificado para su manejo, pero en la actualidad la cantidad de dispositivos con capacidad para geolocalizar un objeto sobre la tierra es bastante comun, de hecho todos los smartphones actuales (celulares con Android, Iphones) traen integrados receptores GPS (Global Posicion System),  y sumados a la exploci\'on de aplicaciones  que integran mapas con localizaci\'on, ya que se puede tener una base de datos con coordenadas, descripciones, etc., que individualmente no aporta mucho valor pero al obtener datos de una gran cantidad de usuarios puede llegar a ser informaci\'on valiosa ya que sirve para tomar decisiones a nivel de negocio, pero interpretar estos datos seria muy difícil sin la ayuda de los \emph{Sistemas de Informaci\'on Geografica}\footnote{Los \emph{Sistemas de Informaci\'on Geografica} se los conoce generalmente por su acronimo \textbf{SIG}}.\\
+  La Georreferenciación antiguamente era bastantemente usada en el ambito científico, y se necesitaba de instrumental y personal cualificado para su manejo, pero en la actualidad la cantidad de dispositivos con capacidad para geolocalizar un objeto sobre la tierra es bastante comun, de hecho todos los smartphones actuales (celulares con Android, Iphones) traen integrados receptores GPS (Global Posicion System),  y sumados a la exploci\'on de aplicaciones  que integran mapas con localizaci\'on, ya que se puede tener una base de datos con coordenadas, descripciones, etc., que individualmente no aporta mucho valor pero al obtener datos de una gran cantidad de usuarios puede llegar a ser informaci\'on valiosa ya que sirve para tomar decisiones a nivel de negocio, pero interpretar estos datos seria muy difícil sin la ayuda de los \emph{Sistemas de Informaci\'on Geografica}.\\
 
-  Un SIG es una herramienta que permite integrar, analizar, mostrar, interpretar y  entender las relaciones, patrones y tendencias de la información geográficamente referenciada.\footnote{http://www.esri.com/what-is-gis}
-
+  Un \emph{SIG} es una herramienta que permite integrar, analizar, mostrar, interpretar y  entender las relaciones, patrones y tendencias de la información geográficamente referenciada.
+  % \footnote{http://www.esri.com/what-is-gis}
   Por estas razones es que actualmente existe una explosi\'on de estas aplicaciones, donde empresas, particulares y hasta organismos gubernamentales est\'an haciendo uso de estas tecnologías.
   Y las posibilidades son diversas, por ejemplo, se se quisiera planificar la construcci\'on de un colegio se podria integrar los datos del censo con un mapa, identificando los sectores con mayor porcentaje de ni\~nos y localizando los sectores mas propicios para realizar la construcción del inmueble. En el caso de una catástrofe natural, el tener las rutas de evacuaci\'on geolocalizadas y disponibles en un mapa de manera eficiente,  ayudaria en la evaciaci\'on de las personas del lugar.\\
 
@@ -22,9 +23,9 @@
     En la aplicaci\'on desarrollada se requerira trabajar con datos espaciales, y para ello es necesario entender algunos conceptos envueltos en el manejo de la informaci\'on geografica.
 
     \begin{description}
-      \item[Coordenada] Es una secuencia de n-numer\'os que designa la posici\'on de un punto en un espacio n-dimensional. \\
-      \item[Sistema de coordenadas] Un sistema de coordenadas es  un conjunto de reglas matemáticas que especifican como las coordenadas son asignadas  a cada  punto.
-      \item[Punto] Es  la representaci\'on de una posici\'on, topol\'ogicamente 0-dimensional (no tiene volumen, area, longitud o cualquier otra unidad multi-\\dimensional).
+      \item[Coordenada:] Es una secuencia de n-numer\'os que designa la posici\'on de un punto en un espacio n-dimensional. \\
+      \item[Sistema de coordenadas:] Un sistema de coordenadas es  un conjunto de reglas matemáticas que especifican como las coordenadas son asignadas  a cada  punto.
+      \item[Punto:] Es  la representaci\'on de una posici\'on, topol\'ogicamente 0-dimensional (no tiene volumen, area, longitud o cualquier otra unidad multi-\\dimensional).
     \end{description}
 
     % \subsection{Coordenada} % (fold)
@@ -66,9 +67,9 @@
 
         \begin{figure}[H]
           \begin{center}
-            \caption[Sistema de coordenadas Geocentricas ]{Sistema de coordenadas Geocentricas, en la figura se muestra la posici\'on del punto P}
-            \label{fig:coord_geocentric}
             \includegraphics[width=0.7\textwidth]{coord_geocentric}
+            \caption{Sistema de coordenadas Geocentricas}
+            \label{fig:coord_geocentric}
             \caption*{Fuente: Web}
           \end{center}
         \end{figure}
@@ -80,14 +81,14 @@
       \label{subs:coordenadas_geograficas}
         Sistema de coordenadas Geográfico, utiliza las coordenadas angulares latitud  (\emph{phi} o ${\phi}$) y longitud (\emph{lambda} o ${\lambda}$). Este sistema de coordenadas se expresa en grados, se lo puede representar con la forma \emph{grados:minutos:segundos }\verb|(17° 23' 37.4226" S, 66° 8' 44.691" W)|, o de la forma mas comun \emph{grados decimales} \verb|(-66.1457475 S, -17.3937285 W)|.\\
 
-        El sistema de coordenadas  mas amplimente usado, el que usan por defecto los sistemas \emph{GPS}, es conocido como ``WGS 84'', y la mayoria de las aplicaciones que manejan mapas usan este sistema de coordenadas.\\
+        El sistema de coordenadas  mas amplimente usado, el que usan por defecto los sistemas \emph{GPS}, es conocido como ``WGS 84'', y la mayoria de las aplicaciones que manejan mapas usan este sistema de coordenadas. Es el sistema que maneja los mas amplimanete conocidos ``latitud y longitud''.\\
 
         \begin{figure}[H]
           \begin{center}
-            \caption[Sistema de coordenadas Geográficos]{Sistema de coordenadas Geográficos, Es el sistema que maneja los mas amplimanete conocidos ``latitud y longitud''}
-            \label{fig:coord_geographic}
             \includegraphics[width=0.7\textwidth]{coord_geographic}
-            \caption*{Fuente: xxxxxxxxxxxx}
+            \caption{Sistema de coordenadas Geográficos}
+            \label{fig:coord_geographic}
+            \caption*{Fuente: Web}
           \end{center}
 
         \end{figure}
@@ -100,14 +101,17 @@
 
         Un sistema de coordenadas proyectadas requiere tomar la superficie esferica de la tierra y ``aplanarla'', este procedimiento se lo realiza con la finalidad de tener un mapa representable en una hoja de papel asi como en la pantalla de la computadora. Sin embargo este procedimiento introduce diversos tipos de distorci\'on por lo que existen diferentes clases de proyeciones que varian segun la region que se quiere representar de la Tierra.\\
 
-        La proyecci\'on que usa \emph{Google Maps}\footnote{\url{https://www.google.com.bo/maps/@-17.3664509,-66.1831702,15z}} y \emph{Open Street Maps}\footnote{\url{https://www.openstreetmap.org/#map=12/-17.3882/-66.2300}} es la \textbf{Mercator Projection}\cite{gmaps_osm}, esta proyecci\'on esta dise\~nada para presevar los ángulos y las formas de las lineas en forma recta, pero distorciona los tama\~nos y las distancias mientras mas lejos se encuentran de la linea del Ecuador. Esta proyecci\'on se puede apreciar en la figura \ref{fig:mercator_proyection}
+        La proyecci\'on que usan \emph{Google Maps} y \emph{Open Street Maps} es la \textbf{Mercator Projection}\cite{gmaps_osm}, esta proyecci\'on esta dise\~nada para presevar los ángulos y las formas de las lineas en forma recta, pero distorciona los tama\~nos y las distancias mientras mas lejos se encuentran de la linea del Ecuador. Esta proyecci\'on se puede apreciar en la figura \ref{fig:mercator_proyection}
+
+% Google Maps usa la Proyección de Mercator para mostrar su mapa
 
         \begin{figure}[H]
           \begin{center}
             \includegraphics[width=0.6\textwidth]{mercator_proyection}
           \end{center}
-          \caption[Sistema de coordenadas Proyectadas]{Google Maps usa la Proyección de Mercator para mostrar su mapa}
+          \caption{Sistema de coordenadas Proyectadas}
           \label{fig:mercator_proyection}
+          \caption*{Fuente: Web}
         \end{figure}
 
         Tal como se puede apreciar en la figura \ref{fig:mercator_proyection}, la distorcion de esta proyecci\'on se hace evidente si se observa la zona de Groenlandia ya que pareceria tan grande como Africa o America del Sur, cosa que no es cierta, ya que Groenlandia es casi 14 veces mas peque\~no que Africa. A pesar de esta distorci\'on tan marcada, la \textbf{Proyección de Mercator} es una de las mas usadas.

@@ -45,32 +45,28 @@ En una aplicación de página única, las interacciones del usuario con la aplic
   de la vista de la mejor forma posible y finalmente el modelo maneja el comportamiento
   de los datos de la aplicación.\cite{web7}\\
 
-  Concepto que se desarrolló en 1979 por Trygve Reenskaug el cual da una
+  Este concepto se desarrolló en 1979 por Trygve Reenskaug el cual da una
   solución al problema de separar la lógica del negocio de la lógica de la presentación.\\
   % al final cada acción o concepto se desarrolla en un lugar determinado.\\
   % los objetivos/resultados/conclusión/facilidades
 
   % Rails está construido sobre el patrón MVC, esto significa que para cada   pieza de código existe un lugar predeterminado y todas las piezas de código de la aplicación interactúan de forma predeterminada.
 
-  \begin{description}
-    \item[Modelo] Representa la información o los datos y contiene las reglas o métodos para manipular estos datos.\\
-    % En la aplicación se utilizó \emph{Bookshelf.js} para interactuar con la base de datos \emph{PostgreSQL}.
+  % \begin{description}
+    \textbf{Modelo:} Representa la información o los datos y contiene las reglas o métodos para manipular estos datos.     % En la aplicación se utilizó \emph{Bookshelf.js} para interactuar con la base de datos \emph{PostgreSQL}.
     %
     % En el caso de Rails, los modelos son usados principalmente para manejar la interacción con las
     % tablas de la Base de Datos, en la que cada tabla corresponde a un modelo en la aplicaci\'on, para nombrar a estos modelos existe una simple convención que es la de nombrar  a la tabla en forma plural, mientras que el modelo tiene el nombre en singular.
     %
-
     El Modelo es el principal encargado de manejar  la \emph{lógica del negocio}.
 
-    \item[Vista]  Representa la interfaz de la aplicación.
+    \textbf{Vista:}  Representa la interfaz de la aplicación.
 
     % En Rails las vistas  archivos HTML con código Ruby embebido\footnote{ ERB (Embedded Ruby) } que realiza la tarea de representar  datos. Las Vistas son las que generan los datos que son enviados al    navegador web.%browser.
 
-    \item[Controlador] Es el encargado de interactuar entre el modelo y la vista,
-    procesando los datos enviados en el request del navegador web,
+    \textbf{Controlador:} Es el encargado de interactuar entre el modelo y la vista, procesando los datos enviados en el request del navegador web,
     llamando a métodos del modelo para conseguir  \emph{información} de la base de datos,
-    posteriormente el controlador envía esta \emph{información} a la vista.\\
-
+    posteriormente el controlador envía esta \emph{información} a la vista.
     El Controlador y la Vista son los los encargados de manejar  la \emph{lógica de la presentación}.
   \end{description}
 
@@ -79,14 +75,14 @@ En una aplicación de página única, las interacciones del usuario con la aplic
 
 Esta separación hace que diseñar cada capa de la aplicación como un ente distinto, sea sencillo. En una aplicación de página única bien diseñada, es posible cambiar o rediseñar la vista o la presentación de la aplicación sin tocar la implementación de la lógica de la aplicación y viceversa.\\
 
-La arquitectura de un SPA, como se puede ver en la figura \ref{fig:spa_arch}, el \emph{DOM}\footnote{DOM o Document Object Model, es la estructura básica de la página desplegada en el navegador.} de \textbf{solo escritura}, ya que no tiene estado o datos almacenados,cuando la página contiene estado o comúnmente la sesión del usuario, es necesario contener y propagar esta \emph{sesión} por las páginas de la aplicación, generalmente son usados los \emph{cookies} pero cuando la aplicación se compleja y contiene diferentes niveles de permisos, el manejo de esta informacion se complica, por lo que en vez de guardar la información en objetos aleatorios dentro del DOM es necesario una capa de la aplicación donde esté representado objetos definidos toda la información y el estado de la aplicación, el cual es el \emph{Modelo}, esta capa también es la encargada guardar y/o extraer los datos del \emph{Storage}, que dependiendo de la aplicación puede ser una base de datos o el mismo navegador\footnote{\emph{localStorage} es una implementación de HTML5 que permite almacenar información en objetos JSON en el Navegador}, la \emph{Vista} o \emph{View} se encarga de observar lo cambios ocurridos en el \emph{Modelo} y reflejar estos cambios en el \emph{DOM}, el cual es una renderización de un \emph{Template}.\\
+La arquitectura de un SPA, como se puede ver en la figura \ref{fig:spa_arch}, el \emph{DOM} (\emph{Document Object Model}, es la estructura básica de la página desplegada en el navegador.) de \textbf{solo escritura}, ya que no tiene estado o datos almacenados,cuando la página contiene estado o comúnmente la sesión del usuario, es necesario contener y propagar esta \emph{sesión} por las páginas de la aplicación, generalmente son usados los \emph{cookies} pero cuando la aplicación se compleja y contiene diferentes niveles de permisos, el manejo de esta informacion se complica, por lo que en vez de guardar la información en objetos aleatorios dentro del DOM es necesario una capa de la aplicación donde esté representado objetos definidos toda la información y el estado de la aplicación, el cual es el \emph{Modelo}, esta capa también es la encargada guardar y/o extraer los datos del \emph{Storage}, que dependiendo de la aplicación puede ser una base de datos o el mismo navegador, \emph{localStorage} es una implementación de HTML5 que permite almacenar información en objetos JSON en el Navegador, la \emph{Vista} o \emph{View} se encarga de observar lo cambios ocurridos en el \emph{Modelo} y reflejar estos cambios en el \emph{DOM}, el cual es una renderización de un \emph{Template}.\\
 
 \begin{figure}[H]
   \begin{center}
+    \includegraphics[width=0.9\textwidth]{spa_arch}
     \caption[SPA Architecture ]{Arquitectura de una Aplicación Web Moderna}
     \label{fig:spa_arch}
-    \includegraphics[width=0.7\textwidth]{spa_arch}
-    \caption*{Fuente: Web - Single page apps in depth}
+    \caption*{Fuente: Web \cite{xp_addison} }
   \end{center}
 \end{figure}
 
@@ -96,7 +92,7 @@ Como se puede observar en la figura \ref{fig:spa_arch}, la arquitectura de un SP
 % En \emph{Ember.JS} según a la versión también la lógica del negocio es implementada
 
 
-En la arquitectura de un SPA la lógica de la aplicación es implementada, generalmente y en el presente proyecto, en un API y la capa de la presentación al estar en el navegador es implementada con una combinación de HTML, CSS y JavaScript, lo cual es bastante complejo, pero gracias a frameworks como ser \emph{Backbone.JS}, \emph{Angular.JS}, \emph{Ember.JS}, etc. Los cuales agilizan en gran medida la implementación de una aplicación de página única.\\
+En la arquitectura de un SPA la lógica de la aplicación es implementada, generalmente y en el presente proyecto, en un API y la capa de la presentación al estar en el navegador es implementada con una combinación de HTML, CSS y JavaScript, lo cual es bastante complejo, pero gracias a frameworks como ser \emph{Backbone.JS}, \emph{AngularJS}, \emph{EmberJS}, etc. Los cuales agilizan en gran medida la implementación de una aplicación de página única.\\
 
 
 

@@ -67,11 +67,9 @@ La resolución de este problema es la se analizará en este capítulo.
 
         % \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3cm,
         %         main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
-
-        \begin{figure}[!ht]
+% !ht
+        \begin{figure}[H]
           \begin{center}
-            \caption{Grafo ponderado no-dirigido}
-            \label{fig:grafo_ponderado}
 
             \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3cm,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
 
@@ -95,13 +93,16 @@ La resolución de este problema es la se analizará en este capítulo.
 
             \end{tikzpicture}
 
+            \caption{Grafo ponderado no-dirigido}
+            \label{fig:grafo_ponderado}
+            \caption*{Fuente: Elaboración propia}
+
           \end{center}
         \end{figure}
 
-        \begin{table}[!ht]
+        \begin{table}[H]
           \label{tab:matriz}
           \begin{center}
-            \caption{Matriz de adyacencias del grafo de la figura  \ref{fig:grafo_ponderado}}
             \begin{displaymath}
               M(i,j) =
               \bordermatrix{ ~ & a & b & c & d & e \cr
@@ -111,6 +112,7 @@ La resolución de este problema es la se analizará en este capítulo.
                              d & 5 & 4 & 0 & 0 & 14\cr
                              e & 0 & 3 & 7 & 14& 0  }
             \end{displaymath}
+            \caption*{Matriz de adyacencias del grafo de la figura  \ref{fig:grafo_ponderado}}
           \end{center}
         \end{table}
 

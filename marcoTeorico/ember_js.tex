@@ -3,27 +3,31 @@
 
   % Ember is an evolving JavaScript framework for creating “ambitious web applications”, it tries to maximize developers’ productivity using a set of conventions in a way that they don’t need to think about common idioms when building web applications.
   % \vspace*{\fill}
-  \begin{quote}
-  \centering
-  A Framework for creating ambitious web applications
-  \end{quote}
-  % \vspace*{\fill}
+  % \begin{quote}
+  % \centering
+  % A Framework for creating ambitious web applications
+  % \end{quote}
+  % % \vspace*{\fill}
 
+Un \emph{framework} o \emph{marco de trabajo} es una abstracción de soluciones a problemas comunes en el desarrollo de software y también provee funcionalidad la cual puede ser modificada por el usuario final, \emph{EmberJS} se define a sí misma como un framework usado para crear aplicaciones web ambiciosas, el cual es eslogan de \emph{EmberJS},con el que trata de decirnos que usando este framework se podría implementar una aplicaciones web con tanta funcionalidad como si se tratara de una aplicación web nativa.\\
 
-Un framework\footnote{Se define a un \textbf{framework} (marco de trabajo) como la abstracción en el cual el software provee funcionalidad la cual puede ser modificada por el usuario final.} para crear aplicaciones web ambiciosas, es el eslogan de EmberJS,con el que trata de decirnos que usando este framework se puede lograr implmentar una buena e interesante aplicaciones web.\\
+Para explicar lo que es EmberJS hay que mencionar que centró su desarrollo en 3 objetivos \cite{ember_antidote}:
 
-Para explicar lo que es EmberJS hay que decir que centró su desarrollo en 3 objetivos:
-
-Enfocarse en aplicaciones web ambiciosas. %//Focus on ambitious web applications
-Previsión de Futuros estándares web. %//Future web standards foresight
-Estabilidad sin estancamiento.\cite{ember_antidote} %//Stability without stagnation []
-
+\begin{itemize}
+  \item Enfocarse en aplicaciones web ambiciosas. %//Focus on ambitious web applications
+  \item Previsión de Futuros estándares web. %//Future web standards foresight
+  \item Estabilidad sin estancamiento. %//Stability without stagnation []
+\end{itemize}
 
 Ember provee una solución completa a los ``problemas'' más comunes en el desarrollo de aplicaciones web, pero esto significa mucho ``más trabajo'' y una curva de aprendizaje más empinada. Pero con una consiguiente ayuda para el desarrollador ya que los ``problemas'' más comunes están resueltos y el desarrollador tiene que enfrentarse a los problemas propios o del modelo de negocio propio de la aplicación a desarrollar.\\
 
-Ember cuenta con su capa de persistencia o la capa del \textbf{Modelo} en el patrón MVC\footnote{\textbf{Modelo-Vista-Controlador} o MVC es un patrón de arquitectura de software que separa los datos de una aplicación (Modelo), la interfaz de usuario (Vista), y la lógica de control de la aplicaci\'on (Controlador) en tres componentes distintos\cite{mvc}.}, \emph{Ember-Data}, el cual maneja los datos mientras están en memoria y se asegura de sincronizar con el servidor cuando se requiere y modifica la base de datos. El formato por defecto para manejar la información es JSON\footnote{\textbf{JSON} acr\'onimo de \emph{JavaScript Object Notation}, es un formato de texto ligero para el intercambio de datos}.\\
+Ember cuenta con su capa de persistencia o la capa del \textbf{Modelo} en el patrón \emph{Modelo-Vista-Controlador}, \emph{Ember-Data}, el cual maneja los datos mientras están en memoria y se asegura de sincronizar con el servidor cuando se requiere y modifica la base de datos. El formato por defecto para manejar la información es \emph{JSON} o \emph{JavaScript Object Notation}, el cual es un formato de texto ligero para el intercambio de datos.\\
 
-Para facilitar el trabajo de desarrollo en la capa de la \textbf{Vista}, Ember implementa \emph{HTMLHandleBars}\footnote{\textbf{HTMLHandleBars} Es motor de plantillas se usa para separar el diseño HTML de Javascript, para así escribir código mucho más limpio.)}\footnote{http://handlebarsjs.com/} que permite embeber código enlazando o sincronizado con el Controlador. Esto significa que si actualizamos código en la Vista, este es actualizado en el Controlador y viceversa.\\
+% es un patrón de arquitectura de software que separa los datos de una aplicación (Modelo), la interfaz de usuario (Vista), y la lógica de control de la aplicaci\'on (Controlador) en tres componentes distintos\cite{mvc}.
+
+Para facilitar el trabajo de desarrollo en la capa de la \textbf{Vista}, Ember implementa \emph{HTMLHandleBars} el cual es motor de plantillas se usa para separar el diseño HTML de Javascript, para así escribir código mucho más limpio, que permite embeber código enlazando o sincronizado con el Controlador. Esto significa que si actualizamos código en la Vista, este es actualizado en el Controlador y viceversa. [http://handlebarsjs.com/] \\
+
+% \footnote{http://handlebarsjs.com/}
 
 % <Screenshot de uso de HTML HandleBars>
 
@@ -31,9 +35,8 @@ En Ember La capa del \textbf{controlador} es  la encargada de recibir los datos 
 
 % // está siendo deprecada en favor de “Componentes”, esto en favor de la nueva convención “Data down, Actions up”, este cambio es para poder
 
-Ember provee de una herramienta de línea de comandos (\emph{Ember-CLI}\footnote{\textbf{Ember-CLI} es el acrónimo de \emph{Ember Command Line Interface}}) que ofrece para agilizar el desarrollo, usado para automatizar procesos repetitivos, por ejemplo, estableciendo la estructura de directorios del proyecto esto basado en la experiencia de numerosos proyectos, realiza la concatenación, compilación, compresión, y demás manejos de archivos. Como también provee un ecosistema de addons\footnote{Addon o Complemento, es un componente de software que añade una característica a un programa ya existente}.\\
-
-Para el desarrollo de este proyecto se hará uso de distintos addons, por ejemplo:
+Ember provee de una herramienta de línea de comandos, \emph{Ember-CLI} o \emph{Ember Command Line Interface}, el cual ofrece para agilizar el desarrollo, usado para automatizar procesos repetitivos, por ejemplo, estableciendo la estructura de directorios del proyecto esto basado en la experiencia de numerosos proyectos, realiza la concatenación, compilación, compresión, y demás manejos de archivos. Como también provee un ecosistema de addons o complementos, que añaden  características nuevas al ecosistema que ofrece \emph{EmberJS}, hay que notar que al ser un proyecto de Software Libre existe una gran cantidad de addons disponibles y cada dia aparecen mas.
+Para el desarrollo de este proyecto se hará uso de distintos addons, los cuales se listan a continuación:
 
 \begin{description}
 \item[ember-paper:] Este addons es el encargado de adaptar la Vista de la aplicación web en la pantalla de un smartphone, necesario ya que por ejemplo el smartphone no tiene un mouse para hacer click, por el contrario es necesario hacer “tap” con un dedo para ejecutar la misma acción que el mouse, también está el hecho que el tamaño de la pantalla del smartphone es muy inferior a la de un monitor estándar pero la experiencia del usuario tiene que estar diseñada para interactuar con las características que nos ofrece un smartphone.

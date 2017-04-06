@@ -8,7 +8,7 @@
 
   Las aplicaciones nativas se caracterizan de poder acceder directamente al sistema operativo móvil sin ningún intermediario ni contenedor.\\
 
-  La aplicación nativa puede acceder libremente a todas las APIs\footnote{\textbf{API:} Acrónimo de \emph{Application Program Interface} es un conjunto de herramientas, protocolos y rutinas que son usados para desarrollar aplicaciones, un API específica como tienen que interactuar los componentes de un sistema.} que el proveedor del SO\footnote{Sistema Operativo} ponga a disposición y, en muchos casos, tiene características y funciones únicas que son típicas del SO móvil en particular.\\
+  La aplicación nativa puede acceder libremente a todas las APIs (\emph{Application Program Interface} es un conjunto de herramientas, protocolos y rutinas que son usados para desarrollar aplicaciones, un API específica como tienen que interactuar los componentes de un sistema.) que el proveedor del Sistema Operativo (SO) ponga a disposición y, en muchos casos, tiene características y funciones únicas que son típicas del SO móvil en particular.\\
 
   Este tipo de aplicaciones se adapta al 100\% con las funcionalidades y características del dispositivo obteniendo así una mejor experiencia de uso.\\
 
@@ -17,7 +17,7 @@
   \subsection{Aplicaciones Web}
   \label{sub:aplicaciones_web}
 
-  Los dispositivos móviles modernos pueden ejecutar navegadores con capacidad de ejecutar HTML5\footnote{\textbf{HTML} es el acrónimo de \emph{Hiper Text Markup Language} el cual es el lenguaje para escribir paginas Web}\footnote{\textbf{HTML5} es la Versión de HTML publicado en Octubre 2014, es la mas moderna y en la que es escriben todas las aplicaciones web actuales} + JavaScript. Algunos ejemplos del potencial de HTML5 son: componentes IU avanzados, acceso a múltiples tipos de medios, servicios de geoposicionamiento y disponibilidad offline. Al emplear estas características se puede crear aplicaciones avanzadas usando únicamente tecnologías basadas en la Web.\\
+  Los dispositivos móviles modernos pueden ejecutar navegadores con capacidad de ejecutar HTML5 (\emph{Hiper Text Markup Language} el cual es el lenguaje para escribir páginas Web), la cual es la Versión de HTML publicado en Octubre 2014, es la más moderna y en la que se escriben todas las aplicaciones web actuales, así como también incorporan un motor JavaScript que permite ejecutar código para lograr una página Web dinámica. Algunos ejemplos del potencial de HTML5 son: componentes IU avanzados, acceso a múltiples tipos de medios, servicios de geoposicionamiento y disponibilidad offline. Al emplear estas características se puede crear aplicaciones avanzadas usando únicamente tecnologías basadas en la Web.\\
 
   Se debe distinguir entre las aplicaciones Web, las aplicaciones Web diseñadas para dispositivos móviles ya que estas últimas reconocen cuando se accede a través de un smartphone y despliegan una página HTML que fue diseñada para brindar una experiencia táctil y cómoda en una pantalla pequeña, a este diseño de aplicación se le conoce como aplicación web responsive, esto mejora la experiencia del usuario creando un sitio Web móvil que se parezca a una aplicación nativa.\\
 
@@ -28,7 +28,7 @@
 
     El enfoque híbrido combina desarrollo nativo con tecnología Web. Usando este enfoque, se escribe gran parte de la aplicación usando tecnologías Web y se mantienen el acceso directo a APIs nativas cuando se necesita. La porción nativa de la aplicación emplea APIs del sistemas operativo para crear un motor de búsqueda HTML incorporado que funciona como un puente entre el navegador y las APIs del dispositivo\cite{IBM_Mobile}.\\
 
-    Esto permite que la aplicación híbrida aproveche todas las características que ofrecen los smartphones modernos. Para lograr esto existen bibliotecas tal como Apache Cordova\footnote{Antiguamente conocido como \textbf{PhoneGap}, es una de las herramientas más populares para crear aplicaciones híbridas.} que provee una interfaz JavaScript con funcionalidad para conectarse con los dispositivos seleccionados y lograr manejar el API propio del smarthphone.\\
+    Esto permite que la aplicación híbrida aproveche todas las características que ofrecen los smartphones modernos. Para lograr esto existen bibliotecas tal como Apache Cordova (antiguamente conocido como \textbf{PhoneGap}, es una de las herramientas más populares para crear aplicaciones híbridas.) que provee una interfaz JavaScript con funcionalidad para conectarse con los dispositivos seleccionados y lograr manejar el API propio del smartphone.\\
 
     La porción Web de la aplicación puede ser una página Web que resida en un servidor o bien un conjunto de archivos HTML, JavaScript, CSS y contenido multimedia, incorporados en el código de la aplicación y almacenados localmente en el dispositivo\cite{IBM_Mobile}.\\
 
@@ -39,6 +39,6 @@
 % End aplicaciones_moviles
 
 Para la aplicación se escogió un desarrollo enfocado a tecnología Web diseñado para su uso en smartphones, o una aplicación web responsive. Para lograr este objetivo se usará, tecnologías aplicadas ampliamente en el desarrollo de aplicaciones web.
-Para implementar el backend de la aplicación se usará \emph{NodeJS}\footnote{https://nodejs.org/en/} con \emph{ExpressJS}\footnote{https://expressjs.com/}, la base de datos se construirá sobre \emph{PostgreSQL}\footnote{https://www.postgresql.org/} y \emph{PostGIS}\footnote{http://postgis.net/} más \emph{pgRouting}\footnote{http://pgrouting.org/}, estos complementos de PostgreSQL nos ayudaran a manejar los datos geoespaciales, para el desarrollo del frontend se usará \emph{EmberJS}\footnote{http://emberjs.com/} y para manejar las imágenes en la web \emph{Cloudinary}\footnote{http://cloudinary.com/}.\\
+Para implementar el backend de la aplicación se usará \emph{NodeJS} con \emph{ExpressJS}, la base de datos se construirá sobre \emph{PostgreSQL} y \emph{PostGIS} más \emph{pgRouting}, estos complementos de PostgreSQL nos ayudarán a manejar los datos geoespaciales, para el desarrollo del frontend se usará \emph{EmberJS} y para manejar las imágenes en la web \emph{Cloudinary}.\\
 
-A continuación se detallara las características y beneficios de cada una de estas herramientas:
+% A continuación se detallara las características y beneficios de cada una de estas herramientas:
