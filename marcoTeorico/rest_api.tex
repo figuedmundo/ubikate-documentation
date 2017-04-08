@@ -1,48 +1,48 @@
-% NOTE: expectativas para un futuro, Implementar un API Publico para mostrar los lugares dentro de la san simon para que otras paginas puedan consumir este recurso y poder ofrecer esta informacion a traves de una gran variedad de paginas y/o aplicaciones.
+% NOTE: expectativas para un futuro, Implementar un API Público para mostrar los lugares dentro de la san simón para que otras páginas puedan consumir este recurso y poder ofrecer esta información a través de una gran variedad de páginas y/o aplicaciones.
 
 \section{REST API}
 \label{sec:REST API}
 
-REST API, es como se denomina generalmente a un Web API o Web Service basado en el estilo arquitectonico REST. Pero que es un Servicio Web?
+REST API, es como se denomina generalmente a un Web API o Web Service basado en el estilo arquitectónico REST. Pero qué es un Servicio Web?
 
 \subsection{Servicio Web}
 \label{sub:Servicio Web}
 
-Los Servicios Web o Web Services, segun la W3C ``proveen un medio estandar de interoperabilidad entre diferentes aplicaciones de software, que se ejecutan en una variedad de plataformas y/o frameworks''.\cite{w3c_web_service} \\
+Los Servicios Web o Web Services, según la W3C ``proveen un medio estándar de interoperabilidad entre diferentes aplicaciones de software, que se ejecutan en una variedad de plataformas y/o frameworks''.\cite{w3c_web_service} \\
 
-Los servicios web se caracterizan por su gran interoperabilidad y extensibilidad, los Servicios Web mas implementados son los basados en RPC, SOA y REST.
+Los servicios web se caracterizan por su gran interoperabilidad y extensibilidad, los Servicios Web más implementados son los basados en RPC, SOA y REST.
 
 \begin{description}
-  \item[RPC:] Remote Procedure Calls, en espanol, Llamadas a Procedimientos Remotos. Un tipo de protocolo qye permite a un programa en una computadora ejecutar un procedimiento en un servidor. El Cliente envia un mensaje al Servidor un mensaje con los argumentos necesarios y el servidor responde con un mensaje con los resultados del procediento ejecutado.\\
+  \item[RPC:] Remote Procedure Calls, en español, Llamadas a Procedimientos Remotos. Un tipo de protocolo que permite a un programa en una computadora ejecutar un procedimiento en un servidor. El Cliente envía un mensaje al Servidor un mensaje con los argumentos necesarios y el servidor responde con un mensaje con los resultados del procedimiento ejecutado.\\
   %
 
-  Los Web Services basados en el modelo RPC son de los primeros en ser usados en la web por lo que su uso esta bastante extendido. Suele ser implementado por medio del mapeo de servicios directamente a funciones específicas o llamadas a métodos.
+  Los Web Services basados en el modelo RPC son de los primeros en ser usados en la web por lo que su uso está bastante extendido. Suele ser implementado por medio del mapeo de servicios directamente a funciones específicas o llamadas a métodos.
 
-  % a type of protocol that allows a program on one computer to execute a program on a server computer. Using RPC, a system developer need not develop specific procedures for the server. The client program sends a message to the server with appropriate argumentsand the server returns a message containing the results of the program executed.
+  % a type of protocol that allows a program on one computer to execute a program on a server computer. Using RPC, a system developer need not develop specific procedures for the server. The client program sends a message to the server with appropriate arguments and the server returns a message containing the results of the program executed.
 
   \item[SOA:] Service-oriented Architecture, en espanol, Arquitectura Orientada a Servicios.
-Es una arquitectura de aplicacion en donde todas las funciones o servicios estan definidas usuando un lenguaje descriptivo, XML es el lenguaje elegido para el intercambio de mensajes. Cada interaccion es independiente de todas las demas interconneciones y los protocolos de comuncacion entre dispocitovos, por lo cual se lo conoce como debilmente desacoplado.
+Es una arquitectura de aplicación en donde todas las funciones o servicios están definidas usando un lenguaje descriptivo, XML es el lenguaje elegido para el intercambio de mensajes. Cada interacción es independiente de todas las demás interconexiones y los protocolos de comunicación entre dispositivos, por lo cual se lo conoce como débilmente desacoplado.
 
-Cuando se usa un servicio web basado en la arquitectura SOA los clientes consumen servicios, enves de ejecutar procedimientos, esto se conoce como servicio orientado a mensajes. por lo cual se mejora notablemente el flujo de la informacion.
+Cuando se usa un servicio web basado en la arquitectura SOA los clientes consumen servicios, en vez de ejecutar procedimientos, esto se conoce como servicio orientado a mensajes. por lo cual se mejora notablemente el flujo de la información.
 
   % is an application architecture in which all functions, or services, are defined using a description language and have invokable interfaces that are called to perform business processes. Each interaction is independent of each and every other interaction and the interconnect protocols of the communicating devices
 
-  \item[REST:] REpresentation State Transfer, Transferencia de Estado Representacional.
-  Los Servicios Web basados en REST utiliza las operaciones del protocolo HTTP (GET, POST, etc.) para establecer las acciones o operaciones que se ejecutaran sobre los ``recursos'' que maneja el servicio web.
+  \item[REST:] REpresentational State Transfer o Transferencia de Estado Representacional.
+  Los Servicios Web basados en REST utiliza las operaciones del protocolo HTTP (GET, POST, etc.) para establecer las acciones u operaciones que se ejecutarán sobre los ``recursos'' que maneja el servicio web.
   %  mediante la restricción de establecer la interfaz al conjunto conocido de operaciones estándar .
 
 \end{description}
 
-% En el presente proyecto de grado se implemento un Servicio Web basado en REST, por lo tanto a continuacion se desarrollara los conceptos de REST.
+% En el presente proyecto de grado se implementó un Servicio Web basado en REST, por lo tanto a continuación se desarrolla los conceptos de REST.
 
 % así como por sus descripciones procesables por máquina gracias al uso de XML
 
 % sistemas de software diseñados para
-% soportar una interacción interoperable maquina a maquina sobre una red''.\\
+% soportar una interacción interoperable máquina a máquina sobre una red''.\\
 
 % Un API
 %
-% Para desarrollar esta seccion, hay que explicar lo que es REST y lo que es un API.
+% Para desarrollar esta sección, hay que explicar lo que es REST y lo que es un API.
 
 % Se pueden observar los siguientes patrones de dise\~no en la aplicación:
 % \begin{itemize}
@@ -59,8 +59,8 @@ Cuando se usa un servicio web basado en la arquitectura SOA los clientes consume
 %
 % Un patrón de diseño es una solución general, reusable  y flexible
 % que describe cómo resolver algún problema general en el desarrollo
-% de software, un patrón puede ser usado y modificado segun el problema
-% al cual se esta aplicando.\\
+% de software, un patrón puede ser usado y modificado según el problema
+% al cual se está aplicando.\\
 
 
 
@@ -68,32 +68,32 @@ Cuando se usa un servicio web basado en la arquitectura SOA los clientes consume
 
   REST es un estilo arquitectónico que especifica cómo los recursos van a ser definidos y direccionados, especifica la importancia del protocolo \emph{cliente-servidor-sin estado}, ya que cada request o petición tiene toda la información necesaria para entenderla.\\
 
-  REST tiene como modelo a la Web, a las caracteriscas que permitieron que el Internet pueda llegar a tener el tamano y la capacidad que presenta en nuestros dias. En particular, al manejo de direcciones o locacion de recursos, los cuales se pueden identificar mediantes las URIs (\emph{Uniform Resource Identifier}). \cite{uri}
+  REST tiene como modelo a la Web, a las características que permitieron que el Internet pueda llegar a tener el tamaño y la capacidad que presenta en nuestros días. En particular, al manejo de direcciones o locación de recursos, los cuales se pueden identificar mediantes las URIs (\emph{Uniform Resource Identifier}). \cite{uri}
 
-Los principios de desino sobre los que se basa REST son:
+Los principios de diseño sobre los que se basa REST son:
 \begin{itemize}
-  \item Escalabilidad de la interacción con los componentes. La Web maneja una gran cantidad de informacion, y a pesar de que continuamente crece el numero de dispositvos que pueden acceder a la red, no se puede apreciar un decremento de la calidad de comunicacion existente.
+  \item Escalabilidad de la interacción con los componentes. La Web maneja una gran cantidad de información, y a pesar de que continuamente crece el número de dispositivos que pueden acceder a la red, no se puede apreciar un decremento de la calidad de comunicación existente.
 
   \item Generalidad de interfaces. Gracias al protocolo HTTP, cualquier cliente puede interactuar con cualquier servidor HTTP sin ninguna configuración especial.
 
-  \item Puesta en funcionamiento independiente. Este hecho se apreciar cuando se observan servidores que al estar en funcionamiento durante bastante tiempo acaban de comunicarse con servidores o dispositivos de ultima generacion y no se puede apreciar que exista un rechaso en la comunicacion.
+  \item Puesta en funcionamiento independiente. Este hecho se apreciar cuando se observan servidores que al estar en funcionamiento durante bastante tiempo acaban de comunicarse con servidores o dispositivos de última generación y no se puede apreciar que exista un rechazo en la comunicación.
 
-  \item Compatibilidad con componentes intermedios. Estos componentes pueden ser los proxys que son utilizados para filtrar la informacion, las caches que se utilizan para mejorar el rendimiento, firewalls para reforzar las políticas de seguridad, etc. \cite{rest_web_service}
+  \item Compatibilidad con componentes intermedios. Estos componentes pueden ser los proxys que son utilizados para filtrar la información, las caches que se utilizan para mejorar el rendimiento, firewalls para reforzar las políticas de seguridad, etc. \cite{rest_web_service}
 
 \end{itemize}
 
- Al implementar una aplicacion \emph{RESTful}\footnote{Se denomina RESTful a los sistemas que siguen los principios REST} significa que los componentes del sistema por ejemplo los usuarios son modelados como recursos que pueden ser creados, leídos, actualizados y borrados, usando los ``verbos'' HTTP; POST, GET, PUT y DELETE, estas acciones corresponden a las operaciones CRUD (Create, Read, Update, Delete) de las base de datos relacionales.\\
+ Al implementar una aplicación \emph{RESTful}\footnote{Se denomina RESTful a los sistemas que siguen los principios REST} significa que los componentes del sistema por ejemplo los usuarios son modelados como recursos que pueden ser creados, leídos, actualizados y borrados, usando los ``verbos'' HTTP; POST, GET, PUT y DELETE, estas acciones corresponden a las operaciones CRUD (Create, Read, Update, Delete) de las base de datos relacionales.\\
   %  y a los cuatro operaciones fundamentales POST, GET, PUT, DELETE definidos en el  protocolo HTTP.\\
 
 % El estilo de desarrollo RESTful\footnote{se denomina RESTful a los sistemas que siguen los principios REST} ayuda a determinar acerca de qué controlador y cuál será la acción que se ejecutará, solamente procesando el request HTTP hecho al servidor.\\
 
 
 \textbf{GET} es la operación HTTP más común, es usado para leer
-datos en este caso paginas, se puede leer como ``get a page'',
+datos en este caso páginas, se puede leer como ``get a page'',
 \textbf{POST} es la operación usada para crear objetos o recursos, la informacion va en el cuerpo del request
 % se usa cuando se ejecuta un formulario, en la convención de Rails \textbf{POST} se usa para crear
 % objetos o recursos,
 \textbf{PUT} se usa para actualizar objetos,
 \textbf{DELETE} es usado para borrar objetos. \\
 
-% Al construir y emplear un REST API para manejar la informacion del backend de la aplicacion se siente muy natural la forma de manejar la comunicacion entre las
+% Al construir y emplear un REST API para manejar la información del backend de la aplicación se siente muy natural la forma de manejar la comunicación entre las

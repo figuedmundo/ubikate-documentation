@@ -2,7 +2,7 @@
 \label{chap:Caso Estudio: Campus Universitario}
 
 
-En el presente proyecto se implementó una aplicación web móvil, como ya se explico, este tipo de aplicaciones son básicamente páginas web, con amplia funcionalidad e implementadas específicamente para su uso en dispositivos móviles, tablets o smartphones, para lo cual se investigó las tecnologías, arquitecturas y los frameworks de desarrollo que actualmente usan este tipo de aplicaciones, una de los concepto que se estudió fue de las \emph{aplicaciones de página única}, concepto que se empezó a discutir a principios de 2003, y se puso de moda con la aparición de frameworks JavaScript que agilizan y facilitan en gran medida la implementación de aplicaciones web, tales como  \emph{Angular.JS} y \emph{Backbone.JS} en el 2010 y \emph{Ember.JS}. \\
+En el presente proyecto se implementó una aplicación web móvil, como ya se explico, este tipo de aplicaciones son básicamente páginas web, con amplia funcionalidad e implementadas específicamente para su uso en dispositivos móviles, tablets o smartphones, para lo cual se investigó las tecnologías, arquitecturas y los frameworks de desarrollo que actualmente usan este tipo de aplicaciones, una de los concepto que se estudió fue de las \emph{aplicaciones de página única}, concepto que se empezó a discutir a principios de 2003, y se puso de moda con la aparición de frameworks JavaScript que agilizan y facilitan en gran medida la implementación de aplicaciones web, tales como \emph{AngularJS}, \emph{BackboneJS} y en el 2010 \emph{EmberJS}. \\
 
 Es necesario reconocer las diferentes partes con la que cuenta una aplicación web móvil como una aplicación de página única diseñada para dispositivos móviles, es necesario implementar un REST API que se encargue de hacer las consultas a la base de datos y que el cliente pueda consumir la información obtenida de la base de datos así como también el camino inverso, la base de datos necesita manejar informacion geoespacial y el cliente necesita que la aplicación sea optimizada para su uso en dispositivos móviles. Tomando en cuenta estos requerimientos se puede separar el desarrollo del proyecto en los siguientes apartados. \\
 
@@ -20,7 +20,9 @@ Para poder responder al problema de encontrar una ruta óptima entre 2 puntos de
 
  En primer lugar fue necesario obtener un grafo ponderado no-dirigido que represente un mapa de los caminos que existen dentro del campus Universitario.\\
 
- Para obtener este mapa se procedió a caminar a través del campus de la UMSS con un GPS Garmin Nuvi 1300\footnote{El Garmin Nuvi 1300, es un dispositivo GPS básico pero cumple con la función de guardar información geográfica, los archivos generados tienen extensión \emph{gpx}, el cual es básicamente un fichero XML estándar usado para compartir datos entre GPS's.}, se recorrieron los principales caminos que existen e interconectan las distintas facultades y oficinas dentro del campus universitario. Una vez realizado este recorrido, se procedió a extraer la información del dispositivo GPS, se utilizó el archivo \emph{current.gpx} para exportar la información  a un archivo \emph{shapefile}\footnote{Un shapefile es un archivo de formato sencillo y no topológico que se utiliza para almacenar la ubicación geométrica y la información de atributos de las entidades geográficas.\cite{what_is_shapefile} }, para esta tarea se utilizó QGis, con el cual se acabó editando las rutas recogidas por el GPS.\\
+ Para obtener este mapa se procedió a caminar a través del campus de la UMSS con un GPS Garmin Nuvi 1300, el cual es un dispositivo GPS básico pero cumple con la función de guardar información geográfica, los archivos generados tienen extensión \emph{gpx}, que básicamente es un fichero XML estándar usado para compartir datos entre GPS's, se recorrieron los principales caminos que existen e interconectan las distintas facultades y oficinas dentro del campus universitario. Una vez realizado este recorrido, se procedió a extraer la información del dispositivo GPS, se utilizó el archivo \emph{current.gpx} para exportar la información  a un archivo \emph{shapefile}, para esta tarea se utilizó QGis, con el cual se acabó editando las rutas recogidas por el GPS.\\
+
+% \footnote{Un shapefile es un archivo de formato sencillo y no topológico que se utiliza para almacenar la ubicación geométrica y la información de atributos de las entidades geográficas.\cite{what_is_shapefile} }
 
  Este paso fue necesario porque el mapa extraído del GPS es una línea única, pero para que nos sirva para el objetivo de buscar una ruta óptima, es necesario que esta línea sea dividida o separada en muchas líneas, las cuales son las aristas y los extremos de las líneas serán los nodos o vértices del grafo.\\
 
@@ -46,9 +48,9 @@ Para poder responder al problema de encontrar una ruta óptima entre 2 puntos de
 
  \begin{figure}[H]
    \begin{center}
-     \caption{Campus Universitario de la UMSS ubicado en la calle Oquendo, Cochabamba-Bolivia.}
-     \label{fig:shapefile_umss_v2}
      \includegraphics[width=1\textwidth]{shapefile_umss_v2}
+     \caption{Shapefile sobre el campus Universitario de la UMSS.}
+     \label{fig:shapefile_umss_v2}
      \caption*{Fuente: Elaboración propia}
    \end{center}
  \end{figure}
@@ -68,7 +70,9 @@ Para poder responder al problema de encontrar una ruta óptima entre 2 puntos de
    \end{center}
  \end{figure}
 
- En la figura \ref{fig:fac_derecho} se puede observar en la línea verde los caminos o rutas dentro de la facultad de derecho de la UMSS, proyectada sobre el mapa de Google Maps, para lograr esta representación se utilizó QGIS ya que la información geográfica de la ruta está contenida en un archivo shapefile y el mapa se lo obtiene usando el API de Google Maps gracias al plugin de QGIS, \emph{QuickMapServices}\footnote{http://nextgis.com/blog/quickmapservices/}.
+ En la figura \ref{fig:fac_derecho} se puede observar en la línea verde los caminos o rutas dentro de la facultad de derecho de la UMSS, proyectada sobre el mapa de Google Maps, para lograr esta representación se utilizó QGIS ya que la información geográfica de la ruta está contenida en un archivo shapefile y el mapa se lo obtiene usando el API de Google Maps gracias al plugin de QGIS, \emph{QuickMapServices}.
+
+ % \footnote{http://nextgis.com/blog/quickmapservices/}.
 
 
 \subsection{Facultad de Economía}
@@ -152,7 +156,7 @@ El servidor web es el encargado de enviar la página HTML la primera vez que el 
 
 El servidor web será construido con \emph{Express JS}, para lo cual primeramente se necesita instalar \emph{Node JS}, \emph{Express JS} cuenta con una herramienta para la consola, \emph{express-generator}, entonces solo es necesario crear un projecto Express y empezar a implementar la lógica de negocio.\\
 
-El servidor se va a encargar de hablar con la base de datos y también necesita ofrecer una interfaz por la cual pueda recibir datos y entregar datos, en pocas palabras un \emph{API}, implementar un \emph{API} con \emph{Express} es bastante sencillo, para trabajar con la base de datos se instaló una librería \emph{Bookshelf.JS} para poder escribir las consultas y trabajar con la bd como si se tratara de objetos\footnote{Este patrón se denomina ORM, Object-Relational-Model, básicamente mapea las tablas y las relaciones como objetos y el framework se encarga de traducirlo a lenguaje \emph{SQL} que es el lenguaje que entienden las bases de datos.} y también podemos escribir las consultas en lenguaje \emph{SQL}, si fuera necesario. Como en el presente caso ya que al  trabajar con una herramienta específica, \emph{pgRouting}, las consultas son personalizadas.\\
+El servidor se va a encargar de hablar con la base de datos y también necesita ofrecer una interfaz por la cual pueda recibir datos y entregar datos, en pocas palabras un \emph{API}, implementar un \emph{API} con \emph{Express} es bastante sencillo, para trabajar con la base de datos se instaló una librería \emph{BookshelfJS} para poder escribir las consultas y trabajar con la base de datos como si se tratara de objetos, este patrón se denomina \emph{ORM} o \emph{Object-Relational-Model}, básicamente mapea las tablas y las relaciones existentes como objetos dentro del paradigma \emph{OOP} y el framework se encarga de traducirlo a lenguaje \emph{SQL} que es el lenguaje que entienden las bases de datos, \emph{BookshelfJS} también permite escribir las consultas en lenguaje \emph{SQL} si fuera necesario, como en el presente caso ya que al  trabajar con una herramienta específica, \emph{pgRouting}, las consultas son personalizadas.\\
 
 % \begin{minted}{js}
  \begin{center}
@@ -180,9 +184,10 @@ El servidor se va a encargar de hablar con la base de datos y también necesita 
  \end{center}
  %  \end{minted}
 
-Como en la anterior consulta, se requiere obtener la información de un lugar, por lo tanto se necesita  usar la forma \emph{Raw SQL}\footnote{Raw SQL se refiere a consultas en ``SQL puro'' ya que el fuerte de \emph{Bookshelf.JS} es el manejo de las consultas en forma de objetos (ORM), lamentablemente actualmente no existe mucho soporte para manejar datos geoespaciales}, de \emph{Bookshelf.JS}.
+Como en la anterior consulta, se requiere obtener la información de un lugar, por lo tanto se necesita  usar la forma \emph{Raw SQL} o consultas en ``SQL puro'' ya que el fuerte de \emph{BookshelfJS} es el manejo de las consultas en forma de objetos (ORM), lamentablemente actualmente no existe mucho soporte para manejar datos geoespaciales por parte de frameworks ORM.\\
+
 % De esta forma se obtiene de la base de datos la infor  donde este
-Una vez que se obtiene la información del lugar; nombre, descripcion, telefono, el nivel o piso donde se encuentra pero lo importante de esta consulta es la obtención del ``punto'' geoespacial del lugar. Estos datos son importantes para implementar la lógica de negocio.\\
+Una vez que se obtiene la información del lugar; nombre, descripcion, telefono, el nivel o piso, pero lo importante de esta consulta es la obtención del ``punto'' geoespacial del lugar. Estos datos son importantes para implementar la lógica de negocio.\\
 
 
 \begin{center}
@@ -199,8 +204,9 @@ Una vez que se obtiene la información del lugar; nombre, descripcion, telefono,
 %                               FROM public.ways', targetId, sourceId, false, false);";
 
 
-Este atributo es de tipo \emph{punto} o \emph{point} el cual tiene un \emph{SRID}\footnote{ Spatial Reference System Identifier, El \emph{SRID} corresponde a un sistema de referencia espacial basado en el elipsoide concreto usado para la creación de mapas de tierra plana o de tierra redonda.\cite{msdn_srid} } \emph{3857}\footnote{La proyección Mercator usa el EPSG 3857}, el SRID  es la llave primaria de la tabla \emph{spatial\_ref\_sys} que se crea cuando se inicializa una base de datos que soporte informacion geoespacial (PostGis), esta tabla provee la información necesaria para interpretar y convertir correctamente todas las coordenadas existentes, el \emph{SRID 3857} está definida en la tabla \emph{spatial\_ref\_sys} como ``Popular Visualisation CRS / Mercator''.\\
+Este atributo es de tipo \emph{punto} o \emph{point} el cual tiene un \emph{SRID} o \emph{Spatial Reference System Identifier}, el \emph{SRID} corresponde a un sistema de referencia espacial basado en el elipsoide concreto usado para la creación de mapas de tierra plana o de tierra redonda.\cite{msdn_srid}\\
 
+El \emph{SRID 3857} también conocido como \emph{EPSG 3857} es la implementada en la \emph{Proyección de Mercator}, el SRID  es la llave primaria de la tabla \emph{spatial\_ref\_sys} que se crea cuando se inicializa \emph{PostGis} en una base de datos para que esta soporte informacion geoespacial, esta tabla provee la información necesaria para interpretar y convertir correctamente todas las coordenadas existentes, el \emph{SRID 3857} está definida en la tabla \emph{spatial\_ref\_sys} como ``Popular Visualisation CRS / Mercator''.\\
 
 En resumen el servidor web será el encargado de recibir información y devolver una respuesta de acuerdo a los datos que recupere de la base de datos, para tal efecto se utilizan las direcciones URL, las cuales de acuerdo al protocolo HTTP se pueden definir de acuerdo a la acción que el servidor necesita procesar, para lograr esta comunicación es necesario definir nuestro API.\\
 
@@ -250,8 +256,6 @@ En primer lugar es necesario crear las URIs que serán ``entendidas'' por el ser
 
   \begin{table}[!hbp]
     \begin{center}
-      \caption[recursos REST]{REST URIs para los lugares}
-      \label{tab:rest}
 
       \begin{tabularx}{0.75\textwidth}{ l l l  X }
         \toprule
@@ -270,6 +274,9 @@ En primer lugar es necesario crear las URIs que serán ``entendidas'' por el ser
         DELETE  &  /places/1  &  delete   & elimina el lugar con id = 1 de la bd\\
         \bottomrule
       \end{tabularx}
+
+      \caption[recursos REST]{REST URIs para los lugares}
+      \label{tab:rest}
 
       \caption*{Fuente: Elaboración propia}
     \end{center}
@@ -348,12 +355,13 @@ En primer lugar es necesario crear las URIs que serán ``entendidas'' por el ser
 
        \begin{figure}[H]
          \begin{center}
-           \caption{Herramienta gráfica de PostgreSQL (pgAdmin) con la tabla de Lugares desplegada.}
-           \label{fig:postgres_places}
            \includegraphics[width=1\textwidth]{iteration1/postgres_places}
+           \caption{Herramienta gráfica de PostgreSQL (\emph{pgAdmin}).}
+           \label{fig:postgres_places}
            \caption*{Fuente: Elaboración propia}
          \end{center}
        \end{figure}
+        % con la tabla de Lugares desplegada.
 
        En la figura \ref{fig:postgres_places} se puede observar que la columna \emph{Elevation} contiene datos que el GPS Garmin Nuvi 1300 genera al momento de guardar un punto, en el presente caso es irrelevante.\\
 
@@ -376,9 +384,9 @@ En primer lugar es necesario crear las URIs que serán ``entendidas'' por el ser
 
        \begin{figure}[H]
          \begin{center}
-           \caption{Vista de la tabla \emph{ways} en la base de datos PostgreSQL.}
-           \label{fig:postgres_ways}
            \includegraphics[width=1\textwidth]{iteration2/postgres_ways}
+           \caption{Vista de la tabla \emph{ways}.}
+           \label{fig:postgres_ways}
            \caption*{Fuente: Elaboración propia}
          \end{center}
        \end{figure}
@@ -389,9 +397,9 @@ En primer lugar es necesario crear las URIs que serán ``entendidas'' por el ser
 
        \begin{figure}[H]
          \begin{center}
-           \caption{Vista de la tabla \emph{ways\_vertices\_pgr} en la base de datos PostgreSQL.}
-           \label{fig:postgres_vertices}
            \includegraphics[width=1\textwidth]{iteration2/postgres_vertices}
+           \caption{Vista de la tabla \emph{ways\_vertices\_pgr}.}
+           \label{fig:postgres_vertices}
            \caption*{Fuente: Elaboración propia}
          \end{center}
        \end{figure}
