@@ -100,7 +100,28 @@
 
 % \usepackage[charter]{mathdesign}
 
+%----------------------------------------
+\usepackage{bookmark}
+\bookmarksetup{numbered}
 
+\usepackage{titlesec} %reformatting the chapter headings
+%\titleformat{\chapter}[block]
+%  {\normalfont\LARGE\bfseries\centering}
+%  {CHAPTER\thechapter: }{0em}{}
+
+\makeatletter
+\bookmarksetup{%
+  addtohook={%
+    \ifnum\toclevel@chapter=\bookmarkget{level}\relax
+      \renewcommand*{\numberline}[1]{Cap\'itulo #1: }%
+    \fi
+  },
+}
+\makeatother
+%----------------------------------------
+
+
+%-----------------------------
 \renewcommand{\lstlistingname}{Code}
 
 \lstset{
