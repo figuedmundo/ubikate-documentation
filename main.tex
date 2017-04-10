@@ -109,15 +109,15 @@
 %  {\normalfont\LARGE\bfseries\centering}
 %  {CHAPTER\thechapter: }{0em}{}
 
-\makeatletter
-\bookmarksetup{%
-  addtohook={%
-    \ifnum\toclevel@chapter=\bookmarkget{level}\relax
-      \renewcommand*{\numberline}[1]{Cap\'itulo #1: }%
-    \fi
-  },
-}
-\makeatother
+% \makeatletter
+% \bookmarksetup{%
+%   addtohook={%
+%     \ifnum\toclevel@chapter=\bookmarkget{level}\relax
+%       \renewcommand*{\numberline}[1]{Cap\'itulo #1: }%
+%     \fi
+%   },
+% }
+% \makeatother
 %----------------------------------------
 
 
@@ -132,7 +132,7 @@
 \DeclareCaptionFont{white}{\color{white}}
 \DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
 \captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
-
+%-------------
 
 %margenes
 
@@ -153,7 +153,6 @@
 \fancyhf{}% Clear page header/footer
 \renewcommand{\headrulewidth}{0pt}% No header rule
 \fancyfoot[C]{\thepage}
-
 \floatpagestyle{fancy}% Page style for float-page only
 
 %------------
@@ -187,7 +186,7 @@
 \begin{document}
 % \include{title-page}
 \frontmatter
-  \maketitle
+  % \maketitle
   \tableofcontents
 
 \mainmatter{}
@@ -196,6 +195,8 @@
   \include{caso_estudio}
   \include{desarrollo}
   \include{iteraciones}
+
+
   % \include{geolocalizacion}
   % \include{ruta_corta}
   % \include{desarrollo}
@@ -210,8 +211,13 @@
   % \include{ror_patrones}
 
 \backmatter{}
-  \include{bibliography}
+
+  % \include{bibliography}
+% \newpage
+  \bibliography{bibliografia}
+  \bibliographystyle{alpha}
+  % \bibliographystyle{apalike}
+
   % \listoffigures
   % \listoftables
-% \newpage
 \end{document}

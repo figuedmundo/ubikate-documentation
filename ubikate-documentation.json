@@ -1,3 +1,8 @@
 {
-  
+  "projectPath": "/home/ed/projects/ubikate/ubikate-documentation",
+  "title": "Ubikate UMSS",
+  "root": "main.tex",
+  "program": "pdflatex",
+  "latexmkOptions": "-bibtex -pdf -shell-escape",
+  "output": ".latex"
 }
