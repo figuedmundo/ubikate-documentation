@@ -1,0 +1,74 @@
+
+  \section{Base de Datos} % (fold)
+  \label{sec:base_de_datos}
+
+  En una aplicación web es necesario alguna forma de persistencia de datos, en especial si se están usando datos complejos como la informacion geoespacial, para realizar está tarea, la base de datos es un factor primordial.  Para este proyecto de grado se hara uso de \emph{PostgreSQL} como base de datos relacional y su extension \emph{Postgis} para manejar los datos geoespaciales.\\
+
+    \subsection{PostgreSQL} % (fold)
+    \label{sec:postgres}
+
+      PostgreSQL es un sistema de gestión de bases de datos objeto-relacional, Open Source y distribuido bajo licencia BSD.
+      PostgreSQL utiliza un modelo cliente/servidor y usa multiprocesos en vez de multihilos para garantizar la estabilidad del sistema. Un fallo en uno de los procesos no afectará el resto y el sistema continuará funcionando.
+      La última versi\'on estable de PostgreSQL es la 9.5, su desarrollo comenz\'o hace más de 16 años, y cuenta con una gran comunidad que aporta con el desarrollo y el testeo de nuevas versiones.
+      PostgreSQL  está considerada como uno de los mejores \emph{Sistemas de gesti\'on de bases de datos}, es muy completo y está muy bien documentado.
+      Entre sus características se pueden nombrar las siguientes.
+      \begin{itemize}
+        \item Es una base de datos 100\% \emph{ACID} (Atomicity, Consistency, Isolation and Durability).
+        \item Integridad referencial.
+        \item Replicación asincrónica/sincrónica.
+        \item Múltiples métodos de autentificación.
+        \item Disponible para Linux y UNIX en todas sus variantes.
+        \item Funciones/procedimientos almacenados.
+        \item Soporte a la especificacion SQL.
+      \end{itemize}
+
+      Personalmente se escogió trabajar con  PostgreSQL como DBMS cuenta con una extensa documentación,  y gracias a su caracter ``Open Source'', y su gran flexibilidad en poder definir nuevos tipos de datos, esto se hace posible que empresas como \textbf{Refractions Research} puedan crear recursos como \emph{PostGIS}, necesario para trabajar con datos geográficos \'o espaciales.
+
+% \footnote{http://refractions.net/}
+
+      % Entre sus principales  características se puede nombrar que es
+      % \footnote{ DBMS, DataBase Management System}
+      % y durante este tiempo, estabilidad, potencia, robustez, facilidad de administración e implementación de estándares han sido las características que más se han tenido en cuenta durante su desarrollo. PostgreSQL funciona muy bien con grandes cantidades de datos y una alta concurrencia de usuarios accediendo a la vez a el sistema.
+
+    % section postgres (end)
+
+    \subsection{PostGIS} % (fold)
+    \label{sec:postgis}
+
+      PostGIS es un módulo  que a\~nade soporte de objetos geográficos al DBMS PostgreSQL, convirtiéndola en una base de datos espacial para su utilización en un Sistema de Informaci\'on Geografica o \emph{SIG}, es bastante común utilizar el acrónimo en Inglés, \emph{Geographic Information System} o \emph{GIS} y de hay viene el término de PostGIS, que conbina Postgres y GIS.\\
+
+      El desarrollo de PostGIS está a cargo de Refractions Research, está liberada con la \emph{Licencia pública general de GNU}, declarandola como software libre que lo protege de cualquier intento de apropiaci\'on.\\
+
+      PostGIS implementa la especificaci\'on ``SFSQL'' (Simple Features for SQL, define los tipos y funciones que necesita implementar cualquier base de datos espacial) de la \emph{OGC} (Open Geospatial Consortium, es un consorcio internacional, formado por un conjunto de empresas, agencias gubernamentales y universidades, dedicado a desarrollar especificaciones de interfaces para promover y facilitar el uso global de la información espacial).\\
+
+      \emph{PostGIS} al igual que \emph{PostgreSQL} cuenta con una documentaci\'on bastante extensa y equipo de desarrollo que continuamente va sacando nuevas versiones, actualmente se encuentra la versi\'on 2.2.2, pero para el desarrollo de la aplicaci\'on se hizo uso de la versi\'on 2.1.0.\\
+
+      PostGIS es gratis, pero no por ello es una herramienta de baja calidad, al contrario se la considera una herramienta de nivel empresarial, y muchas instituciones la est\'an usando de manera exitosa, aparte de numerosas aplicaciones.\\
+      % \footnote{ http://www.postgis.org/documentation/casestudies/}
+
+      Manejar los datos geográficos con PostGIS es sencillo y eficiente, por está raz\'on se utilizó está herramienta, pero para conseguir la ruta óptima entre 2 puntos se necesitaba el uso del algoritmo de Dijkstra y para PostGIS existe el módulo \textbf{PgRouting}, que tiene implementado este algoritmo.\\
+
+      \subsubsection{pgRouting} % (fold)
+      \label{sec:pgrouting}
+        pgRouting es una extensi\'on  de  PostGIS para proveer funcionalidades de ruteo espacial. pgRouting es un desarrollo posterior de pgDijkstra y actualmente está siendo mantenido por Georepublic, la última versi\'on estable es la 2.1, y es la que fue usada para desarrollar el sistema.\\
+
+        Las ventajas del ruteo en la base de datos son:
+        \begin{itemize}
+          \item Los datos y atributos pueden ser modificados desde varios clientes, como \emph{Quantum GIS} y \emph{uDig} a través de \emph{JDBC}, \emph{ODBC}, o directamente usando \emph{Pl/pgSQL}. Los clientes pueden ser PCs o dispositivos móviles.
+          \item Los cambios pueden ser reflejados instantáneamente a través del motor de ruteo. No hay necesidad de hacer cálculos previos.
+          \item El parámetro de ``costo'' puede ser calculado dinámicamente a través de SQL y su valor puede provenir de múltiples campos y tablas.
+        \end{itemize}
+
+        pgRouting provee funciones para:
+        \begin{itemize}
+          \item Camino mínimo (Dijkstra): algoritmo de ruteo sin heurística
+          \item Camino mínimo (A-Star): routeo para conjunto de datos grandes (con heurística)
+          \item Camino mínimo (Shooting-Star): ruteo con restricciones de giro (con heurística)
+          \item El problema del viajante (TSP: Traveling Salesperon Problem)
+          \item Cálculo de ruta (Isolíneas)
+        \end{itemize}
+
+        % Uses PostGIS for its geographic data format, which in turn uses OGC’s data format Well Konwn Text (WKT) and Well Known Binary (WKB)
+      % section pgrouting (end)
+    % section postgis (end)
+  % section base_de_datos (end)
