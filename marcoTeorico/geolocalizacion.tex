@@ -1,5 +1,6 @@
-\section{Geolocalización} % (fold)
-\label{sec:geolocalizacion}
+\chapter{Geolocalización} % (fold)
+\label{cha:geolocalizacion}
+
   La Geolocalización o Georreferenciación es un término bastante nuevo, de hecho no aparece en el diccionario de la Real Academia Española, no obstante se lo puede definir como:
 % \footnote{http://dle.rae.es/}
 
@@ -17,8 +18,8 @@
   Y las posibilidades son diversas, por ejemplo, si se quisiera planificar la construcción de un colegio se podría integrar los datos del censo con un mapa, identificando los sectores con mayor porcentaje de niños y localizando los sectores más propicios para realizar la construcción del inmueble. En el caso de una catástrofe natural, el tener las rutas de evacuación geolocalizadas y disponibles en un mapa de manera eficiente,  ayudaría en la evacuación de las personas del lugar.\\
 
 
-  \subsection{Definiciones} % (fold)
-  \label{sub:definiciones}
+  \section{Definiciones} % (fold)
+  \label{sec:definiciones}
 
     En la aplicación desarrollada se requerirá trabajar con datos espaciales, y para ello es necesario entender algunos conceptos envueltos en el manejo de la información geográfica.
 
@@ -28,8 +29,8 @@
       \item[Punto:] Es  la representación de una posición, topológicamente 0-dimensional (no tiene volumen, área, longitud o cualquier otra unidad multi-\\dimensional).
     \end{description}
 
-    % \subsection{Coordenada} % (fold)
-    % \label{sub:coordenada}
+    % \section{Coordenada} % (fold)
+    % \label{sec:coordenada}
     %   Es una secuencia de n-números que designa la posición de un punto en un espacio n-dimensional. \\
     %   % one of a sequence of n-numbers designating the position of a point (4.17) in n-dimensional space
     %   % NOTA: En un
@@ -37,14 +38,14 @@
 
     % % subsection coordenada (end)
 
-    % \subsection{Sistema de coordenadas} % (fold)
-    % \label{sub:sistema_de_coordenadas}
+    % \section{Sistema de coordenadas} % (fold)
+    % \label{sec:sistema_de_coordenadas}
     %   Un sistema de coordenadas es  un conjunto de reglas matemáticas que especifican cómo las coordenadas son asignadas  a cada  punto.
     %   % set of mathematical rules for specifying how coordinates (4.3) are to be assigned to each point (4.17)
 
     % % subsubsection sistema_de_coordenadas (end)
-    % \subsection{Punto} % (fold)
-    % \label{sub:punto}
+    % \section{Punto} % (fold)
+    % \label{sec:punto}
     %   Es  la representación de una posición, topológicamente 0-dimensional (no tiene volumen, área, longitud o cualquier otra unidad multi-dimensional).
     %   % topological 0-dimensional geometric primitive (4.15), representing a position
     % % subsection punto (end)
@@ -54,8 +55,8 @@
     % \footnote{\url{http://www.opengeospatial.org/standards/sfa}}
 
   % section definiciones (end)
-  \subsection{Sistema de Coordenadas para datos Geográficos} % (fold)
-  \label{sub:sistema_de_coordenadas_para_datos_geograficos}
+  \section{Sistema de Coordenadas para datos Geográficos} % (fold)
+  \label{sec:sistema_de_coordenadas_para_datos_geograficos}
     Se podría pensar en un sistema de coordenadas como la forma de dar sentido a un \emph{par de coordenadas}, por ejemplo cuando se ve una locación ``\verb|POINT(-66.1457475 -17.3937285)|'', cómo se interpretan estos números?.
     Podría ser la latitud y longitud del campus de la UMSS, o podría ser un sistema de anos luz desde alguna estrella en el Universo.
     El sistema de coordenadas es lo que diferencia estos casos.\\
@@ -63,8 +64,8 @@
 
     Una aplicación que maneja datos geográficos, generalmente trabaja con sistemas de coordenadas relacionadas con la superficie terrestre, conocidas como coordenadas espaciales (coordenadas globales), que permiten representar la tierra en \emph{3-Dimensiones} (3D), ya que esta es una Esfera (elipsoide oblato), o en una representación de la superficie terrestre en \emph{2-Dimensiones} (2D), se pueden nombrar los siguientes:
 
-    \subsubsection{Coordenadas geocéntricas (X,Y,Z)} % (fold)
-      \label{subs:coordenadas_geocentricas}
+    \subsection{Coordenadas geocéntricas (X,Y,Z)} % (fold)
+      \label{sub:coordenadas_geocentricas}
         También conocido como \emph{Coordenadas Cartesianas 3D}, Este sistema tiene como origen el centro de la Tierra, con el \emph{eje X} y el \emph{eje Y} en el plano del ecuador. El \emph{eje X} pasa a través del meridiano de Greenwich, y el \emph{eje Z}  coincide con el eje de rotación de la Tierra.
 
         \begin{figure}[H]
@@ -79,8 +80,8 @@
         Este Sistema de coordenadas no es muy usado en la representación de datos, pero a veces se lo requiere para análisis de algoritmos y geometría computacional.
       % subsection coordenadas_geocentricas (end)
 
-      \subsubsection{Coordenadas Geográficas} % (fold)
-      \label{subs:coordenadas_geograficas}
+      \subsection{Coordenadas Geográficas} % (fold)
+      \label{sub:coordenadas_geograficas}
         Sistema de coordenadas Geográfico, utiliza las coordenadas angulares latitud  (\emph{phi} o ${\phi}$) y longitud (\emph{lambda} o ${\lambda}$). Este sistema de coordenadas se expresa en grados, se lo puede representar con la forma \emph{grados:minutos:segundos }\verb|(17° 23' 37.4226" S, 66° 8' 44.691" W)|, o de la forma más común \emph{grados decimales} \verb|(-66.1457475 S, -17.3937285 W)|.\\
 
         El sistema de coordenadas  más ampliamente usado, el que usan por defecto los sistemas \emph{GPS}, es conocido como ``WGS 84'', y la mayoría de las aplicaciones que manejan mapas usan este sistema de coordenadas. Es el sistema que maneja los más ampliamente conocidos ``latitud y longitud''.\\
@@ -97,8 +98,8 @@
 
       % subsection coordenadas_geograficas (end)
 
-      \subsubsection{Coordenadas Proyectadas} % (fold)
-      \label{subs:coordenadas_proyectadas}
+      \subsection{Coordenadas Proyectadas} % (fold)
+      \label{sub:coordenadas_proyectadas}
         Un sistema de coordenadas proyectadas es una representación plana y bidimensional de la  tierra. Se basa en un sistema de coordenadas \emph{geográficas esféricas}, pero utiliza unidades de \emph{medida lineales} para las coordenadas, de forma que los cálculos de distancia y área se pueden realizar en términos de esas mismas unidades.\cite{projected} \\
 
         Un sistema de coordenadas proyectadas requiere tomar la superficie esférica de la tierra y ``aplanarla'', este procedimiento se lo realiza con la finalidad de tener un mapa representable en una hoja de papel así como en la pantalla de la computadora. Sin embargo este procedimiento introduce diversos tipos de distorsión por lo que existen diferentes clases de proyecciones que varían según la región que se quiere representar de la Tierra.\\
@@ -121,8 +122,8 @@
       % subsection coordenadas_proyectadas (end)
 
   %
-  %     \subsection{Que se usó en la Aplicación} % (fold)
-  %     \label{sub:que_se_uso_en_la_aplicacion}
+  %     \section{Que se usó en la Aplicación} % (fold)
+  %     \label{sec:que_se_uso_en_la_aplicacion}
   %       Es importante entender las diferencias entre los distintos tipos de sistemas de coordenadas porque computacionalmente realizar operaciones sobre los sistemas de coordenadas tiene un costo.
   %       Si se usara el sistema de coordenadas geográfico (WSG84) este es el más apropiado si se necesitaría usar grandes extensiones de la superficie terrestre, que al ser una estructura elipsoidal el costo computacional para realizar las operaciones matemáticas de calcular distancias, intersecciones, etc. es más elevado. En cambio el uso de un sistema de coordenadas proyectado (Mercator Projection) tiene un costo computacional más bajo, ya que se estaría trabajando con un sistema geométrico.\\
   %
@@ -140,8 +141,8 @@
   % %
   % % section tipo_de_archivos (end)
   %
-  % \subsection{Implementación} % (fold)
-  % \label{sub:Implementacion}
+  % \section{Implementación} % (fold)
+  % \label{sec:Implementacion}
   %   Para manejar datos georreferenciados con tecnología JavaScript, ya que se implementó el Backend con NodeJS, se hizo uso de la librería \textbf{KnexJS} para manejar la conexión a la base de datos PostgreSQL, y BookshelfJS para las consultas SQL pero para las consultas con datos geospaciales se realizó a través de esta herramienta pero usando la forma \emph{Raw SQL}\footnote{Raw SQL se refiere a consultas en ``SQL puro'' ya que el fuerte de BookshelfJS es el manejo de las consultas en forma de objetos (ORM), lamentablemente actualmente no existe mucho soporte para manejar datos geoespaciales}.
   %
   %   \begin{center}
