@@ -1,10 +1,10 @@
 
-  \section{Base de Datos} % (fold)
-  \label{sec:base_de_datos}
+  \chapter{Base de Datos} % (fold)
+  \label{chap:base_de_datos}
 
   En una aplicación web es necesario alguna forma de persistencia de datos, en especial si se están usando datos complejos como la informacion geoespacial, para realizar está tarea, la base de datos es un factor primordial.  Para este proyecto de grado se hara uso de \emph{PostgreSQL} como base de datos relacional y su extension \emph{Postgis} para manejar los datos geoespaciales.\\
 
-    \subsection{PostgreSQL} % (fold)
+    \section{PostgreSQL} % (fold)
     \label{sec:postgres}
 
       PostgreSQL es un sistema de gestión de bases de datos objeto-relacional, Open Source y distribuido bajo licencia BSD.
@@ -32,25 +32,25 @@
 
     % section postgres (end)
 
-    \subsection{PostGIS} % (fold)
+    \section{PostGIS} % (fold)
     \label{sec:postgis}
 
-      PostGIS es un módulo  que a\~nade soporte de objetos geográficos al DBMS PostgreSQL, convirtiéndola en una base de datos espacial para su utilización en un Sistema de Informaci\'on Geografica o \emph{SIG}, es bastante común utilizar el acrónimo en Inglés, \emph{Geographic Information System} o \emph{GIS} y de hay viene el término de PostGIS, que conbina Postgres y GIS.\\
+      PostGIS es un módulo  que anade soporte de objetos geográficos al DBMS PostgreSQL, convirtiéndola en una base de datos espacial para su utilización en un Sistema de Informacion Geografica o \emph{SIG}, es bastante común utilizar el acrónimo en Inglés, \emph{Geographic Information System} o \emph{GIS} y de hay viene el término de PostGIS, que conbina Postgres y GIS.\\
 
-      El desarrollo de PostGIS está a cargo de Refractions Research, está liberada con la \emph{Licencia pública general de GNU}, declarandola como software libre que lo protege de cualquier intento de apropiaci\'on.\\
+      El desarrollo de PostGIS está a cargo de Refractions Research, está liberada con la \emph{Licencia pública general de GNU}, declarandola como software libre que lo protege de cualquier intento de apropiacion.\\
 
       PostGIS implementa la especificaci\'on ``SFSQL'' (Simple Features for SQL, define los tipos y funciones que necesita implementar cualquier base de datos espacial) de la \emph{OGC} (Open Geospatial Consortium, es un consorcio internacional, formado por un conjunto de empresas, agencias gubernamentales y universidades, dedicado a desarrollar especificaciones de interfaces para promover y facilitar el uso global de la información espacial).\\
 
-      \emph{PostGIS} al igual que \emph{PostgreSQL} cuenta con una documentaci\'on bastante extensa y equipo de desarrollo que continuamente va sacando nuevas versiones, actualmente se encuentra la versi\'on 2.2.2, pero para el desarrollo de la aplicaci\'on se hizo uso de la versi\'on 2.1.0.\\
+      \emph{PostGIS} al igual que \emph{PostgreSQL} cuenta con una documentacion bastante extensa y equipo de desarrollo que continuamente va sacando nuevas versiones, actualmente se encuentra la version 2.2.2, pero para el desarrollo de la aplicacion se hizo uso de la version 2.1.0.\\
 
-      PostGIS es gratis, pero no por ello es una herramienta de baja calidad, al contrario se la considera una herramienta de nivel empresarial, y muchas instituciones la est\'an usando de manera exitosa, aparte de numerosas aplicaciones.\\
+      PostGIS es gratis, pero no por ello es una herramienta de baja calidad, al contrario se la considera una herramienta de nivel empresarial, y muchas instituciones la estan usando de manera exitosa, aparte de numerosas aplicaciones.\\
       % \footnote{ http://www.postgis.org/documentation/casestudies/}
 
       Manejar los datos geográficos con PostGIS es sencillo y eficiente, por está raz\'on se utilizó está herramienta, pero para conseguir la ruta óptima entre 2 puntos se necesitaba el uso del algoritmo de Dijkstra y para PostGIS existe el módulo \textbf{PgRouting}, que tiene implementado este algoritmo.\\
 
-      \subsubsection{pgRouting} % (fold)
+      \subsection{pgRouting} % (fold)
       \label{sec:pgrouting}
-        pgRouting es una extensi\'on  de  PostGIS para proveer funcionalidades de ruteo espacial. pgRouting es un desarrollo posterior de pgDijkstra y actualmente está siendo mantenido por Georepublic, la última versi\'on estable es la 2.1, y es la que fue usada para desarrollar el sistema.\\
+        pgRouting es una extension  de  PostGIS para proveer funcionalidades de ruteo espacial. pgRouting es un desarrollo posterior de pgDijkstra y actualmente está siendo mantenido por Georepublic, la última version estable es la 2.1, y es la que fue usada para desarrollar el sistema.\\
 
         Las ventajas del ruteo en la base de datos son:
         \begin{itemize}

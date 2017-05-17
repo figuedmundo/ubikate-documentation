@@ -1,5 +1,5 @@
-\section{Ruta Óptima} % (fold)
-\label{sec:ruta_optima}
+\chapter{Ruta Óptima} % (fold)
+\label{cha:ruta_optima}
 
 Si se quiere ir de un punto a otro el mejor camino o el más óptimo siempre es aquel con la menor distancia entre los 2 puntos, pero como se puede definir que un camino es óptimo?, si se va en coche hay que tomar en cuenta la dirección de las calles, los cruces, etc. si se va a pie hay que ver las características del terreno, caminos cortados, distancias, etc.\\
 
@@ -10,14 +10,14 @@ Si se analiza el terreno que se va a cubrir con la aplicación (el campus de la 
 La resolución de este problema es la se analizará en este capítulo.
 
 
-  \subsection{Grafos} % (fold)
-  \label{sub:teoria_grafos}
+  \section{Grafos} % (fold)
+  \label{sec:teoria_grafos}
 
     El problema se lo podria definir como; Encontrar la ruta más corta de un punto a otro punto, en donde los puntos están interconectados por una red de caminos. El problema descrito se lo puede resolver/describir como un caso espec\'ifico de la teoría de grafos.
 
 
-    \subsection{Definiciones} % (fold)
-    \label{sub:grafos_definiciones}
+    \section{Definiciones} % (fold)
+    \label{sec:grafos_definiciones}
       Primeramente es necesario aclarar\'ar alguno términos usados en la teoría de grafos.\\
 
       % El grafo que es la reprentacion
@@ -41,8 +41,8 @@ La resolución de este problema es la se analizará en este capítulo.
       Un camino en un grafo es una secuencia de nodos $v_{1}$, $v_{2}$, \ldots{}, $v_n$ tal que $(v_{1}, v_{2}), (v_{2}, v_{3}), \ldots{}, (v_{n-1}, v_n)$ son aristas.
     % \end{description}
     % subsection grafos_definiciones (end)
-    \subsection{Representacion de un Grafo} % (fold)
-    \label{sub:representacion_de_un_grafo}
+    \section{Representacion de un Grafo} % (fold)
+    \label{sec:representacion_de_un_grafo}
       Existen diversas formas de representar un grafo sea dirigido o no-dirigido, pero entre las mas usadas están la matriz de adyacencias y la lista de adyacencias.
 
       \subsection{Matriz de adyacencias de un Grafo} % (fold)
@@ -119,8 +119,8 @@ La resolución de este problema es la se analizará en este capítulo.
       % subsubsection matriz_de_adyacencias_de_un_grafo (end)
 
     % subsection representacion_de_un_grafo (end)
-    \subsection{El Problema de la ruta mas corta} % (fold)
-    \label{sub:ruta_mas_corta}
+    \section{El Problema de la ruta mas corta} % (fold)
+    \label{sec:ruta_mas_corta}
       Dados los vértices $v_{i}$ y $v_{j}$ de un grafo $G = (V,A)$ se llama trayectoria mínima o camino minimo  de \(v_i\) a \(v_j\) al numero de aristas del camino de longitud mínima que va desde $v_i$ a $v_j$ y se representa por $d(v_i, v_j)$.
 
       Cuando en el grafo no exista un camino de $v_i$ a $v_j$ se dice que el camino minimo es $d(v_i, v_j) = \infty$ \\
@@ -129,8 +129,8 @@ La resolución de este problema es la se analizará en este capítulo.
 
 
 
-      \subsubsection{Algoritmo de Dijkstra} % (fold)
-      \label{subs:algoritmo_de_dijkstra}
+      \subsection{Algoritmo de Dijkstra} % (fold)
+      \label{sub:algoritmo_de_dijkstra}
       El algoritmo de  Dijkstra fue descrito en 1959 por \emph{Edsger Dijkstra}, y permite encontrar la trayectoria más corta entre dos nodos específicos, cuando los valores de los arcos son todos positivos\\
 
       El algoritmo asigna un etiqueta a cada nodo en el grafo. Esta etiqueta es la distancia que hay desde el nodo \emph{s} escogido como origen a lo largo de la trayectoria más corta encontrada, hasta el nodo que se está etiquetando.\\

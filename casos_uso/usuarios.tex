@@ -1,0 +1,82 @@
+\begin{table}[H]
+  \begin{center}
+    \begin{tabularx}{0.75\textwidth}{ X X  }
+      \toprule
+      \multicolumn{2}{l}{\textbf{Caso de Uso:} Solicitar Registro} \\
+      \multicolumn{2}{l}{\textbf{Actor:} Visitante} \\
+      \multicolumn{2}{l}{\textbf{Precondición:} El Visitante accede al sistema.} \\
+      \addlinespace
+      \textbf{Secuencia Principal} & \textbf{Alternativas} \\
+      \midrule
+      1. El Visitante accede a la sección de ``Registro''. \\
+      \addlinespace
+      2. El visitante ingresa su nombre y una direccion email.  \\
+
+      \midrule
+      \multicolumn{2}{l}{\textbf{Postcondición:} El Visitante ve un mensaje de confirmacion} \\
+
+      \bottomrule
+    \end{tabularx}
+    \caption{Caso de Uso - Solicitar Registro}
+    \label{tab:cu_solicitar_registro}
+  \end{center}
+\end{table}
+
+
+\begin{table}[H]
+  \begin{center}
+    \begin{tabularx}{0.75\textwidth}{ X X  }
+      \toprule
+      \multicolumn{2}{l}{\textbf{Caso de Uso:} Registrar Usuario} \\
+      \multicolumn{2}{l}{\textbf{Actor:} Administrador} \\
+      \multicolumn{2}{l}{\textbf{Precondición:} El Administrador accede al sistema.} \\
+      \addlinespace
+      \textbf{Secuencia Principal} & \textbf{Alternativas} \\
+      \midrule
+      1. El Administrador accede a la sección de ``Registro de Usuarios''. \\
+      \addlinespace
+      2. El Administrador ve una lista con de usuarios a registrar.  \\
+      \addlinespace
+      3. El Administrador acepta el registro del usuario.  \\
+      \addlinespace
+      3. El sistema manda un email con instrucciones al usuario.  \\
+      \addlinespace
+      4. Un mensaje confirmando el envio del email es mostrado. & 4.1. Si el email no existe, un mensaje es mostrado y el registro del usuario es cancelado.  \\
+
+      \midrule
+      \multicolumn{2}{L{12cm}}{\textbf{Postcondición:} El Visitante deberia recibir un email con instrucciones de registro.} \\
+
+      \bottomrule
+    \end{tabularx}
+    \caption{Caso de Uso - Registrar Usuario}
+    \label{tab:cu_solicitar_registro}
+  \end{center}
+\end{table}
+
+
+
+\begin{table}[H]
+  \begin{center}
+    \begin{tabularx}{0.75\textwidth}{ X X  }
+      \toprule
+      \multicolumn{2}{l}{\textbf{Caso de Uso:} Eliminar Usuarios Registrados} \\
+      \multicolumn{2}{l}{\textbf{Actor:} Administrador} \\
+      \multicolumn{2}{l}{\textbf{Precondición:} El Administrador accede al sistema.} \\
+      \addlinespace
+      \textbf{Secuencia Principal} & \textbf{Alternativas} \\
+      \midrule
+      1. El Administrador accede a la sección de ``Usuarios Registrados''. \\
+      \addlinespace
+      2. El Administrador elimina un usuario registrado.  \\
+      \addlinespace
+      3. Un mensaje confirmando la eliminacion del usuario es mostrado.\\
+
+      \midrule
+      \multicolumn{2}{L{11.5cm}}{\textbf{Postcondición:} El Usuario eliminado ya no deberia ser visible en la lista de Usuarios registrados.} \\
+
+      \bottomrule
+    \end{tabularx}
+    \caption{Caso de Uso - Eliminar Usuarios Registrados}
+    \label{tab:cu_solicitar_registro}
+  \end{center}
+\end{table}

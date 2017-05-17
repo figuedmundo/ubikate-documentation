@@ -1,0 +1,202 @@
+\begin{table}[H]
+  \begin{center}
+    \begin{tabularx}{0.75\textwidth}{ X X  }
+      \toprule
+      \multicolumn{2}{l}{\textbf{Caso de Uso:} Buscar Lugar} \\
+      \multicolumn{2}{l}{\textbf{Actor:} Visitante} \\
+      \multicolumn{2}{l}{\textbf{Precondición:} El Visitante accede al sistema.} \\
+      \addlinespace
+      \textbf{Secuencia Principal} & \textbf{Alternativas} \\
+      \midrule
+      1. El Visitante accede a la sección de ``Lugares''. \\
+      \addlinespace
+      2. El visitante ingresa el nombre del lugar en un \emph{search box}.  \\
+      \addlinespace
+      3. El Visitante ve la lista de Lugares registrados que coinciden con la búsqueda. &
+      3.1 El lugar no existe en la base de datos, retorna una lista vacía. \\
+
+      \midrule
+      \multicolumn{2}{l}{\textbf{Postcondición:} El Visitante encuentra un lugar} \\
+
+      \bottomrule
+    \end{tabularx}
+    \caption{Caso de Uso - Buscar Lugar}
+    \label{tab:cu_buscar_lugar}
+  \end{center}
+\end{table}
+
+
+% \begin{table}[H]
+%   \begin{center}
+%     \begin{tabularx}{0.75\textwidth}{  L{3cm} X  }
+%       \toprule
+%       \textbf{Caso de Uso:} & Buscar Lugar \\
+%       \textbf{Actor:} & Visitante \\
+%       \textbf{Precondición:} & El Visitante accede al sistema. \\
+%       \textbf{Secuencia Principal:} & 1. El Visitante accede a la sección de ``Lugares''. \\
+%       \addlinespace
+%       & 2. El visitante ingresa el nombre del lugar en un \emph{search box}.  \\
+%       \addlinespace
+%       & 3. El Visitante ve la lista de Lugares registrados que coinciden con la búsqueda. \\
+%
+%       \addlinespace
+%       \textbf{Postcondición:} & El Visitante encuentra un lugar. \\
+%       \bottomrule
+%     \end{tabularx}
+%     \caption{Caso de Uso - Buscar Lugar}
+%     \label{tab:cu_buscar_lugar}
+%   \end{center}
+% \end{table}
+
+
+
+
+\begin{table}[H]
+  \begin{center}
+    \begin{tabularx}{0.75\textwidth}{ X X  }
+      \toprule
+      \multicolumn{2}{l}{\textbf{Caso de Uso:} Ver Información del Lugar} \\
+      \multicolumn{2}{l}{\textbf{Actor:} Visitante} \\
+      \multicolumn{2}{l}{\textbf{Precondición:} El Visitante ha buscado un lugar} \\
+      \addlinespace
+      \textbf{Secuencia Principal} & \textbf{Alternativas} \\
+      \midrule
+      1. El Visitante hace un tap sobre el nombre del lugar en la lista de búsqueda. \\
+      \addlinespace
+      2. El visitante puede ver una imagen del lugar. &
+      2.1. Si el lugar no tiene una imagen asociada, se desplegará una imagen genérica de la UMSS.\\
+      \addlinespace
+      3. El Visitante ve la descripción del lugar. & \\
+
+      \midrule
+      \multicolumn{2}{l}{\textbf{Postcondición:} El Visitante puede ver la información del lugar.} \\
+      \bottomrule
+    \end{tabularx}
+    \caption{Caso de Uso - Ver Información del lugar}
+    \label{tab:cu_info_lugar}
+  \end{center}
+\end{table}
+
+
+\begin{table}[H]
+  \begin{center}
+    \begin{tabularx}{0.75\textwidth}{ X X  }
+      \toprule
+      \multicolumn{2}{l}{\textbf{Caso de Uso:} Ver Ruta Óptima} \\
+      \multicolumn{2}{l}{\textbf{Actor:} Visitante} \\
+      \multicolumn{2}{l}{\textbf{Precondición:} El Visitante observa la información del lugar.} \\
+      \addlinespace
+      \textbf{Secuencia Principal} & \textbf{Alternativas} \\
+      \midrule
+      1. El Visitante selecciona el botón que muestra la ruta más corta al lugar. & \\
+      \addlinespace
+      2. El sistema pregunta si el usuario quiere compartir su ubicación geográfica. & \\
+      \addlinespace
+      3. El Visitante acepta la pregunta. &
+      3.1. Si el usuario niega la pregunta, el sistema no puede mostrar la ruta óptima. \\
+
+      \midrule
+      \multicolumn{2}{L{11cm}}{\textbf{Postcondición:} El Visitante ve un mapa con un marcador y una línea mostrando la ruta óptima. } \\
+
+      \bottomrule
+    \end{tabularx}
+    \caption{Caso de Uso - Ver Ruta Óptima}
+    \label{tab:cu_ruta_optima}
+  \end{center}
+\end{table}
+
+
+
+
+% \begin{table}[H]
+%   \begin{center}
+%     \begin{tabularx}{0.75\textwidth}{ X X  }
+%       \toprule
+%       \multicolumn{2}{l}{\textbf{Caso de Uso:} Ver Ruta Óptima} \\
+%       \multicolumn{2}{l}{\textbf{Actor:} Visitante} \\
+%       \multicolumn{2}{l}{\textbf{Precondición:} El Visitante está viendo la información del lugar.} \\
+%       \addlinespace
+%       \textbf{Secuencia Principal} & \textbf{Alternativas} \\
+%       \midrule
+%       1. El Visitante selecciona el botón que muestra la ruta más corta al lugar. & \\
+%       \addlinespace
+%       2. El sistema pregunta si el usuario quiere compartir su ubicación geográfica. & \\
+%       \addlinespace
+%       3. El Visitante acepta la pregunta. &
+%       3.1. Si el usuario niega la pregunta, el sistema no puede mostrar la ruta óptima.\\
+%
+%       \midrule
+%       \multicolumn{2}{l}{\textbf{Postcondición:} El Visitante ve un mapa con el lugar marcado y una línea que conecta la posición actual del usuario con el lugar.} \\
+%
+%       \bottomrule
+%     \end{tabularx}
+%     \caption{Caso de Uso - Ver Ruta Óptima}
+%     \label{tab:cu_ruta_optima}
+%   \end{center}
+% \end{table}
+%
+%
+
+
+
+\begin{table}[H]
+  \begin{center}
+    \begin{tabularx}{0.75\textwidth}{ X X  }
+      \toprule
+      \multicolumn{2}{l}{\textbf{Caso de Uso:} Editar Información del Lugar} \\
+      \multicolumn{2}{l}{\textbf{Actor:} Visitante Registrado} \\
+      \multicolumn{2}{L{12cm}}{\textbf{Precondición:} El Visitante Registrado esta viendo la información del lugar.} \\
+      \addlinespace
+      \textbf{Secuencia Principal} & \textbf{Alternativas} \\
+      \midrule
+      1. El Visitante Registrado selecciona el boton de Edicion. \\
+      \addlinespace
+      2. El sistema muestra un formulario con la información actual del Lugar.& \\
+      \addlinespace
+      3. El Visitante Registrado selecciona el botón ``Aceptar''. & \\
+
+
+      \midrule
+      \multicolumn{2}{L{11cm}}{\textbf{Postcondición:} El sistema muestra la información del Lugar actualizada.} \\
+
+      \bottomrule
+    \end{tabularx}
+    \caption{Caso de Uso - Editar Información del Lugar}
+    \label{tab:cu_edit_place}
+  \end{center}
+\end{table}
+
+
+\begin{table}[H]
+  \begin{center}
+    \begin{tabularx}{0.75\textwidth}{ X X  }
+      \toprule
+      \multicolumn{2}{l}{\textbf{Caso de Uso:} Añadir Lugar} \\
+      \multicolumn{2}{l}{\textbf{Actor:} Visitante Registrado} \\
+      \multicolumn{2}{L{12cm}}{\textbf{Precondición:} El Visitante Registrado necesita desplazarse hasta el lugar para añadirlo.} \\
+      \addlinespace
+      \textbf{Secuencia Principal} & \textbf{Alternativas} \\
+      \midrule
+      1. El Visitante Registrado ha accedido a la sección de ``Lugares''. & \\
+      \addlinespace
+      2. El Visitante Registrado puede ver un botón de adición al final de la lista de lugares. &\\
+      \addlinespace
+      3. El sistema pregunta si se desea compartir la ubicación geográfica.
+      \addlinespace
+      3. El Visitante Registrado acepta la pregunta. &
+      3.1. El visitante niega la pregunta.\\
+      \addlinespace
+      4. El Visitante Registrado ve un formulario para ingresar la información del lugar. &
+      4.1. El Visitante Registrado no puede anadir un nuevo lugar. \\
+      \addlinespace
+      5. El Visitante Registrado acepta el formulario. & \\
+
+      \midrule
+      \multicolumn{2}{l}{\textbf{Postcondición:} El sistema muestra el lugar en la lista de lugares.} \\
+
+      \bottomrule
+    \end{tabularx}
+    \caption{Caso de Uso - Añadir Lugar}
+    \label{tab:cu_add_place}
+  \end{center}
+\end{table}

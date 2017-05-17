@@ -1,24 +1,57 @@
-% user_story_01
-% \begin{table}[!ht]
+% % user_story_01
+% % \begin{table}[!ht]
+% \begin{table}[H]
+%   \begin{center}
+%     \begin{tabular}{ L{3cm}  L{8cm} }
+%       \toprule
+%         \textbf{Historia} US01 &
+%         % \textbf{Esfuerzo} 5 puntos \\
+%         \makebox[6cm][r]{\textbf{Esfuerzo} 8 puntos} \\
+%         % \makebox[4cm][r]{\textbf{Estimación} 3 días} \\
+%
+%       \midrule
+%       \multirow{3}{*}{\textbf{Descripción}}
+%         & Yo como visitante\\
+%         & Deseo registrarme en el sistema\\
+%         & Para poder acceder al sistema\\
+%       \midrule
+%         \multirow{3}{3cm}{\textbf{Criterios de Aceptación}}
+%         & Quiero ver fácilmente que no estoy registrado\\
+%         & Quiero que el registro solamente me pida un nombre de usuario y un password\\
+%         & Quiero ver que al estar registrado pueda acceder a los lugares\\
+%       \bottomrule
+%     \end{tabular}
+%     \caption{Historia de Usuario - US01}
+%     \label{tab:user_story_01}
+%   \end{center}
+% \end{table}
+
+% user_story_02
+
+% user_story_03
+
 \begin{table}[H]
   \begin{center}
     \begin{tabular}{ L{3cm}  L{8cm} }
       \toprule
         \textbf{Historia} US01 &
         % \textbf{Esfuerzo} 5 puntos \\
-        \makebox[6cm][r]{\textbf{Esfuerzo} 8 puntos} \\
+        \makebox[6cm][r]{\textbf{Esfuerzo} 13 puntos} \\
         % \makebox[4cm][r]{\textbf{Estimación} 3 días} \\
 
       \midrule
-      \multirow{3}{*}{\textbf{Descripción}}
-        & Yo como usuario\\
-        & Deseo registrarme en el sistema\\
-        & Para poder acceder al sistema\\
+        \multirow{3}{*}{\textbf{Descripción}}
+        & Yo como visitante\\
+        & Deseo ver una lista de lugares \\
+        % & Deseo ingresar el nombre de un lugar\\
+        & Para encontrar el lugar al que deseo ir\\
       \midrule
-        \multirow{3}{3cm}{\textbf{Criterios de Aceptación}}
-        & Quiero ver fácilmente que no estoy registrado\\
-        & Quiero que el registro solamente me pida un nombre de usuario y un password\\
-        & Quiero ver que al estar registrado pueda acceder a los lugares\\
+        \multirow{2}{3cm}{\textbf{Criterios de Aceptación}}
+        & Quiero tener los lugares en una base de datos \\
+        & Quiero ver una lista de lugares\\
+        & Quiero filtrar la lista de lugares por el nombre o parte de este\\
+        % & Quiero encontrar un lugar
+        % & Quiero encontrar un lugar y poder ver su información\\
       \bottomrule
     \end{tabular}
     \caption{Historia de Usuario - US01}
@@ -26,7 +59,6 @@
   \end{center}
 \end{table}
 
-% user_story_02
 
 \begin{table}[H]
   \begin{center}
@@ -34,25 +66,26 @@
       \toprule
         \textbf{Historia} US02 &
         % \textbf{Esfuerzo} 5 puntos \\
-        \makebox[6cm][r]{\textbf{Esfuerzo} 13 puntos} \\
+        \makebox[6cm][r]{\textbf{Esfuerzo} 8 puntos} \\
         % \makebox[4cm][r]{\textbf{Estimación} 3 días} \\
 
       \midrule
         \multirow{3}{*}{\textbf{Descripción}}
-        & Yo como usuario registrado\\
-        & Deseo buscar un lugar\\
-        & Para conocer su ubicación geográfica\\
+        & Yo como visitante\\
+        & Deseo ver la información de un lugar\\
+        & Para decidir si es el lugar que estoy buscando\\
       \midrule
         \multirow{3}{3cm}{\textbf{Criterios de Aceptación}}
-        & Quiero ver una lista de lugares\\
-        & Quiero escribir el nombre de un lugar y ver posibles lugares\\
-        & Quiero encontrar un lugar y poder ver su información\\
+        & Quiero leer una descripción del lugar\\
+        & Quiero ver un teléfono asociado al lugar\\
+        & Quiero ver en qué piso se encuentra el lugar\\
       \bottomrule
     \end{tabular}
     \caption{Historia de Usuario - US02}
     \label{tab:user_story_02}
   \end{center}
 \end{table}
+
 
 
 % user_story_03
@@ -68,14 +101,14 @@
 
       \midrule
         \multirow{3}{*}{\textbf{Descripción}}
-        & Yo como usuario registrado\\
-        & Deseo leer información de un lugar\\
-        & Para decidir si es el lugar que estoy buscando\\
+        & Yo como visitante\\
+        & Deseo ver el lugar en un mapa\\
+        & Para saber en que parte del campus se encuentra el lugar\\
       \midrule
         \multirow{3}{3cm}{\textbf{Criterios de Aceptación}}
-        & Quiero leer una descripción del lugar\\
-        & Quiero ver un teléfono asociado al lugar\\
-        & Quiero ver en qué piso se encuentra el lugar\\
+        & Deseo ver sobre un mapa un punto del lugar buscado a donde quiero ir\\
+        & Quiero ver un marcador sobre el lugar que estoy buscando con alguna información para asegurarme que es a donde quiero ir\\
+
       \bottomrule
     \end{tabular}
     \caption{Historia de Usuario - US03}
@@ -92,20 +125,20 @@
       \toprule
         \textbf{Historia} US04 &
         % \textbf{Esfuerzo} 5 puntos \\
-        \makebox[6cm][r]{\textbf{Esfuerzo} 13 puntos} \\
+        \makebox[6cm][r]{\textbf{Esfuerzo} 8 puntos} \\
         % \makebox[4cm][r]{\textbf{Estimación} 3 días} \\
 
       \midrule
         \multirow{3}{*}{\textbf{Descripción}}
-        & Yo como usuario registrado\\
-        & Deseo ver la ruta que necesito seguir\\
-        & Para encontrar el lugar que estoy buscando\\
+        & Yo como visitante\\
+        & Deseo ver una ruta sobre el mapa\\
+        & Para encontrar el lugar de forma rapida\\
       \midrule
-        \multirow{3}{3cm}{\textbf{Criterios de Aceptación}}
-        & Deseo ver sobre un mapa un punto referenciado el lugar actual donde me encuentro\\
-        & Deseo ver sobre un mapa un punto referenciado el lugar buscado a donde quiero ir\\
+        \multirow{1}{3cm}{\textbf{Criterios de Aceptación}}
+        & Deseo ver sobre un mapa un punto del lugar actual donde me encuentro\\
+
         & Deseo ver una línea roja que muestre la ruta más corta para llegar de mi ubicación al lugar donde quiero ir\\
-        & Quiero ver un marcador sobre el lugar que estoy buscando con alguna información para asegurarme que es a donde quiero ir\\
+
       \bottomrule
     \end{tabular}
     \caption{Historia de Usuario - US04}
@@ -114,7 +147,7 @@
 \end{table}
 
 
-% user_story_05
+% user_story_04
 
 \begin{table}[H]
   \begin{center}
@@ -127,14 +160,14 @@
 
       \midrule
         \multirow{3}{*}{\textbf{Descripción}}
-        & Yo como usuario administrador\\
-        & Deseo añadir más lugares\\
-        & Para aumentar las búsquedas de lugares\\
+        & Yo como visitante\\
+        & Deseo registrarme\\
+        & Para tener mas opciones dentro el sistema\\
       \midrule
         \multirow{3}{3cm}{\textbf{Criterios de Aceptación}}
-        & Quiero que sea posible anadir un lugar si no lo encuentro en la lista de lugares\\
-        & Quiero pararme cerca o en el lugar que necesito añadir para geo-referenciarlo\\
-        & Al añadir un lugar necesito ingresar alguna descripción y/o teléfono si fuera necesario\\
+        & Quiero ver un formulario donde me pueda registrar.\\
+        & Una vez registrado quiero poder ingresar al sistema con mis credenciales.\\
+        & Quiero ver tener la posibilidad de editar mis datos.\\
       \bottomrule
     \end{tabular}
     \caption{Historia de Usuario - US05}
@@ -144,7 +177,7 @@
 
 
 
-% user_story_06
+% user_story_05
 
 \begin{table}[H]
   \begin{center}
@@ -157,14 +190,15 @@
 
       \midrule
         \multirow{3}{*}{\textbf{Descripción}}
-        & Yo como usuario administrador\\
-        & Deseo editar la información de un lugar\\
-        & Para mejorar o corregir la información de ese lugar\\
+        & Yo como usuario registrado\\
+        & Deseo añadir más lugares al sistema\\
+        & Para mejorar los criterios de busqueda\\
       \midrule
         \multirow{3}{3cm}{\textbf{Criterios de Aceptación}}
-        & Al entrar a la información de un lugar quiero ser el único que vea un icono para poder entrar a la edición de los datos\\
-        & Quiero acceder a un formulario que muestre la información actual del lugar y poder editar la información mostrada\\
-
+        & Quiero que sea posible anadir un lugar si no lo encuentro en la lista de lugares\\
+        & Quiero ver un formulario para poder ingresar los datos de un nuevo lugar.\\
+        & Quiero pararme cerca o en el lugar que necesito añadir para geo-referenciarlo\\
+        % & Al añadir un lugar necesito ingresar alguna descripción y/o teléfono si fuera necesario\\
       \bottomrule
     \end{tabular}
     \caption{Historia de Usuario - US06}
@@ -174,13 +208,71 @@
 
 
 
-% user_story_07
+% user_story_06
 
 \begin{table}[H]
   \begin{center}
     \begin{tabular}{ L{3cm}  L{8cm} }
       \toprule
         \textbf{Historia} US07 &
+        % \textbf{Esfuerzo} 5 puntos \\
+        \makebox[6cm][r]{\textbf{Esfuerzo} 8 puntos} \\
+        % \makebox[4cm][r]{\textbf{Estimación} 3 días} \\
+
+      \midrule
+        \multirow{3}{*}{\textbf{Descripción}}
+        & Yo como usuario registrado\\
+        & Deseo editar la información de un lugar\\
+        & Para mejorar o corregir la información de ese lugar\\
+      \midrule
+        \multirow{3}{3cm}{\textbf{Criterios de Aceptación}}
+        & Al entrar a la información de un lugar quiero ser el único que vea un icono para poder entrar a la edición de los datos\\
+        & Quiero acceder a un formulario que muestre la información actual del lugar y poder editar la información mostrada\\
+
+      \bottomrule
+    \end{tabular}
+    \caption{Historia de Usuario - US07}
+    \label{tab:user_story_07}
+  \end{center}
+\end{table}
+
+% user_story_07
+
+\begin{table}[H]
+  \begin{center}
+    \begin{tabular}{ L{3cm}  L{8cm} }
+      \toprule
+        \textbf{Historia} US08 &
+        % \textbf{Esfuerzo} 5 puntos \\
+        \makebox[6cm][r]{\textbf{Esfuerzo} 8 puntos} \\
+        % \makebox[4cm][r]{\textbf{Estimación} 3 días} \\
+
+      \midrule
+        \multirow{3}{*}{\textbf{Descripción}}
+        & Yo como usuario administrador\\
+        & Deseo administrar usuarios\\
+        & Para anadir o remover usuarios del sistema\\
+      \midrule
+        \multirow{3}{3cm}{\textbf{Criterios de Aceptación}}
+        & Quiero ver los usuarios que desean registrarse en el sistema\\
+        & Quiero aceptar o rechazar solicitudes de registro\\
+        & Quiero eliminar usuarios que no usen el sistema de forma adecuada.\\
+
+      \bottomrule
+    \end{tabular}
+    \caption{Historia de Usuario - US08}
+    \label{tab:user_story_08}
+  \end{center}
+\end{table}
+
+
+% user_story_08
+
+\begin{table}[H]
+  \begin{center}
+    \begin{tabular}{ L{3cm}  L{8cm} }
+      \toprule
+        \textbf{Historia} US09 &
         % \textbf{Esfuerzo} 5 puntos \\
         \makebox[6cm][r]{\textbf{Esfuerzo} 13 puntos} \\
         % \makebox[4cm][r]{\textbf{Estimación} 3 días} \\
@@ -192,12 +284,12 @@
         & Para obtener información y estadísticas de los lugares dentro del campus Universitario\\
       \midrule
         \multirow{3}{3cm}{\textbf{Criterios de Aceptación}}
-        & Quiero que se muestran la cantidad de veces que los usuarios buscan un lugar\\
-        & Quiero obtener esta información y poder guardarla\\
+        & Quiero apreciar de forma sencilla la cantidad de veces que los usuarios buscan un lugar\\
+        & Quiero poder guardarla el reporte\\
 
       \bottomrule
     \end{tabular}
-    \caption{Historia de Usuario - US07}
-    \label{tab:user_story_07}
+    \caption{Historia de Usuario - US09}
+    \label{tab:user_story_09}
   \end{center}
 \end{table}
