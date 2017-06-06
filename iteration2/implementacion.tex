@@ -1,5 +1,6 @@
 
 
+
 % movido a implementacion - iteracion 2
 \subsubsection{Geolocalizar los Lugares}
 \label{sub:fronted_lugares}
@@ -42,7 +43,7 @@ Primeramente es necesario conocer las coordenadas del ``lugar'', para lo cual se
 
 \begin{figure}[H]
       \begin{center}
-        \includegraphics[width=0.5\textwidth]{ember_leaflet}
+        \includegraphics[width=0.3\textwidth]{ember_leaflet}
 
         % \caption{\emph{ember-leaflet} nos ayuda a desplegar un mapa y mostrar un \emph{punto} o \emph{lugar} con un \emph{marcador} y dibuja una línea de color rojo sobre el mapa.}
         \caption{ Mapa mostrado con la ayuda de \emph{ember-leaflet}}
@@ -126,9 +127,9 @@ La \emph{latitud} y \emph{longitud} obtenidas es fácilmente trasladado al mapa 
 
 \begin{figure}[H]
   \begin{center}
+    \includegraphics[width=0.3\textwidth]{iteration2/location_marker}
     \caption{Tooltip con la latitud y longitud de la posición actual del usuario.}
     \label{fig:location_marker}
-    \includegraphics[width=0.5\textwidth]{iteration2/location_marker}
     \caption*{Fuente: Elaboración propia.}
   \end{center}
 \end{figure}
@@ -231,7 +232,7 @@ En un \emph{SIG} la topología ayuda a mejorar el análisis de datos geo-espacia
 
 \begin{figure}[H]
   \begin{center}
-    \includegraphics[width=1\textwidth]{iteration2/postgres_ways}
+    \includegraphics[width=0.8\textwidth]{iteration2/postgres_ways}
     \caption{Vista de la tabla \emph{ways}.}
     \label{fig:postgres_ways}
     \caption*{Fuente: Elaboración propia}
@@ -244,7 +245,7 @@ En la siguiente figura \ref{fig:postgres_vertices} se observa la tabla \emph{way
 
 \begin{figure}[H]
   \begin{center}
-    \includegraphics[width=1\textwidth]{iteration2/postgres_vertices}
+    \includegraphics[width=0.8\textwidth]{iteration2/postgres_vertices}
     \caption{Vista de la tabla \emph{ways\_vertices\_pgr}.}
     \label{fig:postgres_vertices}
     \caption*{Fuente: Elaboración propia}
@@ -285,7 +286,7 @@ Una vez ejecutado el método \emph{pgr\_dijkstra} se obtiene un conjunto de lín
 
 
 
-En el navegador se obtiene
+En el navegador, se obtiene
 % poder mostrar la ruta óptima es necesario obtener
 de la base de datos un conjunto de datos en formato de latitud y longitud que conforman líneas, las cuales representan la ruta más corta, pero al final es solo un montón de números, sin mucho significado para el usuario, toda esta información es difícil de procesar y el usuario necesita información que sea fácil de entender y no existe mejor herramienta disponible para esta tarea que mostrar la \emph{ruta} de forma visual, esto quiere decir que se necesita mostrar la ruta sobre un \emph{mapa}, ya que en la aplicación se implementó \emph{ember-leaflet} para desplegar el mapa y mostrar un lugar, también se puede  mostrar más ruta más corta mediante una línea, a la que también se puede personalizar (la línea se muestra de color rojo).\\
 
