@@ -1,0 +1,109 @@
+\begin{table}[H]
+  \begin{center}
+    \begin{tabularx}{0.75\textwidth}{ X }
+      \toprule
+      \textbf{Codigo:} CP001
+      \makebox[3cm][r]{}
+      \makebox[6cm][r]{\textbf{Historia de Usuario:} US01} \\
+
+      \addlinespace
+      \textbf{Nombre:} Verificar la lista de lugares. \\
+
+      \addlinespace
+      \textbf{Descripción:} Validar que un usuario visitante puede ver la lista de lugares cuando ingresa al menú \emph{lugares}. \\
+
+      \addlinespace
+      \textbf{Condiciones de Ejecución:} \\
+      \tab \textbf{a.} El usuario no debe estar registrado. \\
+      \tab \textbf{b.} Deben existir lugares registrados en el sistema.\\
+
+      \addlinespace
+      \textbf{Entradas / Pasos de Ejecución:}  \\
+      \tab \textbf{1.} Hacer tap sobre el botón \emph{menú} en la esquina superior-izquierda. \\
+      \tab \textbf{2.} Seleccionar el menú \emph{lugares}.\\
+
+      \addlinespace
+      \textbf{Resultado Esperado:} El Usuario debe ver una lista con los lugares registrados en la Condición de Ejecución \emph{b}.  \\
+
+      \addlinespace
+      \textbf{Evaluación de la Prueba:} Prueba exitosa. \\
+
+      \bottomrule
+    \end{tabularx}
+    \caption{Prueba de Aceptación - CP001}
+    \label{tab:CP001}
+  \end{center}
+\end{table}
+
+\begin{table}[H]
+  \begin{center}
+    \begin{tabularx}{0.75\textwidth}{ X }
+      \toprule
+      \textbf{Codigo:} CP002
+      \makebox[3cm][r]{}
+      \makebox[6cm][r]{\textbf{Historia de Usuario:} US01} \\
+
+      \addlinespace
+      \textbf{Nombre:} Verificar la busqueda de lugares. \\
+
+      \addlinespace
+      \textbf{Descripción:} Validar que un usuario puede filtrar un lugar de la lista mediante el nombre. \\
+
+      \addlinespace
+      \textbf{Condiciones de Ejecución:} Ingresar en la base de datos el lugar con nombre ``MEMI''. \\
+
+      \addlinespace
+      \textbf{Entradas / Pasos de Ejecución:}  \\
+      \tab \textbf{1.} Hacer tap sobre el botón \emph{menú} en la esquina superior-izquierda. \\
+      \tab \textbf{2.} Seleccionar el menú \emph{lugares}.\\
+      \tab \textbf{3.} Ingresar el nombre ``MEMI'' en el cajón de búsqueda.\\
+
+
+      \addlinespace
+      \textbf{Resultado Esperado:} Se debe mostrar un solo item en la lista de lugares con el nombre ``MEMI'' desplegado.\\
+
+      \addlinespace
+      \textbf{Evaluación de la Prueba:} Prueba exitosa. \\
+
+      \bottomrule
+    \end{tabularx}
+    \caption{Prueba de Aceptación - CP002}
+    \label{tab:CP002}
+  \end{center}
+\end{table}
+
+\begin{table}[H]
+  \begin{center}
+    \begin{tabularx}{0.75\textwidth}{ X }
+      \toprule
+      \textbf{Codigo:} CP003
+      \makebox[3cm][r]{}
+      \makebox[6cm][r]{\textbf{Historia de Usuario:} US02} \\
+
+      \addlinespace
+      \textbf{Nombre:} Verificar la información de un lugar. \\
+
+      \addlinespace
+      \textbf{Descripción:} Validar que un usuario puede ver la descripción, el teléfono, el nivel y la foto de un lugar. \\
+
+      \addlinespace
+      \textbf{Condiciones de Ejecución:} Ingresar en la base de datos el lugar con nombre ``MEMI'' con su información completa. \\
+
+      \addlinespace
+      \textbf{Entradas / Pasos de Ejecución:}  \\
+      \tab \textbf{1.} Hacer tap sobre el botón \emph{menú} en la esquina superior-izquierda. \\
+      \tab \textbf{2.} Seleccionar el menú \emph{lugares}.\\
+      \tab \textbf{3.} En la lista de lugares seleccionar el item ``MEMI''.\\
+
+      \addlinespace
+      \textbf{Resultado Esperado:} Se debe mostrar una pantalla con la foto del lugar ``MEMI'', su descripción, el teléfono y el nivel.\\
+
+      \addlinespace
+      \textbf{Evaluación de la Prueba:} Prueba exitosa. \\
+
+      \bottomrule
+    \end{tabularx}
+    \caption{Prueba de Aceptación - CP003}
+    \label{tab:CP003}
+  \end{center}
+\end{table}

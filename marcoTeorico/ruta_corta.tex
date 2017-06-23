@@ -13,12 +13,12 @@ La resolución de este problema es la se analizará en este capítulo.
   \section{Grafos} % (fold)
   \label{sec:teoria_grafos}
 
-    El problema se lo podria definir como; Encontrar la ruta más corta de un punto a otro punto, en donde los puntos están interconectados por una red de caminos. El problema descrito se lo puede resolver/describir como un caso espec\'ifico de la teoría de grafos.
+    El problema se lo podria definir como; Encontrar la ruta más corta de un punto a otro punto, en donde los puntos están interconectados por una red de caminos. El problema descrito se lo puede resolver y describir como un caso especifico de la teoría de grafos.
 
 
     \section{Definiciones} % (fold)
     \label{sec:grafos_definiciones}
-      Primeramente es necesario aclarar\'ar alguno términos usados en la teoría de grafos.\\
+      Primeramente es necesario aclararar alguno términos usados en la teoría de grafos.\\
 
       % El grafo que es la reprentacion
 
@@ -27,18 +27,27 @@ La resolución de este problema es la se analizará en este capítulo.
       %   \item[Vertice]
       % \end{description}
 
-      Un \textbf{grafo} $G$ consiste en un conjunto de vértices $V$ y un conjunto de aristas $A$, y se lo representa con $G(V,A)$.\\
+      \begin{itemize}
+        \item \textbf{Grafo:} Un \emph{grafo} $G$ consiste en un conjunto de vértices $V$ y un conjunto de aristas $A$, y se lo representa con $G(V,A)$.\\
 
-      El \textbf{vértice} \emph{v} es adyacente a \emph{u}, o a un vecino de \emph{u}, si y sólo si $(u,v) \in A$. Por lo tanto, en un grafo no dirigido, dado una arista $(u,v)$, $v$ es adyacente de $u$, y simétricamente \emph{u} es adyacente de \emph{v}.
-      Los vértices también son llamados nodos. \\
+        \item  \textbf{Vértice:} El \emph{vértice} \emph{v} es adyacente a \emph{u}, o a un vecino de \emph{u}, si y sólo si $(u,v) \in A$. Los vértices también son llamados nodos. \\
 
-      Cada \textbf{arista} o arco es representada por un par de elementos $(u,v)$, donde los elementos $u,v \in V$, son los nodos que une la arista.
-      En un grafo no dirigido el par de vértices que representan la arista no tiene orden, por lo tanto la arista $(u,v)$ y $(v,u)$ representa la misma arista. En cambio en un grafo dirigido la arista $(u,v)$ y $(v,u)$ representan dos diferentes aristas. También se puede anotar un tercer componente, llamado peso o costo, en ese caso estaríamos hablando de un \emph{grafo ponderado}.\\
-      % Para fines prácticos, no  consideraremos las aristas de la forma (u,u)
+        \item  \textbf{Arista:}
+        Cada \emph{arista} o arco es representada por un par de elementos $(u,v)$, donde los elementos $u,v \in V$, son los nodos que une la arista.
 
-      En un grafo no dirigido $G$, dos vértices $u$ y $v$ se dice que están conectados si hay un camino en $G$ de $u$ a $v$ (y como $G$ no es dirigido, también hay un camino de $v$ a $u$). Un grafo  se denomina completo si para todos los pares $u,v \in V$ existe una arista $(u,v) \in A$.\\
+        % Para fines prácticos, no  consideraremos las aristas de la forma (u,u)
 
-      Un camino en un grafo es una secuencia de nodos $v_{1}$, $v_{2}$, \ldots{}, $v_n$ tal que $(v_{1}, v_{2}), (v_{2}, v_{3}), \ldots{}, (v_{n-1}, v_n)$ son aristas.
+        \item \textbf{Grafo no Dirigido:}
+        En un \emph{grafo no dirigido} $G$, dos vértices $u$ y $v$ se dice que están conectados si hay un camino en $G$ de $u$ a $v$ (y como $G$ no es dirigido, también hay un camino de $v$ a $u$). Un grafo  se denomina completo si para todos los pares $u,v \in V$ existe una arista $(u,v) \in A$.\\
+
+        En un \emph{grafo no dirigido}, dado una arista $(u,v)$, $v$ es adyacente de $u$, y simétricamente \emph{u} es adyacente de \emph{v} y si el par de vértices que representan la arista no tiene orden, por lo tanto la arista $(u,v)$ y $(v,u)$ representa la misma arista. En cambio en un grafo dirigido la arista $(u,v)$ y $(v,u)$ representan dos diferentes aristas. También se puede anotar un tercer componente, llamado peso o costo, en ese caso estaríamos hablando de un \emph{grafo ponderado}.\\
+
+        % Un camino en un grafo es una secuencia de nodos $v_{1}$, $v_{2}$, \ldots{}, $v_n$ tal que $(v_{1}, v_{2}), (v_{2}, v_{3}), \ldots{}, (v_{n-1}, v_n)$ son aristas.
+        %
+      \end{itemize}
+
+
+
     % \end{description}
     % subsection grafos_definiciones (end)
     \section{Representacion de un Grafo} % (fold)
@@ -59,9 +68,8 @@ La resolución de este problema es la se analizará en este capítulo.
 
 
         Las filas y las columnas de la matriz representan los nodos del grafo.
-        Cuando el grafo no es dirigido la matriz de adyacencias es simétrica.
+        Cuando el grafo no es dirigido la matriz de adyacencias es simétrica, como en el grafo de la figura \ref{fig:grafo_ponderado}.
         % El cuadro \ref{tab:matriz} representa la matriz de adyacencias de la figura \ref{fig:grafo_ponderado} representa
-        La matriz de adyacencias, que se puede observar en el cuadro \ref{tab:matriz}, es la  misma matriz de la relación $A$ de $V$ en $V$ porque indica cuales v\'ertices están relacionados (unidos por una arista).
 
 
         % \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3cm,
@@ -98,6 +106,9 @@ La resolución de este problema es la se analizará en este capítulo.
 
           \end{center}
         \end{figure}
+
+        La matriz de adyacencias, que se puede observar a continuacion, es la  misma matriz de la relación $A$ de $V$ en $V$ porque indica cuales vertices están relacionados o unidos por una arista.
+
 
         \begin{table}[H]
           % \label{tab:matriz}
@@ -138,8 +149,8 @@ La resolución de este problema es la se analizará en este capítulo.
       La etiqueta de cada nodo puede estar en 2 estados:
 
       \begin{itemize}
-        \item[a.] Puede ser permanente: en este caso la distancia encontrada es a lo largo de la trayectoria, la más corta de todas las encontradas.
-        \item[b.] Puede ser temporal: cuando hay incertidumbre de que la trayectoria encontrada sea la más corta de todas.
+        \item[\textbf{a.}] Puede ser permanente; en este caso la distancia encontrada es a lo largo de la trayectoria, la más corta de todas las encontradas.
+        \item[\textbf{b.}] Puede ser temporal; cuando hay incertidumbre de que la trayectoria encontrada sea la más corta de todas.
       \end{itemize}
 
       A medida que el método trabaja se cambian gradualmente las etiquetas temporales por etiquetas permanentes. Al comienzo se tiene un conjunto de nodos con etiquetas temporales y el objetivo es hacer que esas etiquetas disminuyan, encontrando trayectorias a esos nodos usando trayectorias a nodos etiquetados permanentemente. Cuando esto se ha logrado, se selecciona el nodo con la etiqueta temporal más pequeña y esta etiqueta se convierte en permanente. El proceso se repite hasta que al nodo terminal \emph{t} se le haya asignado una etiqueta permanente, pero esto puede ocurrir eventualmente, ya que cada vez que el algoritmo es usado, una de las etiquetas es omitida y así el número de nodos con etiquetas temporales decrece a cero. \cite{teoria_grafos} \\
@@ -159,7 +170,7 @@ La resolución de este problema es la se analizará en este capítulo.
 
     Existen numerosas soluciones para encontrar la ruta óptima, donde se toman en cuenta diferentes variables y heurísticas, en el que  cada algoritmo presenta ventajas respecto a las demás.
     La teoría de grafos  es un tema extenso y para fines prácticos
-    solo se explicó el algoritmo de Dijkstra por ser el que se esta usando en la aplicación desarrollada.\\
+    solo se explicó el algoritmo de \emph{Dijkstra} por ser el que se esta usando en la aplicación desarrollada.\\
 
     El algoritmo de Dijkstra puede ser una de las soluciones más sencillas y que requiere muchos más cálculos que las demás pero el grafo implementado al no ser extenso, por extenso se podria entender un grafo con millones de aristas y vertices como se puede dar en el caso de una Ciudad o un Pais, pero en el presente caso al ser los predios de campus Universitario no existe una razón de gran peso para implementar otra solución más eficiente en el manejo de recursos.\\
 

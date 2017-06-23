@@ -1,140 +1,171 @@
-\chapter{Descripci\'on de la implentaci\'on} % (fold)
-\label{cha:descripcion_de_la_implentacion}
+\chapter{Implementación del Proyecto}
+\label{chap:planificacion}
 
 
-
-  % la aplicacion se realizo sobre ruby on rails
-  La aplicacion a desarrollar requeria de implementar un sistema de geolocalizaion, para tal motivo primeramente se procedio a generar un mapa de rutas sobre la cual escoger las herramientas mas apropiadas para la realizacion de la aplicacion.
-
-  \section{Generaci\'on de las rutas} % (fold)
-  \label{sec:generacion_de_las_rutas}
-    Se procedio a trazar un mapa de rutas del campus de la Universidad Mayor de San Simon, para tal efecto se necesito de un GPS, el unico requisito del GPS es la posibilidad de grabar en su memoria la ruta que se camina. El GPS usado fue un Garmin Nuvi 1300, es un GPS basico pero cumple con el requisito, los archivos generados son gpx, es basicamente un fichero XML estandar para compartir datos entre GPS's.
-    Posteriormente
-    el archivo gpx necesita ser editado por un Sistema de Informacion Geografica, se uso QGis que es un SIG open sorce con licensia  GNU GPL multiplataforma. QGIs me permitio editar la ruta generada por el GPS, que al no ser exacto, era necesario este paso, generando un archivo shapefile, el cual es el formato estandar para manejar datos geograficos espaciales.
-
-    \begin{figure}[!ht]
-      \begin{center}
-        \includegraphics[width=0.8\textwidth]{rutas_qgis}
-      \end{center}
-      \caption{Rutas del Campus de la UMSS en QGis}
-      \label{fig:rutas}
-    \end{figure}
-
-    El mapa generado con las rutas cumple con las caracteristicas de un grafo ponderado no-dirigido en el que el costo o peso de las aristas es la distacia entre los nodos y los nodos son los puntos de interseccion de las rutas. Por lo tanto se puede implentar el algoritmo de Dijkstra para encontrar el camino minimo.
-
-  % section generacion_de_las_rutas (end)
-  \section{Lectura de los archivos Shapefile} % (fold)
-  \label{sec:lectura_de_los_archivos_shapefile}
-    Es necesario cargar la base de datos PostGis con los shapefiles generados por QGis y para eso se uso la gema RGeo y con el siguiente metodo escrito en Ruby se carga los archivos shapefile en la base de datos.
-
-    \begin{center}
-      \begin{verbatim}
-  def self.load_shapefile(path)
-    RGeo::Shapefile::Reader.open(path, factory: FACTORY) do |file|
-      file.each do |record|
-        way = record.geometry.projection
-        ruta = Way.create(name: record['id'],
-                          dist: way.length,
-                          the_geom: way[0])
-      end
-    end
-  end
-      \end{verbatim}
-    \end{center}
-
-  % section lectura_de_los_archivos_shapefile (end)
-  \section{Los lugares} % (fold)
-  \label{sec:los_lugares}
-    Los lugares o sitios de interes se crean atraves de la aplicacion, ingresando a la seccion de \emph{Nuevo lugar}, en donde es necesario llenar el formulario y hacer un click sobre el mapa en el sitio que se desea registrat el nuevo lugar.
-
-    \begin{figure}[!ht]
-      \begin{center}
-        \includegraphics[width=0.8\textwidth]{new_place}
-      \end{center}
-      \caption{Registro de Nuevos lugares}
-      \label{fig:new_place}
-    \end{figure}
-    % pero para fines practicos se registraron inicialmente unos 5x lugares mediante un shapefile
-    \subsection{La geolocalizacion de los lugares} % (fold)
-    \label{subsec:la_geolocalizacion_de_los_lugares}
-      % Como creo dentro de rails un lugar.
-      Para que Rails cree un lugar es necesario los siguentes pasos:
-        \begin{itemize}
-          \item Declarar un objeto que maneja la proyeci\'on \\
-          \verb+ FACTORY = RGeo::Geographic.simple_mercator_factory +
-          \item Declarar el atributo encargado de manejar el dato espacial, mediante el metodo \emph{set\_rgeo\_factory\_for\_column} especificando la proyeci\'on. \verb|set_rgeo_factory_for_column(:coord, FACTORY.projection_factory)|
-          \item LLamar a al funcion \emph{create\_coord} cuando se crea un nuevo lugar, siempre teniendo en cuenta la proyecion en la cual se reciben los datos (\emph{lon} y \emph{lat} se reciben del lado del cliente en WS84) y proyectarlo para guardarlo correctamente en la base de datos (\emph{coord} esta en la proyecion EPSG 3785).
-          % \begin{center}
-          \begin{verbatim}
-    def create_coord
-      if self.new_record?
-        self.coord = FACTORY.point(lon, lat).projection
-      else
-        p self.coord
-      end
-    end
-          \end{verbatim}
-          % \end{center}
-        \end{itemize}
+%   \section{Análisis}
+%   \label{sec:Analisis}
+% %
+%     % La programación extrema no contempla específicamente el diseño de casos de uso
+%     Dentro del análisis se realizó el diseño de Casos de Uso como parte del proceso para entender el comportamiento del sistema. \cite{casos_uso}
+% %
+%
+% \begin{figure}[H]
+%   \begin{center}
+%     \includegraphics[width=0.45\textwidth]{casos_uso/cu_lugares}
+%   \end{center}
+%   \caption{Diagrama Casos de Uso - Gestion de Lugares }
+%   \label{fig:cu_lugares}
+%   \caption*{Fuente: Elaboración propia}
+% \end{figure}
+%
+% \input{casos_uso/lugares}
+%
+% \begin{figure}[H]
+%   \begin{center}
+%     \includegraphics[width=0.45\textwidth]{casos_uso/cu_usuarios}
+%   \end{center}
+%   \caption{Diagrama Casos de Uso - Gestion de Usuarios }
+%   \label{fig:cu_usuarios}
+%   \caption*{Fuente: Elaboración propia}
+% \end{figure}
+%
+% \input{casos_uso/usuarios}
+%
+%
+% \begin{figure}[H]
+%   \begin{center}
+%     \includegraphics[width=0.45\textwidth]{casos_uso/cu_reporte}
+%   \end{center}
+%   \caption{Diagrama Casos de Uso - Reporte }
+%   \label{fig:cu_reporte}
+%   \caption*{Fuente: Elaboración propia}
+% \end{figure}
+%
+% \input{casos_uso/reporte}
 
 
-    % section la_geolocalizacion_de_los_lugares (end)
-
-  % section los_lugares (end)
-  \section{Modelo de base de datos} % (fold)
-  \label{sec:modelo_de_base_de_datos}
-
-  % section modelo_de_base_de_datos (end)
-  \section{Camino minimo} % (fold)
-  \label{sec:camino_minimo}
-
-    Una ves se tienen las rutas en la base de datos es necesario realizar algunos pasos previos para encontrar el camino minimo, pgRouting requiere de una tabla en la especifica todos los vertices existentes. Toma como argumentos la tabla de la cual se debe extraer los vertices (ways), la distancia de tolerancia (0.001), el atributo espacial (the\_geom) y su id (gid)
-
-    \begin{center}
-      \begin{verbatim}
-      SELECT assign_vertex_id('ways', 0.001, 'the_geom', 'gid');
-      \end{verbatim}
-    \end{center}
-
-    Al tener ya lista la base de datos, se procede a llamar a la funcion \emph{shortest\_path} del modulo PgRouting  de PostGis, el cual implementa el algoritmo de Dijkstra para encontrar el camino minimo.
-
-    En una computadora AMD K6 de 1.8 GHz, de 346 vertices se tiene el siguiente dato
-
-    \begin{center}
-      \begin{verbatim}
--- Executing query:
-SELECT  * from  shortest_path('select gid as id,
-                              source::integer,
-                              target::integer,
-                              dist::double precision as cost from ways',
-                              20, 299 ,
-                              false, false)
-Total query runtime: 11 ms.
-31 rows retrieved.
-      \end{verbatim}
-    \end{center}
-
-    La funcion shortest\_path toma como variables el id del vertice origen (20), y el vertice destino (299).
+% Siguiendo la metodología XP, el presente proyecto de grado debe empezar por la primera etapa del Planning Game.\\
 
 
-  % section camino_minimo (end)
+% Exploración - Entrega y estimación de las historias de usuario
 
-  \section{Modelos ?} % (fold)
-  \label{sec:modelos_}
 
-  % section modelos_ (end)
-  \section{Diagrama de casos de uso ?} % (fold)
-  \label{sec:diagrama_de_casos_de_uso_}
+\section{Exploración}
+\label{sec:requerimientos}
 
-  % section diagrama_de_casos_de_uso_ (end)
+
+Como parte del proceso de Exploración se empezó identificando los usuarios que tomarán parte del sistema y los requerimientos funcionales que el sistema deberá proveer, para posteriormente definir las \emph{historias de usuario}.
+
+% Como parte del analisis, se procedió a elaborar la lista de requerimientos funcionales y no-funcionales, los requerimientos funcionales vienen a ser las características o servicios que el sistema proveerá a sus usuarios y los requerimientos no funcionales son las propiedades o restricciones del sistema.
+
+\subsection{Identificación de Usuarios}
+
+Se puede identificar 3 tipos de usuario en el sistema:
+
+\begin{itemize}
+
+\item \textbf{Usuario Visitante:} Un usuario visitante puede ver los lugares que están registrados en el sistema, su información y la ruta óptima al lugar.
+
+\item \textbf{Usuario Registrado:} Un usuario registrado tiene privilegios para agregar lugares y poder editarlos según se requiera.
+
+\item \textbf{Usuario Administrador:} Un administrador tiene privilegios para remover usuarios registrados que estén haciendo uso indebido del sistema y además pueden ver los reportes que el sistema ofrezca.
+
+\end{itemize}
+
+
+\subsection{Requerimientos Funcionales}
+
+\LTXtable{0.75\textwidth}{implementacion/requerimientos_funcionales}
+
+% \subsection{Requerimientos No Funcionales}
+%
+% \LTXtable{0.75\textwidth}{implementacion/requerimientos_no_funcionales}
 
 
 
 
+  \subsection{Historias de Usuario}
+  \label{sub:historias_de_usuario}
+
+    Las \emph{Historias de Usuario}, descritas a continuacion, están escritas en lenguaje del cliente (no técnico) y serán la pauta para  determinar que los requerimientos del sistema están correctamente implementados.
+
+    % \input{planificacion/user_stories}
+    % \input{planificacion/us_table}
+
+  % end historias_de_usuario
 
 
 
-% chapter descripcion_de_la_implentacion (end)
+  \section{Planificación de la Entrega}
+  \label{sub:Planificación de la Entrega}
 
 
-% la red social en la que los usuarios comparten las fotos de los sitios que visitan.
+  \subsection{Plan de Entregas}
+
+  Como parte del proceso XP, el equipo de desarrollo estima el esfuerzo que requerira la implemenatacion de las \emph{historias de usuario}, tal como se puede apreciar en la tabla \ref{tab:estimation_user_stories}.
+
+
+\input{planificacion/estimacion_user_stories}
+
+    Como parte del plan de entregas, se definio que cada iteracion sera de 2 semanas, como se puede ver en la figura \ref{fig:calendario_entregas}.
+
+      % A continuación el calendario de entregas del proyecto, el cual de acuerdo de las historias de usuario recogidas se estimó para unas 4 Iteraciones, y cada Iteración de 2 semanas.\\
+
+\input{planificacion/calendario_entregas}
+
+       Tambien se definio el order de implementacion de las  \emph{historias de usuario} segun la  prioridad, el esfuezro y el valor de negocio que el cliente le asigno a las \emph{historias de usuario}, se puede ver en la tabla \ref{tab:user_stories_order},
+
+      \begin{table}[H]
+
+        \begin{center}
+          \begin{tabular}{ c  c  c }
+            \toprule
+              \textbf{Iteración} &
+              \textbf{Historia de Usuario} &
+              \textbf{Estimación [dias]}\\
+
+            \midrule
+              \multirow{2}{*}{Iteración 1}
+              & US01 & 6\\
+              & US02 & 4\\
+
+            \addlinespace
+            \multirow{2}{*}{Iteración 2}
+            & US03 & 5\\
+            & US04 & 5\\
+
+            % \midrule
+            \addlinespace
+              \multirow{2}{*}{Iteración 3}
+              & US06 & 3\\
+              & US07 & 4\\
+            %
+            % \midrule
+            \addlinespace
+              \multirow{3}{*}{Iteración 4}
+              & US05 & 4\\
+              & US08 & 4\\
+              & US09 & 3\\
+
+            \bottomrule
+          \end{tabular}
+          \caption{Estimación de la implementación de las Historias de Usuario.}
+          \label{tab:user_stories_order}
+        \end{center}
+      \end{table}
+
+% end implementacion
+% \section{Iteraciones}
+
+Una vez que la fase de \emph{planificación de entrega} es completado, se empieza con la fase de las \emph{iteraciones}.
+
+\input{iteracion_1}
+
+\input{iteracion_2}
+
+\input{iteracion_3}
+
+\input{iteracion_4}
+
+
+% end desarrollo

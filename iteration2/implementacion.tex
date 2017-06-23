@@ -45,7 +45,6 @@ Primeramente es necesario conocer las coordenadas del ``lugar'', para lo cual se
       \begin{center}
         \includegraphics[width=0.3\textwidth]{ember_leaflet}
 
-        % \caption{\emph{ember-leaflet} nos ayuda a desplegar un mapa y mostrar un \emph{punto} o \emph{lugar} con un \emph{marcador} y dibuja una línea de color rojo sobre el mapa.}
         \caption{ Mapa mostrado con la ayuda de \emph{ember-leaflet}}
         \label{fig:ember_leaflet}
         \caption*{Fuente: Elaboración propia.}
@@ -162,13 +161,11 @@ La \emph{latitud} y \emph{longitud} obtenidas es fácilmente trasladado al mapa 
 \subsubsection{Mostrar los Rutas}
 \label{sub:Mostrar los Rutas}
 
-Para dibujar líneas rectas sobre un mapa hay que tomar en consideración que la tierra no es plana y las líneas que en un mapa parecen líneas rectas, realmente no son rectas, ya que el planeta Tierra es un \emph{esferoide oblato}\footnote{Un \emph{esferoide oblato} (o elipsoide oblato) es un elipsoide de revolución obtenido por rotación de una elipse alrededor de su eje más corto.} por lo que las líneas en apariencia rectas tienen la curvatura natural del planeta Tierra. En distancias largas esto tiene un gran impacto al manejar o utilizar mapas proyectados, pero también es cierto que para una área pequeña como es el campus de la Universidad de San Simón este problema no tiene un gran impacto pero no está demás en tomar en cuenta esta característica en el análisis de datos geoespaciales, como se explicó en el capitulo \ref{cha:geolocalizacion}, para el presente proyecto se usará el proyección \emph{SRID 3857}.\\
-
 
 % \section{Ruta óptima dentro el Campus Universitario}
 % \label{sec:generar_mapa_rutas}
 
-En resumen, para responder al problema de encontrar una ruta óptima entre 2 puntos dentro del campus universitario, se necesita de un mapa que contenga todas las rutas que existen dentro del campus.\\
+Para responder al problema de encontrar una ruta óptima entre 2 puntos dentro del campus universitario, se necesita de un mapa que contenga todas las rutas que existen dentro del campus.\\
 
  %
  %
@@ -181,14 +178,17 @@ En resumen, para responder al problema de encontrar una ruta óptima entre 2 pun
 
 % \footnote{Un shapefile es un archivo de formato sencillo y no topológico que se utiliza para almacenar la ubicación geométrica y la información de atributos de las entidades geográficas.\cite{what_is_shapefile} }
 
- Este paso fue necesario porque el mapa extraído del GPS es una línea única, pero para que nos sirva para el objetivo de buscar una ruta óptima, es necesario que esta línea sea dividida o separada en muchas líneas, las cuales son las aristas y los extremos de las líneas serán los nodos o vértices del grafo.\\
+ Este paso fue necesario porque el mapa extraído del GPS es una línea única, pero para que sirva para el objetivo de buscar una ruta óptima, es necesario que esta línea sea dividida o separada en muchas líneas, las cuales son las aristas y los extremos de las líneas serán los nodos o vértices del grafo,
+ técnicamente esta línea única es representada como un \emph{POLYLINE} el cual consiste en una o más partes. Una parte es una secuencia conectada de dos o más puntos. Las partes pueden o no estar conectadas entre sí. Las partes pueden o no intersectarse entre sí, y para transformar este \emph{POLYLINE} necesitamos separar todas sus partes y convertirlas en objetos \emph{LINESTRING} únicos, este paso se lo realizo con \emph{QGis} con la opcion de \emph{explode lines}. \cite{esri_shapefile} \\
 
- Implementando el algoritmo de \emph{Dijkstra} en el grafo resultante es lo que nos permitir\'a encontrar la ruta más corta dentro del campus Universitario, al tener una gran cantidad de información resultante de la obtención de datos mediante un dispositivo GPS se hace imprescindible usar una base de datos que nos ayude con esta tarea, para lo cual se usó la base de datos PostgreSQL añadiendolo PostGIS y pgRouting, herramientas ampliamente utilizadas en el manejo de datos geo-espaciales.\\
+Una ves realizado el paso anterior se obtiene un conjunto de \emph{LINESTRINGs}, el cual se puede ver en la figura \ref{fig:shapefile_umss_v1}, que son segmentos de lineas rectas interconectadas, el cual se uso como el  ``mapa de rutas''.
+
+
 
   % el grafo representa el mapa de caminos  pueda ser usado en una base de datos  “ruteable”, esto significa que el mapa de una sola línea hay que separarlo o dividirlo en muchas líneas.\\
 
 
- Técnicamente esta línea única es representada como un \emph{POLYLINE} el cual consiste en una o más partes. Una parte es una secuencia conectada de dos o más puntos. Las partes pueden o no estar conectadas entre sí. Las partes pueden o no intersectarse entre sí, para transformar este POLYLINE necesitamos separar todas sus partes y convertirlas en objetos \emph{LINESTRING} únicos, y a este conjunto de LINESTRINGs es el que se va a usar en la base de datos como mapa de ``rutas''.\cite{esri_shapefile}\\
+
 
  \begin{figure}[H]
    \begin{center}
@@ -199,8 +199,12 @@ En resumen, para responder al problema de encontrar una ruta óptima entre 2 pun
    \end{center}
  \end{figure}
 
- En la figura \ref{fig:shapefile_umss_v1} se puede apreciar el shapefile resultante de la división del POLYLINE original, las líneas que conforman el mapa de las rutas del campus Universitario, donde cada línea es una arista y los puntos son los nodos del grafo no-dirigido, que será usado para la resolución del problema de la ruta más corta en el presente proyecto de grado.\\
- %
+% Este \emph{mapa de rutas} es un \emph{grafo no-dirigido} sobre el cual se aplico el algoritmo de \emph{Dijkstra} encontrarando la ruta más corta dentro del campus Universitario. \\
+
+El mapa generado con las rutas cumple con las caracteristicas de un \emph{grafo ponderado no-dirigido} en el que el costo o peso de las aristas es la distacia entre los nodos y los nodos son los puntos de interseccion de las rutas. Por lo tanto se puede implentar el algoritmo de Dijkstra para encontrar el camino minimo.
+
+Al obtener una gran cantidad de información resultante despues de la obtención de datos y el tratamiento de este, se hace imprescindible el uso de una base de datos que ayude con la tarea de encontrar la ruta optima usando el algoritmo de \emph{Dijkstra}, para lo cual se usó la base de datos \emph{PostgreSQL} añadiendole \emph{PostGIS} y \emph{pgRouting}, herramientas ampliamente utilizadas en el manejo de datos geo-espaciales.\\
+
  % Para una mejor apreciación del grafo que consta de 1164 aristas y 1003 vértices, se lo puede ver en combinación o proyectada en un mapa de rutas del campus de la Universidad Mayor de San Simón ubicado entre las calles Oquendo, Sucre y  Belzu de la ciudad de Cochabamba - Bolivia, se puede referir a la siguiente figura \ref{fig:shapefile_umss_v2}.
  %
  % \begin{figure}[H]
@@ -286,7 +290,7 @@ Una vez ejecutado el método \emph{pgr\_dijkstra} se obtiene un conjunto de lín
 
 
 
-En el navegador, se obtiene
+Entonces se obtiene
 % poder mostrar la ruta óptima es necesario obtener
 de la base de datos un conjunto de datos en formato de latitud y longitud que conforman líneas, las cuales representan la ruta más corta, pero al final es solo un montón de números, sin mucho significado para el usuario, toda esta información es difícil de procesar y el usuario necesita información que sea fácil de entender y no existe mejor herramienta disponible para esta tarea que mostrar la \emph{ruta} de forma visual, esto quiere decir que se necesita mostrar la ruta sobre un \emph{mapa}, ya que en la aplicación se implementó \emph{ember-leaflet} para desplegar el mapa y mostrar un lugar, también se puede  mostrar más ruta más corta mediante una línea, a la que también se puede personalizar (la línea se muestra de color rojo).\\
 

@@ -24,9 +24,9 @@
     En la aplicación desarrollada se requerirá trabajar con datos espaciales, y para ello es necesario entender algunos conceptos envueltos en el manejo de la información geográfica.
 
     \begin{description}
-      \item[Coordenada:] Es una secuencia de n-números que designa la posición de un punto en un espacio n-dimensional. \\
+      \item[Coordenada:] Es una secuencia de n-números que designa la posición de un punto en un espacio n-dimensional.
       \item[Sistema de coordenadas:] Un sistema de coordenadas es  un conjunto de reglas matemáticas que especifican cómo las coordenadas son asignadas  a cada  punto.
-      \item[Punto:] Es  la representación de una posición, topológicamente 0-dimensional (no tiene volumen, área, longitud o cualquier otra unidad multi-\\dimensional).
+      \item[Punto:] Es  la representación de una posición, topológicamente 0-dimensional (no tiene volumen, área, longitud o cualquier otra unidad multi-dimensional).
     \end{description}
 
     % \section{Coordenada} % (fold)
@@ -50,23 +50,22 @@
     %   % topological 0-dimensional geometric primitive (4.15), representing a position
     % % subsection punto (end)
 
-    Estas definiciones están desarrolladas en la especificación \textbf{Simple Feature Access}, la cual es mantenida por la OGC (Open Geospatial Consortium). Esta especificación define el conjunto de tipos de datos (puntos, línea, polígono, etc) y las operaciones o métodos necesarios para manejar estos datos.
+    Estas definiciones están desarrolladas en la especificación \emph{Simple Feature Access}, la cual es mantenida por la OGC (Open Geospatial Consortium). Esta especificación define el conjunto de tipos de datos (puntos, línea, polígono, etc) y las operaciones o métodos necesarios para manejar estos datos.
 
     % \footnote{\url{http://www.opengeospatial.org/standards/sfa}}
 
   % section definiciones (end)
   \section{Sistema de Coordenadas para datos Geográficos} % (fold)
   \label{sec:sistema_de_coordenadas_para_datos_geograficos}
-    Se podría pensar en un sistema de coordenadas como la forma de dar sentido a un \emph{par de coordenadas}, por ejemplo cuando se ve una locación ``\verb|POINT(-66.1457475 -17.3937285)|'', cómo se interpretan estos números?.
-    Podría ser la latitud y longitud del campus de la UMSS, o podría ser un sistema de anos luz desde alguna estrella en el Universo.
-    El sistema de coordenadas es lo que diferencia estos casos.\\
+    Se podría pensar en un sistema de coordenadas como la forma de dar sentido a un \emph{par de coordenadas}, por ejemplo \verb|POINT(-66.1457475 -17.3937285)|, cómo se interpretan estos números?.
+    Podría ser la latitud y longitud del campus de la UMSS, o algun punto en el Oceano Pacifico. Es gracias al sistema de coordenadas que se puede ubicar este punto en el Universo.\\
 
 
-    Una aplicación que maneja datos geográficos, generalmente trabaja con sistemas de coordenadas relacionadas con la superficie terrestre, conocidas como coordenadas espaciales (coordenadas globales), que permiten representar la tierra en \emph{3-Dimensiones} (3D), ya que esta es una Esfera (elipsoide oblato), o en una representación de la superficie terrestre en \emph{2-Dimensiones} (2D), se pueden nombrar los siguientes:
+    Una aplicación que maneja datos geográficos tiene que trabajar con sistemas de coordenadas relacionadas con la superficie terrestre, conocidas como coordenadas espaciales o coordenadas globales, que permiten representar la tierra en \emph{3-Dimensiones} (3D), ya que esta es una Esfera, mas especificamente un esferoide oblato\footnote{Un \emph{esferoide oblato} (o elipsoide oblato) es un elipsoide de revolución obtenido por rotación de una elipse alrededor de su eje más corto.}, o en una representación de la superficie terrestre en \emph{2-Dimensiones} (2D), los sistemas de coordenadas se clasifican en: Coordenadas geocéntricas, Coordenadas Geográficas y Coordenadas Proyectadas.
 
     \subsection{Coordenadas geocéntricas (X,Y,Z)} % (fold)
       \label{sub:coordenadas_geocentricas}
-        También conocido como \emph{Coordenadas Cartesianas 3D}, Este sistema tiene como origen el centro de la Tierra, con el \emph{eje X} y el \emph{eje Y} en el plano del ecuador. El \emph{eje X} pasa a través del meridiano de Greenwich, y el \emph{eje Z}  coincide con el eje de rotación de la Tierra.
+        También conocido como \emph{Coordenadas Cartesianas 3D}, Este sistema tiene como origen el centro de la Tierra, con el \emph{eje X} y el \emph{eje Y} en el plano del ecuador. El \emph{eje X} pasa a través del meridiano de Greenwich, y el \emph{eje Z}  coincide con el eje de rotación de la Tierra. como se puede ver en la figura \ref{fig:coord_geocentric}.
 
         \begin{figure}[H]
           \begin{center}
@@ -77,24 +76,26 @@
           \end{center}
         \end{figure}
 
-        Este Sistema de coordenadas no es muy usado en la representación de datos, pero a veces se lo requiere para análisis de algoritmos y geometría computacional.
+        Este sistema de coordenadas no es muy usado en la representación de datos, pero a veces se lo requiere para análisis de algoritmos y geometría computacional.
       % subsection coordenadas_geocentricas (end)
 
       \subsection{Coordenadas Geográficas} % (fold)
       \label{sub:coordenadas_geograficas}
-        Sistema de coordenadas Geográfico, utiliza las coordenadas angulares latitud  (\emph{phi} o ${\phi}$) y longitud (\emph{lambda} o ${\lambda}$). Este sistema de coordenadas se expresa en grados, se lo puede representar con la forma \emph{grados:minutos:segundos }\verb|(17° 23' 37.4226" S, 66° 8' 44.691" W)|, o de la forma más común \emph{grados decimales} \verb|(-66.1457475 S, -17.3937285 W)|.\\
+        El sistema de coordenadas Geográficas, ver figura \ref{fig:coord_geographic}, utiliza las coordenadas angulares latitud  (\emph{phi} o ${\phi}$) y longitud (\emph{lambda} o ${\lambda}$). Este sistema de coordenadas se expresa en grados, se lo puede representar con la forma \emph{grados:minutos:segundos }\verb|(17° 23' 37.4226" S, 66° 8' 44.691" W)|, o de la forma más común \emph{grados decimales} \verb|(-66.1457475 S, -17.3937285 W)|. \\
 
-        El sistema de coordenadas  más ampliamente usado, el que usan por defecto los sistemas \emph{GPS}, es conocido como ``WGS 84'', y la mayoría de las aplicaciones que manejan mapas usan este sistema de coordenadas. Es el sistema que maneja los más ampliamente conocidos ``latitud y longitud''.\\
+  Dentro de ese sistema de coordendas, esta el que es el más ampliamente usado y el que usan por defecto los sistemas \emph{GPS}, es el denominado ``WGS 84'' (\emph{World Geodetic System 1984}) y es el que generalmente la mayoría de las aplicaciones usan para el manejo de mapas. Es el sistema que maneja los más ampliamente conocidos ``latitud y longitud''.\\
 
         \begin{figure}[H]
           \begin{center}
             \includegraphics[width=0.7\textwidth]{coord_geographic}
             \caption{Sistema de coordenadas Geográficos}
-            \label{fig:coord geographic}
+            \label{fig:coord_geographic}
             \caption*{Fuente: \cite{coords2009} }
           \end{center}
-
         \end{figure}
+
+
+
 
       % subsection coordenadas_geograficas (end)
 
@@ -102,9 +103,9 @@
       \label{sub:coordenadas_proyectadas}
         Un sistema de coordenadas proyectadas es una representación plana y bidimensional de la  tierra. Se basa en un sistema de coordenadas \emph{geográficas esféricas}, pero utiliza unidades de \emph{medida lineales} para las coordenadas, de forma que los cálculos de distancia y área se pueden realizar en términos de esas mismas unidades.\cite{projected} \\
 
-        Un sistema de coordenadas proyectadas requiere tomar la superficie esférica de la tierra y ``aplanarla'', este procedimiento se lo realiza con la finalidad de tener un mapa representable en una hoja de papel así como en la pantalla de la computadora. Sin embargo este procedimiento introduce diversos tipos de distorsión por lo que existen diferentes clases de proyecciones que varían según la región que se quiere representar de la Tierra.\\
+        Un sistema de coordenadas proyectadas requiere tomar la superficie esférica de la tierra y ``aplanarla'', este procedimiento se lo realiza con la finalidad de tener un mapa representable en una hoja de papel así como en la pantalla de la computadora. Sin embargo este procedimiento introduce diversos tipos de distorsión por lo que existen diferentes clases de proyecciones que varían según la región de la Tierra que se quiere representar.\\
 
-        La proyección que usan \emph{Google Maps} y \emph{Open Street Maps} es la \textbf{Mercator Projection}\cite{gmaps_osm}, esta proyección está diseñada para preservar los ángulos y las formas de las líneas en forma recta, pero distorsiona los tamaños y las distancias mientras más lejos se encuentran de la línea del Ecuador. Esta proyección se puede apreciar en la figura \ref{fig:mercator_proyection}
+        La proyección que usan por ejemplo, \emph{Google Maps} y \emph{Open Street Maps} es la \textbf{Mercator Projection}\cite{gmaps_osm}, esta proyección está diseñada para preservar los ángulos y las formas de las líneas en forma recta, pero distorsiona los tamaños y las distancias mientras más lejos se encuentran de la línea del Ecuador. Esta proyección se puede apreciar en la figura \ref{fig:mercator_proyection}
 
 % Google Maps usa la Proyección de Mercator para mostrar su mapa
 
@@ -117,7 +118,7 @@
           \caption*{Fuente: \cite{coords2009} }
         \end{figure}
 
-        Tal como se puede apreciar en la figura \ref{fig:mercator_proyection}, la distorsión de esta proyección se hace evidente si se observa la zona de Groenlandia ya que parecería tan grande como África o América del Sur, cosa que no es cierta, ya que Groenlandia es casi 14 veces más pequeño que África. A pesar de esta distorsión tan marcada, la \textbf{Proyección de Mercator} es una de las más usadas.
+        Tal como se puede apreciar en la figura \ref{fig:mercator_proyection}, la distorsión de esta proyección se hace evidente si se observa la zona de Groenlandia ya que parecería tan grande como África o América del Sur, cosa que no es cierta, ya que Groenlandia es casi 14 veces más pequeño que África. A pesar de esta distorsión tan marcada, la \emph{Proyección de Mercator} es una de las más usadas.
          % de hecho Google Maps usa esta proyección.
       % subsection coordenadas_proyectadas (end)
 
@@ -231,13 +232,18 @@
   % \section{Conclusión} % (fold)
   % \label{sec:geo_conclusion}
   %
-    Los Mapas son herramientas muy útiles a la hora de desplegar información pero realizar el mapa, crear las fórmulas matemáticas con las cuales se trabajará, determinar cómo se usarán estas fórmulas para una representación adecuada de la superficie terrestre, es una tarea muy compleja. Como programador la tarea más complicada fue determinar el tipo de mapa y el sistema de coordenadas más adecuado para el tipo proyecto que se necesita desarrollar.\\
+
+    Los Mapas son herramientas muy útiles a la hora de desplegar información, pero realizar el mapa, crear las fórmulas matemáticas con las cuales se trabajará, determinar cómo se usarán estas fórmulas para una representación adecuada de la superficie terrestre, es una tarea muy compleja. Como programador la tarea más complicada fue determinar el tipo de mapa y el sistema de coordenadas más adecuado para el tipo proyecto que se necesita desarrollar.\\
 
     Los términos de longitud y latitud son en un inicio, más fácilmente comprendidos que un sistema proyectado, pero no se puede tomar a la ligera una correcta comprensión del uso de los \emph{sistemas de coordenadas} en una base de datos espacial, un mal uso de estos conceptos puede generar errores a la hora de manejar datos  espaciales o en el resultado de las operaciones sobre estos  datos, llegando a resultados no deseados y que pueden costar más tiempo y dinero en una posterior corrección.\\
 
-    La geolocalización es actualmente una tecnología y una herramienta usada en gran medida por una gran cantidad de aplicaciones web, añadiendo búsquedas y resultados personalizados a nivel país, ciudad, barrio y calle, resultando en una gran variedad de servicios y que actualmente es de gran ayuda en diferentes escenarios. La geolocalización nos ayuda a movernos por una ciudad, encontrar restaurantes, cines, transporte, etc. actualmente es una de las herramientas mas usadas y desarrolladas a nivel de industria, comercio, turismo, etc. y vale la pena estudiarla y entenderla.\\
+
+    Para dibujar líneas rectas sobre un mapa hay que tomar en consideración que la tierra no es plana y las líneas que en un mapa parecen líneas rectas, realmente no son rectas, ya que el planeta Tierra es un \emph{esferoide oblato} por lo que las líneas en apariencia rectas tienen la curvatura natural del planeta Tierra. En distancias largas se nota mucho mas la utilidad de usar mapas con \emph{sistemas proyectados}, pero también es cierto que para una área pequeña como es el campus de la Universidad de San Simón este problema no tiene un gran impacto pero no está demás en tomar en cuenta esta característica en el análisis de datos geoespaciales, tomando en cuenta estas caracteristacas de la Geolocalizacion se llego a la conclucion de usar
+    el sistema de \emph{coordenadas projectadas}, mas especificamente la proyección \emph{SRID 3857}.\\
 
 
+
+    La geolocalización es actualmente una tecnología y una herramienta usada en gran medida por una gran cantidad de aplicaciones web, añadiendo búsquedas y resultados personalizados a nivel país, ciudad, barrio y calle, resultando en una gran variedad de servicios y que actualmente es de gran ayuda en diferentes escenarios. La geolocalización ayuda a moverse por una ciudad, encontrar restaurantes, cines, transporte, etc. actualmente es una de las herramientas mas usadas y desarrolladas a nivel de industria, comercio, turismo, etc. y vale la pena estudiarla y entenderla.\\
 
 
 

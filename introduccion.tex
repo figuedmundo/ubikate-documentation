@@ -3,8 +3,7 @@
 
 El presente proyecto consiste en el desarrollo de una aplicación móvil que permita ubicar y encontrar una locación dentro del campus de la Universidad Mayor de San Simón, la aplicación deberá localizar la ubicación actual del usuario y permitir especificar un punto de destino, mostrando a continuación el camino más corto para llegar a destino.\\
 
-El campus universitario abarca más de 214.000 m2 y encierra varias facultades y
-oficinas administrativas, para estudiantes nuevos y antiguos o personas que
+El campus universitario abarca más de \num{214,000} $m^2$ y encierra varias facultades y oficinas administrativas, para estudiantes nuevos y antiguos o personas que
 necesitan hacer trámites administrativos, incluso si solo se quiere conocer el
 campus, es necesario contar con un mapa donde ubicarse.\\
 
@@ -17,7 +16,7 @@ ruta óptima para llegar a destino. Es una desventaja para nuestra Universidad q
 
   \section{Antecedentes} % (fold)
   \label{sec:antecedentes}
-  Actualmente Google Maps ofrece una solución al problema de encontrar una ruta entre 2 puntos geolocalizados, de diferentes formas, por ejemplo si usamos movilidad, bicicleta, a pie, para lograr esto se toman en cuenta los distintos tipos de calles que existen y la dirección en el caso de movilidades, Google Maps toma en cuenta la descripción de una locación o la referencia cartográfica en latitud y longitud de los puntos, y el cómo nos vamos a desplazar entre los 2 puntos para dibujar con una línea roja la ruta a seguir.\\
+  Actualmente Google Maps ofrece una solución al problema de encontrar una ruta entre 2 puntos geolocalizados, de diferentes formas, por ejemplo si usamos movilidad, bicicleta, a pie, para lograr esto se toman en cuenta los distintos tipos de calles que existen y la dirección en el caso de movilidades, Google Maps toma en cuenta la descripción de una locación o la referencia cartográfica en latitud y longitud de los puntos, y el cómo se va a desplazar entre los 2 puntos para dibujar con una línea roja la ruta a seguir.\\
 
 
   Así como también existen Blogs o Aplicaciones con información de los lugares turísticos o de interés para visitar en la ciudad, como ser TripAdvisor, la información que provee esta aplicación generalmente incluye la locación del lugar referenciada sobre un mapa estático, este tipo de aplicaciones usa el API de Google Maps para lograr encontrar una ruta hacia el lugar de interés.\\
@@ -96,7 +95,7 @@ ruta óptima para llegar a destino. Es una desventaja para nuestra Universidad q
     Una aplicación web móvil puede llegar a ser muy compleja, por ejemplo la seguridad de los datos de los usuario, ya que el API está expuesto en un servidor de acceso público y es susceptible de ataques maliciosos y malintencionados para lograr acceder y robar información privada que los usuarios podrían tener almacenados en la aplicación, en el caso de la presente aplicación, el sistema no manejará información sensible, como ser tarjetas de crédito pero la aplicación manejará información relacionada con la locación del usuario y esto podría ser usado para fines delictivos. Para una aplicación web la seguridad es muy importante, el presente proyecto implementara medidas de seguridad para asegurar la identidad del usuario que se está solicitando el ingreso (logeado) al sistema pero no incluirá protección a ataques Phishing, DoS ya que los objetivos específicos no los contempla.\\
 
 
-    El look and feel de una aplicación web es un tema muy importante para cualquier aplicación a desarrollar, para lograr que la aplicación se muestre de manera consistente en la pantalla de un smartphone se usarán herramientas de terceros pero no se extenderá el uso de la misma para la pantalla de un ordenador de escritorio que posee una resolución de pantalla muy superior al de un celular.\\
+    El \emph{look and feel} de una aplicación web es un tema muy importante para cualquier aplicación a desarrollar, para lograr que la aplicación se muestre de manera consistente en la pantalla de un smartphone se usarán herramientas de terceros pero no se extenderá el uso de la misma para la pantalla de un ordenador de escritorio que posee una resolución de pantalla muy superior al de un celular.\\
 
 
 
