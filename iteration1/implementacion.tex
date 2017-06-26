@@ -1,57 +1,56 @@
-\subsubsection{Recolecion de la informacion de los lugares}
-% \label{subs:Los lugares}
-
-En primer lugar se recolectó la información de los lugares que la aplicación contendrá  de forma inicial, al igual que para recolectar las rutas se hizo uso de un \emph{GPS Garmin Nuvi 1300}, el cual cuenta con la opción de guardar locaciones como favoritos, entonces solo fue necesario estar cerca del lugar que se desea guardar y activar esa opción del GPS, este guarda la información en un archivo \emph{.gpx} y con la ayuda de \emph{QGIS} se genero el archivo shapefile correspondiente.\\
-
-Posteriormente es necesario pasar la información geoespacial del shapefile a la base de datos, para esta tarea se hizo uso de una herramienta disponible para postgres, \emph{shp2pgsql}, que permite la conversión de un archivo shapefile a un archivo sql.
-
-% $ shp2pgsql -s 4326 -I -S -c -d ~/Documents/places.shp > places.sql
-\begin{verbatim}
-  $ shp2pgsql -s 3785 -I -S -c -d ~/Documents/places.shp > places.sql
-\end{verbatim}
-
-Con el anterior comando se tiene como resultado un archivo \emph{.sql}, el cual es ingresado en la base de datos ya configurada, de esta forma nuestra base de datos para a contener una tabla geoespacial con datos de tipo \emph{POINT}, los cuales representan los lugares dentro del campus de la UMSS.\\
-
+% \subsubsection{Recolección de la información de los lugares}
+% % \label{subs:Los lugares}
+%
+% En primer lugar se recolectó la información de los lugares que la aplicación contendrá  de forma inicial, al igual que para recolectar las rutas se hizo uso de un \emph{GPS Garmin Nuvi 1300}, el cual cuenta con la opción de guardar locaciones como favoritos, entonces solo fue necesario estar cerca del lugar que se desea guardar y activar esa opción del GPS, este guarda la información en un archivo \emph{.gpx} y con la ayuda de \emph{QGIS} se genero el archivo shapefile correspondiente.\\
+%
+% Posteriormente es necesario pasar la información geoespacial del shapefile a la base de datos, para esta tarea se hizo uso de una herramienta disponible para postgres, \emph{shp2pgsql}, que permite la conversión de un archivo shapefile a un archivo sql.
+%
+% % $ shp2pgsql -s 4326 -I -S -c -d ~/Documents/places.shp > places.sql
 % \begin{verbatim}
-%   $ shp2pgsql -s 4326 -I -S -c -d ~/Documents/ways.shp > ways.sql
+%   $ shp2pgsql -s 3785 -I -S -c -d ~/Documents/places.shp > places.sql
 % \end{verbatim}
 %
-% De la misma forma es necesario pasar la información de las rutas contenidas en un archivo shapefile a un archivo sql, en este caso creará una tabla \emph{WAYS}.\\
+% Con el anterior comando se tiene como resultado un archivo \emph{.sql}, el cual es ingresado en la base de datos ya configurada, de esta forma nuestra base de datos para a contener una tabla geoespacial con datos de tipo \emph{POINT}, los cuales representan los lugares dentro del campus de la UMSS.\\
+%
+% % \begin{verbatim}
+% %   $ shp2pgsql -s 4326 -I -S -c -d ~/Documents/ways.shp > ways.sql
+% % \end{verbatim}
+% %
+% % De la misma forma es necesario pasar la información de las rutas contenidas en un archivo shapefile a un archivo sql, en este caso creará una tabla \emph{WAYS}.\\
+%
+% El archivo \emph{sql} resultante es usado para popular la base de datos con la información inicial de los lugares que contiene el campus universitario, para tal tarea se usó el siguiente comando.\\
+% % Los archivos resultantes \emph{sql} son usados para popular la base de datos .\\
+%
+% \begin{verbatim}
+%   $ psql -d db_ubikate -U db_admin -f /Documents/places.sql
+% \end{verbatim}
+%
+% \begin{figure}[H]
+%   \begin{center}
+%     \includegraphics[width=1\textwidth]{iteration1/postgres_places}
+%     \caption{Herramienta gráfica de PostgreSQL (\emph{pgAdmin}).}
+%     \label{fig:postgres_places}
+%     \caption*{Fuente: Elaboración propia}
+%   \end{center}
+% \end{figure}
+%  % con la tabla de Lugares desplegada.
+%
+% En la figura \ref{fig:postgres_places} se puede observar que la columna \emph{Elevation} contiene datos que el GPS Garmin Nuvi 1300 genera al momento de guardar un punto, en el presente caso es irrelevante.\\
+%
+%
+% Una vez que se tiene populada la base de datos con la información de los lugares es necesario implementar el cómo se comunicara el backend con el frontend, este como ya se explicó se implementará un Servicio Web basado en un API REST.\\
 
-El archivo \emph{sql} resultante es usado para popular la base de datos con la información inicial de los lugares que contiene el campus universitario, para tal tarea se usó el siguiente comando.\\
-% Los archivos resultantes \emph{sql} son usados para popular la base de datos .\\
-
-\begin{verbatim}
-  $ psql -d db_ubikate -U db_admin -f /Documents/places.sql
-\end{verbatim}
-
-\begin{figure}[H]
-  \begin{center}
-    \includegraphics[width=1\textwidth]{iteration1/postgres_places}
-    \caption{Herramienta gráfica de PostgreSQL (\emph{pgAdmin}).}
-    \label{fig:postgres_places}
-    \caption*{Fuente: Elaboración propia}
-  \end{center}
-\end{figure}
- % con la tabla de Lugares desplegada.
-
-En la figura \ref{fig:postgres_places} se puede observar que la columna \emph{Elevation} contiene datos que el GPS Garmin Nuvi 1300 genera al momento de guardar un punto, en el presente caso es irrelevante.\\
-
-
-Una vez que se tiene populada la base de datos con la informacion de los lugares es necesario implementar el como se comunicara el backend con el frontend, este como ya se explico se implementara un Servicio Web basado en un API REST.\\
-
-
-
-\subsubsection{Implementación del REST API}
-\label{subs:Implementacion del REST API}
-
-
-
-El servidor necesita reconocer las peticiones que le llegan del cliente, para lo cual es necesario ``mapear'' un URI a una acción específica, las cuales ya están preparadas para comunicarse con la base de datos, no hay restricción en la declaración de las URIs pero para una mejor comprensión del API que se está desarrollando es necesario seguir convenciones que aseguran que cualquier desarrollador pueda comprender el API presentado y pueda ser fácilmente consumido por cualquier aplicación que requiera acceder a la información que disponible, un API REST es el que cumple con estas características.
-En primer lugar es necesario crear las URIs que serán ``entendidas'' por el servidor, esto se logra declarando en el servicio creado con \emph{Express.JS}, tal como se puede apreciar en el siguiente bloque de código, cada URI se lo relaciona a un modelo en específico de acuerdo a la acción que se requiere, tal como se puede observar en el cuadro \ref{tab:rest} las URIs declaradas en el API cumplen con tal característica.\\
+En la primera Iteración se implementó la lista de lugares que la aplicación mostrará a los usuarios, para lo cual se describe a continuación los pasos que se siguieron. \\
 
 
-% \begin{minted}{js}[label=express_api,caption=Declarando API REST con ExpressJS]
+\subsubsection{Acceder a la Información de los lugares mediante un REST API }
+
+
+La información de un lugar está almacenada en una base de datos, entonces para poder acceder a esta informacion se implemento un REST API, que como ya se especificaron sus características, es la más apropiada para construir una aplicación web. \\
+
+Las peticiones al API llegan a través del protocolo HTTP, en forma de URIs por lo que el servidor implementado con \emph{ExpressJS} tiene que escuchar estas peticiones y actuar en relación al tipo de petición HTTP está llegando, por lo cual es necesario ``mapear'' las URIs con acciones o métodos, como se puede ver en el codigo \ref{express_api}, los cuales contienen el código necesario para comunicarse con la base de datos. \\
+
+
 \begin{center}
   \begin{lstlisting}[label=express_api,caption=Declarando API REST con ExpressJS]
 
@@ -66,89 +65,70 @@ En primer lugar es necesario crear las URIs que serán ``entendidas'' por el ser
 
   \end{lstlisting}
 \end{center}
-% \end{minted}
-
-% En el código
-
-  %
-  % Para lograr todo este comportamiento  es necesario declarar, en el archivo
-  % que controla las rutas dentro de la aplicación, \textbf{routes}, que el
-  % recurso \textbf{user} es \emph{restful}, tal como se muestra en la figura \ref{fig:rest}\\
-
-  % \begin{figure}[!hbp]
-  %   \begin{center}
-  %     \caption[REST - routes.rb]{config/routes.rb}
-  %     \label{fig:rest}
-  %     \includegraphics[width=1\textwidth]{rest}
-  %     \caption*{Fuente: }
-  %   \end{center}
-  % \end{figure}
-
-  El cuadro \ref{tab:rest} muestra como se puede leer las peticiones al API de \textbf{places}, las acciones mostradas son las que se pueden encontrar en un API REST pero no es necesario declararlas todas para considerar a que un API es restful.\\
 
 
-  \begin{table}[H]
-    \begin{center}
+En realidad, \emph{ExpressJS} no tiene restricciones a la hora de mapear las URIs, pero para una mejor comprensión del API que se está desarrollando es necesario seguir convenciones que aseguran que cualquier aplicación pueda consumir la información que el API pueda ofrecer, y un REST API cumple con estas características. \\
 
-      \begin{tabularx}{0.75\textwidth}{ l l l  X }
-        \toprule
-        \multicolumn{1}{c}{\textbf{HTTP}} &
-        \multicolumn{1}{c}{\textbf{URI}}  &
-        % \multicolumn{1}{c}{\textbf{C}}  &
-        \multicolumn{1}{c}{\textbf{ACCI\'ON}} &
-        \multicolumn{1}{c}{\textbf{USADO PARA}}  \\
-        \multicolumn{1}{c}{\textbf{request}} & & & \\
+A cada URI mapeada se lo conoce como \emph{endpoint}, por lo que para obtener la lista de lugares que están registradas en el sistema, se usará el \emph{endpoint}: \verb|router.get('/', places.getAll);|, el cual es el indicado para obtener todos los lugares, según la implementación del REST API visto en la tabla \ref{tab:rest}. \\
 
-        \midrule
-        GET     &  /places    &  index    & devuelve una lista con todos los lugares\\
-        POST    &  /places    &  create   & inserta un nuevo lugar en la bd\\
-        GET     &  /places/1  &  show     & muestra el lugar con identificador \emph{1}\\
-        PUT     &  /places/1  &  update   & actualiza los datos de un lugar específico\\
-        DELETE  &  /places/1  &  delete   & elimina el lugar con id = 1 de la bd\\
-        \bottomrule
-      \end{tabularx}
-
-      \caption[recursos REST]{REST URIs para los lugares}
-      \label{tab:rest}
-
-      \caption*{Fuente: Elaboración propia}
-    \end{center}
-  \end{table}
-
-  % Tal como se ve en el cuadro \ref{tab:rest}, Rails maneja los request HTTP de acuerdo con
-  % el tipo de llamada que se realice, este trabajo lo realiza el \textbf{router},
-  % que reconoce las URLs y los despacha a una \textbf{acción} del controlador,
-  % todo este proceso ya está implementado en el núcleo de Rails por lo tanto  es automático y el programador
-  % no necesita más configuración que la mostrada en la figura \ref{fig:rest},
-  % obedeciendo al principio de \emph{Convención sobre configuración}\\
-
-  % % no son más que métodos dentro del \emph{user\_controller.rb}
-  % el cual
-  % es parte del controlador de la arquitectura MVC.\\
-
-  % The Rails router recognizes URLs and dispatches them to a controller’s action. It can also generate paths and URLs, avoiding the need to hardcode strings in your views.
-
-  Por ejemplo, si se genera una petición GET hacia la direccion
-  \mbox{\emph{/places/1}}  el servidor interpreta la dirección y responde
-  mostrando la información del lugar “1” y en cambio si se genera
-  una petición \emph{PUT} a la misma direccion \emph{/places/1} se ejecuta la acción \textbf{update} y se actualizan los datos del lugar ``1''. \\
-
-  % \textbf{usuarios} actualizando la información del usuario “1”. \\
-
-  Siguiendo la convención de un API REST ayuda a entender el flujo que tiene un recurso,
-  las URL son legibles y únicos para cada recurso. Por lo tanto la implementación   de los recursos se hace de forma más limpia y ordenada, situaciones que son   claves para el mantenimiento y la extensibilidad del sistema. \\
+El método asociado al \emph{endpoint} contendrá la lógica para comunicarse con la base de datos, por lo que es necesario implementarla. \\
 
 
-Una vez implementado el servicio web, necesitamos empezar con el desarrollo del frontend de la aplicacion, que como ya se explico se usara \emph{EmberJS} para esta tarea. \\
+\subsubsection{Implementación de la base de datos para almacenar los lugares}
+
+La característica especial que tiene esta base de datos, es la de manejar datos geoespaciales, en el caso de los \emph{lugares} estos son representados por el tipo POINT.
+
+La base de datos PostgreSQL por defecto no maneja datos geoespaciales, pero como ya se explicó, añadiendo la extensión PostGIS, ya es posible el manejo de datos geoespaciales, pero es nuestra tarea el comprobar que realmente esté manejando los tipos de datos geoespaciales.
+
+Entonces se procedió a recolectar información de un conjunto de lugares, para esta tarea se utilizó un \emph{GPS Garmin Nuvi 1300}, el cual es un dispositivo de posicionamiento global, que cuenta con la opción de guardar locaciones, el dispositivo GPS almacena su información en un archivo \emph{gpx} (que básicamente es un fichero XML estándar usado para compartir datos entre GPS's) y con la ayuda de \emph{QGIS} se genero el archivo shapefile que se utilizó para popular la base de datos con información geoespacial de algunos \emph{lugares} del campus Universitario.
+
+Posteriormente es convierte la información geoespacial almacenada en el shapefile a la base de datos, para lo cual se esta hizo uso de una herramienta propia de PostgreSQL, que permite la conversión de un archivo shapefile a un archivo sql, el cual se puede ver en el siguiente código.
+
+% % $ shp2pgsql -s 4326 -I -S -c -d ~/Documents/places.shp > places.sql
+\begin{verbatim}
+  $ shp2pgsql -s 3785 -I -S -c -d ~/Documents/places.shp > places.sql
+\end{verbatim}
+
+Con el anterior comando se genera un archivo \emph{sql}, el cual es usado para popular la base de datos ya preparada para contener datos geoespaciales, para ingresar la información a la base de datos se utilizó el siguiente comando, propio de PostgreSQL.
+
+% \begin{verbatim}
+%   $ shp2pgsql -s 3785 -I -S -c -d ~/Documents/ways.shp > ways.sql
+% \end{verbatim}
+
+% % De la misma forma es necesario pasar la información de las rutas contenidas en un archivo shapefile a un archivo sql, en este caso creará una tabla \emph{WAYS}.\\
+%
+% El archivo \emph{sql} resultante es usado para popular la base de datos con la información inicial de los lugares que contiene el campus universitario, para tal tarea se usó el siguiente comando.\\
+% % Los archivos resultantes \emph{sql} son usados para popular la base de datos .\\
+%
+\begin{verbatim}
+  $ psql -d db_ubikate -U db_admin -f /Documents/places.sql
+\end{verbatim}
+
+Al finalizar este proceso, se puede ver en la figura \ref{fig:postgres_places}, que la tabla correspondiente a los \emph{lugares} está correctamente populada con la información geoespacial de los lugares registrados con el dispositivo GPS. 
+
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=1\textwidth]{iteration1/postgres_places}
+    \caption{Herramienta gráfica de PostgreSQL (\emph{pgAdmin}).}
+    \label{fig:postgres_places}
+    \caption*{Fuente: Elaboración propia}
+  \end{center}
+\end{figure}
+%  % con la tabla de Lugares desplegada.
+%
+% En la figura \ref{fig:postgres_places} se puede observar que la columna \emph{Elevation} contiene datos que el GPS Garmin Nuvi 1300 genera al momento de guardar un punto, en el presente caso es irrelevante.\\
 
 
-\subsubsection{Mostrar los lugares}
+Una vez implementado el servicio web, necesitamos empezar con el desarrollo del frontend de la aplicación, que como ya se explicó se usará \emph{EmberJS}. \\
 
 
-\emph{EmberJS} tiene que consumir la informacion del API implementado, por lo tanto se hara una llamada \emph{GET} al URI \emph{places/}, dentro de la estructura de \emph{EmberJS} se tiene que implementar en el \emph{Router} dedicado al URI correspondiente. El siguiente metodo es el encarado de hacer la llamada y obtener la lista de lugares del API
+\subsubsection{Mostrar la lista de lugares}
+
+
+\emph{EmberJS} consume la información del API implementado, por lo tanto se hará una llamada \emph{GET} al URI \emph{places/}, que dentro de la estructura de \emph{EmberJS} se tiene que implementar en el \emph{router} dedicado al URI correspondiente. El método mostrado en el codigo \ref{model_places_index}, es el encargado de hacer generar la petición GET que el API está listo para responder con la lista de los lugares registrados en el sistema. \\
 
 \begin{center}
-  \begin{lstlisting}[label=model_places_index,caption=Obtener la lista de lugares del API]
+  \begin{lstlisting}[label=model_places_index,caption=Método para obtener la lista de lugares del API]
 
     model() {
         var url = (ENV.APP.API_HOST || '') + '/api/v1/places/';
@@ -161,7 +141,7 @@ Una vez implementado el servicio web, necesitamos empezar con el desarrollo del 
   \end{lstlisting}
 \end{center}
 
-Una vez obtenido la lista de lugares es necesario para el visitante que la lista este disponible en el navegador, para lo cual se usara el \emph{template} de \emph{EmberJs} correspondiente al URI, \emph{templates/places/index.hbs}.
+Una vez que se obtiene la lista de lugares del servidor, es necesario desplegarlos en el navegador, para tal efecto se implemento el método, mostrado en el codigo \ref{template_places_index}, para desplegar la lista de lugares en el navegador, donde se puede ver el uso de los \emph{templates} de \emph{EmberJs}, se utilizó el template correspondiente al URI \emph{templates/places/index.hbs}.
 
 \begin{center}
   \begin{lstlisting}[label=template_places_index,caption=Template de la lista de lugares]
@@ -180,7 +160,8 @@ Una vez obtenido la lista de lugares es necesario para el visitante que la lista
   \end{lstlisting}
 \end{center}
 
-En la anterior implementacion se hizo uso de \emph{ember-paper}, que como ya se explico ayudara en el ``look and feel'' de la aplicacion, el cual se puede observar en la figura \ref{fig:places_index}, la lista de lugares es mostrada en el navegador en un dispositivo movil.
+En la anterior implementación se hizo uso de \emph{ember-paper}, que como ya se explicó ayudará en el \emph{look and feel} de la aplicación, se puede observar en la figura \ref{fig:places_index}. \\
+ % tiene toda la apariencia  mejorada para su uso en dispositivos móviles.
 
 
 \begin{figure}[H]
@@ -193,13 +174,14 @@ En la anterior implementacion se hizo uso de \emph{ember-paper}, que como ya se 
 \end{figure}
 
 
-\subsubsection{Busqueda de los lugares}
+\subsubsection{Búsqueda de los lugares}
 \label{subs:busqueda de los lugares}
 
-Para la implementacion de la busqueda de los lugares, un de los criterios de aceptacion es que sea posible la busqueda usando el nombre del lugar o parte del mismo, es necesario anadir un \emph{URI} adicional a nuestro servicio web, que obtenga de la base de datos un conjunto de lugares que concuerden con el criterio de busqueda, a continuacion se puede ver el URI implementado en la servicio web. \\
+Uno de los criterios de aceptación para la implementación de la \emph{historia de usuario} 2, correspondiente a la búsqueda de los lugares, es que sea posible la búsqueda usando el nombre del lugar o parte del mismo. Al implementar esta historia de usuario se anadir un \emph{endpoint} adicional a nuestro servicio web, ver el codigo \ref{endpoint_search_place}, que basicamente hace tiene una consulta SQL que obtiene de la base de datos los lugares que concuerden con el criterio de búsqueda. \\
+ % a continuación se puede ver el URI implementado en la servicio web. \\
 
 \begin{center}
-  \begin{lstlisting}[label=endpoint_search_place,caption=Implementacion de la busqueda de lugares en el Servicio Web]
+  \begin{lstlisting}[label=endpoint_search_place,caption=Implementación de la búsqueda de lugares en el Servicio Web]
 
     router.get('places/search/:name', places.getPlacesByName);
 
@@ -207,13 +189,16 @@ Para la implementacion de la busqueda de los lugares, un de los criterios de ace
 \end{center}
 
 
-\subsubsection{Mostrar informacion del lugar}
-\label{subs:Mostrar informacion del lugar}
+\subsubsection{Mostrar la información del lugar}
+\label{subs:Mostrar información del lugar}
 
-La obtencion de la informacion de un lugar corresponde al URI \emph{places/:id} usando el verbo HTTP \emph{GET}, el cual obtiene la informacion en formato JSON, entonces se necesita mostrar esta informacion en el navegador, para lo cual el template correspondente al URI llegaria a ser \emph{templates/places/show}.
+La obtención de la información de un lugar corresponde al URI \emph{places/:id} usando el verbo HTTP \emph{GET}, el cual obtiene la información en formato JSON del servidor para posteriormente mostrarlo en el navegador, para lo cual el template \emph{EmberJS} correspondiente al URI usado es \emph{templates/places/show}. \\
+
+La implementación del template se puede ver en el codigo \ref{template_places_show}. \\
 
 \begin{center}
-  \begin{lstlisting}[label=template_places_show,caption=Template para mostrar la informacion de un lugar]
+  \begin{lstlisting}[label=template_places_show,caption=Template para mostrar la información de un lugar]
+
       {{#text.headline}}{{model.name}}{{/text.headline}}
       {{#card.content}}
           {{#paper-list}}
@@ -230,7 +215,7 @@ La obtencion de la informacion de un lugar corresponde al URI \emph{places/:id} 
   \end{lstlisting}
 \end{center}
 
-El resultado del template renderizado en el navegador se puede apreciar en la figura \ref{fig:place_show}.
+El resultado en el navegador del template implementado se puede apreciar en la figura \ref{fig:place_show}. \\
 
 \begin{figure}[H]
   \begin{center}

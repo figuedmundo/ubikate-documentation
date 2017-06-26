@@ -86,14 +86,73 @@ Los principios de diseño sobre los que se basa REST son:
   %  y a los cuatro operaciones fundamentales POST, GET, PUT, DELETE definidos en el  protocolo HTTP.\\
 
 % El estilo de desarrollo RESTful\footnote{se denomina RESTful a los sistemas que siguen los principios REST} ayuda a determinar acerca de qué controlador y cuál será la acción que se ejecutará, solamente procesando el request HTTP hecho al servidor.\\
+\begin{itemize}
+  \item \textbf{GET} es la operación HTTP más común, es usado para leer
+  datos en este caso páginas, se puede leer como ``get a page''.
+  \item \textbf{POST} es la operación usada para crear objetos o recursos, la informacion va en el cuerpo del request.
+  \item \textbf{PUT} se usa para actualizar objetos.
+  \item \textbf{DELETE} es usado para borrar objetos.
+\end{itemize}
 
-
-\textbf{GET} es la operación HTTP más común, es usado para leer
-datos en este caso páginas, se puede leer como ``get a page'',
-\textbf{POST} es la operación usada para crear objetos o recursos, la informacion va en el cuerpo del request
-% se usa cuando se ejecuta un formulario, en la convención de Rails \textbf{POST} se usa para crear
-% objetos o recursos,
-\textbf{PUT} se usa para actualizar objetos,
-\textbf{DELETE} es usado para borrar objetos. \\
+% \textbf{GET} es la operación HTTP más común, es usado para leer
+% datos en este caso páginas, se puede leer como ``get a page'',
+% \textbf{POST} es la operación usada para crear objetos o recursos, la informacion va en el cuerpo del request
+% % se usa cuando se ejecuta un formulario, en la convención de Rails \textbf{POST} se usa para crear
+% % objetos o recursos,
+% \textbf{PUT} se usa para actualizar objetos,
+% \textbf{DELETE} es usado para borrar objetos. \\
 
 % Al construir y emplear un REST API para manejar la información del backend de la aplicación se siente muy natural la forma de manejar la comunicación entre las
+
+
+
+  En el siguiente cuadro \ref{tab:rest}, se muestra como se pueden leer las peticiones al API del servicio que se comunica con los \emph{lugares}, las acciones mostradas son las que se encuentran en un API REST, pero no es necesario declararlas todas para considerar a que un API es restful.\\
+
+
+  \begin{table}[H]
+    \begin{center}
+
+      \begin{tabularx}{0.75\textwidth}{ l l l  X }
+        \toprule
+        \multicolumn{1}{c}{\textbf{HTTP}} &
+        \multicolumn{1}{c}{\textbf{URI}}  &
+        % \multicolumn{1}{c}{\textbf{C}}  &
+        \multicolumn{1}{c}{\textbf{ACCI\'ON}} &
+        \multicolumn{1}{c}{\textbf{USADO PARA}}  \\
+        \multicolumn{1}{c}{\textbf{request}} & & & \\
+
+        \midrule
+        GET     &  /lugares    &  index    & devuelve una lista con todos los lugares.\\
+        POST    &  /lugares    &  create   & inserta un nuevo lugar en la base de datos.\\
+        GET     &  /lugares/1  &  show     & muestra el lugar con identificador \emph{1}.\\
+        PUT     &  /lugares/1  &  update   & actualiza los datos de un lugar específico.\\
+        DELETE  &  /lugares/1  &  delete   & elimina el lugar con id \emph{1} de la base de datos.\\
+        \bottomrule
+      \end{tabularx}
+
+      \caption[recursos REST]{REST URIs para los lugares}
+      \label{tab:rest}
+
+      \caption*{Fuente: Elaboración propia}
+    \end{center}
+  \end{table}
+
+  % Tal como se ve en el cuadro \ref{tab:rest}, Rails maneja los request HTTP de acuerdo con
+  % el tipo de llamada que se realice, este trabajo lo realiza el \textbf{router},
+  % que reconoce las URLs y los despacha a una \textbf{acción} del controlador,
+  % todo este proceso ya está implementado en el núcleo de Rails por lo tanto  es automático y el programador
+  % no necesita más configuración que la mostrada en la figura \ref{fig:rest},
+  % obedeciendo al principio de \emph{Convención sobre configuración}\\
+
+  % % no son más que métodos dentro del \emph{user\_controller.rb}
+  % el cual
+  % es parte del controlador de la arquitectura MVC.\\
+
+  % The Rails router recognizes URLs and dispatches them to a controller’s action. It can also generate paths and URLs, avoiding the need to hardcode strings in your views.
+
+  Por ejemplo, si se genera una petición \emph{GET} hacia la dirección
+  \mbox{\emph{/places/1}}  el servidor interpreta la dirección y gracias al verbo HTTP responde
+  mostrando la información del lugar “1”, en cambio si se genera
+  una petición \emph{PUT} a la misma dirección (\emph{/places/1}), el servidor actualiza los datos del lugar ``1'' con la información enviada en el cuerpo de la petición HTTP. \\
+
+  % \textbf{usuarios} actualizando la información del usuario “1”. \\

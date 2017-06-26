@@ -19,8 +19,20 @@ En una aplicación web tradicional cada vez que la aplicación hace una petició
 
 %  imagen de este proceso
 
-En una Aplicación de Página Única, después que la primera página es cargada en el navegador, todas las demás interacciones del usuario con la aplicación, generan peticiones AJAX al servidor, las cuales retornan datos, generalmente en formato JSON, de esta forma actualiza porciones de la página con información nueva del servidor, sin recargar la pagina gracias a JavaScript. Esto obliga que la lógica de la aplicación con la que el usuario interactúa se cargue en la primera y única vez que la aplicación es cargada, evitando con esto la molestia de ver como se recarga la página con cada interacción del usuario con la aplicación, la cual se siente fluida y lo más parecida a una aplicación de escritorio que una aplicación web puede llegar a ser.\\
+En una Aplicación de Página Única, después que la primera página es cargada en el navegador, todas las demás interacciones del usuario con la aplicación generan peticiones AJAX al servidor, las cuales retornan los datos requeridos, generalmente en formato JSON, de esta forma se actualiza solamente porciones de la página con la información obtenida del servidor, sin necesidad de recargar la pagina entera, como se puede ver en la figura \ref{fig:spa_diagram}. \\
 
+
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=0.6\textwidth]{spa_diagram}
+    \caption{Flujo de una aplicacion de pagina Unica.}
+    \label{fig:spa_diagram}
+    \caption*{Fuente: Elaboración propia}
+  \end{center}
+\end{figure}
+
+
+Esto obliga que la lógica de la aplicación con la que el usuario interactúa se cargue en la primera y única vez que la aplicación es cargada, evitando con esto la molestia de ver como se recarga la página con cada interacción del usuario con la aplicación, la cual se siente fluida y lo más parecida a una aplicación de escritorio de lo que una aplicación web puede llegar a ser.\\
 
 
 % In an SPA, after the first page loads, all interaction with the server happens through AJAX calls. These AJAX calls return data—not markup—usually in JSON format. The app uses the JSON data to update the page dynamically, without reloading the page. Figure 2 illustrates the difference between the two approaches.
@@ -32,7 +44,7 @@ En una Aplicación de Página Única, después que la primera página es cargada
 % \subsection{Arquitectura de un SPA}
 % \label{sub:Arquitectura de un SPA}
 
-En una aplicación de página única, las interacciones del usuario con la aplicación se desarrollan en el navegador y el servidor se encarga de manejar la información, en esta arquitectura se puede observar una separación lógica entre la capa de la presentación de la aplicación y el modelo de negocio o la lógica de la aplicación. Es básicamente una implementación del Patrón de Diseño \emph{MVC}.\\
+En una aplicación de página única, las interacciones del usuario con la aplicación se desarrollan en el navegador y el servidor se encarga de manejar la información, en esta arquitectura se puede observar una separación lógica entre la capa de la presentación de la aplicación y el modelo de negocio o la lógica de la aplicación. Por lo tanto se puede apreciar que es básicamente una implementación del Patrón de Diseño \emph{MVC}.\\
 
 
 \subsection{MVC} % (fold)
@@ -53,29 +65,40 @@ En una aplicación de página única, las interacciones del usuario con la aplic
   % Rails está construido sobre el patrón MVC, esto significa que para cada   pieza de código existe un lugar predeterminado y todas las piezas de código de la aplicación interactúan de forma predeterminada.
 
   % \begin{description}
-    \textbf{Modelo:} Representa la información o los datos y contiene las reglas o métodos para manipular estos datos.     % En la aplicación se utilizó \emph{Bookshelf.js} para interactuar con la base de datos \emph{PostgreSQL}.
+  \begin{itemize}
+    \item \textbf{Modelo:} Representa la información o los datos y contiene las reglas o métodos para manipular estos datos.
+    El Modelo es el principal encargado de manejar  la \emph{lógica del negocio}.
+
+
+    \item \textbf{Vista:}  Representa la interfaz de la aplicación.
+
+    \item \textbf{Controlador:} Es el encargado de interactuar entre el modelo y la vista, procesando los datos enviados en el request del navegador web,
+        llamando a métodos del modelo para conseguir  \emph{información} de la base de datos,
+        posteriormente el controlador envía esta \emph{información} a la vista.
+        El Controlador y la Vista son los los encargados de manejar  la \emph{lógica de la presentación}.
+  \end{itemize}
+         % En la aplicación se utilizó \emph{Bookshelf.js} para interactuar con la base de datos \emph{PostgreSQL}.
     %
     % En el caso de Rails, los modelos son usados principalmente para manejar la interacción con las
     % tablas de la Base de Datos, en la que cada tabla corresponde a un modelo en la aplicaci\'on, para nombrar a estos modelos existe una simple convención que es la de nombrar  a la tabla en forma plural, mientras que el modelo tiene el nombre en singular.
     %
-    El Modelo es el principal encargado de manejar  la \emph{lógica del negocio}.
 
-    \textbf{Vista:}  Representa la interfaz de la aplicación.
+
+
 
     % En Rails las vistas  archivos HTML con código Ruby embebido\footnote{ ERB (Embedded Ruby) } que realiza la tarea de representar  datos. Las Vistas son las que generan los datos que son enviados al    navegador web.%browser.
 
-    \textbf{Controlador:} Es el encargado de interactuar entre el modelo y la vista, procesando los datos enviados en el request del navegador web,
-    llamando a métodos del modelo para conseguir  \emph{información} de la base de datos,
-    posteriormente el controlador envía esta \emph{información} a la vista.
-    El Controlador y la Vista son los los encargados de manejar  la \emph{lógica de la presentación}.
-  \end{description}
+  % \end{description}
 
 
 % One benefit of SPAs is obvious: Applications are more fluid and responsive, without the jarring effect of reloading and re-rendering the page. Another benefit might be less obvious and it concerns how you architect a Web app. Sending the app data as JSON creates a separation between the presentation (HTML markup) and application logic (AJAX requests plus JSON responses).
 
-Esta separación hace que diseñar cada capa de la aplicación como un ente distinto, sea sencillo. En una aplicación de página única bien diseñada, es posible cambiar o rediseñar la vista o la presentación de la aplicación sin tocar la implementación de la lógica de la aplicación y viceversa.\\
+\subsection{Arquitectura de una aplicacion de pagina unica}
 
-La arquitectura de un SPA, como se puede ver en la figura \ref{fig:spa_arch}, el \emph{DOM} (\emph{Document Object Model}, es la estructura básica de la página desplegada en el navegador.) de \textbf{solo escritura}, ya que no tiene estado o datos almacenados,cuando la página contiene estado o comúnmente la sesión del usuario, es necesario contener y propagar esta \emph{sesión} por las páginas de la aplicación, generalmente son usados los \emph{cookies} pero cuando la aplicación se compleja y contiene diferentes niveles de permisos, el manejo de esta informacion se complica, por lo que en vez de guardar la información en objetos aleatorios dentro del DOM es necesario una capa de la aplicación donde esté representado objetos definidos toda la información y el estado de la aplicación, el cual es el \emph{Modelo}, esta capa también es la encargada guardar y/o extraer los datos del \emph{Storage}, que dependiendo de la aplicación puede ser una base de datos o el mismo navegador, \emph{localStorage} es una implementación de HTML5 que permite almacenar información en objetos JSON en el Navegador, la \emph{Vista} o \emph{View} se encarga de observar lo cambios ocurridos en el \emph{Modelo} y reflejar estos cambios en el \emph{DOM}, el cual es una renderización de un \emph{Template}.\\
+
+La separación de la logica de las capas de la aplicación, implica que su implementacion sea mas entendible, por lo que en una aplicación de página única bien diseñada es posible cambiar o rediseñar la vista o la presentación de la aplicación sin tocar la implementación de la lógica de la aplicación y/o viceversa.\\
+
+La arquitectura de un SPA, como se puede ver en la figura \ref{fig:spa_arch}, donde el \emph{DOM} (\emph{Document Object Model}, es la estructura básica de la página desplegada en el navegador) es de \emph{solo escritura}, ya que no tiene estado o datos almacenados, cuando la página contiene estado o comúnmente la sesión del usuario, es necesario contener y propagar esta \emph{sesión} por las páginas de la aplicación, donde generalmente son usados los \emph{cookies} pero cuando la aplicación se compleja y contiene diferentes niveles de permisos, el manejo de esta informacion se complica, por lo que en vez de guardar la información en objetos aleatorios dentro del DOM es necesario una capa de la aplicación donde estén definidos los objetos que contienen la información y el estado de la aplicación, el cual es el \emph{Modelo}, esta capa también es la encargada guardar y/o extraer los datos del \emph{Storage}, que dependiendo de la aplicación puede ser una base de datos o el mismo navegador, \emph{localStorage} es una implementación de HTML5 que permite almacenar información en objetos JSON en el Navegador, la \emph{Vista} o \emph{View} se encarga de observar lo cambios ocurridos en el \emph{Modelo} y reflejar estos cambios en el \emph{DOM}, el cual es una renderización de un \emph{Template}.\\
 
 \begin{figure}[H]
   \begin{center}

@@ -1,14 +1,14 @@
-\section{Express JS}
+\section{ExpressJS}
 \label{sec:express_js}
-  Express.js es un framework que está construido sobre la funcionalidad de servidor web de Node.js, Express.js ayuda a simplificar el API de Node y añadir nuevas características, diseñadas para mejorar y facilitar la organización de una aplicación \emph{Express}.\\
+  \emph{ExpressJS} es un framework que está construido sobre la funcionalidad de servidor web de \emph{NodeJS}, \emph{ExpressJS} ayuda a simplificar el API de Node y añadir nuevas características, diseñadas para mejorar y facilitar la organización de una aplicación \emph{Express}.\\
 
-  El Cliente (navegador web, aplicación móvil, etc) envía una petición web y el servidor web de Node.js maneja los protocolos web, leyendolos y enviandolos a una aplicación \emph{Express} que se encarga de añadir características a la petición y espera la respuesta del ``Middleware Stack'', la función responde a la llamada y el servidor HTTP de Node envía la respuesta mediante los protocolos web al Cliente.\\
+  El Cliente (navegador web, aplicación móvil, etc) envía una petición web y el servidor web de \emph{NodeJS} maneja los protocolos web, leyendolos y enviandolos a una aplicación \emph{ExpressJS} que se encarga de añadir características a la petición y espera la respuesta del ``Middleware Stack'', la función responde a la llamada y el servidor HTTP de Node envía la respuesta mediante los protocolos web al Cliente.\\
 
-  Para escribir un servidor web con Express no es necesario una gran función para manejar un request, Express contiene utilidades que permite escribir funciones más pequeñas para facilitar el manejo de las peticiones web, haciendo uso de ``middleware'' y ``routing''.
+  Para escribir un servidor web con \emph{ExpressJS}  no es necesario una gran función para manejar un request, \emph{ExpressJS} contiene utilidades que permite escribir funciones más pequeñas para facilitar el manejo de las peticiones web, haciendo uso de ``middleware'' y ``routing''.
 
   \subsection{Middleware}
   \label{sub:middleware}
-    Node.js maneja una funci\'on para trabajar con una petición web, en cambio \emph{Express} maneja la llamada con varias funciones, cada función se encarga de una pequeña parte del trabajo. Estas pequeñas funciones que manejan la petición web se denomina \emph{Middleware functions} o Middleware.
+    \emph{NodeJS} maneja una función para trabajar con una petición web, en cambio \emph{ExpressJS} maneja la llamada con varias funciones, cada función se encarga de una pequeña parte del trabajo. Estas pequeñas funciones que manejan la petición web se denomina \emph{Middleware functions} o Middleware.
 
   %  end sub section middleware
 
@@ -18,13 +18,13 @@
 
   %  end sub section routing
 
-  Express.js es bastante extensible y cuenta con gran popularidad en la comunidad de desarrollo, la cual provee herramientas para renderizar dinámicamente HTML o interfaces para comunicarse con Bases de Datos, por ejemplo para manejar la coneccion y llamadas a la base de datos PostgreSQL se uso la libreria \emph{knex} .
+  \emph{ExpressJS} es bastante extensible y cuenta con gran popularidad en la comunidad de desarrollo, la cual provee herramientas para renderizar dinámicamente HTML o interfaces para comunicarse con Bases de Datos, por ejemplo para manejar la coneccion y llamadas a la base de datos PostgreSQL se uso la libreria \emph{knex} .
 
-  \begin{verbatim}
-    database.any("SELECT * FROM users WHERE id = $1", [userId])
-      .then(function (data) {
-          response.send(data.name);
-      });
-  \end{verbatim}
+  % \begin{verbatim}
+  %   database.any("SELECT * FROM users WHERE id = $1", [userId])
+  %     .then(function (data) {
+  %         response.send(data.name);
+  %     });
+  % \end{verbatim}
 
 % section Express JS (end)

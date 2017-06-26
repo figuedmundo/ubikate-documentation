@@ -18,7 +18,7 @@ La resolución de este problema es la se analizará en este capítulo.
 
     \section{Definiciones} % (fold)
     \label{sec:grafos_definiciones}
-      Primeramente es necesario aclararar alguno términos usados en la teoría de grafos.\\
+      Primeramente es necesario aclararar alguno términos usados en la teoría de grafos.
 
       % El grafo que es la reprentacion
 
@@ -28,9 +28,9 @@ La resolución de este problema es la se analizará en este capítulo.
       % \end{description}
 
       \begin{itemize}
-        \item \textbf{Grafo:} Un \emph{grafo} $G$ consiste en un conjunto de vértices $V$ y un conjunto de aristas $A$, y se lo representa con $G(V,A)$.\\
+        \item \textbf{Grafo:} Un \emph{grafo} $G$ consiste en un conjunto de vértices $V$ y un conjunto de aristas $A$, y se lo representa con $G(V,A)$.
 
-        \item  \textbf{Vértice:} El \emph{vértice} \emph{v} es adyacente a \emph{u}, o a un vecino de \emph{u}, si y sólo si $(u,v) \in A$. Los vértices también son llamados nodos. \\
+        \item  \textbf{Vértice:} El \emph{vértice} \emph{v} es adyacente a \emph{u}, o a un vecino de \emph{u}, si y sólo si $(u,v) \in A$. Los vértices también son llamados nodos.
 
         \item  \textbf{Arista:}
         Cada \emph{arista} o arco es representada por un par de elementos $(u,v)$, donde los elementos $u,v \in V$, son los nodos que une la arista.
@@ -38,9 +38,9 @@ La resolución de este problema es la se analizará en este capítulo.
         % Para fines prácticos, no  consideraremos las aristas de la forma (u,u)
 
         \item \textbf{Grafo no Dirigido:}
-        En un \emph{grafo no dirigido} $G$, dos vértices $u$ y $v$ se dice que están conectados si hay un camino en $G$ de $u$ a $v$ (y como $G$ no es dirigido, también hay un camino de $v$ a $u$). Un grafo  se denomina completo si para todos los pares $u,v \in V$ existe una arista $(u,v) \in A$.\\
+        En un \emph{grafo no dirigido} $G$, dos vértices $u$ y $v$ se dice que están conectados si hay un camino en $G$ de $u$ a $v$ (y como $G$ no es dirigido, también hay un camino de $v$ a $u$). Un grafo  se denomina completo si para todos los pares $u,v \in V$ existe una arista $(u,v) \in A$.
 
-        En un \emph{grafo no dirigido}, dado una arista $(u,v)$, $v$ es adyacente de $u$, y simétricamente \emph{u} es adyacente de \emph{v} y si el par de vértices que representan la arista no tiene orden, por lo tanto la arista $(u,v)$ y $(v,u)$ representa la misma arista. En cambio en un grafo dirigido la arista $(u,v)$ y $(v,u)$ representan dos diferentes aristas. También se puede anotar un tercer componente, llamado peso o costo, en ese caso estaríamos hablando de un \emph{grafo ponderado}.\\
+        En un \emph{grafo no dirigido}, dado una arista $(u,v)$, $v$ es adyacente de $u$, y simétricamente \emph{u} es adyacente de \emph{v} y si el par de vértices que representan la arista no tiene orden, por lo tanto la arista $(u,v)$ y $(v,u)$ representa la misma arista. En cambio en un grafo dirigido la arista $(u,v)$ y $(v,u)$ representan dos diferentes aristas. También se puede anotar un tercer componente, llamado peso o costo, en ese caso estaríamos hablando de un \emph{grafo ponderado}.
 
         % Un camino en un grafo es una secuencia de nodos $v_{1}$, $v_{2}$, \ldots{}, $v_n$ tal que $(v_{1}, v_{2}), (v_{2}, v_{3}), \ldots{}, (v_{n-1}, v_n)$ son aristas.
         %
@@ -68,8 +68,9 @@ La resolución de este problema es la se analizará en este capítulo.
 
 
         Las filas y las columnas de la matriz representan los nodos del grafo.
-        Cuando el grafo no es dirigido la matriz de adyacencias es simétrica, como en el grafo de la figura \ref{fig:grafo_ponderado}.
+        Cuando el grafo es no-dirigido la matriz de adyacencias es simétrica, como se puede ver en el grafo de la figura \ref{fig:grafo_ponderado} y su correspondiente matriz de adyacencias.
         % El cuadro \ref{tab:matriz} representa la matriz de adyacencias de la figura \ref{fig:grafo_ponderado} representa
+        % La matriz de adyacencias, que se puede observar a continuacion, es la  misma matriz de la relación $A$ de $V$ en $V$ porque indica cuales vertices están relacionados o unidos por una arista.
 
 
         % \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3cm,
@@ -107,7 +108,7 @@ La resolución de este problema es la se analizará en este capítulo.
           \end{center}
         \end{figure}
 
-        La matriz de adyacencias, que se puede observar a continuacion, es la  misma matriz de la relación $A$ de $V$ en $V$ porque indica cuales vertices están relacionados o unidos por una arista.
+        % La matriz de adyacencias, que se puede observar a continuacion, es la  misma matriz de la relación $A$ de $V$ en $V$ porque indica cuales vertices están relacionados o unidos por una arista.
 
 
         \begin{table}[H]
@@ -167,14 +168,6 @@ La resolución de este problema es la se analizará en este capítulo.
 
   % \subsection{Conclusi\'on} % (fold)
   % \label{sub:ruta_conclusion}
-
-    Existen numerosas soluciones para encontrar la ruta óptima, donde se toman en cuenta diferentes variables y heurísticas, en el que  cada algoritmo presenta ventajas respecto a las demás.
-    La teoría de grafos  es un tema extenso y para fines prácticos
-    solo se explicó el algoritmo de \emph{Dijkstra} por ser el que se esta usando en la aplicación desarrollada.\\
-
-    El algoritmo de Dijkstra puede ser una de las soluciones más sencillas y que requiere muchos más cálculos que las demás pero el grafo implementado al no ser extenso, por extenso se podria entender un grafo con millones de aristas y vertices como se puede dar en el caso de una Ciudad o un Pais, pero en el presente caso al ser los predios de campus Universitario no existe una razón de gran peso para implementar otra solución más eficiente en el manejo de recursos.\\
-
-    El problema de la ruta más corta es ampliamente usado por las empresas de transporte, correos, etc., que necesitan mejorar la eficiencia del trayecto y a la vez reducir el consumo de combustible, dentro del campus universitario, reducir el tiempo en el cual encontramos un aula o una oficina mejoraría en gran medida la presentación de la Universidad hacia gente externa que necesitan hacer uso o encontrar algún lugar en especifico ya que lamentablemente esta información actualmente sólo te la pueden ofrecer las personas que conocen el lugar de antemano y aun en esos casos existe la posibilidad de no encontrar el lugar que se está buscando.\\
 
 
     % ********************************************************************
