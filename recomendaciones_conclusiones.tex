@@ -1,42 +1,63 @@
 
 \chapter{Conclusiones y Recomendaciones}
 
-\section{Sobre la geolocalización}
-
-Los Mapas son herramientas muy útiles a la hora de desplegar información, pero realizar el mapa, crear las fórmulas matemáticas con las cuales se trabajará, determinar cómo se usarán estas fórmulas para una representación adecuada de la superficie terrestre, es una tarea muy compleja. Como programador la tarea más complicada fue determinar el tipo de mapa y el sistema de coordenadas más adecuado para el tipo proyecto que se necesita desarrollar.\\
-
-Los términos de longitud y latitud son en un inicio, más fácilmente comprendidos que un sistema proyectado, pero no se puede tomar a la ligera una correcta comprensión del uso de los \emph{sistemas de coordenadas} en una base de datos espacial, un mal uso de estos conceptos puede generar errores a la hora de manejar datos  espaciales o en el resultado de las operaciones sobre estos  datos, llegando a resultados no deseados y que pueden costar más tiempo y dinero en una posterior corrección.\\
+\section{Conclusiones}
 
 
-Para dibujar líneas rectas sobre un mapa hay que tomar en consideración que la tierra no es plana y las líneas que en un mapa parecen líneas rectas, realmente no son rectas, ya que el planeta Tierra es un \emph{esferoide oblato} por lo que las líneas en apariencia rectas tienen la curvatura natural del planeta Tierra. En distancias largas se nota mucho más la utilidad de usar mapas con \emph{sistemas proyectados}, pero también es cierto que para una área pequeña como es el campus de la Universidad de San Simón este problema no tiene un gran impacto pero no está demás en tomar en cuenta esta característica en el análisis de datos geoespaciales, tomando en cuenta estas características de la Geolocalización se llegó a la conclusión de usar
-el sistema de \emph{coordenadas proyectadas}, más específicamente la proyección \emph{SRID 3857}.\\
+Para desarrollar el \emph{mapa de rutas} del campus Universitario se analizó
+los distintos tipos de \emph{sistemas de coordenadas} y a pesar de que el \emph{sistema de coordenadas geográfico} trabaja con los términos ``latitud'' y ``longitud'', conceptos más comúnmente utilizados, es de alguna forma más fácil empezar a trabajar con este sistema de coordenadas. Pero tomando en cuenta que el \emph{sistema de coordenadas geométrico} trabaja con mapas proyectados o aplanados, el cálculo de distancias se las realiza sobre líneas rectas, en cambio dentro del \emph{sistema de coordenadas geográfico} este cálculo es realizado sobre \emph{unidades angulares} o \emph{grados} por lo que para el cálculo del tamaño de una línea recta se necesita tomar en cuenta la forma esférica de la tierra y esto se traduce en muchos más cálculos matemáticos que son fácilmente solventados usando un \emph{sistema de coordenadas geométrico} por lo que finalmente se terminó escogiendo este tipo de sistema de coordenadas, más específicamente la proyección \emph{SRID 3857} o proyección \emph{Mercator}. \\
 
+Esta decisión está muy ligada al objetivo de encontrar la ruta óptima entre 2 puntos georeferenciados, porque al trabajar con un  \emph{sistema de coordenadas geométrico} se noto que en el análisis de la ruta óptima, las distancias entre nodos se calcularon en metros, ayudando en gran medida al resultado correcto del objetivo trazado. \\
 
-La geolocalización es actualmente una tecnología y una herramienta usada en gran medida por una gran cantidad de aplicaciones web, añadiendo búsquedas y resultados personalizados a nivel país, ciudad, barrio y calle, resultando en una gran variedad de servicios y que actualmente es de gran ayuda en diferentes escenarios. La geolocalización ayuda a moverse por una ciudad, encontrar restaurantes, cines, transporte, etc. actualmente es una de las herramientas mas usadas y desarrolladas a nivel de industria, comercio, turismo, etc. y vale la pena estudiarla y entenderla.\\
+Existen numerosas soluciones para encontrar la ruta óptima, donde se toman en cuenta diferentes variables y heurísticas, pero se escogió usar el algoritmo de \emph{Dijkstra} que aunque  requiere muchos más cálculos que las demás soluciones es la solución más sencilla y ya que tomando en cuenta el tamaño del grafo resultante, no existió una razón de gran peso para implementar otra solución más eficiente en el manejo de recursos.\\
 
+Al georeferenciar lugares se noto que trabajar con un \emph{sistema de coordenadas geométrico} requiere de un cuidado extra, ya que el API de Geolocalización de HTML5 ofrece la posición del dispositivo en \emph{latitud} y \emph{longitud} (datos geográficos), y es fácil corromper la base de datos si es que no se proyectan estos datos con anterioridad, hay que recalcar el beneficio de trabajar con  PostGIS a nivel de base de datos, ya que este puede convertir sistemas de coordenadas al declararlas en el consulta SQL encargada de ingresar datos a la base de datos. \\
 
-Es importante entender las diferencias entre los distintos tipos de sistemas de coordenadas porque computacionalmente realizar operaciones sobre los sistemas de coordenadas tiene costo. \\
-
-Si se usara el sistema de coordenadas geográfico (WSG84) este es el más apropiado si se necesitaría usar grandes extensiones de la superficie terrestre, que al ser una estructura elipsoidal el costo computacional para realizar las operaciones matemáticas de calcular distancias, intersecciones, etc. es más elevado. En cambio el uso de un sistema de coordenadas proyectado (Mercator Projection) tiene un costo computacional más bajo, ya que se estaría trabajando con un sistema geométrico.\\
-
-% Por otro lado,
-También hay tomar en cuenta la base de datos, ya que será esta la que se encargará de manejar los datos espaciales. Al estar usando PostGIS, se puede ver que en su documentacion\footnote{ http://postgis.org/documentation/manual-1.5/ch04.html} que claramente exorta el uso de un sistema geometrico sobre el uso de un sistema geografico si  se va trabajar con datos que cubran una pequena area geografica. Tomando en cuenta esta recomendación y el tamaño del área de estudio (el campus de la UMSS), se procedió a implementar en la base de datos el uso de la proyección Mercator. Se va usar Mercator sobre las otras proyecciones porque aparte de las ventajas que se mencionaron con anterioridad, Google Maps usa esta proyección y ya que se usará este mapa lo más correcto es trabajar con la misma proyección.
-
-\section{Ruta óptima}
-
-Existen numerosas soluciones para encontrar la ruta óptima, donde se toman en cuenta diferentes variables y heurísticas, en el que  cada algoritmo presenta ventajas respecto a las demás.
-La teoría de grafos  es un tema extenso y para fines prácticos
-solo se explicó el algoritmo de \emph{Dijkstra} por ser el que se está usando en la aplicación desarrollada.\\
-
-El algoritmo de Dijkstra puede ser una de las soluciones más sencillas y que requiere muchos más cálculos que las demás pero el grafo implementado al no ser extenso, por extenso se podría entender un grafo con millones de aristas y vértices como se puede dar en el caso de una Ciudad o un País, pero en el presente caso al ser los predios del campus Universitario no existe una razón de gran peso para implementar otra solución más eficiente en el manejo de recursos.\\
-
-El problema de la ruta más corta es ampliamente usado por las empresas de transporte, correos, etc., que necesitan mejorar la eficiencia del trayecto y a la vez reducir el consumo de combustible, dentro del campus universitario, reducir el tiempo en el cual encontramos un aula o una oficina mejoraría en gran medida la presentación de la Universidad hacia gente externa que necesitan hacer uso o encontrar algún lugar en especifico ya que lamentablemente esta información actualmente sólo te la pueden ofrecer las personas que conocen el lugar de antemano y aun en esos casos existe la posibilidad de no encontrar el lugar que se está buscando.\\
+Al desarrollar la aplicación presentada en el proyecto de grado se llegó a la conclusión de que aunque
+es indudable que una aplicación móvil nativa tiene muchas más prestaciones que una aplicación web, también es cierto que existe una mayor fragmentación de dispositivos móviles y  por lo tanto de tecnologías, por lo que con la implementación una aplicación web móvil se puede llegar a muchas más personas agilizando en gran medida la captación de usuario para la aplicación.
 
 
 
-\section{Tecnologías}
 
-Es indudable que una aplicación móvil nativa tiene muchas más prestaciones que una aplicación web, pero también es cierto que existe una mayor fragmentación de dispositivos móviles y  por lo tanto de tecnologías, lo que aumenta los costos y las complejidades que conlleva el desarrollo de una aplicación nativa, por lo que se decidió que la mejor alternativa era desarrollar una aplicación web optimizada para dispositivos  móviles, por eso se hizo hincapié en el \emph{look and feel} de la aplicación desarrollada, para que el usuario de un dispositivo móvil se sienta cómodo usando la aplicación desarrollada.
+%
+%
+% Los Mapas son herramientas muy útiles a la hora de desplegar información, pero realizar el mapa, crear las fórmulas matemáticas con las cuales se trabajará, determinar cómo se usarán estas fórmulas para una representación adecuada de la superficie terrestre, es una tarea muy compleja. Como programador la tarea más complicada fue determinar el tipo de mapa y el sistema de coordenadas más adecuado para el tipo proyecto que se necesita desarrollar.\\
+%
+% Los términos de longitud y latitud son en un inicio, más fácilmente comprendidos que un sistema proyectado, pero no se puede tomar a la ligera una correcta comprensión del uso de los \emph{sistemas de coordenadas} en una base de datos espacial, un mal uso de estos conceptos puede generar errores a la hora de manejar datos  espaciales o en el resultado de las operaciones sobre estos  datos, llegando a resultados no deseados y que pueden costar más tiempo y dinero en una posterior corrección.\\
+%
+%
+% Para dibujar líneas rectas sobre un mapa hay que tomar en consideración que la tierra no es plana y las líneas que en un mapa parecen líneas rectas, realmente no son rectas, ya que el planeta Tierra es un \emph{esferoide oblato} por lo que las líneas en apariencia rectas tienen la curvatura natural del planeta Tierra. En distancias largas se nota mucho más la utilidad de usar mapas con \emph{sistemas proyectados}, pero también es cierto que para una área pequeña como es el campus de la Universidad de San Simón este problema no tiene un gran impacto pero no está demás en tomar en cuenta esta característica en el análisis de datos geoespaciales, tomando en cuenta estas características de la Geolocalización se llegó a la conclusión de usar
+% el sistema de \emph{coordenadas proyectadas}, más específicamente la proyección \emph{SRID 3857}.\\
+
+%
+%
+% Es importante entender las diferencias entre los distintos tipos de sistemas de coordenadas porque computacionalmente realizar operaciones sobre los sistemas de coordenadas tiene costo. \\
+%
+% Si se usara el sistema de coordenadas geográfico (WSG84) este es el más apropiado si se necesitaría usar grandes extensiones de la superficie terrestre, que al ser una estructura elipsoidal el costo computacional para realizar las operaciones matemáticas de calcular distancias, intersecciones, etc. es más elevado. En cambio el uso de un sistema de coordenadas proyectado (Mercator Projection) tiene un costo computacional más bajo, ya que se estaría trabajando con un sistema geométrico.\\
+%
+% % Por otro lado,
+% También hay tomar en cuenta la base de datos, ya que será esta la que se encargará de manejar los datos espaciales. Al estar usando PostGIS, se puede ver que en su documentacion\footnote{ http://postgis.org/documentation/manual-1.5/ch04.html} que claramente exorta el uso de un sistema geometrico sobre el uso de un sistema geografico si  se va trabajar con datos que cubran una pequena area geografica. Tomando en cuenta esta recomendación y el tamaño del área de estudio (el campus de la UMSS), se procedió a implementar en la base de datos el uso de la proyección Mercator. Se va usar Mercator sobre las otras proyecciones porque aparte de las ventajas que se mencionaron con anterioridad, Google Maps usa esta proyección y ya que se usará este mapa lo más correcto es trabajar con la misma proyección.
+
+% \section{Ruta óptima}
+
+
+
+
+% en el que  cada algoritmo presenta ventajas respecto a las demás.
+% La teoría de grafos  es un tema extenso y para fines prácticos
+% solo se explicó el algoritmo de \emph{Dijkstra} por ser el que se está usando en la aplicación desarrollada.\\
+%
+% El algoritmo de Dijkstra puede ser una de las soluciones más sencillas y que requiere muchos más cálculos que las demás pero el grafo implementado al no ser extenso, por extenso se podría entender un grafo con millones de aristas y vértices como se puede dar en el caso de una Ciudad o un País, pero en el presente caso al ser los predios del campus Universitario no existe una razón de gran peso para implementar otra solución más eficiente en el manejo de recursos.\\
+
+% El problema de la ruta más corta es ampliamente usado por las empresas de transporte, correos, etc., que necesitan mejorar la eficiencia del trayecto y a la vez reducir el consumo de combustible, dentro del campus universitario, reducir el tiempo en el cual encontramos un aula o una oficina mejoraría en gran medida la presentación de la Universidad hacia gente externa que necesitan hacer uso o encontrar algún lugar en especifico ya que lamentablemente esta información actualmente sólo te la pueden ofrecer las personas que conocen el lugar de antemano y aun en esos casos existe la posibilidad de no encontrar el lugar que se está buscando.\\
+
+
+
+% \section{Tecnologías}
+
+% lo que aumenta los costos y las complejidades que conlleva el desarrollo de una aplicación nativa
+%
+% se decidió que la mejor alternativa era desarrollar una aplicación web optimizada para dispositivos  móviles, por eso se hizo hincapié en el \emph{look and feel} de la aplicación desarrollada, para que el usuario de un dispositivo móvil se sienta cómodo usando la aplicación desarrollada.
 
 % la integración y la gestión de las aplicaciones móviles
 
@@ -45,13 +66,33 @@ Es indudable que una aplicación móvil nativa tiene muchas más prestaciones qu
 % Para implementar el backend de la aplicación se usará \emph{NodeJS} con \emph{ExpressJS}, la base de datos se construirá sobre \emph{PostgreSQL} y \emph{PostGIS} más \emph{pgRouting}, estos complementos de PostgreSQL ayudarán a manejar los datos geoespaciales, para el desarrollo del frontend se usará \emph{EmberJS} y para manejar las imágenes en la web \emph{Cloudinary}.\\
 %
 
-\section{REST API}
+% \section{REST API}
 
-Siguiendo la convención de un API REST ayuda a entender el flujo que tiene un recurso,
-las URL son legibles y únicos para cada recurso. Por lo tanto la implementación   de los recursos se hace de forma más limpia y ordenada, situaciones que son   claves para el mantenimiento y la extensibilidad del sistema. \\
+% Siguiendo la convención de un API REST ayuda a entender el flujo que tiene un recurso,
+% las URL son legibles y únicos para cada recurso. Por lo tanto la implementación   de los recursos se hace de forma más limpia y ordenada, situaciones que son   claves para el mantenimiento y la extensibilidad del sistema. \\
+%
+% expectativas para un futuro, Implementar un API Público para mostrar los lugares dentro de la san simón para que otras páginas puedan consumir este recurso y poder ofrecer esta información a través de una gran variedad de páginas y/o aplicaciones.
 
-expectativas para un futuro, Implementar un API Público para mostrar los lugares dentro de la san simón para que otras páginas puedan consumir este recurso y poder ofrecer esta información a través de una gran variedad de páginas y/o aplicaciones.
 
-\section{La aplicación desarrollada}
 
-Sobre la aplicación desarrollada se sugiere que para futuras referencias
+
+\section{Recomendaciones}
+
+Para finalizar el presente proyecto de grado, se recomienda:
+
+\begin{itemize}
+\item Que para un futuro desarrollo de la aplicación se podría tomar en cuenta las facultades externas al campus Universitario ``Las Cuadras''.
+
+\item También se podría aumentar la característica de que la aplicación pueda mostrar los puntos de interés cercanos a la ubicación del usuario.
+
+\item Se podría incluir códigos QR en los lugares de interés dentro de la Universidad para que la aplicación leyendo estos códigos pueda ofrecer información acerca del lugar.
+
+\item En el manejo de usuarios se recomienda un cuidado especial a la hora de registrar usuarios en el sistema, ya que siempre existen usuarios maliciosos que podrían dañar o corromper la información recolectada.
+
+\item Al guardar un registro de la cantidad de veces que los usuarios buscan algún \emph{lugar} se hace hincapié en que el reporte obtenido podría ayudar a la Universidad en la toma de decisiones en relación a mejorar los lugares más visitados dentro del campus Universitario.
+
+
+\item Para una futura implementación de una aplicación web usando tecnologías basadas en JavaScript, como se \emph{ExpressJS} o \emph{EmberJS}, se recomienda un análisis cualificativo de los beneficios que se pueden encontrar en los diferentes \emph{frameworks} de desarrollo, tomando en cuenta las características de la aplicación.
+
+
+\end{itemize}

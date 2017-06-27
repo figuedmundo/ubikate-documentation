@@ -1,11 +1,11 @@
 \subsubsection{Registro de Usuarios}
 
-El registro de Usuarios será mediante un formulario con el nombre, el email y la razón del registrante, y solamente el usuario administrador será capaz de aceptar o rechazar la solicitud de registro, para lo cual se implementó en la aplicación el \emph{formulario de registro} y el menú de \emph{menú de registros}. \\
+El registro de Usuarios será mediante un formulario con el nombre, el email y la razón del registrante, y solamente el usuario administrador será capaz de aceptar o rechazar la solicitud de registro, para lo cual se implementó en la aplicación el \emph{formulario de registro} y el \emph{menú de registros}. \\
 
 
 
 \begin{description}
-  \item[Formulario de Registro:] Para completar esta tarea se implementó en la vista de la aplicación el formulario, ver la figura \ref{fig:registro_form} usando \emph{ember-paper}, que como ya se mencionó es la librería usada para implementar la vista de la aplicación dandole el ``look and feel'' de una aplicación móvil. \\
+  \item[Formulario de Registro:] Para completar esta tarea se implementó en la vista de la aplicación el formulario, ver la figura \ref{fig:registro_form} usando \emph{ember-paper}, que como ya se mencionó es la librería usada para implementar la vista de la aplicación dandole el \emph{look and feel} de una aplicación móvil. \\
 
   \begin{figure}[H]
         \begin{center}
@@ -32,7 +32,7 @@ El registro de Usuarios será mediante un formulario con el nombre, el email y l
 
 \subsubsection{Generación del Reporte}
 
-Para la implementación del módulo que genere un reporte, se tuvo que modificar la tabla de los lugares, para saber cuántas veces un ``lugar'' es buscado, con esta informacion se puede proporcionar un reporte de frecuencia, para tal efecto se usó \emph{ember-charts}, que como se puede observar en el codigo \ref{chart_template}, sólo se necesita una línea para crear el reporte de frecuencia de la figura \ref{fig:reporte} \\
+Para la implementación del módulo que genere un reporte, se tuvo que modificar la tabla de los lugares, para saber cuántas veces un ``lugar'' es buscado, con esta información se puede proporcionar un reporte de frecuencia, para tal efecto se usó \emph{ember-charts}, que como se puede observar en el codigo \ref{chart_template}, sólo se necesita una línea para crear el reporte de frecuencia de la figura \ref{fig:reporte} \\
 
 \begin{center}
   \begin{lstlisting}[label=chart_template,caption=Componente de \emph{Ember-charts}.]
@@ -54,7 +54,7 @@ Para la implementación del módulo que genere un reporte, se tuvo que modificar
 
 
 
-Este reporte se obtiene al conocer la cantidad de veces que los usuarios han buscado un ``lugar'' mediante el SQL query, que se puede ver en el codigo \ref , el cual discrimina los primeros 10 lugares mas buscados dentro del campus universitario, ya que al existir tantas aulas y oficinas el reporte se haría muy extenso. \\
+Este reporte se obtiene al conocer la cantidad de veces que los usuarios han buscado un ``lugar'' mediante el SQL query, que se puede ver en el codigo \ref{request_visited} , el cual discrimina los primeros 10 lugares mas buscados dentro del campus universitario, ya que al existir tantas aulas y oficinas el reporte se haría muy extenso. \\
 
 \begin{center}
   \begin{lstlisting}[label=request_visited,caption=Insertar un ``lugar'' en la base de datos.]

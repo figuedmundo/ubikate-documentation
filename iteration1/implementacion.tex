@@ -46,7 +46,7 @@ En la primera Iteración se implementó la lista de lugares que la aplicación m
 \subsubsection{Acceder a la Información de los lugares mediante un REST API }
 
 
-La información de un lugar está almacenada en una base de datos, entonces para poder acceder a esta informacion se implemento un REST API, que como ya se especificaron sus características, es la más apropiada para construir una aplicación web. \\
+La información de un lugar está almacenada en una base de datos, entonces para poder acceder a esta informacion se implement\'o un REST API, que como ya se especificaron sus características, es la más apropiada para construir una aplicación web. \\
 
 Las peticiones al API llegan a través del protocolo HTTP, en forma de URIs por lo que el servidor implementado con \emph{ExpressJS} tiene que escuchar estas peticiones y actuar en relación al tipo de petición HTTP está llegando, por lo cual es necesario ``mapear'' las URIs con acciones o métodos, como se puede ver en el codigo \ref{express_api}, los cuales contienen el código necesario para comunicarse con la base de datos. \\
 
@@ -67,7 +67,7 @@ Las peticiones al API llegan a través del protocolo HTTP, en forma de URIs por 
 \end{center}
 
 
-En realidad, \emph{ExpressJS} no tiene restricciones a la hora de mapear las URIs, pero para una mejor comprensión del API que se está desarrollando es necesario seguir convenciones que aseguran que cualquier aplicación pueda consumir la información que el API pueda ofrecer, y un REST API cumple con estas características. \\
+En realidad, \emph{ExpressJS} no tiene restricciones a la hora de mapear las URIs, pero para una mejor comprensión del API que se está desarrollando, es necesario seguir convenciones que aseguran que cualquier aplicación pueda consumir la información que el API pueda ofrecer, y un REST API cumple con estas características. \\
 
 A cada URI mapeada se lo conoce como \emph{endpoint}, por lo que para obtener la lista de lugares que están registradas en el sistema, se usará el \emph{endpoint}: \verb|router.get('/', places.getAll);|, el cual es el indicado para obtener todos los lugares, según la implementación del REST API visto en la tabla \ref{tab:rest}. \\
 
@@ -80,9 +80,9 @@ La característica especial que tiene esta base de datos, es la de manejar datos
 
 La base de datos PostgreSQL por defecto no maneja datos geoespaciales, pero como ya se explicó, añadiendo la extensión PostGIS, ya es posible el manejo de datos geoespaciales, pero es nuestra tarea el comprobar que realmente esté manejando los tipos de datos geoespaciales.
 
-Entonces se procedió a recolectar información de un conjunto de lugares, para esta tarea se utilizó un \emph{GPS Garmin Nuvi 1300}, el cual es un dispositivo de posicionamiento global, que cuenta con la opción de guardar locaciones, el dispositivo GPS almacena su información en un archivo \emph{gpx} (que básicamente es un fichero XML estándar usado para compartir datos entre GPS's) y con la ayuda de \emph{QGIS} se genero el archivo shapefile que se utilizó para popular la base de datos con información geoespacial de algunos \emph{lugares} del campus Universitario.
+Entonces se procedió a recolectar información de un conjunto de lugares, para esta tarea se utilizó un \emph{GPS Garmin Nuvi 1300}, el cual es un dispositivo de posicionamiento global, que cuenta con la opción de guardar locaciones, el dispositivo GPS almacena su información en un archivo \emph{gpx} (que básicamente es un fichero XML estándar usado para compartir datos entre GPS's) y con la ayuda de \emph{QGIS} se gener\'o el archivo shapefile que se utilizó para popular la base de datos con información geoespacial de algunos \emph{lugares} del campus Universitario.
 
-Posteriormente es convierte la información geoespacial almacenada en el shapefile a la base de datos, para lo cual se esta hizo uso de una herramienta propia de PostgreSQL, que permite la conversión de un archivo shapefile a un archivo sql, el cual se puede ver en el siguiente código.
+Posteriormente se convierte la información geoespacial almacenada en el shapefile a la base de datos, para lo cual se esta hizo uso de una herramienta propia de PostgreSQL, que permite la conversión de un archivo shapefile a un archivo sql, el cual se puede ver en el siguiente código.
 
 % % $ shp2pgsql -s 4326 -I -S -c -d ~/Documents/places.shp > places.sql
 \begin{verbatim}
@@ -104,7 +104,7 @@ Con el anterior comando se genera un archivo \emph{sql}, el cual es usado para p
   $ psql -d db_ubikate -U db_admin -f /Documents/places.sql
 \end{verbatim}
 
-Al finalizar este proceso, se puede ver en la figura \ref{fig:postgres_places}, que la tabla correspondiente a los \emph{lugares} está correctamente populada con la información geoespacial de los lugares registrados con el dispositivo GPS. 
+Al finalizar este proceso, se puede ver en la figura \ref{fig:postgres_places}, que la tabla correspondiente a los \emph{lugares} está correctamente populada con la información geoespacial de los lugares registrados con el dispositivo GPS.
 
 \begin{figure}[H]
   \begin{center}
@@ -141,7 +141,7 @@ Una vez implementado el servicio web, necesitamos empezar con el desarrollo del 
   \end{lstlisting}
 \end{center}
 
-Una vez que se obtiene la lista de lugares del servidor, es necesario desplegarlos en el navegador, para tal efecto se implemento el método, mostrado en el codigo \ref{template_places_index}, para desplegar la lista de lugares en el navegador, donde se puede ver el uso de los \emph{templates} de \emph{EmberJs}, se utilizó el template correspondiente al URI \emph{templates/places/index.hbs}.
+Una vez que se obtiene la lista de lugares del servidor, es necesario desplegarlos en el navegador, para tal efecto se implement\'o el método, mostrado en el codigo \ref{template_places_index}, para desplegar la lista de lugares en el navegador, donde se puede ver el uso de los \emph{templates} de \emph{EmberJs}, se utilizó el template correspondiente al URI \emph{templates/places/index.hbs}.
 
 \begin{center}
   \begin{lstlisting}[label=template_places_index,caption=Template de la lista de lugares]
@@ -177,7 +177,7 @@ En la anterior implementación se hizo uso de \emph{ember-paper}, que como ya se
 \subsubsection{Búsqueda de los lugares}
 \label{subs:busqueda de los lugares}
 
-Uno de los criterios de aceptación para la implementación de la \emph{historia de usuario} 2, correspondiente a la búsqueda de los lugares, es que sea posible la búsqueda usando el nombre del lugar o parte del mismo. Al implementar esta historia de usuario se anadir un \emph{endpoint} adicional a nuestro servicio web, ver el codigo \ref{endpoint_search_place}, que basicamente hace tiene una consulta SQL que obtiene de la base de datos los lugares que concuerden con el criterio de búsqueda. \\
+Uno de los criterios de aceptación para la implementación de la \emph{historia de usuario} 2, correspondiente a la búsqueda de los lugares, es que sea posible la búsqueda usando el nombre del lugar o parte del mismo. Al implementar esta \emph{historia de usuario} se a\~nadi\'o un \emph{endpoint} adicional a nuestro servicio web, ver el codigo \ref{endpoint_search_place}, que basicamente hace tiene una consulta SQL que obtiene de la base de datos los lugares que concuerden con el criterio de búsqueda. \\
  % a continuación se puede ver el URI implementado en la servicio web. \\
 
 \begin{center}
