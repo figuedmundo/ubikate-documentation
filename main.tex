@@ -109,6 +109,22 @@
 % \usepackage[charter]{mathdesign}
 
 %----------------------------------------
+% Anexos
+\usepackage{appendix}
+\renewcommand{\appendixname}{Anexos}
+\renewcommand{\appendixtocname}{Anexos}
+\renewcommand{\appendixpagename}{Anexos}
+
+\addto\captionsspanish{%
+  \renewcommand\appendixname{Anexo}
+  \renewcommand\appendixpagename{Anexos}
+}
+
+%------------
+% Bibliografia
+\addto\captionsspanish{
+  \renewcommand{\bibname}{Bibliografía}
+}
 
 %------------
 %margenes
@@ -183,6 +199,11 @@
 
 %-------------------------------
 
+\newcommand{\blank}[1]{\hspace*{#1}}
+
+%-------------------------------
+
+
 %
 % caratula
 %
@@ -197,6 +218,7 @@
 % \date{\today \ }
 \include{caratula}
 
+\include{agradecimientos}
 
 
 \begin{document}
@@ -240,6 +262,14 @@
   % \include{pruebas}
 
   % \include{ror_patrones}
+  \appendix
+  \clearpage
+  \addappheadtotoc
+  \appendixpage
+  \begin{appendices}
+    \include{manual_instalacion}
+    \include{manual_usuario}
+  \end{appendices}
 
 \backmatter{}
 

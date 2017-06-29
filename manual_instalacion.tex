@@ -1,0 +1,246 @@
+
+\chapter{Manual Instalación}
+
+El Manual de instalación tomará en cuenta que todos los comandos y las herramientas son ejecutados sobre un servidor Linux Ubuntu 16.04 LTS.
+
+\section{Instalación de la base de datos}
+
+
+\begin{itemize}
+  \item \textbf{PostgreSQL:} Se usará la versión 9.4.8.
+
+  \begin{center}
+    \begin{lstlisting}[label=postgres_install,caption=Comandos usados para instalar PostgreSQL.]
+
+      $ sudo apt-get update
+      $ sudo apt-get install -y postgresql postgresql-contrib
+    \end{lstlisting}
+  \end{center}
+
+  \item \textbf{PostGIS:} Se usará la versión 2.1.
+
+  \begin{center}
+    \begin{lstlisting}[label=postgis_install,caption=Comandos usados para instalar PostGIS.]
+
+      $ sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable
+      $ sudo apt-get install -y postgis postgresql-9.4-postgis-2.1
+    \end{lstlisting}
+  \end{center}
+
+  \item \textbf{PgRouting:} Se usará la versión 2.2.
+
+  \begin{center}
+    \begin{lstlisting}[label=pgRouting_install,caption=Comandos usados para instalar PgRouting.]
+
+      $ sudo add-apt-repository ppa:georepublic/pgrouting-unstable
+      $ sudo apt-get update
+      $ sudo apt-get install postgresql-9.4-pgrouting
+    \end{lstlisting}
+  \end{center}
+
+
+
+
+\end{itemize}
+
+\section{Configuración de la base de datos}
+
+
+\begin{itemize}
+  \item Habilitar \emph{Admin pack} en PostgreSQL.
+  \begin{center}
+    \begin{lstlisting}[label=adminpack,caption=Habilitar Admin Pack.]
+
+      $ sudo -u postgres psql
+      > CREATE EXTENSION adminpack;
+      > \q
+    \end{lstlisting}
+  \end{center}
+
+  \item Crear el Usuario de la Base de Datos y crear la Base de Datos usando el usuario creado.
+  \begin{center}
+    \begin{lstlisting}[label=adminpack,caption=Comandos para crear el usuario y la base de datos.]
+
+      $ sudo -u postgres createuser -d -E -i -l -P -r -s USER_NAME
+      $ sudo -u postgres createdb -O USER_NAME DATABASE_NAME
+    \end{lstlisting}
+  \end{center}
+
+
+\end{itemize}
+
+
+\subsection{Añadir las funciones de PostGIS y pgRouting a la base de datos}
+
+
+PostGIS y pgRouting son extensiones a la base de datos PostgreSQL, y al instalar sus paquetes, todas las funciones que vienen con las extensiones están disponibles pero para utilizarlas hay que habilitarlas específicamente en la base de datos que las va a utilizar.
+
+
+% Para habilitar la base de datos es necesario correr el siguiente comando en la terminal.
+Ejecutar el siguiente comando para habilitar las funciones de PostGIS y pgRouting en la base de datos.
+
+\begin{center}
+  \begin{lstlisting}[label=enable_extensions,caption=Habilitación de las Extensiones.]
+
+        $ sudo -u postgres psql -c ``
+            CREATE EXTENSION adminpack; CREATE EXTENSION postgis;
+            CREATE EXTENSION postgis_topology;
+            CREATE EXTENSION pgrouting;
+            CREATE EXTENSION fuzzystrmatch;
+            CREATE EXTENSION postgis_tiger_geocoder;
+         `` DATABASE_NAME
+  \end{lstlisting}
+\end{center}
+
+
+\begin{itemize}
+  \item Se puede verificar que las extensiones instaladas están correctamente habilitadas en la base de datos.
+  \begin{center}
+    \begin{lstlisting}[label=enable_extensions,caption=Habilitación de las Extensiones.]
+
+          $ psql -h localhost -U USER_NAME DATABASE_NAME
+
+          > SELECT postgis_full_version();
+          > SELECT * FROM pgr_version();
+    \end{lstlisting}
+  \end{center}
+
+\end{itemize}
+
+
+\subsection{Habilitar el acceso a la base de datos}
+
+PostgreSQL por defecto viene con la configuración habilitada para conectarse a la base de datos usando conexiones seguras. Pero  para el presente proyecto se debe ampliar los permisos de acceso a la base de datos para que el servicio REST API desarrollado no presenta problemas en la conexión a la base de datos.
+
+\begin{itemize}
+  \item Editar el archivo \emph{pg\_hba.conf} ubicado en el directorio de instalación de PostgreSQL. La última sección del archivo debe quedar como en la siguiente tabla.
+
+  \begin{center}
+    \begin{tabularx}{0.75\textwidth}{ X X X X X}
+      \toprule
+      hostssl &  all      &       all       &     0.0.0.0/0       &        md5 \\
+      local &  all       &      postgres    &                     &       trust \\
+      local &  all       &     all         &                      &      trust \\
+      host  &  all        &     all        &     127.0.0.1/32      &      trust \\
+      host  &  all       &      all        &     ::1/128           &      trust \\
+      \bottomrule
+    \end{tabularx}
+    % \caption{Tarea de Ingeniería - T037}
+    % \label{tab:T037}
+  \end{center}
+
+\item Reiniciar el servicio de PostgreSQL para que los cambios a la configuración tomen efecto.
+\begin{center}
+  \begin{lstlisting}[label=postgresql_restart,caption=Comando para reiniciar el servicio PostgreSQL.]
+
+        $ sudo service postgresql restart
+  \end{lstlisting}
+\end{center}
+
+
+\end{itemize}
+
+
+
+\section{Configuration de la aplicación UBIKATE UMSS}
+
+Para el presente proyecto se utilizaron los siguientes datos para configurar la base de datos.
+
+\begin{itemize}
+  \item USER\_NAME: db\_admin
+  \item DATABASE\_NAME: db\_ubikate
+\end{itemize}
+
+
+\subsection{Instalación de las dependencias}
+
+% A continuación se detallara los paquetes necesarios para correcta ejecución de la aplicación.
+Instalar los siguientes paquetes para la correcta ejecución de la aplicación.
+
+\begin{itemize}
+  \item \textbf{NodeJS:} Se usará la versión 6.2.2 o superior.
+  \begin{center}
+    \begin{lstlisting}[label=node_install,caption=Comando para instalar NodeJS.]
+
+          $ sudo apt-get install nodejs
+    \end{lstlisting}
+  \end{center}
+
+
+  \item \textbf{Knex:} Instalar la última versión.
+  \begin{center}
+    \begin{lstlisting}[label=knex_install,caption=Commando para instalar Knex.]
+
+          $ npm install knex -g
+    \end{lstlisting}
+  \end{center}
+
+\end{itemize}
+
+
+\subsection{Copiar los archivos del proyecto UBIKATE UMSS}
+
+Los archivos de proyecto irán dentro de una carpeta, localizarla en alguna ubicación donde el usuario tenga permisos de lectura y escritura.
+
+\subsection{Configurar el mapa topológico del campus Universitario}
+
+El \emph{shapefile} con las rutas están ubicadas dentro de la carpeta \emph{resources} ubicada en la raíz del proyecto.
+
+Para configurar la base de datos con los rutas se debe seguir los siguientes pasos:
+\begin{enumerate}
+  \item Popular la tabla correspondiente a las rutas.
+
+\begin{center}
+
+  \begin{lstlisting}[label=psql_ways,caption=Comando popular la base de datos.]
+
+        $ psql -d db_ubikate -U db_admin -f resources/ways.sql
+  \end{lstlisting}
+\end{center}
+
+      \item Añadir las columnas \emph{source} y \emph{target} a la tabla \emph{ways}, necesarias para agregar la topología.
+
+
+\begin{center}
+
+  \begin{lstlisting}[label=add_columns,caption=Agregar las columnas \emph{source} y \emph{target}.]
+
+        $ psql -h localhost -U db_admin db_ubikate
+        > alter table ways add column "source" integer;
+        > alter table ways add column "target" integer;
+  \end{lstlisting}
+\end{center}
+
+  \item Crear la topología usando pgRouting.
+
+\begin{center}
+  \begin{lstlisting}[label=add_topology,caption=Añadir la topología.]
+
+        > select pgr_createTopology('ways', 0.00000001, 'geom', 'gid');
+  \end{lstlisting}
+\end{center}
+
+\end{enumerate}
+
+\subsection{Instalar las dependencias del proyecto UBIKATE UMSS}
+
+Una vez los archivos hayan sido copiados, es necesario instalar todas las dependencias utilizadas por el proyecto.
+
+
+\begin{center}
+  \begin{lstlisting}[label=npm_install,caption=Instalar dependencias de la aplicación.]
+
+        $ npm install
+  \end{lstlisting}
+\end{center}
+
+\subsection{Iniciar el servidor \emph{ExpressJS}}
+
+Finalmente se inicia el servidor \emph{ExpressJS} y la aplicación es mandada al cliente visitando la dirección del servidor.
+
+\begin{center}
+  \begin{lstlisting}[label=npm_start,caption=Iniciar el servidor.]
+
+        $ npm start
+  \end{lstlisting}
+\end{center}
