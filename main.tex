@@ -39,8 +39,8 @@
 % \usepackage{listings}
 
 %para codigo fuente
-\usepackage{color}
-\usepackage{xcolor}
+% \usepackage{color}
+% \usepackage{xcolor}
 \usepackage{listings}
 
 %Bibliografia en el indice
@@ -52,7 +52,7 @@
 \setcounter{secnumdepth}{3}
 %\setcounter{tocdepth}{3}
 %menos profundidad en el indice
-\setcounter{tocdepth}{1}
+\setcounter{tocdepth}{2}
 
 
 \usepackage{tabularx}
@@ -192,8 +192,8 @@
 % Espacio parrafos
 \setlength{\parskip}{6pt}
 
-\usepackage[pdftex]{graphicx}
-\pdfcompresslevel=9
+% \usepackage[pdftex]{graphicx}
+% \pdfcompresslevel=9
 
 \usepackage{adjustbox}
 
@@ -216,12 +216,14 @@
 % \title{Desarrollo de una aplicaci\'on web móvil para visitas dentro el campus de la UMSS usando Geolocalización}
 % \author{Edmundo Figueroa Herbas}
 % \date{\today \ }
+\begin{document}
+
+
 \include{caratula}
 
 \include{agradecimientos}
 
 
-\begin{document}
 
 % \include{title-page}
 \frontmatter
@@ -231,37 +233,18 @@
   \listoftables
 
 \mainmatter{}
-\part{INTRODUCCIÓN}
+
   \include{introduccion}
-\part{MARCO TEÓRICO}
+  %
   \include{marco_teorico_v2}
-\part{ÁREA DE APLICACIÓN}
+  %
   \include{campus}
-\part{IMPLEMENTACIÓN DEL PROYECTO}
+
   \include{implementacion}
-  % \include{desarrollo}
-  % \include{pruebas}
-\part{CONCLUSIONES Y RECOMENDACIONES}
-\include{recomendaciones_conclusiones}
+
+  \include{recomendaciones_conclusiones}
 
 
-  % \include{caso_estudio}
-  % \include{desarrollo}
-  % \include{iteraciones}
-
-
-  % \include{geolocalizacion}
-  % \include{ruta_corta}
-  % \include{desarrollo}
-  % \include{iteracion_1}
-  % \include{iteracion_2}
-  % \include{iteracion_3}
-
-
-  % \include{implementacion}
-  % \include{pruebas}
-
-  % \include{ror_patrones}
   \appendix
   \clearpage
   \addappheadtotoc

@@ -13,22 +13,21 @@ Los Servicios Web o Web Services, según la W3C ``proveen un medio estándar de 
 Los servicios web se caracterizan por su gran interoperabilidad y extensibilidad, los Servicios Web más implementados son los basados en RPC, SOA y REST. \\
 
 \begin{description}
-  \item[RPC:] Remote Procedure Calls, en español, Llamadas a Procedimientos Remotos. Un tipo de protocolo que permite a un programa en una computadora ejecutar un procedimiento en un servidor. El Cliente envía un mensaje al Servidor un mensaje con los argumentos necesarios y el servidor responde con un mensaje con los resultados del procedimiento ejecutado.\\
-  %
+  \item[RPC:] \emph{Remote Procedure Calls}, en español, Llamadas a Procedimientos Remotos. Es un tipo de protocolo que permite a un programa en una computadora ejecutar un procedimiento en un servidor. El Cliente envía un mensaje al Servidor un mensaje con los argumentos necesarios y el servidor responde con un mensaje con los resultados del procedimiento ejecutado.
 
-  Los Web Services basados en el modelo RPC son de los primeros en ser usados en la web por lo que su uso está bastante extendido. Suele ser implementado por medio del mapeo de servicios directamente a funciones específicas o llamadas a métodos.
+  Los Web Services basados en el modelo RPC fueron los primeros en ser usados en la web por lo que su uso está bastante extendido. Suele ser implementado por medio del mapeo de servicios directamente a funciones específicas o llamadas a métodos.
 
   % a type of protocol that allows a program on one computer to execute a program on a server computer. Using RPC, a system developer need not develop specific procedures for the server. The client program sends a message to the server with appropriate arguments and the server returns a message containing the results of the program executed.
 
-  \item[SOA:] Service-oriented Architecture, en espanol, Arquitectura Orientada a Servicios.
+  \item[SOA:] \emph{Service-oriented Architecture}, en español, Arquitectura Orientada a Servicios.
 Es una arquitectura de aplicación en donde todas las funciones o servicios están definidas usando un lenguaje descriptivo, XML es el lenguaje elegido para el intercambio de mensajes. Cada interacción es independiente de todas las demás interconexiones y los protocolos de comunicación entre dispositivos, por lo cual se lo conoce como débilmente desacoplado.
 
 Cuando se usa un servicio web basado en la arquitectura SOA los clientes consumen servicios, en vez de ejecutar procedimientos, esto se conoce como servicio orientado a mensajes. por lo cual se mejora notablemente el flujo de la información.
 
   % is an application architecture in which all functions, or services, are defined using a description language and have invokable interfaces that are called to perform business processes. Each interaction is independent of each and every other interaction and the interconnect protocols of the communicating devices
 
-  \item[REST:] REpresentational State Transfer o Transferencia de Estado Representacional.
-  Los Servicios Web basados en REST utiliza las operaciones del protocolo HTTP (GET, POST, etc.) para establecer las acciones u operaciones que se ejecutarán sobre los ``recursos'' que maneja el servicio web.
+  \item[REST:] \emph{REpresentational State Transfer} o Transferencia de Estado Representacional.
+  Los Servicios Web basados en REST utiliza las operaciones del protocolo HTTP (GET, POST, PUT, PATCH, DELETE.) para establecer las acciones u operaciones que se ejecutarán sobre los ``recursos'' que maneja el servicio web.
   %  mediante la restricción de establecer la interfaz al conjunto conocido de operaciones estándar .
 
 \end{description}
@@ -82,7 +81,7 @@ Los principios de diseño sobre los que se basa REST son:
 
 \end{itemize}
 
- Al implementar una aplicación \emph{RESTful}\footnote{Se denomina RESTful a los sistemas que siguen los principios REST} significa que los componentes del sistema por ejemplo los usuarios son modelados como recursos que pueden ser creados, leídos, actualizados y borrados, usando los ``verbos'' HTTP; POST, GET, PUT y DELETE, estas acciones corresponden a las operaciones CRUD (Create, Read, Update, Delete) de las base de datos relacionales.\\
+ Al implementar una aplicación \emph{RESTful}\footnote{Se denomina RESTful a los sistemas que siguen los principios REST} significa que los componentes del sistema (por ejemplo los usuarios) son modelados como recursos que pueden ser creados, leídos, actualizados y borrados, usando los ``verbos'' HTTP POST, GET, PUT y DELETE, estas acciones corresponden a las operaciones CRUD (Create, Read, Update, Delete) de las base de datos relacionales.\\
   %  y a los cuatro operaciones fundamentales POST, GET, PUT, DELETE definidos en el  protocolo HTTP.\\
 
 % El estilo de desarrollo RESTful\footnote{se denomina RESTful a los sistemas que siguen los principios REST} ayuda a determinar acerca de qué controlador y cuál será la acción que se ejecutará, solamente procesando el request HTTP hecho al servidor.\\
@@ -130,7 +129,7 @@ Los principios de diseño sobre los que se basa REST son:
         \bottomrule
       \end{tabularx}
 
-      \caption[recursos REST]{REST URIs para los lugares}
+      \caption{REST URIs para los lugares}
       \label{tab:rest}
 
       \caption*{Fuente: Elaboración propia}

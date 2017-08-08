@@ -40,7 +40,7 @@
 %
 % Una vez que se tiene populada la base de datos con la información de los lugares es necesario implementar el cómo se comunicara el backend con el frontend, este como ya se explicó se implementará un Servicio Web basado en un API REST.\\
 
-En la primera Iteración se implementó la lista de lugares que la aplicación mostrará a los usuarios, para lo cual se describe a continuación los pasos que se siguieron. \\
+% En la primera Iteración se implementó la lista de lugares que la aplicación mostrará a los usuarios, para lo cual se describe a continuación los pasos que se siguieron. \\
 
 
 \subsubsection{Acceder a la Información de los lugares mediante un REST API }
@@ -141,7 +141,7 @@ Una vez implementado el servicio web, necesitamos empezar con el desarrollo del 
   \end{lstlisting}
 \end{center}
 
-Una vez que se obtiene la lista de lugares del servidor, es necesario desplegarlos en el navegador, para tal efecto se implement\'o el método, mostrado en el codigo \ref{template_places_index}, para desplegar la lista de lugares en el navegador, donde se puede ver el uso de los \emph{templates} de \emph{EmberJs}, se utilizó el template correspondiente al URI \emph{templates/places/index.hbs}.
+Una vez que se obtiene la lista de lugares del servidor, es necesario desplegarlo en el navegador, para tal efecto se implement\'o el método mostrado en el codigo \ref{template_places_index}, y se utilizó el template correspondiente al URI \emph{templates/places/index.hbs}.
 
 \begin{center}
   \begin{lstlisting}[label=template_places_index,caption=Template de la lista de lugares]
@@ -160,7 +160,7 @@ Una vez que se obtiene la lista de lugares del servidor, es necesario desplegarl
   \end{lstlisting}
 \end{center}
 
-En la anterior implementación se hizo uso de \emph{ember-paper}, que como ya se explicó ayudará en el \emph{look and feel} de la aplicación, se puede observar en la figura \ref{fig:places_index}. \\
+En la anterior implementación se hizo uso de \emph{ember-paper}, que como ya se explicó ayudará en el \emph{look and feel} de la aplicación, tal como se puede observar en la figura \ref{fig:places_index}. \\
  % tiene toda la apariencia  mejorada para su uso en dispositivos móviles.
 
 
@@ -177,7 +177,7 @@ En la anterior implementación se hizo uso de \emph{ember-paper}, que como ya se
 \subsubsection{Búsqueda de los lugares}
 \label{subs:busqueda de los lugares}
 
-Uno de los criterios de aceptación para la implementación de la \emph{historia de usuario} 2, correspondiente a la búsqueda de los lugares, es que sea posible la búsqueda usando el nombre del lugar o parte del mismo. Al implementar esta \emph{historia de usuario} se a\~nadi\'o un \emph{endpoint} adicional a nuestro servicio web, ver el codigo \ref{endpoint_search_place}, que basicamente hace tiene una consulta SQL que obtiene de la base de datos los lugares que concuerden con el criterio de búsqueda. \\
+Uno de los criterios de aceptación para la implementación de la \emph{historia de usuario} 2, correspondiente a la búsqueda de los lugares, es que sea posible la búsqueda usando el nombre del lugar o parte del mismo. Al implementar esta \emph{historia de usuario} se a\~nadi\'o un \emph{endpoint} adicional a nuestro servicio web, ver el codigo \ref{endpoint_search_place}, que basicamente realiza una consulta SQL la cual obtiene de la base de datos los lugares que concuerden con el criterio de búsqueda. \\
  % a continuación se puede ver el URI implementado en la servicio web. \\
 
 \begin{center}
@@ -192,7 +192,7 @@ Uno de los criterios de aceptación para la implementación de la \emph{historia
 \subsubsection{Mostrar la información del lugar}
 \label{subs:Mostrar información del lugar}
 
-La obtención de la información de un lugar corresponde al URI \emph{places/:id} usando el verbo HTTP \emph{GET}, el cual obtiene la información en formato JSON del servidor para posteriormente mostrarlo en el navegador, para lo cual el template \emph{EmberJS} correspondiente al URI usado es \emph{templates/places/show}. \\
+Para mostrar la información de un \emph{lugar}, es necesario realizar una consulta al URI \emph{places/:id} usando el verbo HTTP \emph{GET}, el cual obtiene la información del \emph{lugar} en formato JSON la cual es mostrarda en el navegador, para tal efecto se emplea el template correspondiente al URI,  \emph{templates/places/show}. \\
 
 La implementación del template se puede ver en el codigo \ref{template_places_show}. \\
 

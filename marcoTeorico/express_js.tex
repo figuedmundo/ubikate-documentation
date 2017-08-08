@@ -8,17 +8,18 @@
 
   \subsection{Middleware}
   \label{sub:middleware}
-    \emph{NodeJS} maneja una función para trabajar con una petición web, en cambio \emph{ExpressJS} maneja la llamada con varias funciones, cada función se encarga de una pequeña parte del trabajo. Estas pequeñas funciones que manejan la petición web se denomina \emph{Middleware functions} o Middleware.
+    \emph{NodeJS} maneja una función para trabajar con una petición web, en cambio \emph{ExpressJS} maneja la llamada con varias funciones, cada función se encarga de una pequeña parte del trabajo. Estas pequeñas funciones que manejan la petición web se denominan \emph{Middleware functions} o simplemente \emph{Middleware}.
 
   %  end sub section middleware
 
   \subsection{Routing}
   \label{sub:routing}
-    Muy parecido al Middleware, el Routing se encarga de partir una función de petición web monolítica en pequeñas piezas, pero a diferencia del Middleware, estos manejadores peticiones se ejecutan condicionalmente dependiendo del URL y el método HTTP (GET, POST, DELETE) que el cliente envía.\\
+    Muy parecido al \emph{Middleware}, el \emph{Routing} se encarga de partir una petición web monolítica en pequeñas piezas, pero a diferencia del Middleware, estos manejadores de peticiones se ejecutan condicionalmente dependiendo del URL y la petición HTTP (GET, POST, DELETE) que el cliente envía.\\
 
   %  end sub section routing
 
-  \emph{ExpressJS} es bastante extensible y cuenta con gran popularidad en la comunidad de desarrollo, la cual provee herramientas para renderizar dinámicamente HTML o interfaces para comunicarse con Bases de Datos, por ejemplo para manejar la coneccion y llamadas a la base de datos PostgreSQL se uso la libreria \emph{knex} .
+  \emph{ExpressJS} es bastante extensible y cuenta con gran popularidad en la comunidad de desarrollo, la cual provee herramientas para renderizar dinámicamente HTML o interfaces para comunicarse con Bases de Datos, por ejemplo para manejar la conexión y las llamadas a la base de datos PostgreSQL en el presente proyecto se uso la libreria \emph{knex}.
+
 
   % \begin{verbatim}
   %   database.any("SELECT * FROM users WHERE id = $1", [userId])

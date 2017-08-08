@@ -1,5 +1,5 @@
-\chapter{Geolocalización} % (fold)
-\label{cha:geolocalizacion}
+\section{Geolocalización} % (fold)
+% \label{cha:geolocalizacion}
 
   La Geolocalización o Georreferenciación es un término bastante nuevo, de hecho no aparece en el diccionario de la Real Academia Española, no obstante se lo puede definir como:
 % \footnote{http://dle.rae.es/}
@@ -10,9 +10,8 @@
 
   % Para entender esta definición se necesita explicar algunos términos
 
-  La Georreferenciación antiguamente era bastantemente usada en el ámbito científico, y se necesitaba de instrumental y personal cualificado para su manejo, pero en la actualidad la cantidad de dispositivos con capacidad para geolocalizar un objeto sobre la tierra es bastante común, de hecho todos los smartphones actuales (en general los que se consideran gama media o alta) traen integrados receptores GPS (Global Position System), y sumados a la explosión de aplicaciones  que integran mapas con localización, ya que se puede tener una base de datos con coordenadas, descripciones, etc., que individualmente no aporta mucho valor pero al obtener datos de una gran cantidad de usuarios puede llegar a ser informacion valiosa ya que sirve para tomar decisiones a nivel de negocio, pero interpretar estos datos sería muy difícil sin la ayuda de los \emph{Sistemas de Información Geográfica} o \emph{SIG}.\\
+  La Georreferenciación antiguamente era bastantemente usada en el ámbito científico, y se necesitaba de instrumental y personal cualificado para su manejo, pero en la actualidad la cantidad de dispositivos con capacidad para geolocalizar un objeto sobre la tierra es bastante común, de hecho todos los smartphones actuales (en general los que se consideran gama media o alta) traen integrados receptores GPS (Global Position System), y sumados a la explosión de aplicaciones  que integran mapas con localización, ya que se puede tener una base de datos con coordenadas, descripciones, etc., que individualmente no aporta mucho valor pero al obtener datos de una gran cantidad de usuarios puede llegar a ser informacion valiosa ya que sirve para tomar decisiones a nivel de negocio, pero interpretar estos datos sería muy difícil sin la ayuda de los \emph{Sistemas de Información Geográfica} o \emph{SIG}, un SIG es una herramienta que permite integrar, analizar, mostrar, interpretar y  entender las relaciones, patrones y tendencias de la información geográficamente referenciada . \cite{what_is_gis} \\
 
-  Un SIG es una herramienta que permite integrar, analizar, mostrar, interpretar y  entender las relaciones, patrones y tendencias de la información geográficamente referenciada \cite{what_is_gis}.
   % \footnote{http://www.esri.com/what-is-gis}
   Por estas razones es que actualmente existe una explosión de estas aplicaciones, donde empresas, particulares y hasta organismos gubernamentales están haciendo uso de estas tecnologías.
   Y las posibilidades son diversas, por ejemplo, si se quisiera planificar la construcción de un colegio se podría integrar los datos del censo con un mapa, identificando los sectores con mayor porcentaje de niños y localizando los sectores más propicios para realizar la construcción del inmueble. En el caso de una catástrofe natural, el tener las rutas de evacuación geolocalizadas y disponibles en un mapa de manera eficiente,  ayudaría en la evacuación de las personas del lugar.\\
@@ -21,16 +20,16 @@
 
 
 
-  \section{Definiciones} % (fold)
-  \label{sec:definiciones}
+  % \section{Definiciones} % (fold)
+  % \label{sec:definiciones}
 
     En la aplicación desarrollada se requerirá trabajar con datos espaciales, y para ello es necesario entender algunos conceptos envueltos en el manejo de la información geográfica.
 
-    \begin{description}
-      \item[Coordenada:] Es una secuencia de n-números que designa la posición de un punto en un espacio n-dimensional.
-      \item[Sistema de coordenadas:] Un sistema de coordenadas es  un conjunto de reglas matemáticas que especifican cómo las coordenadas son asignadas  a cada  punto.
-      \item[Punto:] Es  la representación de una posición, topológicamente 0-dimensional (no tiene volumen, área, longitud o cualquier otra unidad multi-dimensional).
-    \end{description}
+    \begin{itemize}
+      \item \textbf{Coordenada:} Es una secuencia de n-números que designa la posición de un punto en un espacio n-dimensional.
+      \item \textbf{Sistema de coordenadas:} Un sistema de coordenadas es  un conjunto de reglas matemáticas que especifican cómo las coordenadas son asignadas  a cada  punto.
+      \item \textbf{Punto:} Es  la representación de una posición, topológicamente 0-dimensional (no tiene volumen, área, longitud o cualquier otra unidad multi-dimensional).
+    \end{itemize}
 
     % \section{Coordenada} % (fold)
     % \label{sec:coordenada}
@@ -53,18 +52,18 @@
     %   % topological 0-dimensional geometric primitive (4.15), representing a position
     % % subsection punto (end)
 
-    Estas definiciones están desarrolladas en la especificación \emph{Simple Feature Access}, la cual es mantenida por la OGC (Open Geospatial Consortium). Esta especificación define el conjunto de tipos de datos (puntos, línea, polígono, etc) y las operaciones o métodos necesarios para manejar estos datos.
+    Estas definiciones están desarrolladas en la especificación \emph{Simple Feature Access}, la cual es mantenida por la OGC (Open Geospatial Consortium). Esta especificación define el conjunto de tipos de datos (puntos, línea, polígono, etc) y las operaciones o métodos necesarios para manejar estos datos. \cite[p. 8--11]{simpleFeatureAccess}
 
     % \footnote{\url{http://www.opengeospatial.org/standards/sfa}}
 
   % section definiciones (end)
-  \section{Sistema de Coordenadas para datos Geográficos} % (fold)
+  \subsection{Sistema de Coordenadas para datos Geográficos} % (fold)
   \label{sec:sistema_de_coordenadas_para_datos_geograficos}
     Se podría pensar en un sistema de coordenadas como la forma de dar sentido a un \emph{par de coordenadas}, por ejemplo \verb|POINT(-66.1457475 -17.3937285)|, cómo se interpretan estos números?.
     Podría ser la latitud y longitud del campus de la UMSS, o algun punto en el Oceano Pacifico. Es gracias al sistema de coordenadas que se puede ubicar este punto en el Universo.\\
 
 
-    Una aplicación que maneja datos geográficos tiene que trabajar con sistemas de coordenadas relacionadas con la superficie terrestre, conocidas como coordenadas espaciales o coordenadas globales, que permiten representar la tierra en \emph{3-Dimensiones} (3D), ya que esta es una Esfera, mas especificamente un esferoide oblato\footnote{Un \emph{esferoide oblato} (o elipsoide oblato) es un elipsoide de revolución obtenido por rotación de una elipse alrededor de su eje más corto.}, o en una representación de la superficie terrestre en \emph{2-Dimensiones} (2D), los sistemas de coordenadas se clasifican en: Coordenadas geocéntricas, Coordenadas Geográficas y Coordenadas Proyectadas.
+    Una aplicación que maneja datos geográficos tiene que trabajar con sistemas de coordenadas relacionadas con la superficie terrestre, conocidas como coordenadas espaciales o coordenadas globales, que permiten representar la tierra en \emph{3-Dimensiones} (3D), ya que esta es una Esfera, mas especificamente un esferoide oblato\footnote{Un \emph{esferoide oblato} (o elipsoide oblato) es un elipsoide de revolución obtenido por rotación de una elipse alrededor de su eje más corto.}, o en una representación de la superficie terrestre en \emph{2-Dimensiones} (2D), los sistemas de coordenadas se clasifican en: Coordenadas geocéntricas, Coordenadas Geográficas y Coordenadas Proyectadas. \cite{danielAzuma}
 
     \subsection{Coordenadas geocéntricas (X,Y,Z)} % (fold)
       \label{sub:coordenadas_geocentricas}

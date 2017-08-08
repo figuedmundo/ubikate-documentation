@@ -1,24 +1,30 @@
-\chapter{Ruta Óptima} % (fold)
+\section{Ruta Óptima} % (fold)
 \label{cha:ruta_optima}
 
-Si se quiere ir de un punto a otro el mejor camino o el más óptimo siempre es aquel con la menor distancia entre los 2 puntos, pero como se puede definir que un camino es óptimo?, si se va en coche hay que tomar en cuenta la dirección de las calles, los cruces, etc. si se va a pie hay que ver las características del terreno, caminos cortados, distancias, etc.\\
+En general el mejor camino o el más óptimo para ir de un punto a otro es aquel que toma menos tiempo en ser recorrido, pero para definir que un camino es óptimo hay que tomar en cuenta las características de este, por ejemplo, si se va en coche hay que tomar en cuenta la dirección de las calles, los cruces, etc. si se va caminando hay que ver las características del terreno, caminos cortados, distancias, etc.\\
 
 
-Si se analiza el terreno que se va a cubrir con la aplicación (el campus de la UMSS ubicado entre las calles Oquendo, Sucre,  Belzu y M. U. Lopez), se tiene que el camino óptimo es siempre el más corto o de menor longitud, ya que el metodo de desplazamiento que se tomara en cuenta para moverse dentro del campus Univeristario sera \emph{a pie} y el terreno es plano.\\
+Encontrar la ruta óptima entre 2 puntos es un problema al cual se enfrentan las personas diariamente, por ejemplo, las empresas de transporte, de correo, etc., necesitan mejorar la eficiencia del trayecto y a la vez reducir el consumo de combustible, para mejorar la atención al cliente y a la vez reducir costos de operación. \\
 
-El problema de la ruta más corta es ampliamente usado por las empresas de transporte, correos, etc., que necesitan mejorar la eficiencia del trayecto y a la vez reducir el consumo de combustible, dentro del campus universitario, reducir el tiempo en el cual encontramos un aula o una oficina mejoraría en gran medida la presentación de la Universidad hacia gente externa que necesitan hacer uso o encontrar algún lugar en especifico ya que lamentablemente esta información actualmente sólo te la pueden ofrecer las personas que conocen el lugar de antemano y aun en esos casos existe la posibilidad de no encontrar el lugar que se está buscando.\\
+Dentro el campus Universitario es generalmente prioritario optimizar el tiempo de busqueda de algun lugar o punto de interés al cual se quiera llegar, ya sea como estudiante o visitante externo.\\
+
+
+Si se analiza el terreno que se va a cubrir con la aplicación, el campus ``Las Cuadras'' de la Universidad Mayor de San Simón ubicado entre las calles Oquendo, Sucre,  Belzu y M. U. López, se tiene que el camino óptimo es siempre el más corto o de menor longitud, el método de desplazamiento que se tomara en cuenta será \emph{caminando}, el terreno es llano y la unica restriccion es respetar las rutas peatonales.\\
+
+% El problema de la ruta más corta es ampliamente usado por las empresas de transporte, correos, etc., que necesitan mejorar la eficiencia del trayecto y a la vez reducir el consumo de combustible, dentro del campus universitario, reducir el tiempo en el cual encontramos un aula o una oficina mejoraría en gran medida la presentación de la Universidad hacia gente externa que necesitan hacer uso o encontrar algún lugar en especifico ya que lamentablemente esta información actualmente sólo te la pueden ofrecer las personas que conocen el lugar de antemano y aun en esos casos existe la posibilidad de no encontrar el lugar que se está buscando.\\
 % La resolución de este problema es la se analizará en este capítulo.
 
+El presente problema se lo podría definir como; Encontrar la ruta más corta de un punto a otro punto, donde los puntos están interconectados por una red de caminos. El problema descrito se lo puede resolver y describir como un caso específico de la teoría de grafos.
 
-  \section{Grafos} % (fold)
+
+
+  \subsection{Grafos} % (fold)
   \label{sec:teoria_grafos}
 
-    El problema se lo podria definir como; Encontrar la ruta más corta de un punto a otro punto, en donde los puntos están interconectados por una red de caminos. El problema descrito se lo puede resolver y describir como un caso especifico de la teoría de grafos.
 
-
-    \section{Definiciones} % (fold)
-    \label{sec:grafos_definiciones}
-      Primeramente es necesario aclararar alguno términos usados en la teoría de grafos.
+    % \section{Definiciones} % (fold)
+    % \label{sec:grafos_definiciones}
+      Inicialmente es necesario aclararar alguno términos usados en la teoría de grafos.
 
       % El grafo que es la reprentacion
 
@@ -40,7 +46,9 @@ El problema de la ruta más corta es ampliamente usado por las empresas de trans
         \item \textbf{Grafo no Dirigido:}
         En un \emph{grafo no dirigido} $G$, dos vértices $u$ y $v$ se dice que están conectados si hay un camino en $G$ de $u$ a $v$ (y como $G$ no es dirigido, también hay un camino de $v$ a $u$). Un grafo  se denomina completo si para todos los pares $u,v \in V$ existe una arista $(u,v) \in A$.
 
-        En un \emph{grafo no dirigido}, dado una arista $(u,v)$, $v$ es adyacente de $u$, y simétricamente \emph{u} es adyacente de \emph{v} y si el par de vértices que representan la arista no tiene orden, por lo tanto la arista $(u,v)$ y $(v,u)$ representa la misma arista. En cambio en un grafo dirigido la arista $(u,v)$ y $(v,u)$ representan dos diferentes aristas. También se puede anotar un tercer componente, llamado peso o costo, en ese caso estaríamos hablando de un \emph{grafo ponderado}.
+        % En un \emph{grafo no dirigido}, dado una arista $(u,v)$, $v$ es adyacente de $u$, y simétricamente \emph{u} es adyacente de \emph{v} y si el par de vértices que representan la arista no tiene orden, por lo tanto la arista $(u,v)$ y $(v,u)$ representa la misma arista.
+
+        \item \textbf{Grafo Dirigido:} En cambio en un \emph{grafo dirigido} las aristas $(u,v)$ y $(v,u)$ representan dos diferentes aristas. También se puede anotar un tercer componente, llamado peso o costo, en ese caso estaríamos hablando de un \emph{grafo ponderado}.
 
         % Un camino en un grafo es una secuencia de nodos $v_{1}$, $v_{2}$, \ldots{}, $v_n$ tal que $(v_{1}, v_{2}), (v_{2}, v_{3}), \ldots{}, (v_{n-1}, v_n)$ son aristas.
         %
@@ -50,8 +58,8 @@ El problema de la ruta más corta es ampliamente usado por las empresas de trans
 
     % \end{description}
     % subsection grafos_definiciones (end)
-    \section{Representacion de un Grafo} % (fold)
-    \label{sec:representacion_de_un_grafo}
+    % \subsection{Representacion de un Grafo} % (fold)
+    % \label{sec:representacion_de_un_grafo}
       Existen diversas formas de representar un grafo sea dirigido o no-dirigido, pero entre las mas usadas están la matriz de adyacencias y la lista de adyacencias.
 
       \subsection{Matriz de adyacencias de un Grafo} % (fold)
@@ -131,7 +139,7 @@ El problema de la ruta más corta es ampliamente usado por las empresas de trans
       % subsubsection matriz_de_adyacencias_de_un_grafo (end)
 
     % subsection representacion_de_un_grafo (end)
-    \section{El Problema de la ruta mas corta} % (fold)
+    \subsection{El Problema de la ruta mas corta} % (fold)
     \label{sec:ruta_mas_corta}
       Dados los vértices $v_{i}$ y $v_{j}$ de un grafo $G = (V,A)$ se llama trayectoria mínima o camino minimo  de \(v_i\) a \(v_j\) al numero de aristas del camino de longitud mínima que va desde $v_i$ a $v_j$ y se representa por $d(v_i, v_j)$.
 
@@ -141,7 +149,7 @@ El problema de la ruta más corta es ampliamente usado por las empresas de trans
 
 
 
-      \subsection{Algoritmo de Dijkstra} % (fold)
+      \subsubsection{Algoritmo de Dijkstra} % (fold)
       \label{sub:algoritmo_de_dijkstra}
       El algoritmo de  Dijkstra fue descrito en 1959 por \emph{Edsger Dijkstra}, y permite encontrar la trayectoria más corta entre dos nodos específicos, cuando los valores de los arcos son todos positivos\\
 

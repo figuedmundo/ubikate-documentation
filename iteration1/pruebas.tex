@@ -7,6 +7,9 @@
       \makebox[6cm][r]{\textbf{Historia de Usuario:} US01} \\
 
       \addlinespace
+      \textbf{Tipo:} Prueba de Funcionalidad - Positiva. \\
+
+      \addlinespace
       \textbf{Nombre:} Verificar la lista de lugares. \\
 
       \addlinespace
@@ -42,6 +45,9 @@
       \textbf{Codigo:} CP002
       \makebox[3cm][r]{}
       \makebox[6cm][r]{\textbf{Historia de Usuario:} US01} \\
+
+      \addlinespace
+      \textbf{Tipo:} Prueba de Funcionalidad - Positiva. \\
 
       \addlinespace
       \textbf{Nombre:} Verificar la busqueda de lugares. \\
@@ -81,6 +87,9 @@
       \makebox[6cm][r]{\textbf{Historia de Usuario:} US02} \\
 
       \addlinespace
+      \textbf{Tipo:} Prueba de Funcionalidad - Positiva. \\
+
+      \addlinespace
       \textbf{Nombre:} Verificar la información de un lugar. \\
 
       \addlinespace
@@ -105,5 +114,127 @@
     \end{tabularx}
     \caption{Prueba de Aceptación - CP003}
     \label{tab:CP003}
+  \end{center}
+\end{table}
+
+
+\begin{table}[H]
+  \begin{center}
+    \begin{tabularx}{0.75\textwidth}{ X }
+      \toprule
+      \textbf{Codigo:} CP004
+      \makebox[3cm][r]{}
+      \makebox[6cm][r]{\textbf{Historia de Usuario:} US01} \\
+
+      \addlinespace
+      \textbf{Tipo:} Prueba de Funcionalidad - Negativa. \\
+
+      \addlinespace
+      \textbf{Nombre:} Verificar la lista de lugares cuando se busca un lugar no registrado. \\
+
+      \addlinespace
+      \textbf{Descripción:} Validar que la lista de lugares muestre una lista vacía cuando se ingresa el nombre de un lugar no registrado. \\
+
+      \addlinespace
+      \textbf{Condiciones de Ejecución:} En la base de datos no debe existir el lugar con nombre ``Aula 123''. \\
+
+      \addlinespace
+      \textbf{Entradas / Pasos de Ejecución:}  \\
+      \tab \textbf{1.} Hacer tap sobre el botón \emph{menú} en la esquina superior-izquierda. \\
+      \tab \textbf{2.} Seleccionar el menú \emph{lugares}.\\
+      \tab \textbf{3.} En el cajón de búsqueda ingresar ``Aula 123''.\\
+
+      \addlinespace
+      \textbf{Resultado Esperado:} La lista de lugares debe mostrar una lista vacía.\\
+
+      \addlinespace
+      \textbf{Evaluación de la Prueba:} Prueba exitosa. \\
+
+      \bottomrule
+    \end{tabularx}
+    \caption{Prueba de Aceptación - CP004}
+    \label{tab:CP004}
+  \end{center}
+\end{table}
+
+
+
+
+\begin{table}[H]
+  \begin{center}
+    \begin{tabularx}{0.75\textwidth}{ X }
+      \toprule
+      \textbf{Codigo:} CP005
+      \makebox[3cm][r]{}
+      \makebox[6cm][r]{\textbf{Historia de Usuario:} US02} \\
+
+      \addlinespace
+      \textbf{Tipo:} Prueba de Funcionalidad - Negativa. \\
+
+      \addlinespace
+      \textbf{Nombre:} Verificar la información de un lugar mediante el URI. \\
+
+      \addlinespace
+      \textbf{Descripción:} Validar que la página con la información de un lugar pueda ser accedida mediante la URL correcta. \\
+
+      \addlinespace
+      \textbf{Condiciones de Ejecución:} En la base de datos debe existir el lugar con \emph{id} 50. \\
+
+      \addlinespace
+      \textbf{Entradas / Pasos de Ejecución:}  \\
+      \tab \textbf{1.} Ingresar en el URL del navegador la dirección, \url{/places/50}. \\
+      \tab \textbf{2.} Aceptar el URL ingresado.\\
+      % \tab \textbf{3.} En el cajón de búsqueda ingresar ``Aula 123''.\\
+
+      \addlinespace
+      \textbf{Resultado Esperado:} La pagina con informacion del lugar con \emph{id} 50 debe ser mostrado.\\
+
+      \addlinespace
+      \textbf{Evaluación de la Prueba:} Prueba exitosa. \\
+
+      \bottomrule
+    \end{tabularx}
+    \caption{Prueba de Aceptación - CP005}
+    \label{tab:CP005}
+  \end{center}
+\end{table}
+
+
+\begin{table}[H]
+  \begin{center}
+    \begin{tabularx}{0.75\textwidth}{ X }
+      \toprule
+      \textbf{Codigo:} CP006
+      \makebox[3cm][r]{}
+      \makebox[6cm][r]{\textbf{Historia de Usuario:} US02} \\
+
+      \addlinespace
+      \textbf{Tipo:} Prueba de Usabilidad. \\
+
+      \addlinespace
+      \textbf{Nombre:} Verificar que el \emph{Menú} sea desplegado dinámicamente. \\
+
+      \addlinespace
+      \textbf{Descripción:} Validar que  el \emph{Menú} se muestra presionando el icono \emph{menú} en la esquina superior-izquierda y al seleccionar alguna opción el \emph{Menú} se oculte. \\
+
+      \addlinespace
+      \textbf{Condiciones de Ejecución:} Sin condición. \\
+
+      \addlinespace
+      \textbf{Entradas / Pasos de Ejecución:}  \\
+      \tab \textbf{1.} Hacer tap sobre el botón \emph{menú} en la esquina superior-izquierda de la pantalla. \\
+      \tab \textbf{2.} Seleccionar el menú \emph{lugares}.\\
+      % \tab \textbf{3.} En el cajón de búsqueda ingresar ``Aula 123''.\\
+
+      \addlinespace
+      \textbf{Resultado Esperado:} El \emph{Menú} debe ser desplegado y colapsado sin dejar que el \emph{Menú} oculte la pantalla del navegador.\\
+
+      \addlinespace
+      \textbf{Evaluación de la Prueba:} Prueba exitosa. \\
+
+      \bottomrule
+    \end{tabularx}
+    \caption{Prueba de Aceptación - CP006}
+    \label{tab:CP006}
   \end{center}
 \end{table}

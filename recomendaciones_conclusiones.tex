@@ -3,23 +3,34 @@
 
 \section{Conclusiones}
 
+% \item Generar un mapa con información geográfica de las rutas dentro del campus Universitario.
+% \item Administrar lugares geolocalizados dentro del campus Universitario.
+% \item Mostrar en la aplicación los lugares geolocalizados desplegando la ruta óptima desde mi posición hasta el punto destino.
+% \item Administrar usuarios en el sistema.
+% \item Registrar las búsquedas sobre rutas realizadas por los usuarios en el sistema.
 
-Para desarrollar el \emph{mapa de rutas} del campus Universitario se analizó
-los distintos tipos de \emph{sistemas de coordenadas} y a pesar de que el \emph{sistema de coordenadas geográfico} trabaja con los términos ``latitud'' y ``longitud'', conceptos más comúnmente utilizados, es de alguna forma más fácil empezar a trabajar con este sistema de coordenadas. Pero tomando en cuenta que el \emph{sistema de coordenadas geométrico} trabaja con mapas proyectados o aplanados, el cálculo de distancias se las realiza sobre líneas rectas, en cambio dentro del \emph{sistema de coordenadas geográfico} este cálculo es realizado sobre \emph{unidades angulares} o \emph{grados} por lo que para el cálculo del tamaño de una línea recta se necesita tomar en cuenta la forma esférica de la tierra y esto se traduce en muchos más cálculos matemáticos que son fácilmente solventados usando un \emph{sistema de coordenadas geométrico} por lo que finalmente se terminó escogiendo este tipo de sistema de coordenadas, más específicamente la proyección \emph{SRID 3857} o proyección \emph{Mercator}. \\
-
-Esta decisión está muy ligada al objetivo de encontrar la ruta óptima entre 2 puntos georeferenciados, porque al trabajar con un  \emph{sistema de coordenadas geométrico} se noto que en el análisis de la ruta óptima, las distancias entre nodos se calcularon en metros, ayudando en gran medida al resultado correcto del objetivo trazado. \\
-
-Existen numerosas soluciones para encontrar la ruta óptima, donde se toman en cuenta diferentes variables y heurísticas, pero se escogió usar el algoritmo de \emph{Dijkstra} que aunque  requiere muchos más cálculos que las demás soluciones es la solución más sencilla y ya que tomando en cuenta el tamaño del grafo resultante, no existió una razón de gran peso para implementar otra solución más eficiente en el manejo de recursos.\\
-
-Al georeferenciar lugares se noto que trabajar con un \emph{sistema de coordenadas geométrico} requiere de un cuidado extra, ya que el API de Geolocalización de HTML5 ofrece la posición del dispositivo en \emph{latitud} y \emph{longitud} (datos geográficos), y es fácil corromper la base de datos si es que no se proyectan estos datos con anterioridad, hay que recalcar el beneficio de trabajar con  PostGIS a nivel de base de datos, ya que este puede convertir sistemas de coordenadas al declararlas en el consulta SQL encargada de ingresar datos a la base de datos. \\
-
-Al desarrollar la aplicación presentada en el proyecto de grado se llegó a la conclusión de que aunque
-es indudable que una aplicación móvil nativa tiene muchas más prestaciones que una aplicación web, también es cierto que existe una mayor fragmentación de dispositivos móviles y  por lo tanto de tecnologías, por lo que con la implementación una aplicación web móvil se puede llegar a muchas más personas agilizando en gran medida la captación de usuarios para la aplicación.
+En relación al objetivo ``generar un mapa con información geográfica de las rutas dentro del campus Universitario'' se hace muy relevante la importancia de conocer y comprender los distintos tipos de \emph{sistema de coordenadas}, el \emph{sistema de coordenadas geográfico} trabaja con los términos ``latitud'' y ``longitud'' que son conceptos más comúnmente utilizados y es de alguna forma más fácil empezar a trabajar con este sistema de coordenadas, pero para encontrar la distancia entre puntos se noto que este cálculo es realizado sobre \emph{unidades angulares} o \emph{grados} por lo que para el cálculo del tamaño de una línea recta se necesita tomar en cuenta la forma esférica de la tierra y esto se traduce en muchos más cálculos matemáticos, que son fácilmente solventados usando un \emph{sistema de coordenadas geométrico} porque trabaja con mapas proyectados o aplanados y el cálculo de distancias es realizado sobre líneas rectas y en \emph{metros}, por lo que finalmente se terminó escogiendo este tipo de sistema de coordenadas, más específicamente la proyección \emph{SRID 3857} o proyección \emph{Mercator}. \\
 
 
+ % Pero tomando en cuenta que el \emph{sistema de coordenadas geométrico} trabaja con mapas proyectados o aplanados, el cálculo de distancias se las realiza sobre líneas rectas, en cambio dentro del \emph{sistema de coordenadas geográfico} este cálculo es realizado sobre \emph{unidades angulares} o \emph{grados} por lo que para el cálculo del tamaño de una línea recta se necesita tomar en cuenta la forma esférica de la tierra y esto se traduce en muchos más cálculos matemáticos que son fácilmente solventados usando un \emph{sistema de coordenadas geométrico} por lo que finalmente se terminó escogiendo este tipo de sistema de coordenadas, más específicamente la proyección \emph{SRID 3857} o proyección \emph{Mercator}. \\
+
+
+% Esta decisión está muy ligada al objetivo de encontrar la ruta óptima entre 2 puntos georeferenciados, porque al trabajar con un  \emph{sistema de coordenadas geométrico} se noto que en el análisis de la ruta óptima, las distancias entre nodos se calcularon en metros, ayudando en gran medida al resultado correcto del objetivo trazado. \\
+
+En relación al objetivo ``Administrar lugares geolocalizados dentro del campus Universitario'' se observó que al registrar lugares dentro la base de datos es necesario prestar atención a la georeferenciación del \emph{lugar}, ya que el API de Geolocalización de HTML5 ofrece la posición del dispositivo en \emph{latitud} y \emph{longitud} (datos geográficos) es fácil corromper la base de datos si es que no se proyectan estos datos al momento de registrar un \emph{lugar}, en este caso hay que recalcar el beneficio de trabajar con  PostGIS, el cual implementa numerosas funciones para manipular datos geoespaciales. \\
+
+ % georeferenciar lugares se noto que trabajar con un \emph{sistema de coordenadas geométrico} requiere de un cuidado extra,
+ En relación al objetivo ``Mostrar en la aplicación los lugares geolocalizados desplegando la ruta óptima desde mi posición hasta el punto destino'' se concluye que existen numerosas soluciones para encontrar la ruta óptima, donde se toman en cuenta diferentes variables y heurísticas, y su uso depende del problema pero para el presente proyecto se decidió usar el algoritmo de \emph{Dijkstra} que aunque requiere muchos más cálculos que las demás soluciones es la solución más sencilla y ya que tomando en cuenta el tamaño del grafo resultante, no existió una razón de gran peso para implementar otra solución más eficiente en el manejo de recursos.\\
+
+
+ En relación al objetivo de ``Administrar usuarios en el sistema'', se concluye que al tratarse de información difícil de crear, información de los \emph{lugares} y su posición georeferenciada, es necesario un registro y seguimiento personalizado de los usuarios por parte del administrador para asegurar que la información almacenada en la base de datos sea confiable.
+
+
+En relación al objetivo de ``Registrar las búsquedas sobre rutas realizadas por los usuarios en el sistema'', se concluye que guardar un registro de la cantidad de veces que los usuarios buscan algún \emph{lugar} podría ayudar a la Universidad en la toma de decisiones en relación a los \emph{lugares} dentro del campus Universitario, por ejemplo mejorar la infraestructura o la señalización de los lugares más visitados.
 
 
 %
+Al desarrollar la aplicación presentada en el proyecto de grado se llegó a la conclusión de que aunque es indudable que una aplicación móvil nativa tiene muchas más prestaciones que una aplicación web, también es cierto que existe una mayor fragmentación de dispositivos móviles y  por lo tanto de tecnologías, por lo que con la implementación de una aplicación web móvil se puede llegar a muchas más personas agilizando en gran medida la captación de usuarios para la aplicación.
 %
 % Los Mapas son herramientas muy útiles a la hora de desplegar información, pero realizar el mapa, crear las fórmulas matemáticas con las cuales se trabajará, determinar cómo se usarán estas fórmulas para una representación adecuada de la superficie terrestre, es una tarea muy compleja. Como programador la tarea más complicada fue determinar el tipo de mapa y el sistema de coordenadas más adecuado para el tipo proyecto que se necesita desarrollar.\\
 %
@@ -88,8 +99,6 @@ Para finalizar el presente proyecto de grado, se recomienda:
 \item Se podría incluir códigos QR en los lugares de interés dentro de la Universidad para que la aplicación leyendo estos códigos pueda ofrecer información acerca del lugar.
 
 \item En el manejo de usuarios se recomienda un cuidado especial a la hora de registrar usuarios en el sistema, ya que siempre existen usuarios maliciosos que podrían dañar o corromper la información recolectada.
-
-\item Al guardar un registro de la cantidad de veces que los usuarios buscan algún \emph{lugar} se hace hincapié en que el reporte obtenido podría ayudar a la Universidad en la toma de decisiones en relación a mejorar los lugares más visitados dentro del campus Universitario.
 
 
 \item Para una futura implementación de una aplicación web usando tecnologías basadas en JavaScript, como se \emph{ExpressJS} o \emph{EmberJS}, se recomienda un análisis cualificativo de los beneficios que se pueden encontrar en los diferentes \emph{frameworks} de desarrollo, tomando en cuenta las características de la aplicación.

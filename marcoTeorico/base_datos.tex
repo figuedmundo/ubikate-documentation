@@ -1,10 +1,10 @@
 
-  \chapter{Base de Datos} % (fold)
+  \section{Base de Datos} % (fold)
   \label{chap:base_de_datos}
 
   En una aplicación web es necesario alguna forma de persistencia de datos, en especial si se están usando datos complejos como la informacion geoespacial, para realizar está tarea, la base de datos es un factor primordial.  Para este proyecto de grado se hara uso de \emph{PostgreSQL} como base de datos relacional y su extension \emph{Postgis} para manejar los datos geoespaciales.\\
 
-    \section{PostgreSQL} % (fold)
+    \subsection{PostgreSQL} % (fold)
     \label{sec:postgres}
 
       PostgreSQL es un sistema de gestión de bases de datos objeto-relacional, Open Source y distribuido bajo licencia BSD.
@@ -32,7 +32,7 @@
 
     % section postgres (end)
 
-    \section{PostGIS} % (fold)
+    \subsection{PostGIS} % (fold)
     \label{sec:postgis}
 
       PostGIS es un módulo  que anade soporte de objetos geográficos al DBMS PostgreSQL, convirtiéndola en una base de datos espacial para su utilización en un Sistema de Informacion Geografica o \emph{SIG}, es bastante común utilizar el acrónimo en Inglés, \emph{Geographic Information System} o \emph{GIS} y de hay viene el término de PostGIS, que conbina Postgres y GIS.\\
@@ -48,7 +48,7 @@
 
       Manejar los datos geográficos con PostGIS es sencillo y eficiente, por está raz\'on se utilizó está herramienta, pero para conseguir la ruta óptima entre 2 puntos se necesitaba el uso del algoritmo de Dijkstra y para PostGIS existe el módulo \emph{PgRouting}, que tiene implementado este algoritmo.\\
 
-      \subsection{pgRouting} % (fold)
+      \subsubsection{pgRouting} % (fold)
       \label{sec:pgrouting}
         pgRouting es una extension  de  PostGIS para proveer funcionalidades de ruteo espacial. pgRouting es un desarrollo posterior de pgDijkstra y actualmente está siendo mantenido por Georepublic, la última version estable es la 2.1, y es la que fue usada para desarrollar el sistema.\\
 

@@ -2,12 +2,15 @@
   \begin{center}
     \begin{tabularx}{0.75\textwidth}{ X }
       \toprule
-      \textbf{Codigo:} CP008
+      \textbf{Codigo:} CP016
       \makebox[3cm][r]{}
       \makebox[6cm][r]{\textbf{Historia de Usuario:} US005} \\
 
       \addlinespace
-      \textbf{Nombre:} Verificar el Formulario de Registro \\
+      \textbf{Tipo:} Prueba de Funcionalidad - Positiva. \\
+
+      \addlinespace
+      \textbf{Nombre:} Verificar el Formulario de Registro. \\
 
       \addlinespace
       \textbf{Descripción:} Validar que un usuario puede ver el formulario de registro. \\
@@ -27,13 +30,13 @@
       \addlinespace
       \textbf{Resultado Esperado:} El Usuario recibe un email de confirmación de Email.  \\
 
-      \addlinespace
-      \textbf{Evaluación de la Prueba:} Prueba exitosa. \\
+      % \addlinespace
+      % \textbf{Evaluación de la Prueba:} Prueba exitosa. \\
 
       \bottomrule
     \end{tabularx}
-    \caption{Caso de Prueba - CP008}
-    \label{tab:CP008}
+    \caption{Caso de Prueba - CP016}
+    \label{tab:CP016}
   \end{center}
 \end{table}
 
@@ -42,12 +45,15 @@
   \begin{center}
     \begin{tabularx}{0.75\textwidth}{ X }
       \toprule
-      \textbf{Codigo:} CP009
+      \textbf{Codigo:} CP017
       \makebox[3cm][r]{}
       \makebox[6cm][r]{\textbf{Historia de Usuario:} US008} \\
 
       \addlinespace
-      \textbf{Nombre:} Verificar el Registro del Usuario \\
+      \textbf{Tipo:} Prueba de Funcionalidad - Positiva. \\
+
+      \addlinespace
+      \textbf{Nombre:} Verificar el Registro del Usuario. \\
 
       \addlinespace
       \textbf{Descripción:} La prueba verifica que un usuario se puede registrar en el sistema.\\
@@ -64,13 +70,13 @@
       \addlinespace
       \textbf{Resultado Esperado:} El usuario recibe un email de confirmación de registro. \\
 
-      \addlinespace
-      \textbf{Evaluación de la Prueba:} Prueba exitosa. \\
+      % \addlinespace
+      % \textbf{Evaluación de la Prueba:} Prueba exitosa. \\
 
       \bottomrule
     \end{tabularx}
-    \caption{Caso de Prueba - CP009}
-    \label{tab:CP009}
+    \caption{Caso de Prueba - CP017}
+    \label{tab:CP017}
   \end{center}
 \end{table}
 
@@ -78,9 +84,55 @@
   \begin{center}
     \begin{tabularx}{0.75\textwidth}{ X }
       \toprule
-      \textbf{Codigo:} CP010
+      \textbf{Codigo:} CP018
+      \makebox[3cm][r]{}
+      \makebox[6cm][r]{\textbf{Historia de Usuario:} US008} \\
+
+      \addlinespace
+      \textbf{Tipo:} Prueba de Funcionalidad - Negativa. \\
+
+      \addlinespace
+      \textbf{Nombre:} Verificar que el usuario al registrarse no ingrese caracteres especiales. \\
+
+      \addlinespace
+      \textbf{Descripción:} La prueba verifica que un usuario al registrarse no pueda ingresar caracteres especiales en los campos del \emph{formulario de registro}.\\
+
+      \addlinespace
+      \textbf{Condiciones de Ejecución:} El usuario no está registrado. \\
+
+      \addlinespace
+      \textbf{Entradas / Pasos de Ejecución:}  \\
+      \tab \textbf{1.} Seleccionar el link \emph{Registrarse}. \\
+      \tab \textbf{2.} Ingresar en el campo \emph{Nombre} caracteres especiales. \\
+      \tab \textbf{3.} Repetir con el campo \emph{Email}.\\
+      \tab \textbf{4.} Repetir con el campo \emph{Razón de registro}.\\
+      \tab \textbf{5.} Aceptar el envío del formulario.\\
+
+      \addlinespace
+      \textbf{Resultado Esperado:} Un mensaje de información debe ser mostrado informado que los caracteres especiales no pueden ser ingresados en el formulario. \\
+
+      % \addlinespace
+      % \textbf{Evaluación de la Prueba:} Prueba exitosa. \\
+
+      \bottomrule
+    \end{tabularx}
+    \caption{Caso de Prueba - CP018}
+    \label{tab:CP018}
+  \end{center}
+\end{table}
+
+
+
+\begin{table}[H]
+  \begin{center}
+    \begin{tabularx}{0.75\textwidth}{ X }
+      \toprule
+      \textbf{Codigo:} CP019
       \makebox[3cm][r]{}
       \makebox[6cm][r]{\textbf{Historia de Usuario:} US009} \\
+
+      \addlinespace
+      \textbf{Tipo:} Prueba de Funcionalidad - Positiva. \\
 
       \addlinespace
       \textbf{Nombre:} Verificar el Reporte de frecuencia. \\
@@ -99,12 +151,12 @@
       \addlinespace
       \textbf{Resultado Esperado:} El usuario puede ver la gráfica de barras con los lugares más visitados. \\
 
-      \addlinespace
-      \textbf{Evaluación de la Prueba:} Prueba exitosa. \\
+      % \addlinespace
+      % \textbf{Evaluación de la Prueba:} Prueba exitosa. \\
 
       \bottomrule
     \end{tabularx}
-    \caption{Caso de Prueba - CP010}
-    \label{tab:CP010}
+    \caption{Caso de Prueba - CP019}
+    \label{tab:CP019}
   \end{center}
 \end{table}

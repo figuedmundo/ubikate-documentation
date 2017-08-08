@@ -2,9 +2,12 @@
   \begin{center}
     \begin{tabularx}{0.75\textwidth}{ X }
       \toprule
-      \textbf{Codigo:} CP006
+      \textbf{Codigo:} CP012
       \makebox[3cm][r]{}
       \makebox[6cm][r]{\textbf{Historia de Usuario:} US06} \\
+
+      \addlinespace
+      \textbf{Tipo:} Prueba de Funcionalidad - Positiva. \\
 
       \addlinespace
       \textbf{Nombre:} Verificar el registro de lugares. \\
@@ -36,8 +39,8 @@
 
       \bottomrule
     \end{tabularx}
-    \caption{Prueba de Aceptación - CP006}
-    \label{tab:CP006}
+    \caption{Prueba de Aceptación - CP012}
+    \label{tab:CP012}
   \end{center}
 \end{table}
 
@@ -45,9 +48,12 @@
   \begin{center}
     \begin{tabularx}{0.75\textwidth}{ X }
       \toprule
-      \textbf{Codigo:} CP007
+      \textbf{Codigo:} CP013
       \makebox[3cm][r]{}
       \makebox[6cm][r]{\textbf{Historia de Usuario:} US07} \\
+
+      \addlinespace
+      \textbf{Tipo:} Prueba de Funcionalidad - Positiva. \\
 
       \addlinespace
       \textbf{Nombre:} Verificar la edición de la información de un lugar. \\
@@ -79,7 +85,91 @@
 
       \bottomrule
     \end{tabularx}
-    \caption{Prueba de Aceptación - CP007}
-    \label{tab:CP007}
+    \caption{Prueba de Aceptación - CP013}
+    \label{tab:CP013}
+  \end{center}
+\end{table}
+
+
+\begin{table}[H]
+  \begin{center}
+    \begin{tabularx}{0.75\textwidth}{ X }
+      \toprule
+      \textbf{Codigo:} CP014
+      \makebox[3cm][r]{}
+      \makebox[6cm][r]{\textbf{Historia de Usuario:} US06} \\
+
+      \addlinespace
+      \textbf{Tipo:} Prueba de Funcionalidad - Negativa. \\
+
+      \addlinespace
+      \textbf{Nombre:} Verificar que no pueda registrar un lugar fuera del campus Universitario. \\
+
+      \addlinespace
+      \textbf{Descripción:} Validar que los lugares que están fuera del campus Universitario no pueda ser registrado en el sistema. \\
+
+      \addlinespace
+      \textbf{Condiciones de Ejecución:} \\
+      \tab \textbf{a.} El usuario debe estar registrado. \\
+      \tab \textbf{b.} El usuario debe estar fuera de los predios del Campus Universitario.\\
+
+      \addlinespace
+      \textbf{Entradas / Pasos de Ejecución:}  \\
+      \tab \textbf{1.} Seleccionar el menú \emph{Lugares}. \\
+      \tab \textbf{2.} Hacer tap sobre el icono de registro de lugares.\\
+
+      \addlinespace
+      \textbf{Resultado Esperado:} Un mensaje debería ser desplegado informando que no se pueden registrar Lugares fuera del Campus Universitario.  \\
+
+      \addlinespace
+      \textbf{Evaluación de la Prueba:} Prueba fallada. \\
+
+      \bottomrule
+    \end{tabularx}
+    \caption{Prueba de Aceptación - CP014}
+    \label{tab:CP014}
+  \end{center}
+\end{table}
+
+
+\begin{table}[H]
+  \begin{center}
+    \begin{tabularx}{0.75\textwidth}{ X }
+      \toprule
+      \textbf{Codigo:} CP015
+      \makebox[3cm][r]{}
+      \makebox[6cm][r]{\textbf{Historia de Usuario:} US06, US07} \\
+
+      \addlinespace
+      \textbf{Tipo:} Prueba de Usabilidad. \\
+
+      \addlinespace
+      \textbf{Nombre:} Verificar los campos de texto de los formularios de registro y edición. \\
+
+      \addlinespace
+      \textbf{Descripción:} Validar que los campos de texto dentro los formularios de registro y edición de lugares no exceda la longitud de la pantalla del dispositivo móvil. \\
+
+      \addlinespace
+      \textbf{Condiciones de Ejecución:} \\
+      \tab \textbf{a.} El usuario debe estar registrado. \\
+      % \tab \textbf{b.} El usuario debe estar fuera de los predios del Campus Universitario.\\
+
+      \addlinespace
+      \textbf{Entradas / Pasos de Ejecución:}  \\
+      \tab \textbf{1.} Seleccionar el menú \emph{Lugares}. \\
+      \tab \textbf{2.} Presionar el icono de registro de lugares.\\
+      \tab \textbf{3.} Insertar texto en los campos de descripción, teléfono y nombre.\\
+      \tab \textbf{4.} Repetir para el formulario de edición de lugares.\\
+
+      \addlinespace
+      \textbf{Resultado Esperado:} El texto escrito no debería sobrepasar la longitud del dispositivo móvil en los formularios de registro y edición de lugares.  \\
+
+      \addlinespace
+      \textbf{Evaluación de la Prueba:} Prueba exitosa. \\
+
+      \bottomrule
+    \end{tabularx}
+    \caption{Prueba de Aceptación - CP015}
+    \label{tab:CP015}
   \end{center}
 \end{table}
