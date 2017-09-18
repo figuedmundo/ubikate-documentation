@@ -35,7 +35,7 @@ GET \url{api/v1/places/} \\
   PR03 &
   Obtener la ruta óptima entre 2 \emph{Nodos}, el nodo origen (\emph{source}) y el nodo destino (\emph{target}) .
   &
-  GET \url{api/v1/ways/route/:target/:source} \\
+  GET \url{api/v1/ways/route/:target} \tab \url{/:source} \\
 
        \bottomrule
      \end{tabularx}
@@ -49,7 +49,7 @@ GET \url{api/v1/places/} \\
 
   Para llevar a cabo estas pruebas se hizo uso de \emph{JMeter} y a continuación se describirán los resultados encontrados.
 
- En la figura \ref{fig:jmeter_result}, se puede observar que los \emph{requests} de 100 usuarios hacia la aplicación tiene tiempos de retorno buenos y no observa ningún error del servidor. En cambio cuando 500 usuarios interactúan con la aplicación se puede observar que \emph{obtener la lista de lugares} ya presenta errores y los tiempos de retorno aumentaron considerablemente, la misma tendencia se puede ver con la ejecución de 1000 usuarios.
+  En la figura \ref{fig:jmeter_result}, se puede observar que los \emph{requests} de 100 usuarios hacia la aplicación tiene tiempos de retorno buenos, para la prueba PR02 y PR03 se obtuvo un promedio de 0.8 segundos en cambio para la prueba PR01 el tiempo de ejecución se incrementó hasta un promedio de 8 segundos pero en ninguna de las 3 pruebas se generó algún error de respuesta del servidor. En cambio cuando 500 usuarios interactúan con la aplicación se puede observar que \emph{obtener la lista de lugares} ya presenta errores y los tiempos de retorno aumentaron considerablemente, la misma tendencia se puede ver con la ejecución de 1000 usuarios.
 
 
   \begin{figure}[H]
@@ -66,7 +66,7 @@ GET \url{api/v1/places/} \\
 
   \begin{figure}[H]
         \begin{center}
-          \includegraphics[width=0.9\textwidth]{azure_report}
+          \includegraphics[width=0.85\textwidth]{azure_report}
 
           \caption{Reporte del servidor Azure.}
           \label{fig:azure_report}
@@ -76,4 +76,6 @@ GET \url{api/v1/places/} \\
 
 
 
-  De la ejecución de las pruebas de carga se puede concluir que es necesario analizar y refactorizar los módulos encargados de \emph{obtener la lista de usuarios}, tarea que se puede realizar en una futura entrega del producto. Ya que para la carga de 100 usuarios utilizando la aplicación al mismo tiempo se observaron tiempos aceptables por el cliente se considera que la aplicación cumple con los objetivos de rendimiento trazados.
+  De la ejecución de las pruebas de carga se puede concluir que es necesario analizar y refactorizar los módulos encargados de \emph{obtener la lista de usuarios}, tarea que se puede realizar en una futura entrega del producto.
+
+  Tomando en cuenta que para una carga de 100 usuarios se observaron tiempos de respuesta aceptables por el cliente, se considera que la aplicación cumple con los objetivos de rendimiento trazados.

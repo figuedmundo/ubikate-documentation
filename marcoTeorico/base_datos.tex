@@ -2,15 +2,16 @@
   \section{Base de Datos} % (fold)
   \label{chap:base_de_datos}
 
-  En una aplicación web es necesario alguna forma de persistencia de datos, en especial si se están usando datos complejos como la informacion geoespacial, para realizar está tarea, la base de datos es un factor primordial.  Para este proyecto de grado se hara uso de \emph{PostgreSQL} como base de datos relacional y su extension \emph{Postgis} para manejar los datos geoespaciales.\\
+  En una aplicación web es necesario alguna forma de persistencia de datos, en especial si se están usando datos complejos como la información geoespacial, para realizar está tarea, la base de datos es un factor primordial.  Para este proyecto de grado se hara uso de \emph{PostgreSQL} como base de datos relacional y su extension \emph{Postgis} para manejar los datos geoespaciales.\\
 
     \subsection{PostgreSQL} % (fold)
     \label{sec:postgres}
 
       PostgreSQL es un sistema de gestión de bases de datos objeto-relacional, Open Source y distribuido bajo licencia BSD.
       PostgreSQL utiliza un modelo cliente/servidor y usa multiprocesos en vez de multihilos para garantizar la estabilidad del sistema. Un fallo en uno de los procesos no afectará el resto y el sistema continuará funcionando.
-      La última versi\'on estable de PostgreSQL es la 9.5, su desarrollo comenz\'o hace más de 16 años, y cuenta con una gran comunidad que aporta con el desarrollo y el testeo de nuevas versiones.
-      PostgreSQL  está considerada como uno de los mejores \emph{Sistemas de gesti\'on de bases de datos}, es muy completo y está muy bien documentado.
+
+      La última versión estable de PostgreSQL es la 9.5, su desarrollo comenz\'o hace más de 16 años, y cuenta con una gran comunidad que aporta con el desarrollo y el testeo de nuevas versiones.
+      PostgreSQL  está considerada como uno de los mejores \emph{Sistemas de gesti\'on de bases de datos}, es muy completo y está muy bien documentado\footnote{https://www.postgresql.org/about/}.
       Entre sus características se pueden nombrar las siguientes.
       \begin{itemize}
         \item Es una base de datos 100\% \emph{ACID} (Atomicity, Consistency, Isolation and Durability).
@@ -22,7 +23,7 @@
         \item Soporte a la especificacion SQL.
       \end{itemize}
 
-      Personalmente se escogió trabajar con  PostgreSQL como DBMS cuenta con una extensa documentación,  y gracias a su caracter ``Open Source'', y su gran flexibilidad en poder definir nuevos tipos de datos, esto se hace posible que empresas como \emph{Refractions Research} puedan crear recursos como \emph{PostGIS}, necesario para trabajar con datos geográficos \'o espaciales.
+      Se escogió trabajar con  PostgreSQL como DBMS porque cuenta con una extensa documentación, a su caracter ``Open Source'' y su gran flexibilidad en poder definir nuevos tipos de datos, esto se hace posible que empresas como \emph{Refractions Research} puedan crear recursos como \emph{PostGIS}, necesario para trabajar con datos geográficos o espaciales.
 
 % \footnote{http://refractions.net/}
 
@@ -50,7 +51,7 @@
 
       \subsubsection{pgRouting} % (fold)
       \label{sec:pgrouting}
-        pgRouting es una extension  de  PostGIS para proveer funcionalidades de ruteo espacial. pgRouting es un desarrollo posterior de pgDijkstra y actualmente está siendo mantenido por Georepublic, la última version estable es la 2.1, y es la que fue usada para desarrollar el sistema.\\
+        pgRouting es una extension  de  PostGIS para proveer funcionalidades de ruteo espacial. pgRouting es un desarrollo posterior de pgDijkstra y actualmente está siendo mantenido por Georepublic, la última version estable es la 2.1, y es la que fue usada para desarrollar el sistema\footnote{http://pgrouting.org/}.\\
 
         Las ventajas del ruteo en la base de datos son:
         \begin{itemize}

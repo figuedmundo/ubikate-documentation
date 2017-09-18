@@ -3,7 +3,7 @@
 \label{sec:Single Page App}
 % Single Page Application
 
-Una aplicación de página única, en ingles \emph{single-page application} o SPA es una aplicación que cabe en una sola página con el propósito de dar una experiencia más fluida a los usuarios lo más cercano posible a una aplicación de escritorio. \cite{spa_wiki}\\
+Una aplicación de página única, en inglés  \emph{single-page application} o SPA es una aplicación que cabe en una sola página con el propósito de dar una experiencia más fluida a los usuarios lo más cercano posible a una aplicación de escritorio. \cite{spa_wiki}\\
 
 Una Aplicación de Página Única es básicamente la combinación de AJAX y HTML5 para crear una aplicación web fluida que no necesite recargar la página, esto significa que el trabajo sucede en lado del cliente, es decir en el browser, por lo tanto es necesario de un gran conocimiento de JavaScript, pero actualmente existen Frameworks diseñados para resolver los problemas de manejar JavaScript en diferentes tipos y versiones de navegadores. \emph{Ember.js} es un framework con el cual se puede construir Aplicaciones de Página Única. \\
 
@@ -20,13 +20,13 @@ En una aplicación web tradicional cada vez que la aplicación hace una petició
 
 %  imagen de este proceso
 
-En una Aplicación de Página Única, después que la primera página es cargada en el navegador, todas las demás interacciones del usuario con la aplicación generan peticiones AJAX al servidor, las cuales retornan los datos requeridos, generalmente en formato JSON, de esta forma se actualiza solamente porciones de la página con la información obtenida del servidor, sin necesidad de recargar la pagina entera, como se puede ver en la figura \ref{fig:spa_diagram}. \\
+En una Aplicación de Página Única, después que la primera página es cargada en el navegador, todas las demás interacciones del usuario con la aplicación generan peticiones AJAX al servidor, las cuales retornan los datos requeridos, generalmente en formato JSON, de esta forma se actualiza solamente porciones de la página con la información obtenida del servidor, sin necesidad de recargar la página entera, como se puede ver en la figura \ref{fig:spa_diagram}. \\
 
 
 \begin{figure}[H]
   \begin{center}
     \includegraphics[width=0.5\textwidth]{spa_diagram}
-    \caption{Flujo de una aplicacion de pagina Unica.}
+    \caption{Flujo de una Aplicación de Página Única.}
     \label{fig:spa_diagram}
     \caption*{Fuente: Elaboración propia}
   \end{center}
@@ -56,7 +56,7 @@ En una aplicación de página única, las interacciones del usuario con la aplic
   maneja lo que es la interfaz del usuario, puede ser gráficamente o solo texto,
   el controlador interpreta las entradas del teclado, mouse, o los cambios
   de la vista de la mejor forma posible y finalmente el modelo maneja el comportamiento
-  de los datos de la aplicación.\cite{steveburbeck1992}\\
+  de los datos de la aplicación. \cite{steveburbeck1992}\\
 
   Este concepto se desarrolló en 1979 por Trygve Reenskaug el cual da una
   solución al problema de separar la lógica del negocio de la lógica de la presentación.\\
@@ -94,12 +94,12 @@ En una aplicación de página única, las interacciones del usuario con la aplic
 
 % One benefit of SPAs is obvious: Applications are more fluid and responsive, without the jarring effect of reloading and re-rendering the page. Another benefit might be less obvious and it concerns how you architect a Web app. Sending the app data as JSON creates a separation between the presentation (HTML markup) and application logic (AJAX requests plus JSON responses).
 
-\subsection{Arquitectura de una aplicacion de pagina unica}
+\subsection{Arquitectura de una Aplicación de Página Única}
 
 
-La separación de la logica de las capas de la aplicación, implica que su implementacion sea mas entendible, por lo que en una aplicación de página única bien diseñada es posible cambiar o rediseñar la vista o la presentación de la aplicación sin tocar la implementación de la lógica de la aplicación y/o viceversa.\\
+La separación de la logica de las capas de la aplicación, implica que su implementación sea mas entendible, por lo que en una aplicación de página única bien diseñada es posible cambiar o rediseñar la vista o la presentación de la aplicación sin tocar la implementación de la lógica de la aplicación y/o viceversa.\\
 
-La arquitectura de un SPA, como se puede ver en la figura \ref{fig:spa_arch}, donde el \emph{DOM} (\emph{Document Object Model}, es la estructura básica de la página desplegada en el navegador) es de \emph{solo escritura}, ya que no tiene estado o datos almacenados, cuando la página contiene estado o comúnmente la sesión del usuario, es necesario contener y propagar esta \emph{sesión} por las páginas de la aplicación, donde generalmente son usados los \emph{cookies} pero cuando la aplicación se compleja y contiene diferentes niveles de permisos, el manejo de esta informacion se complica, por lo que en vez de guardar la información en objetos aleatorios dentro del DOM es necesario una capa de la aplicación donde estén definidos los objetos que contienen la información y el estado de la aplicación, el cual es el \emph{Modelo}, esta capa también es la encargada guardar y/o extraer los datos del \emph{Storage}, que dependiendo de la aplicación puede ser una base de datos o el mismo navegador, \emph{localStorage} es una implementación de HTML5 que permite almacenar información en objetos JSON en el Navegador, la \emph{Vista} o \emph{View} se encarga de observar lo cambios ocurridos en el \emph{Modelo} y reflejar estos cambios en el \emph{DOM}, el cual es una renderización de un \emph{Template}.\\
+La arquitectura de un SPA, como se puede ver en la figura \ref{fig:spa_arch}, donde el \emph{DOM} (\emph{Document Object Model}, es la estructura básica de la página desplegada en el navegador) es de \emph{solo escritura}, ya que no tiene estado o datos almacenados, cuando la página contiene estado o comúnmente la sesión del usuario, es necesario contener y propagar esta \emph{sesión} por las páginas de la aplicación, donde generalmente son usados los \emph{cookies} pero cuando la aplicación se compleja y contiene diferentes niveles de permisos, el manejo de esta información se complica, por lo que en vez de guardar la información en objetos aleatorios dentro del DOM es necesario una capa de la aplicación donde estén definidos los objetos que contienen la información y el estado de la aplicación, el cual es el \emph{Modelo}, esta capa también es la encargada guardar y/o extraer los datos del \emph{Storage}, que dependiendo de la aplicación puede ser una base de datos o el mismo navegador, \emph{localStorage} es una implementación de HTML5 que permite almacenar información en objetos JSON en el Navegador, la \emph{Vista} o \emph{View} se encarga de observar lo cambios ocurridos en el \emph{Modelo} y reflejar estos cambios en el \emph{DOM}, el cual es una renderización de un \emph{Template}.\\
 
 \begin{figure}[H]
   \begin{center}

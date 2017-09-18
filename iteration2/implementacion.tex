@@ -12,6 +12,7 @@ El hecho de localizar un lugar significa que se lo va a ubicar sobre un mapa gra
   \end{verbatim}
 \end{center}
 
+\newpage
 El método \emph{places.getPlace} (c\'odigo \ref{getPlace}) obtiene las coordenadas en formato GeoJSON, el cual es el formato estándar al trabajar con información geográfica en plataformas que usan JavaScript, este objecto GeoJSON es usado para mostar el \emph{lugar} en el navegador. \\
 
 \begin{center}
@@ -56,7 +57,7 @@ $ ember install ember-leaflet
 
 
 % Primeramente es necesario conocer las coordenadas del ``lugar'', para lo cual se hará un \emph{request} al API de la aplicación para obtener la información del ``lugar'', el URI designado para esta tarea es \verb|places/:id| usando el verbo HTTP \emph{GET}, para mejorar el manejo de la coordenadas se utilizó el formato \emph{GeoJSON},
-En \emph{EmberJS} las coordenadas son procesadas dentro del \emph{controlador}, el cual maneja las variables implementadas en el \emph{template}, tal como se puede observar en el siguiente codigo \ref{leafletMap}, las variables: \emph{lat} y \emph{lng} llamadas dentro del tag \verb|#leaflet-map|, que son la latitud y longitud respectivamente del punto georeferenciado. \\
+En \emph{EmberJS} las coordenadas son procesadas dentro del \emph{controlador}, el cual maneja las variables implementadas en el \emph{template}, tal como se puede observar en el siguiente código \ref{leafletMap}, las variables: \emph{lat} y \emph{lng} llamadas dentro del tag \verb|#leaflet-map|, que son la latitud y longitud respectivamente del punto georeferenciado. \\
 
 % \begin{center}
 %   \begin{verbatim}
@@ -67,6 +68,7 @@ En \emph{EmberJS} las coordenadas son procesadas dentro del \emph{controlador}, 
 %   \end{verbatim}
 % \end{center}
 
+\newpage
 \begin{center}
  \begin{lstlisting}[label=leafletMap,caption=Método para obtener la información de un lugar.]
 
@@ -83,7 +85,7 @@ En \emph{EmberJS} las coordenadas son procesadas dentro del \emph{controlador}, 
  \end{lstlisting}
 \end{center}
 
-\emph{Ember-leaflet} permite manejar distintos servidores de mapas, pero se escogió \emph{Open Street Maps} por su facilidad de uso, ser \emph{open source} y no necesitar adquirir licencias para su uso. El resultado del anterior codigo se puede apreciar en la figura \ref{fig:ember_leaflet}. \\
+\emph{Ember-leaflet} permite manejar distintos servidores de mapas, pero se escogió \emph{Open Street Maps} por su facilidad de uso, ser \emph{open source} y no necesitar adquirir licencias para su uso. El resultado del anterior código se puede apreciar en la figura \ref{fig:ember_leaflet}. \\
 
 \begin{figure}[H]
      \begin{center}
@@ -96,7 +98,7 @@ En \emph{EmberJS} las coordenadas son procesadas dentro del \emph{controlador}, 
 \end{figure}
 
 
-\emph{Ember-leaflet} también permite incluir elementos en el mapa que se esta renderizando, por ejemplo como parte de las tareas de esta iteración es necesario añadir un \emph{marcador} sobre las coordenadas del \emph{lugar} y  \emph{ember-leaflet} permite hacer tal cosa, así como también personalizar el marcador incluyendo la información del lugar en un cajon de informaci\'on que se desplega sobre el marcador al ser presionado, como se puede ver en el codigo \ref{leafletMap}, dentro del \emph{tag} \verb|#marker-layer| se está dando formato a la información del lugar y el resultado de esta tarea se puede apreciar en la figura \ref{fig:baquita_place}. \\
+\emph{Ember-leaflet} también permite incluir elementos en el mapa que se esta renderizando, por ejemplo como parte de las tareas de esta iteración es necesario añadir un \emph{marcador} sobre las coordenadas del \emph{lugar} y  \emph{ember-leaflet} permite hacer tal cosa, así como también personalizar el marcador incluyendo la información del lugar en un cajon de informaci\'on que se desplega sobre el marcador al ser presionado, como se puede ver en el código \ref{leafletMap}, dentro del \emph{tag} \verb|#marker-layer| se está dando formato a la información del lugar y el resultado de esta tarea se puede apreciar en la figura \ref{fig:baquita_place}. \\
 
 
 \begin{figure}[H]
@@ -156,10 +158,10 @@ En \emph{EmberJS} las coordenadas son procesadas dentro del \emph{controlador}, 
 % movido a implementacion - iteracion 2
 
 
-\subsubsection{Geolocalizar los Usuarios}
+\subsubsection{Geolocalizar a los Usuarios}
 \label{sub:Manejo de Usuarios}
 
-Para encontrar la ruta más corta entre el usuario y un lugar se debe conocer la locación del usuario, este punto geolocalizado se lo obtuvo usando el API de geolocalización propio de HTML5. \\
+Para encontrar la ruta más corta entre el \emph{usuario} y un \emph{lugar}, es necesario conocer la locación o las coordenadas del usuario y para tal efecto se utilizó el  API de geolocalización propio de HTML5. \\
 
 La especificación de HTML5 indica que el navegador puede acceder y usar los recursos nativos de un \emph{smartphone}, en este caso la locación del usuario es encontrada mediante la triangulación de Coordenadas por GPS (el mas exacto a la hora de encontrar la locación del dispositivo) o Wi-Fi, dependiendo de las características del dispositivo móvil. \\
 
@@ -168,9 +170,9 @@ En el navegador solo es necesaria la ejecución de la siguiente línea para pode
 % Si se quiere saber la ruta más corta entre el usuario y un lugar, es necesario conocer la locación del usuario y hay que tomar en cuenta que esta información no se encuentra en la base de datos. Por lo tanto es necesario obtener el punto georreferenciado del usuario como punto de inicio de la ruta más corta, para lo cual se utilizó el API de geolocalización propio de HTML5, la especificación de HTML5 indica que el navegador puede acceder y usar los recursos nativos de un smartphone pero es necesaria la aceptación del usuario mediante un mensaje que el navegador despliega, la locación es encontrada mediante la triangulación de Coordenadas por GPS (el mas exacto a la hora de encontrar la locación del dispositivo), Wi-Fi, GSM o CDMA. Solo es necesaria la ejecución de la siguiente línea para poder obtener la posición actual del usuario usando el API de geolocalización de HTML5. \\
 
 \begin{verbatim}
- var coords = Geolocation.getCurrentPosition();
- var latitud = coords.latitude;
- var longitud = coords.longitude;
+         var coords = Geolocation.getCurrentPosition();
+         var latitud = coords.latitude;
+         var longitud = coords.longitude;
 \end{verbatim}
 
 Donde la \emph{latitud} y \emph{longitud} obtenidas son fácilmente trasladadas al mapa usando \emph{ember-leaflet} y mediante un marcador se puede visualizar la ubicación actual del usuario, como se puede ver en la siguiente figura \ref{fig:location_marker}.
@@ -277,7 +279,7 @@ Primeramente se preparó la base de datos añadiendo la extensión \emph{pgRouti
 
 % Después de generar el archivo shapefile, se procede a popular la base de datos del mismo modo que se hizo con la información de los lugares. Para las rutas se genera una tabla nombrada \emph{ways}.\\
 
-Posteriormente se creó la tabla \emph{ways} para que contenga las rutas georeferenciadas, para preparar esta tabla para que soporte las funciones instaladas por \emph{pgRouting} es necesario ejecutar un query propio de \emph{pgRouting} el cual se puede ver en el siguiente codigo, y tiene como objetivo analizar los datos geo-espaciales de la tabla y añadirle una \emph{topología}.\\
+Posteriormente se creó la tabla \emph{ways} para que contenga las rutas georeferenciadas, para preparar esta tabla para que soporte las funciones instaladas por \emph{pgRouting} es necesario ejecutar un query propio de \emph{pgRouting} el cual se puede ver en el siguiente código, y tiene como objetivo analizar los datos geo-espaciales de la tabla y añadirle una \emph{topología}.\\
 
 % Una vez poblada la base de datos se procede a cargar la misma con la información obtenida en RF011, para tal efecto es necesario primeramente crear una tabla que contendrá los LINESTRING contenidos en el shapefile, esta operación es similar a la realizada en la tarea - RF003 (\ref{sub:RF003}). Una vez que ya se tiene la tabla a la llamamos \emph{ways},
 
@@ -315,7 +317,7 @@ Para entender los datos generados por \emph{pgRouting} hay leer la información 
 
 % Todo el conjunto de vértices y líneas de estas tablas se podría representar con una Matriz de adyacencias, explicada en \ref{sub:representacion_de_un_grafo}, y usada en la resolución de la ruta mas corta, mas específicamente con el algoritmo de Dijkstra.\\
 
-\emph{PgRouting} ya tiene implementado el algoritmo de \emph{Dijkstra}, pero solo puede ser utilizado cuando ya se le haya añadido una topología a la tabla con las rutas. Una vez complido con este requisito se puede hacer uso del método implementado (ver el codigo \ref{pgr_dijkstra}) por \emph{pgRouting}, esta consulta SQL utilizada encuentra la ruta óptima entre 2 nodos de la red topológica y utiliza la distancia entre nodos para calcular la ruta óptima.\\
+\emph{PgRouting} ya tiene implementado el algoritmo de \emph{Dijkstra}, pero solo puede ser utilizado cuando ya se le haya añadido una topología a la tabla con las rutas. Una vez complido con este requisito se puede hacer uso del método implementado (ver el código \ref{pgr_dijkstra}) por \emph{pgRouting}, esta consulta SQL utilizada encuentra la ruta óptima entre 2 nodos de la red topológica y utiliza la distancia entre nodos para calcular la ruta óptima.\\
 
 \begin{center}
  \begin{lstlisting}[label=pgr_dijkstra,caption=Algoritmo de Dijkstra implementado en \emph{pRouting}]
@@ -344,7 +346,7 @@ Por lo que para obtener los nodos utilizados en la consulta SQL previamente most
    LIMIT 1
 \end{verbatim}
 
-Una vez ejecutado el método \emph{pgr\_dijkstra} se obtiene un conjunto de líneas, las cuales son un conjunto de latitudes y longitudes que representan la ruta más corta entre el punto origen y el punto destino, pero esta informacion realmente no dice nada a la persona que lo lee por lo tanto es necesario que el resultado de la anterior consulta SQL sea procesada para poder ser consumida desde el navegador y la mejor forma para apreciar la ruta es mostrarla sobre el \emph{mapa}, todo este proceso es llevada a cabo en el servidor y entregada al cliente en formato GeoJSON.\\
+Una vez ejecutado el método \emph{pgr\_dijkstra} se obtiene un conjunto de líneas, las cuales son un conjunto de latitudes y longitudes que representan la ruta más corta entre el punto origen y el punto destino, pero esta información realmente no dice nada a la persona que lo lee por lo tanto es necesario que el resultado de la anterior consulta SQL sea procesada para poder ser consumida desde el navegador y la mejor forma para apreciar la ruta es mostrarla sobre el \emph{mapa}, todo este proceso es llevada a cabo en el servidor y entregada al cliente en formato GeoJSON.\\
 
 
 
@@ -402,7 +404,7 @@ A continuación se puede apreciar el \emph{request} que el frontend hace al API 
 % \end{verbatim}
 % /api/v1/ways/route/
 
-Una vez que se tiene los datos, es necesario representarlo en el mapa y para tal efecto se seguirá utilizando \emph{ember-leaflet} y que con el tag \emph{geojson-layer} (ver el siguiente codigo) se dibuja sobre el mapa una línea roja que representa la ruta más corta entre el punto donde se encuentra el usuario y el \emph{lugar}, tal como se puede apreciar en la figura \ref{fig:short_way_place}.
+Una vez que se tiene los datos, es necesario representarlo en el mapa y para tal efecto se seguirá utilizando \emph{ember-leaflet} y que con el tag \emph{geojson-layer} (ver el siguiente código) se dibuja sobre el mapa una línea roja que representa la ruta más corta entre el punto donde se encuentra el usuario y el \emph{lugar}, tal como se puede apreciar en la figura \ref{fig:short_way_place}.
 % Este objeto es representado en el mapa usando ember-leaflet con la siguiente instrucción,
 %
 % \begin{verbatim}

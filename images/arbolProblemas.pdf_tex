@@ -68,7 +68,7 @@
     \put(0,0){\includegraphics[width=\unitlength,page=9]{arbolProblemas.pdf}}%
     \put(0.85724087,0.80163606){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Datos de Lugares Desactualizados}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=10]{arbolProblemas.pdf}}%
-    \put(0.50044332,0.95763845){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Deficiente acceso a la informacion<span style="line-height: 1.2">&nbsp;Universitaria</span>}}}%
+    \put(0.50044332,0.95763845){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Deficiente acceso a la información<span style="line-height: 1.2">&nbsp;Universitaria</span>}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=11]{arbolProblemas.pdf}}%
     \put(0.58693969,0.7352192){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Bajo Rendimiento Académico por Llegar Tarde&nbsp;}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=12]{arbolProblemas.pdf}}%

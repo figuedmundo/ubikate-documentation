@@ -36,12 +36,12 @@
 
 \usepackage{svg}
 \usepackage{amsmath}
-% \usepackage{listings}
+\usepackage{listings}
 
-%para codigo fuente
+%para código fuente
 % \usepackage{color}
 % \usepackage{xcolor}
-\usepackage{listings}
+% \usepackage{listings}
 
 %Bibliografia en el indice
 %\usepackage[nottoc,numbib]{tocbibind}
@@ -142,11 +142,15 @@
 \usepackage{fancyhdr}
 % \usepackage{floatpag}
 
+\fancyhead{}% Clear page header/footer
+\fancyfoot{}% Clear page header/footer
+\fancyfoot[C]{\iffloatpage{}{\thepage}}
+\renewcommand{\headrulewidth}{0pt}
+% \headrulewidth 0 pt% No header rule
+% \footrulewidth 0 pt
 \pagestyle{fancy}
-\fancyhf{}% Clear page header/footer
-\renewcommand{\headrulewidth}{0pt}% No header rule
-\fancyfoot[C]{\thepage}
-\floatpagestyle{fancy}% Page style for float-page only
+
+% \floatpagestyle{fancy}% Page style for float-page only
 
 %------------
 
@@ -173,7 +177,6 @@
 
 %-----------------------------
 \renewcommand{\lstlistingname}{Code}
-
 \lstset{
     basicstyle=\footnotesize\ttfamily,
     language=C++
@@ -207,8 +210,7 @@
 %
 % caratula
 %
-%para poner bookmark del CD de requisitos
-\bookmark[page=1,level=-2]{INICIO}
+
 
 \pagenumbering{Roman} % para comenzar la numeracion de paginas en numeros romanos
 
@@ -218,6 +220,8 @@
 % \date{\today \ }
 \begin{document}
 
+%para poner bookmark del CD de requisitos
+\bookmark[page=1,level=-2]{INICIO}
 
 \include{caratula}
 

@@ -46,9 +46,9 @@
 \subsubsection{Acceder a la Información de los lugares mediante un REST API }
 
 
-La información de un lugar está almacenada en una base de datos, entonces para poder acceder a esta informacion se implement\'o un REST API, que como ya se especificaron sus características, es la más apropiada para construir una aplicación web. \\
+La información de un \emph{lugar} está almacenada en una base de datos, entonces para poder acceder a esta información se implementó un REST API, que como ya se especificaron sus características, es la más apropiada para construir una aplicación web. \\
 
-Las peticiones al API llegan a través del protocolo HTTP, en forma de URIs por lo que el servidor implementado con \emph{ExpressJS} tiene que escuchar estas peticiones y actuar en relación al tipo de petición HTTP está llegando, por lo cual es necesario ``mapear'' las URIs con acciones o métodos, como se puede ver en el codigo \ref{express_api}, los cuales contienen el código necesario para comunicarse con la base de datos. \\
+Las peticiones al API llegan a través del protocolo HTTP, en forma de URIs por lo que el servidor implementado con \emph{ExpressJS} tiene que escuchar estas peticiones y actuar en relación al tipo de petición HTTP está llegando, por lo cual es necesario ``mapear'' las URIs con acciones o métodos, como se puede ver en el código \ref{express_api}, los cuales contienen el código necesario para comunicarse con la base de datos. \\
 
 
 \begin{center}
@@ -125,7 +125,7 @@ Una vez implementado el servicio web, necesitamos empezar con el desarrollo del 
 \subsubsection{Mostrar la lista de lugares}
 
 
-\emph{EmberJS} consume la información del API implementado, por lo tanto se hará una llamada \emph{GET} al URI \emph{places/}, que dentro de la estructura de \emph{EmberJS} se tiene que implementar en el \emph{router} dedicado al URI correspondiente. El método mostrado en el codigo \ref{model_places_index}, es el encargado de hacer generar la petición GET que el API está listo para responder con la lista de los lugares registrados en el sistema. \\
+\emph{EmberJS} consume la información del API implementado, por lo tanto se hará una llamada \emph{GET} al URI \emph{places/}, que dentro de la estructura de \emph{EmberJS} se tiene que implementar en el \emph{router} dedicado al URI correspondiente. El método mostrado en el código \ref{model_places_index}, es el encargado de hacer generar la petición GET que el API está listo para responder con la lista de los lugares registrados en el sistema. \\
 
 \begin{center}
   \begin{lstlisting}[label=model_places_index,caption=Método para obtener la lista de lugares del API]
@@ -141,7 +141,7 @@ Una vez implementado el servicio web, necesitamos empezar con el desarrollo del 
   \end{lstlisting}
 \end{center}
 
-Una vez que se obtiene la lista de lugares del servidor, es necesario desplegarlo en el navegador, para tal efecto se implement\'o el método mostrado en el codigo \ref{template_places_index}, y se utilizó el template correspondiente al URI \emph{templates/places/index.hbs}.
+Una vez que se obtiene la lista de lugares del servidor, es necesario desplegarlo en el navegador, para tal efecto se implement\'o el método mostrado en el código \ref{template_places_index}, y se utilizó el template correspondiente al URI \emph{templates/places/index.hbs}.
 
 \begin{center}
   \begin{lstlisting}[label=template_places_index,caption=Template de la lista de lugares]
@@ -177,7 +177,7 @@ En la anterior implementación se hizo uso de \emph{ember-paper}, que como ya se
 \subsubsection{Búsqueda de los lugares}
 \label{subs:busqueda de los lugares}
 
-Uno de los criterios de aceptación para la implementación de la \emph{historia de usuario} 2, correspondiente a la búsqueda de los lugares, es que sea posible la búsqueda usando el nombre del lugar o parte del mismo. Al implementar esta \emph{historia de usuario} se a\~nadi\'o un \emph{endpoint} adicional a nuestro servicio web, ver el codigo \ref{endpoint_search_place}, que basicamente realiza una consulta SQL la cual obtiene de la base de datos los lugares que concuerden con el criterio de búsqueda. \\
+Uno de los criterios de aceptación para la implementación de la \emph{historia de usuario} 2, correspondiente a la búsqueda de los lugares, es que sea posible la búsqueda usando el nombre del lugar o parte del mismo. Al implementar esta \emph{historia de usuario} se a\~nadi\'o un \emph{endpoint} adicional a nuestro servicio web, ver el código \ref{endpoint_search_place}, que basicamente realiza una consulta SQL la cual obtiene de la base de datos los lugares que concuerden con el criterio de búsqueda. \\
  % a continuación se puede ver el URI implementado en la servicio web. \\
 
 \begin{center}
@@ -192,10 +192,9 @@ Uno de los criterios de aceptación para la implementación de la \emph{historia
 \subsubsection{Mostrar la información del lugar}
 \label{subs:Mostrar información del lugar}
 
-Para mostrar la información de un \emph{lugar}, es necesario realizar una consulta al URI \emph{places/:id} usando el verbo HTTP \emph{GET}, el cual obtiene la información del \emph{lugar} en formato JSON la cual es mostrarda en el navegador, para tal efecto se emplea el template correspondiente al URI,  \emph{templates/places/show}. \\
+Para mostrar la información de un \emph{lugar}, es necesario realizar una consulta al URI \emph{places/:id} usando el verbo HTTP \emph{GET}, el cual obtiene la información del \emph{lugar} en formato JSON la cual es mostrarda en el navegador, para tal efecto se emplea el template correspondiente al URI,  \emph{app/templates/places/show}, la implementación del template se puede ver en el código \ref{template_places_show}. \\
 
-La implementación del template se puede ver en el codigo \ref{template_places_show}. \\
-
+\newpage
 \begin{center}
   \begin{lstlisting}[label=template_places_show,caption=Template para mostrar la información de un lugar]
 

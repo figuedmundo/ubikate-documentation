@@ -9,12 +9,12 @@ Encontrar la ruta óptima entre 2 puntos es un problema al cual se enfrentan las
 Dentro el campus Universitario es generalmente prioritario optimizar el tiempo de busqueda de algun lugar o punto de interés al cual se quiera llegar, ya sea como estudiante o visitante externo.\\
 
 
-Si se analiza el terreno que se va a cubrir con la aplicación, el campus ``Las Cuadras'' de la Universidad Mayor de San Simón ubicado entre las calles Oquendo, Sucre,  Belzu y M. U. López, se tiene que el camino óptimo es siempre el más corto o de menor longitud, el método de desplazamiento que se tomara en cuenta será \emph{caminando}, el terreno es llano y la unica restriccion es respetar las rutas peatonales.\\
+Si se analiza el terreno que se va a cubrir con la aplicación, el campus ``Las Cuadras'' de la Universidad Mayor de San Simón ubicado entre las calles Oquendo, Sucre,  Belzu y M. U. López, se tiene que el camino óptimo es siempre el más corto o de menor longitud, el método de desplazamiento que se tomara en cuenta será \emph{caminando}, el terreno es llano y la única restricción es respetar las rutas peatonales.\\
 
 % El problema de la ruta más corta es ampliamente usado por las empresas de transporte, correos, etc., que necesitan mejorar la eficiencia del trayecto y a la vez reducir el consumo de combustible, dentro del campus universitario, reducir el tiempo en el cual encontramos un aula o una oficina mejoraría en gran medida la presentación de la Universidad hacia gente externa que necesitan hacer uso o encontrar algún lugar en especifico ya que lamentablemente esta información actualmente sólo te la pueden ofrecer las personas que conocen el lugar de antemano y aun en esos casos existe la posibilidad de no encontrar el lugar que se está buscando.\\
 % La resolución de este problema es la se analizará en este capítulo.
 
-El presente problema se lo podría definir como; Encontrar la ruta más corta de un punto a otro punto, donde los puntos están interconectados por una red de caminos. El problema descrito se lo puede resolver y describir como un caso específico de la teoría de grafos.
+El presente problema se lo podría definir como, encontrar la ruta más corta de un punto a otro punto, donde los puntos están interconectados por una red de caminos. El problema descrito se lo puede resolver y describir como un caso específico de la teoría de grafos.
 
 
 
@@ -24,7 +24,7 @@ El presente problema se lo podría definir como; Encontrar la ruta más corta de
 
     % \section{Definiciones} % (fold)
     % \label{sec:grafos_definiciones}
-      Inicialmente es necesario aclararar alguno términos usados en la teoría de grafos.
+      Inicialmente es necesario aclararar algunos términos usados en la teoría de grafos.
 
       % El grafo que es la reprentacion
 
@@ -44,7 +44,7 @@ El presente problema se lo podría definir como; Encontrar la ruta más corta de
         % Para fines prácticos, no  consideraremos las aristas de la forma (u,u)
 
         \item \textbf{Grafo no Dirigido:}
-        En un \emph{grafo no dirigido} $G$, dos vértices $u$ y $v$ se dice que están conectados si hay un camino en $G$ de $u$ a $v$ (y como $G$ no es dirigido, también hay un camino de $v$ a $u$). Un grafo  se denomina completo si para todos los pares $u,v \in V$ existe una arista $(u,v) \in A$.
+        En un \emph{grafo no dirigido} $G$, dos vértices $u$ y $v$ se dice que están conectados si hay un camino en $G$ de $u$ a $v$ (y cómo $G$ no es dirigido, también hay un camino de $v$ a $u$). Un grafo  se denomina completo si para todos los pares $u,v \in V$ existe una arista $(u,v) \in A$.
 
         % En un \emph{grafo no dirigido}, dado una arista $(u,v)$, $v$ es adyacente de $u$, y simétricamente \emph{u} es adyacente de \emph{v} y si el par de vértices que representan la arista no tiene orden, por lo tanto la arista $(u,v)$ y $(v,u)$ representa la misma arista.
 

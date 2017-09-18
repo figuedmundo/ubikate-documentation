@@ -22,7 +22,7 @@ Los servicios web se caracterizan por su gran interoperabilidad y extensibilidad
   \item[SOA:] \emph{Service-oriented Architecture}, en español, Arquitectura Orientada a Servicios.
 Es una arquitectura de aplicación en donde todas las funciones o servicios están definidas usando un lenguaje descriptivo, XML es el lenguaje elegido para el intercambio de mensajes. Cada interacción es independiente de todas las demás interconexiones y los protocolos de comunicación entre dispositivos, por lo cual se lo conoce como débilmente desacoplado.
 
-Cuando se usa un servicio web basado en la arquitectura SOA los clientes consumen servicios, en vez de ejecutar procedimientos, esto se conoce como servicio orientado a mensajes. por lo cual se mejora notablemente el flujo de la información.
+Cuando se usa un servicio web basado en la arquitectura SOA los clientes consumen servicios, en vez de ejecutar procedimientos, esto se conoce como servicio orientado a mensajes, por lo cual se mejora notablemente el flujo de la información.
 
   % is an application architecture in which all functions, or services, are defined using a description language and have invokable interfaces that are called to perform business processes. Each interaction is independent of each and every other interaction and the interconnect protocols of the communicating devices
 
@@ -69,15 +69,15 @@ Cuando se usa un servicio web basado en la arquitectura SOA los clientes consume
 
   REST tiene como modelo a la Web, a las características que permitieron que el Internet pueda llegar a tener el tamaño y la capacidad que presenta en nuestros días. En particular, al manejo de direcciones o locación de recursos, los cuales se pueden identificar mediantes las URIs (\emph{Uniform Resource Identifier}). \cite{uri}
 
-Los principios de diseño sobre los que se basa REST son:
+Los principios de diseño sobre los que se basa REST son: \cite{rest_web_service}
 \begin{itemize}
   \item Escalabilidad de la interacción con los componentes. La Web maneja una gran cantidad de información, y a pesar de que continuamente crece el número de dispositivos que pueden acceder a la red, no se puede apreciar un decremento de la calidad de comunicación existente.
 
   \item Generalidad de interfaces. Gracias al protocolo HTTP, cualquier cliente puede interactuar con cualquier servidor HTTP sin ninguna configuración especial.
 
-  \item Puesta en funcionamiento independiente. Este hecho se apreciar cuando se observan servidores que al estar en funcionamiento durante bastante tiempo acaban de comunicarse con servidores o dispositivos de última generación y no se puede apreciar que exista un rechazo en la comunicación.
+  \item Puesta en funcionamiento independiente. Este hecho se aprecia cuando se observan servidores que al estar en funcionamiento durante bastante tiempo acaban de comunicarse con servidores o dispositivos de última generación y no se puede apreciar que exista un rechazo en la comunicación.
 
-  \item Compatibilidad con componentes intermedios. Estos componentes pueden ser los proxys que son utilizados para filtrar la información, las caches que se utilizan para mejorar el rendimiento, firewalls para reforzar las políticas de seguridad, etc. \cite{rest_web_service}
+  \item Compatibilidad con componentes intermedios. Estos componentes pueden ser los proxys que son utilizados para filtrar la información, las caches que se utilizan para mejorar el rendimiento, firewalls para reforzar las políticas de seguridad, etc.
 
 \end{itemize}
 
@@ -88,14 +88,14 @@ Los principios de diseño sobre los que se basa REST son:
 \begin{itemize}
   \item \textbf{GET} es la operación HTTP más común, es usado para leer
   datos en este caso páginas, se puede leer como ``get a page''.
-  \item \textbf{POST} es la operación usada para crear objetos o recursos, la informacion va en el cuerpo del request.
+  \item \textbf{POST} es la operación usada para crear objetos o recursos, la información va en el cuerpo del request.
   \item \textbf{PUT} se usa para actualizar objetos.
   \item \textbf{DELETE} es usado para borrar objetos.
 \end{itemize}
 
 % \textbf{GET} es la operación HTTP más común, es usado para leer
 % datos en este caso páginas, se puede leer como ``get a page'',
-% \textbf{POST} es la operación usada para crear objetos o recursos, la informacion va en el cuerpo del request
+% \textbf{POST} es la operación usada para crear objetos o recursos, la información va en el cuerpo del request
 % % se usa cuando se ejecuta un formulario, en la convención de Rails \textbf{POST} se usa para crear
 % % objetos o recursos,
 % \textbf{PUT} se usa para actualizar objetos,
@@ -105,7 +105,7 @@ Los principios de diseño sobre los que se basa REST son:
 
 
 
-  En el siguiente cuadro \ref{tab:rest}, se muestra como se pueden leer las peticiones al API del servicio que se comunica con los \emph{lugares}, las acciones mostradas son las que se encuentran en un API REST, pero no es necesario declararlas todas para considerar a que un API es restful.\\
+  En el siguiente cuadro \ref{tab:rest}, se muestra como se pueden leer las peticiones al API del servicio que se comunica con los \emph{lugares}, las acciones mostradas son las que se encuentran en un API REST, pero no es necesario declararlas todas para considerar que un API es restful.\\
 
 
   \begin{table}[H]
