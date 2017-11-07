@@ -7,7 +7,9 @@
 \raggedbottom
 
 
-\usepackage[spanish]{babel}
+% \usepackage[spanish]{babel}
+\usepackage[spanish,es-noshorthands]{babel}
+% \usepackage[spanish,es-noquoting]{babel}
 
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
@@ -29,6 +31,7 @@
 
 \usepackage{graphicx}
 \usepackage{tikz}
+\usetikzlibrary{babel}
 \usepackage{pgfgantt}
 \usepackage{pgfkeys}
 \usepackage{float}
@@ -206,6 +209,7 @@
 
 %-------------------------------
 
+%-----------------
 
 %
 % caratula
@@ -225,8 +229,9 @@
 
 \include{caratula}
 
+\include{dedicatoria}
 \include{agradecimientos}
-
+\include{resumen}
 
 
 % \include{title-page}
@@ -236,6 +241,7 @@
   \listoffigures
   \listoftables
 
+\newpage
 \mainmatter{}
 
   \include{introduccion}

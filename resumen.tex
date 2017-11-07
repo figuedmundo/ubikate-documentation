@@ -1,0 +1,27 @@
+\chapter*{Resumen} % si no queremos que añada la palabra "Capitulo"
+\addcontentsline{toc}{chapter}{Resumen} % si queremos que aparezca en el índice
+\markboth{RESUMEN}{RESUMEN} % encabezado
+
+% Una bonita historia
+
+% \newpage
+% \pdfbookmark[0]{Resumen}{Resumen} % Sets a PDF bookmark for the abstract
+% \chapter*{Resumen}
+% % \textsc{The celebrated number} -17 was discovered in Manchester in 1989 ...
+
+
+% El presente projecto de grado, es
+
+En el presente proyecto de grado se analizó el problema que presenta la Universidad Mayor de San Simón con respecto al campus ``Las Cuadras'' en relación a la deficiente localización de los lugares que se encuentran dentro del campus Universitario, ya sea porque la Universidad se reestructura cada cierto tiempo o a los escasos mapas con la ubicación de los lugares de interés con que cuentan las distintas facultades dentro del campus Universitario .
+
+Para resolver este problema se planteó la implementación de una aplicación web móvil, que usando geolocalización y las diversas características con que cuentan los dispositivos móviles actuales se puede localizar un lugar dentro del campus Universitario en relación a la ubicación actual del usuario, así como también la ruta óptima a seguir para poder llegar a destino de forma más eficiente.
+
+Durante la ejecución del proyecto se analizaron y utilizaron diversas herramientas, como por ejemplo: \emph{EmberJS}, el cual es un entorno de desarrollo \emph{JavaScript}, especializado en el frontend o la capa de presentación de la aplicación, \emph{PostgreSQL} como base de datos con su plugin \emph{PostGIS} para el procesamiento de datos Geoespaciales, \emph{ExpressJS} para implementar un API que maneje la lógica del negocio, para la correcta implementación del proceso de desarrollo de software se utilizó la \emph{Programación Extrema} como metodología de desarrollo, la cual así como todas herramientas utilizadas son desglosadas y analizadas  con más detalle en el Marco Teórico del proyecto de grado.
+
+En una primera etapa se construyó un mapa de las rutas internas dentro el campus Universitario, para tal efecto se recorrió los caminos peatonales utilizando un dispositivo GPS para que después de editarlo se tenga un grafo no dirigido, sobre el cual, aplicando el algoritmo de Dijkstra se tenga el camino más corto entre 2 nodos del grafo, los cuales corresponden al lugar de interés que se está buscando y a la posición del usuario correspondientemente.
+
+Posteriormente se implementa la lógica necesario para poder mostrar al usuario de forma gráfica los lugares disponibles dentro del campus universitario así como también ubicarlos geográficamente sobre un mapa, indispensable para que el usuario sepa hacia dónde tiene que desplazarse. Así como también el API REST que sustentará la lógica de negocio de la aplicación.
+
+% Finalizando la implementación de la aplicación se enfocó la forma de manejar los usuarios que pueden aumentar y mejorar la base de datos de lugares disponibles, pero ya que se cuenta con información costosa, es necesario un tratamiento especial de los usuarios en el sistema.
+
+La información obtenida por el uso de la aplicación es bastante valiosa, ya que refleja la relación de personas que desan localizar lugares en especifico de la Universidad y con la consiguiente posibilidad de tomar decisiones en relación a la cantidad de personas que se mueven por los distintos puntos de interés con los que cuenta la Universidad Mayor de San Simón.
