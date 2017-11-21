@@ -1,13 +1,10 @@
 \documentclass[11pt,letterpaper,twoside,openright]{book}
 
-
-% tipo de letra Helvetica, algo parecida a Arial
-% \usepackage{helvet}
-% \renewcommand{\familydefault}{\sfdefault}
 \raggedbottom
 
+%segun CD de carrera
+\usepackage[top=2.5cm, bottom=2.5cm, inner=3.5cm, outer=2.5cm]{geometry}
 
-% \usepackage[spanish]{babel}
 \usepackage[spanish,es-noshorthands]{babel}
 % \usepackage[spanish,es-noquoting]{babel}
 
@@ -17,45 +14,24 @@
 \usepackage[dvipsnames]{xcolor}
 
 \usepackage{textcomp}
-\usepackage[pdftex]{hyperref}
 \usepackage{multirow}
 \usepackage{booktabs}
 
-\usepackage{apacite}
-% \usepackage[natbibapa]{apacite}
 
-% \usepackage{multirow}
 \usepackage{amsmath}
 \usepackage{microtype}
 
 
 \usepackage{graphicx}
+% \pdfcompresslevel=9
+
 \usepackage{tikz}
 \usetikzlibrary{babel}
 \usepackage{pgfgantt}
 \usepackage{pgfkeys}
-\usepackage{float}
-% \usepackage{minted}
 
 \usepackage{svg}
 \usepackage{amsmath}
-\usepackage{listings}
-
-%para código fuente
-% \usepackage{color}
-% \usepackage{xcolor}
-% \usepackage{listings}
-
-%Bibliografia en el indice
-%\usepackage[nottoc,numbib]{tocbibind}
-\usepackage[nottoc,notlot,notlof]{tocbibind}
-%para bookmarks
-
-%para numerar subsubsections
-\setcounter{secnumdepth}{3}
-%\setcounter{tocdepth}{3}
-%menos profundidad en el indice
-\setcounter{tocdepth}{2}
 
 
 \usepackage{tabularx}
@@ -71,114 +47,15 @@
 
 \newcommand\tab[1][1cm]{\hspace*{#1}}
 
-% \usepackage{xcolor}
-% \usepackage{bordermatrix}
-% \usepackage{microtype}
-% \usepackage{shortvrb}
-% \usepackage{tabularx}
-%%%%%%%%%%%%%%%%%
-% PARA HACER LA PRUEBA
-%%%%%%%%%%%%%%%%%
-% \usepackage{nicefrac}
-% \usepackage[pdftex]{hyperref}
-% \usepackage{anysize}
-% \usepackage{fancyhdr}
-% \usepackage{subfigure}
-% \usepackage{pstricks}
-% \usepackage{tabulary}
-% \usepackage{type1cm}
-% \usepackage{url}
-% \usepackage{multirow}
-% \usepackage{booktabs}
-% \usepackage{subfigure}
-% \usepackage{graphicx}
-% \usepackage{bm}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \usepackage[bookmarks]{}
-% \usepackage[bookmarks,colorlinks]{hyperref}
 \graphicspath{{images/}}
 \setsvg{
     svgpath = images/,
     inkscape = inkscape -z -D % conversion options for svg package, export drawing instead of page
 }
-% \renewcommand{\arraystretch}{1.5}
-% \usepackage{hyperref}
-\hypersetup{colorlinks,%
-            citecolor=black,%
-            filecolor=black,%
-            linkcolor=black,%
-            urlcolor=black}
-
-% \usepackage[charter]{mathdesign}
-
-%----------------------------------------
-% Anexos
-\usepackage{appendix}
-\renewcommand{\appendixname}{Anexos}
-\renewcommand{\appendixtocname}{Anexos}
-\renewcommand{\appendixpagename}{Anexos}
-
-\addto\captionsspanish{%
-  \renewcommand\appendixname{Anexo}
-  \renewcommand\appendixpagename{Anexos}
-}
-
-%------------
-% Bibliografia
-\addto\captionsspanish{
-  \renewcommand{\bibname}{Bibliografía}
-}
-
-%------------
-%margenes
-
-%segun guia
-% \usepackage[top=2cm, bottom=2cm, inner=3cm, outer=2cm]{geometry}
-
-%segun CD de carrera
-\usepackage[top=2.5cm, bottom=2.5cm, inner=3.5cm, outer=2.5cm]{geometry}
-
-% quita la sangria a los parrafos (sin sangria se ve feo :-)
-%\setlength{\parindent}{0cm}
-
-% Para tener cabecera y pie de pagina con un estilo personalizado
-\usepackage{fancyhdr}
-% \usepackage{floatpag}
-
-\fancyhead{}% Clear page header/footer
-\fancyfoot{}% Clear page header/footer
-\fancyfoot[C]{\iffloatpage{}{\thepage}}
-\renewcommand{\headrulewidth}{0pt}
-% \headrulewidth 0 pt% No header rule
-% \footrulewidth 0 pt
-\pagestyle{fancy}
-
-% \floatpagestyle{fancy}% Page style for float-page only
-
-%------------
-
-%------------
-\usepackage{bookmark}
-\bookmarksetup{numbered}
-
-\usepackage{titlesec} %reformatting the chapter headings
-%\titleformat{\chapter}[block]
-%  {\normalfont\LARGE\bfseries\centering}
-%  {CHAPTER\thechapter: }{0em}{}
-
-% \makeatletter
-% \bookmarksetup{%
-%   addtohook={%
-%     \ifnum\toclevel@chapter=\bookmarkget{level}\relax
-%       \renewcommand*{\numberline}[1]{Cap\'itulo #1: }%
-%     \fi
-%   },
-% }
-% \makeatother
-%----------------------------------------
 
 
 %-----------------------------
+\usepackage{listings}
 \renewcommand{\lstlistingname}{Code}
 \lstset{
     basicstyle=\footnotesize\ttfamily,
@@ -191,87 +68,190 @@
 \captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
 %-------------
 
+%----------------------------------------
+% Anexos
+\usepackage{appendix}
+\renewcommand{\appendixname}{Anexos}
+\renewcommand{\appendixtocname}{Anexos}
+\renewcommand{\appendixpagename}{Anexos}
 
-
+% rename appendix to annex
+\AtBeginDocument{\renewcommand\appendixname{Anexo}}
 %------------
 
 % Espacio parrafos
 \setlength{\parskip}{6pt}
 
-\usepackage[pdftex]{graphicx}
-% \pdfcompresslevel=9
 
-\usepackage{adjustbox}
+
+%------------
+\usepackage{hyperref}
+\hypersetup{colorlinks,%
+            citecolor=black,%
+            filecolor=black,%
+            linkcolor=black,%
+            urlcolor=black}
+
+\usepackage{bookmark}
+\bookmarksetup{numbered}
+
+%para bookmarks
+%para numerar subsubsections
+\setcounter{secnumdepth}{3}
+%menos profundidad en el indice
+\setcounter{tocdepth}{2}
+%----------------------------------------
+%----------------------------------------
+% Bibliografia
+\usepackage{apacite}
+
+
+\renewcommand{\bibname}{Bibliografía}
+\AtBeginDocument{\renewcommand{\bibname}{Bibliografía}}
+
+%Bibliografia en el indice
+\usepackage[nottoc,notlot,notlof]{tocbibind}
+%------------
+
 
 %-------------------------------
-
 \newcommand{\blank}[1]{\hspace*{#1}}
-
 %-------------------------------
 
 %-----------------
-
-%
-% caratula
-%
-
+% Para tener cabecera y pie de pagina con un estilo personalizado
+\usepackage{fancyhdr}
+\fancyhead{}% Clear page header/footer
+\fancyfoot{}% Clear page header/footer
+\fancyfoot[C]{\iffloatpage{}{\thepage}}
+\renewcommand{\headrulewidth}{0pt}
+% \headrulewidth 0 pt% No header rule
+% \footrulewidth 0 pt
+\pagestyle{fancy}
+%------------
 
 \pagenumbering{Roman} % para comenzar la numeracion de paginas en numeros romanos
 
+%reformatting the chapter headings for bookmark
+\usepackage{titlesec}
+
+\makeatletter
+
+% verify in appendix
+\newcommand{\inappendix}{TT\fi\expandafter\ifx\@chapapp\appendixname}
+
+% rename chapter or appendix
+\bookmarksetup{%
+  addtohook={%
+  	\ifnum\toclevel@chapter=\bookmarkget{level}\relax
+  	    \if\inappendix
+	    	\renewcommand*{\numberline}[1]{Anexo #1 }%
+	  	\else
+			\renewcommand*{\numberline}[1]{Capítulo #1 }
+  		\fi
+	\fi
+  },
+}
+\makeatother
+
+% Define name of caption and list of lot
+\renewcommand{\listtablename}{Índice de tablas}
+\renewcommand{\tablename}{Tabla}
+
+% Generate bookmarks for all figures
+\makeatletter
+\pretocmd\endfigure{%
+\addtocontents{lof}{
+	\protect{%
+    \bookmark[
+    rellevel=1,
+    keeplevel,
+    dest=\@currentHref,
+    ]{Figura \thefigure: \@currentlabelname}}}%
+}{}{\errmessage{Patching \noexpand\endfigure failed}}
+% generate bookmarks for all tables
+\pretocmd\endtable{%
+\addtocontents{lot}{
+	\protect{%
+    \bookmark[
+    rellevel=1,
+    keeplevel,
+    dest=\@currentHref,
+	]{Tabla \thetable: \@currentlabelname}}}%
+}{}{\errmessage{Patching \noexpand\endtable failed}}
+\makeatother
+
+
+\usepackage{adjustbox}
+\usepackage{float}
+
 
 % \title{Desarrollo de una aplicaci\'on web móvil para visitas dentro el campus de la UMSS usando Geolocalización}
-% \author{Edmundo Figueroa Herbas}
-% \date{\today \ }
 \begin{document}
+% \frontmatter
+\newcounter{rom}
 
-%para poner bookmark del CD de requisitos
+\justifying
+\noindent
+
 \bookmark[page=1,level=-2]{INICIO}
-
 \include{caratula}
+% \maketitle
 
 \include{dedicatoria}
 \include{agradecimientos}
 \include{resumen}
 
+% \tableofcontents
+\addtocontents{toc}{\protect{\pdfbookmark[-1]{Índice General}{toc}}}
+\tableofcontents
 
-% \include{title-page}
-\frontmatter
-  % \maketitle
-  \tableofcontents
-  \listoffigures
-  \listoftables
+\thispagestyle{plain}~
+% begin numeration for ordinal number
+\cleardoublepage
+\pagenumbering{arabic}
 
-\newpage
-\mainmatter{}
-
-  \include{introduccion}
-  %
-  \include{marco_teorico_v2}
-  %
-  \include{campus}
-
-  \include{implementacion}
-
-  \include{recomendaciones_conclusiones}
-
-
-  \appendix
-  \clearpage
-  \addappheadtotoc
-  \appendixpage
-  \begin{appendices}
-    \include{manual_instalacion}
-    \include{manual_usuario}
-  \end{appendices}
-
-\backmatter{}
-
-  % \include{bibliography}
 % \newpage
-  % \bibliographystyle{apalike}
+% \mainmatter{}
+
+  \input{introduccion}
+  %
+  \input{marco_teorico_v2}
+  %
+  \input{campus}
+
+  \input{implementacion}
+
+  \input{recomendaciones_conclusiones}
+
   \bibliographystyle{apacite}
   \bibliography{bibliografia}
-  % \bibliographystyle{alpha}
 
+
+  \begin{appendices}
+
+  \appendix
+  \addappheadtotoc
+  \appendixpage
+
+  \makeatletter
+    \addtocontents{toc}{\let\protect\l@chapter\protect\l@section}
+    \def\toclevel@chapter{1}
+    \def\toclevel@section{2}
+    \def\toclevel@subsection{3}
+  \makeatother
+    \input{manual_instalacion}
+    \input{manual_usuario}
+  \end{appendices}
+
+  \cleardoublepage
+  \phantomsection
+  \addcontentsline{toc}{part}{Índice de Figuras}
+  \listoffigures
+
+  \cleardoublepage
+  \phantomsection
+  \addcontentsline{toc}{part}{Índice de Tablas}
+  \listoftables
 
 \end{document}
