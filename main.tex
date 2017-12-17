@@ -5,19 +5,19 @@
 %segun CD de carrera
 \usepackage[top=2.5cm, bottom=2.5cm, inner=3.5cm, outer=2.5cm]{geometry}
 
-\usepackage[spanish,es-noshorthands]{babel}
+\usepackage[spanish,es-noshorthands,es-tabla]{babel}
 % \usepackage[spanish,es-noquoting]{babel}
 
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
 \usepackage[T1]{fontenc}
-\usepackage[dvipsnames]{xcolor}
+% \usepackage[dvipsnames]{xcolor}
 
 \usepackage{textcomp}
 \usepackage{multirow}
 \usepackage{booktabs}
 
-
+\usepackage{svg}
 \usepackage{amsmath}
 \usepackage{microtype}
 
@@ -30,8 +30,7 @@
 \usepackage{pgfgantt}
 \usepackage{pgfkeys}
 
-\usepackage{svg}
-\usepackage{amsmath}
+
 
 
 \usepackage{tabularx}
@@ -92,43 +91,17 @@
             linkcolor=black,%
             urlcolor=black}
 
-\usepackage{bookmark}
-\bookmarksetup{numbered}
+% \usepackage{bookmark}
+% \bookmarksetup{numbered}
+\usepackage[numbered,open]{bookmark}[2011/12/02]
+\usepackage{etoolbox}
+% \usepackage{tocloft}
 
 %para bookmarks
 %para numerar subsubsections
 \setcounter{secnumdepth}{3}
 %menos profundidad en el indice
 \setcounter{tocdepth}{2}
-%----------------------------------------
-%----------------------------------------
-% Bibliografia
-\usepackage{apacite}
-
-
-\renewcommand{\bibname}{Bibliografía}
-\AtBeginDocument{\renewcommand{\bibname}{Bibliografía}}
-
-%Bibliografia en el indice
-\usepackage[nottoc,notlot,notlof]{tocbibind}
-%------------
-
-
-%-------------------------------
-\newcommand{\blank}[1]{\hspace*{#1}}
-%-------------------------------
-
-%-----------------
-% Para tener cabecera y pie de pagina con un estilo personalizado
-\usepackage{fancyhdr}
-\fancyhead{}% Clear page header/footer
-\fancyfoot{}% Clear page header/footer
-\fancyfoot[C]{\iffloatpage{}{\thepage}}
-\renewcommand{\headrulewidth}{0pt}
-% \headrulewidth 0 pt% No header rule
-% \footrulewidth 0 pt
-\pagestyle{fancy}
-%------------
 
 \pagenumbering{Roman} % para comenzar la numeracion de paginas en numeros romanos
 
@@ -136,7 +109,6 @@
 \usepackage{titlesec}
 
 \makeatletter
-
 % verify in appendix
 \newcommand{\inappendix}{TT\fi\expandafter\ifx\@chapapp\appendixname}
 
@@ -180,6 +152,37 @@
 	]{Tabla \thetable: \@currentlabelname}}}%
 }{}{\errmessage{Patching \noexpand\endtable failed}}
 \makeatother
+
+%----------------------------------------
+%----------------------------------------
+% Bibliografia
+\usepackage{apacite}
+
+
+\renewcommand{\bibname}{Bibliografía}
+\AtBeginDocument{\renewcommand{\bibname}{Bibliografía}}
+
+%Bibliografia en el indice
+\usepackage[nottoc,notlot,notlof]{tocbibind}
+%------------
+
+
+%-------------------------------
+\newcommand{\blank}[1]{\hspace*{#1}}
+%-------------------------------
+
+%-----------------
+% Para tener cabecera y pie de pagina con un estilo personalizado
+\usepackage{fancyhdr}
+\fancyhead{}% Clear page header/footer
+\fancyfoot{}% Clear page header/footer
+\fancyfoot[C]{\iffloatpage{}{\thepage}}
+\renewcommand{\headrulewidth}{0pt}
+% \headrulewidth 0 pt% No header rule
+% \footrulewidth 0 pt
+\pagestyle{fancy}
+%------------
+
 
 
 \usepackage{adjustbox}

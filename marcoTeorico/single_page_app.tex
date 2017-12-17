@@ -23,7 +23,7 @@ En una aplicación web tradicional cada vez que la aplicación hace una petició
 En una Aplicación de Página Única, después que la primera página es cargada en el navegador, todas las demás interacciones del usuario con la aplicación generan peticiones AJAX al servidor, las cuales retornan los datos requeridos, generalmente en formato JSON, de esta forma se actualiza solamente porciones de la página con la información obtenida del servidor, sin necesidad de recargar la página entera, como se puede ver en la figura \ref{fig:spa_diagram}. \\
 
 
-\begin{figure}[H]
+\begin{figure}[!ht]
   \begin{center}
     \includegraphics[width=0.5\textwidth]{spa_diagram}
     \caption{Flujo de una Aplicación de Página Única.}
@@ -101,10 +101,10 @@ La separación de la logica de las capas de la aplicación, implica que su imple
 
 La arquitectura de un SPA, como se puede ver en la figura \ref{fig:spa_arch}, donde el \emph{DOM} (\emph{Document Object Model}, es la estructura básica de la página desplegada en el navegador) es de \emph{solo escritura}, ya que no tiene estado o datos almacenados, cuando la página contiene estado o comúnmente la sesión del usuario, es necesario contener y propagar esta \emph{sesión} por las páginas de la aplicación, donde generalmente son usados los \emph{cookies} pero cuando la aplicación se compleja y contiene diferentes niveles de permisos, el manejo de esta información se complica, por lo que en vez de guardar la información en objetos aleatorios dentro del DOM es necesario una capa de la aplicación donde estén definidos los objetos que contienen la información y el estado de la aplicación, el cual es el \emph{Modelo}, esta capa también es la encargada guardar y/o extraer los datos del \emph{Storage}, que dependiendo de la aplicación puede ser una base de datos o el mismo navegador, \emph{localStorage} es una implementación de HTML5 que permite almacenar información en objetos JSON en el Navegador, la \emph{Vista} o \emph{View} se encarga de observar lo cambios ocurridos en el \emph{Modelo} y reflejar estos cambios en el \emph{DOM}, el cual es una renderización de un \emph{Template}.\\
 
-\begin{figure}[H]
+\begin{figure}[!ht]
   \begin{center}
     \includegraphics[width=0.9\textwidth]{spa_arch}
-    \caption[SPA Architecture ]{Arquitectura de una Aplicación Web Moderna}
+    \caption{Arquitectura de una Aplicación Web Moderna}
     \label{fig:spa_arch}
     \caption*{Fuente: \cite{xp_addison} }
   \end{center}
